@@ -11,8 +11,8 @@ const features = [
       </svg>
     ),
     accent: '#D4836A',
-    title: 'Real Community',
-    description: 'Connect with developers and creators who share your passion for AI-assisted development.',
+    title: 'Show Up',
+    description: 'Come to a meetup, bring your laptop, and build something real in a room full of people doing the same.',
     delay: 0,
   },
   {
@@ -23,8 +23,8 @@ const features = [
       </svg>
     ),
     accent: '#60A5FA',
-    title: 'Learn From Peers',
-    description: 'Discover how others use Claude Code in their workflows. Share tips and best practices.',
+    title: 'Learn Together',
+    description: 'Sessions mix live demos, hands-on building time, and open sharing. All levels welcome — from first prompt to production deploys.',
     delay: 1,
   },
   {
@@ -35,8 +35,8 @@ const features = [
       </svg>
     ),
     accent: '#4ADE80',
-    title: 'Ship Better Work',
-    description: 'Get feedback on your projects, find collaborators, and build higher quality software faster.',
+    title: 'Keep Building',
+    description: 'The community lives between events too. Share what you\'re working on, ask questions, and find collaborators.',
     delay: 2,
   },
   {
@@ -47,8 +47,8 @@ const features = [
       </svg>
     ),
     accent: '#D4836A',
-    title: 'Hands-On Sessions',
-    description: 'Participate in live coding sessions, workshops, and hackathons. Learn by doing.',
+    title: 'Go Deeper',
+    description: 'Members who want more can lead city groups, mentor newcomers, or help shape future events and hackathons.',
     delay: 3,
   },
 ]
@@ -93,7 +93,7 @@ export default function WhyJoin() {
             </span>
           </div>
           <h2 className="reveal reveal-delay-1 font-display text-4xl md:text-5xl font-semibold text-cream leading-tight">
-            Why Join Claude Code Meetups?
+            How the Community Works
           </h2>
           <p className="reveal reveal-delay-2 mt-4 text-muted font-body text-lg max-w-xl mx-auto">
             More than a community — a catalyst for what you&apos;ll build next.

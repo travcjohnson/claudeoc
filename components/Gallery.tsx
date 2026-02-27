@@ -5,33 +5,28 @@ import { useEffect, useRef } from 'react'
 const galleryItems = [
   {
     className: 'gallery-card-1',
-    label: 'Irvine Kickoff',
-    date: 'Jan 2025',
-    attendees: 42,
+    label: 'OC Claude Code',
+    sub: 'Building together',
   },
   {
     className: 'gallery-card-2',
-    label: 'Newport Beach Hack Night',
-    date: 'Feb 2025',
-    attendees: 28,
+    label: 'OC Claude Code',
+    sub: 'Building together',
   },
   {
     className: 'gallery-card-3',
-    label: 'Anaheim Workshop',
-    date: 'Mar 2025',
-    attendees: 35,
+    label: 'OC Claude Code',
+    sub: 'More events coming',
   },
   {
     className: 'gallery-card-4',
-    label: 'Costa Mesa Sprint',
-    date: 'Apr 2025',
-    attendees: 51,
+    label: 'OC Claude Code',
+    sub: 'More events coming',
   },
   {
     className: 'gallery-card-5',
-    label: 'OC Summit',
-    date: 'May 2025',
-    attendees: 89,
+    label: 'OC Kickoff · Feb 2025',
+    sub: 'Tustin, CA · 300+ registrations',
   },
 ]
 
@@ -88,11 +83,7 @@ export default function Gallery() {
             {/* Content */}
             <div className="absolute bottom-0 left-0 right-0 p-5">
               <div className="font-display text-cream font-semibold text-xl mb-1">{galleryItems[4].label}</div>
-              <div className="flex items-center gap-3 text-xs text-cream/60 font-body">
-                <span>{galleryItems[4].date}</span>
-                <span>·</span>
-                <span>{galleryItems[4].attendees} attendees</span>
-              </div>
+              <div className="text-xs text-cream/60 font-body">{galleryItems[4].sub}</div>
             </div>
             {/* Corner badge */}
             <div className="absolute top-4 right-4">
@@ -114,11 +105,7 @@ export default function Gallery() {
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <div className="font-display text-cream font-semibold text-sm mb-0.5">{item.label}</div>
-                <div className="flex items-center gap-2 text-xs text-cream/50 font-body">
-                  <span>{item.date}</span>
-                  <span>·</span>
-                  <span>{item.attendees} attendees</span>
-                </div>
+                <div className="text-xs text-cream/50 font-body">{item.sub}</div>
               </div>
             </div>
           ))}

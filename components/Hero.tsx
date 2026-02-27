@@ -51,15 +51,15 @@ export default function Hero() {
         {/* Headline */}
         <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-semibold leading-[1.05] tracking-tight mb-6 animate-fade-up"
           style={{ animationDelay: '0.2s', opacity: 0 }}>
-          Claude Code Meetups
+          Orange County&apos;s
           <br />
-          <span className="gradient-text">Across Orange County</span>
+          <span className="gradient-text">Claude Code Community</span>
         </h1>
 
         {/* Subheading */}
         <p className="text-xl md:text-2xl text-muted font-body font-light max-w-2xl mx-auto mb-4 animate-fade-up"
           style={{ animationDelay: '0.35s', opacity: 0 }}>
-          Southern California&apos;s Claude Code Community
+          Where OC builders learn, ship, and grow together
         </p>
 
         <p className="text-base md:text-lg text-muted/70 font-body max-w-xl mx-auto mb-12 animate-fade-up"
@@ -80,19 +80,12 @@ export default function Hero() {
           </a>
         </div>
 
-        {/* Stats */}
-        <div className="mt-20 grid grid-cols-3 gap-8 max-w-lg mx-auto animate-fade-up"
-          style={{ animationDelay: '0.7s', opacity: 0 }}>
-          {[
-            { value: '500+', label: 'Members' },
-            { value: '20+', label: 'Events Hosted' },
-            { value: '8', label: 'OC Cities' },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="font-display text-2xl md:text-3xl font-semibold gradient-text">{stat.value}</div>
-              <div className="text-xs text-muted mt-1 font-body uppercase tracking-wider">{stat.label}</div>
-            </div>
-          ))}
+        {/* First event badge */}
+        <div className="mt-16 animate-fade-up" style={{ animationDelay: '0.7s', opacity: 0 }}>
+          <span className="pill font-body text-sm"
+            style={{ background: 'rgba(212,131,106,0.08)', border: '1px solid rgba(212,131,106,0.2)', color: '#D4836A/80' }}>
+            Our first event &middot; February 2025 &middot; 300+ registrations
+          </span>
         </div>
       </div>
 
