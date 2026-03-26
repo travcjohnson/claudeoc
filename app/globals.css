@@ -11,6 +11,8 @@
   --green: #4ADE80;
   --cream: #FAF9F6;
   --muted: #A8A29E;
+  --font-fraunces: 'Fraunces', serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
 }
 
 * {
