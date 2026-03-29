@@ -25,18 +25,18 @@ const universities = [
 
 export function AudienceProfile() {
   return (
-    <section className="bg-ivory-medium py-24 lg:py-32">
+    <section className="bg-ivory-medium py-24 dark:bg-stone-900 lg:py-32">
       <div className="mx-auto max-w-[89.5rem] px-6 lg:px-10">
         <SectionHeader title="Your Audience" />
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
-            <h3 className="mb-6 font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark">
+            <h3 className="mb-6 font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark dark:text-muted">
               Who Attends
             </h3>
             <div className="flex flex-col gap-3">
               {roles.map((r) => (
                 <div key={r.label} className="flex items-center gap-4">
-                  <span className="w-28 shrink-0 font-sans text-sm font-medium text-slate-medium">
+                  <span className="w-28 shrink-0 font-sans text-sm font-medium text-slate-medium dark:text-muted">
                     {r.label}
                   </span>
                   <div className="flex-1 rounded-full bg-clay/20 h-5">
@@ -45,7 +45,7 @@ export function AudienceProfile() {
                       style={{ width: `${r.pct}%` }}
                     />
                   </div>
-                  <span className="w-8 text-right font-mono text-sm font-medium text-slate-dark">
+                  <span className="w-8 text-right font-mono text-sm font-medium text-slate-dark dark:text-cream">
                     {r.count}
                   </span>
                 </div>
@@ -53,7 +53,7 @@ export function AudienceProfile() {
             </div>
           </div>
           <div>
-            <h3 className="mb-6 font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark">
+            <h3 className="mb-6 font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark dark:text-muted">
               Where They Work
             </h3>
             <LogoCloud companies={companies} universities={universities} />

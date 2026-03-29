@@ -15,14 +15,14 @@ const insights = [
 
 export function ExperienceLevels() {
   return (
-    <section className="bg-ivory-light py-24 lg:py-32">
+    <section className="bg-ivory-light py-24 dark:bg-stone-950 lg:py-32">
       <div className="mx-auto max-w-[89.5rem] px-6 lg:px-10">
         <SectionHeader title="Experience Levels" />
         <div className="max-w-2xl">
           <div className="flex flex-col gap-3">
             {levels.map((l) => (
               <div key={l.label} className="flex items-center gap-4">
-                <span className="w-40 shrink-0 font-sans text-sm font-medium text-slate-medium">
+                <span className="w-40 shrink-0 font-sans text-sm font-medium text-slate-medium dark:text-muted">
                   {l.label}
                 </span>
                 <div className="flex-1 rounded-full bg-clay/20 h-5">
@@ -31,7 +31,7 @@ export function ExperienceLevels() {
                     style={{ width: `${l.pct}%` }}
                   />
                 </div>
-                <span className="w-8 text-right font-mono text-sm font-medium text-slate-dark">
+                <span className="w-8 text-right font-mono text-sm font-medium text-slate-dark dark:text-cream">
                   {l.count}
                 </span>
               </div>
@@ -41,9 +41,9 @@ export function ExperienceLevels() {
             {insights.map((text) => (
               <div
                 key={text}
-                className="rounded-xl border border-slate-dark/10 bg-white p-4"
+                className="rounded-xl border border-slate-dark/10 bg-white p-4 dark:border-white/10 dark:bg-stone-900"
               >
-                <p className="font-serif text-sm leading-relaxed text-slate-light">
+                <p className="font-serif text-sm leading-relaxed text-slate-light dark:text-muted">
                   {text}
                 </p>
               </div>

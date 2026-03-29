@@ -7,7 +7,7 @@ import { ExperienceLevels } from "@/components/sponsors/ExperienceLevels";
 import { CompanySize } from "@/components/sponsors/CompanySize";
 import { SponsorTiers } from "@/components/sponsors/SponsorTiers";
 import { EventHighlights } from "@/components/sponsors/EventHighlights";
-import { DarkCTA } from "@/components/shared/DarkCTA";
+import { SponsorCTA } from "@/components/sponsors/SponsorCTA";
 
 export const metadata: Metadata = {
   title: "Sponsor ClaudeOC — Orange County AI Community",
@@ -33,13 +33,7 @@ export default function SponsorsPage() {
         <CompanySize />
         <SponsorTiers />
         <EventHighlights />
-        <DarkCTA
-          headline="Interested in reaching this audience?"
-          buttonText="Become a Sponsor"
-          buttonHref="mailto:travis@aurapathai.com?subject=ClaudeOC Sponsorship"
-          contactEmail="travis@aurapathai.com"
-          contactPhone="(734) 476-3021"
-        />
+        <SponsorCTA />
       </main>
       <Footer />
     </>
