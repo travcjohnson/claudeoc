@@ -1,0 +1,66 @@
+import { EyebrowBadge } from "@/components/shared/EyebrowBadge";
+import { StatRow } from "@/components/shared/StatRow";
+
+const YOUTUBE_EMBED_URL = "https://www.youtube.com/embed/PLACEHOLDER";
+
+const stats = [
+  { value: "500+", label: "People Trained IRL" },
+  { value: "70K", label: "Prompts Completed" },
+  { value: "100+", label: "Projects Built" },
+  { value: "10yr", label: "Product Management" },
+];
+
+export function TrainingHero() {
+  return (
+    <section className="bg-ivory-light pt-32 pb-24 lg:pb-32">
+      <div className="mx-auto max-w-[89.5rem] px-6 lg:px-10">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+          {/* Text column — DOM first for mobile, visually right on desktop */}
+          <div className="flex flex-col items-start">
+            <EyebrowBadge label="Anthropic Ambassador" />
+            <h1 className="mt-8 font-sans text-4xl font-bold tracking-tight text-slate-dark md:text-5xl">
+              Travis Johnson
+            </h1>
+            <p className="mt-3 font-sans text-lg font-medium text-slate-medium">
+              1 of 50 Anthropic AI Ambassadors. Worldwide.
+            </p>
+            <p className="mt-5 max-w-lg font-serif text-lg leading-relaxed text-slate-light">
+              I bring hands-on AI training to your leadership team — customized
+              to your industry, at your office.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a
+                href="mailto:travis@aurapathai.com?subject=AI Training Session"
+                className="inline-flex items-center gap-2 rounded-lg bg-clay px-7 py-3.5 font-sans text-sm font-medium text-white transition-colors hover:bg-accent"
+              >
+                Book a Training Session
+                <span aria-hidden="true">→</span>
+              </a>
+              <a
+                href="#video"
+                className="inline-flex items-center rounded-lg border border-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light"
+              >
+                Watch My Story ▶
+              </a>
+            </div>
+          </div>
+          {/* Video column — DOM second, visually left on desktop */}
+          <div id="video" className="lg:order-first">
+            <div className="aspect-video w-full overflow-hidden rounded-xl bg-ivory-medium">
+              <iframe
+                src={YOUTUBE_EMBED_URL}
+                title="How I became a Claude Community Ambassador"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="mt-16 border-t border-slate-dark/10 pt-8">
+          <StatRow stats={stats} />
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,95 @@
+<h2>Training Page — Pricing Architecture</h2>
+<p class="subtitle">Based on Brandon's framework. The free offer leads, paid tiers scale by commitment depth.</p>
+
+<div style="margin-bottom:32px; padding:20px; background:rgba(196,104,73,0.06); border-radius:12px; border:1px solid rgba(196,104,73,0.15);">
+  <div style="font-size:13px; color:#C46849; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px; font-weight:600;">The Funnel Logic</div>
+  <div style="font-family:monospace; font-size:13px; line-height:2.2; color:#ccc;">
+    <div><span style="color:#4ADE80;">FREE</span> Lunch & Learn → <span style="color:#888;">captures lead, Dennis films, proves value</span></div>
+    <div style="padding-left:20px;">↓ <span style="color:#888; font-size:11px;">"That was great, what's next?"</span></div>
+    <div><span style="color:#60A5FA;">1:1</span> Executive Coaching → <span style="color:#888;">high-touch, influence the decision-maker</span></div>
+    <div style="padding-left:20px;">↓ <span style="color:#888; font-size:11px;">"My team needs this too"</span></div>
+    <div><span style="color:#C46849;">WORKSHOP</span> Half/Full Day → <span style="color:#888;">team-wide, flat fee + per-seat</span></div>
+    <div style="padding-left:20px;">↓ <span style="color:#888; font-size:11px;">"We want this ongoing"</span></div>
+    <div><span style="color:#d4af37;">RETAINER</span> Long-term Engagement → <span style="color:#888;">recurring, multi-LOB, the real business</span></div>
+  </div>
+</div>
+
+<h3>How should pricing appear on the /training page?</h3>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Show the full tier card ⭐</h3>
+      <p>All 4 tiers visible. Free hero up top, then 3 paid tiers as cards. Specific numbers where they help, "inquire" where negotiation matters.</p>
+      <div style="margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <!-- Free -->
+        <div style="grid-column:1/-1; background:#1a2e1a; border:1px solid rgba(74,222,128,0.2); border-radius:8px; padding:16px; position:relative;">
+          <div style="position:absolute; top:12px; right:12px; background:#4ADE80; color:#000; font-size:10px; padding:2px 8px; border-radius:4px; font-weight:600;">LIMITED TIME</div>
+          <div style="color:#4ADE80; font-size:18px; font-weight:700;">Free Lunch & Learn</div>
+          <div style="color:#888; font-size:12px; margin-top:4px;">60-90 min • In-person preferred • Virtual available</div>
+          <div style="color:#aaa; font-size:12px; margin-top:8px;">Tailored to your org: PMs, Devs, Ops, Finance, or full team. Walk away with actionable AI workflows.</div>
+          <div style="margin-top:8px; color:#4ADE80; font-size:11px;">→ Tally form capture (name, company, role, team size, focus area)</div>
+        </div>
+        <!-- 1:1 -->
+        <div style="background:rgba(96,165,250,0.08); border:1px solid rgba(96,165,250,0.2); border-radius:8px; padding:16px;">
+          <div style="color:#60A5FA; font-size:14px; font-weight:600;">1:1 Executive Coaching</div>
+          <div style="color:#ccc; font-size:20px; font-weight:700; margin-top:4px;">$250<span style="color:#888; font-size:12px;">/hr personal</span></div>
+          <div style="color:#ccc; font-size:20px; font-weight:700;">$5,000<span style="color:#888; font-size:12px;">/hr corporate</span></div>
+          <div style="color:#888; font-size:12px; margin-top:8px;">For decision-makers who need to understand AI deeply before committing their org.</div>
+        </div>
+        <!-- Workshop -->
+        <div style="background:rgba(196,104,73,0.08); border:1px solid rgba(196,104,73,0.2); border-radius:8px; padding:16px;">
+          <div style="color:#C46849; font-size:14px; font-weight:600;">Team Workshop</div>
+          <div style="color:#ccc; font-size:20px; font-weight:700; margin-top:4px;">From $5,000</div>
+          <div style="color:#888; font-size:12px;">Half or full day • Up to 20 seats included</div>
+          <div style="color:#888; font-size:12px; margin-top:4px;">+$100/seat beyond 20</div>
+          <div style="color:#888; font-size:12px; margin-top:8px;">Hands-on Claude Code, agents, real workflows tailored to your industry.</div>
+        </div>
+        <!-- Retainer -->
+        <div style="grid-column:1/-1; background:rgba(212,175,55,0.06); border:1px solid rgba(212,175,55,0.2); border-radius:8px; padding:16px;">
+          <div style="color:#d4af37; font-size:14px; font-weight:600;">Long-Term Engagement</div>
+          <div style="color:#ccc; font-size:20px; font-weight:700; margin-top:4px;">Starting at $5,000<span style="color:#888; font-size:12px;">/month</span></div>
+          <div style="color:#888; font-size:12px; margin-top:4px;">Retainer model • Multiple LOBs • Ongoing advisory + hands-on sessions</div>
+          <div style="color:#888; font-size:12px; margin-top:8px;">For orgs transitioning from ChatGPT to Claude enterprise-wide. Best practices, integration support, team enablement.</div>
+          <div style="margin-top:8px; color:#d4af37; font-size:12px;">→ Inquire for custom pricing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Free hero + "Programs" section below</h3>
+      <p>Giant free offer dominates the page. Below the fold, a clean section showing 1:1, Workshop, Retainer as a simple table — no flashy cards. Price visible but understated.</p>
+      <div style="margin-top:12px; font-family:monospace; font-size:12px; color:#888; line-height:2;">
+        <div style="color:#4ADE80; font-size:16px; margin-bottom:8px;">═══ HERO: FREE LUNCH & LEARN ═══</div>
+        <div>--- scroll ---</div>
+        <div style="margin-top:8px;">Programs & Pricing</div>
+        <div>1:1 Coaching ........... from $250/hr</div>
+        <div>Team Workshop ......... from $5,000</div>
+        <div>Retainer .............. from $5,000/mo</div>
+        <div style="color:#888; font-style:italic;">Inquire for custom packages →</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>Free hero + "Inquire" only (no public pricing)</h3>
+      <p>Free offer dominates. Paid tiers described but no dollar amounts on the page. Forces a conversation, lets you price based on the org.</p>
+      <div style="margin-top:8px; font-size:12px; color:#888;">
+        Pro: Maximum flexibility on pricing per client<br>
+        Con: Creates friction — CEOs want to know the ballpark before reaching out
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:24px; padding:16px; background:rgba(196,104,73,0.08); border-radius:8px; border-left:3px solid #C46849;">
+  <strong style="color:#C46849;">My Recommendation: A (full tier card)</strong>
+  <p style="margin-top:4px; font-size:14px;">Rationale: Brandon's framework is clean and escalates naturally. Showing "from" pricing builds credibility — you're a real business, not guessing. The $5K/hr corporate 1:1 rate is a power signal (it says "my time is worth it"). The free offer still dominates as the entry point. CEOs who see the paid tiers understand you're not just giving stuff away — the free session IS the pitch. And the retainer "inquire" keeps your biggest deals flexible.</p>
+  <p style="margin-top:8px; font-size:13px; color:#888;">One thought: the $5K/hr corporate 1:1 is bold (and justified for C-suite access). But showing it publicly might scare off mid-market. Consider showing it as "$5,000 minimum" rather than "/hr" — same economics, different framing. The exec doesn't need to know it's an hour rate.</p>
+</div>

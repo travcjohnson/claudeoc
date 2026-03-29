@@ -1,0 +1,107 @@
+<h2>Which design direction for ClaudeOC?</h2>
+<p class="subtitle">The two repos represent very different aesthetics. Pick the foundation.</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#1C1917; padding:32px; border-radius:8px 8px 0 0;">
+      <div style="font-family:Georgia,serif; color:#D4836A; font-size:28px; font-weight:700; margin-bottom:12px;">ClaudeOC</div>
+      <div style="color:#FAF9F6; font-size:14px; margin-bottom:16px;">Orange County's Claude Code Community</div>
+      <div style="display:flex; gap:8px; margin-bottom:16px;">
+        <span style="background:linear-gradient(135deg,#D4836A,#C07055); color:white; padding:8px 16px; border-radius:6px; font-size:12px;">View Events</span>
+        <span style="border:1px solid rgba(250,249,246,0.12); color:#FAF9F6; padding:8px 16px; border-radius:6px; font-size:12px;">Join Community</span>
+      </div>
+      <div style="display:flex; gap:16px;">
+        <div style="background:rgba(45,41,38,0.5); backdrop-filter:blur(12px); border:1px solid rgba(250,249,246,0.06); border-radius:8px; padding:12px 16px; flex:1;">
+          <div style="color:#D4836A; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Show Up</div>
+          <div style="color:#A8A29E; font-size:10px; margin-top:4px;">Glass morphism cards</div>
+        </div>
+        <div style="background:rgba(45,41,38,0.5); backdrop-filter:blur(12px); border:1px solid rgba(250,249,246,0.06); border-radius:8px; padding:12px 16px; flex:1;">
+          <div style="color:#60A5FA; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Build</div>
+          <div style="color:#A8A29E; font-size:10px; margin-top:4px;">Glow effects, dot grid</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A: Dark Mode (OG repo)</h3>
+      <p>Dark brown base, coral accents, glass morphism, mouse-tracking glows, dot grid backgrounds. Fraunces serif + DM Sans. Feels like a premium dev tool.</p>
+      <div style="margin-top:8px; font-size:12px; color:#888;">
+        ✓ Mouse-tracking ambient glow<br>
+        ✓ Glass cards with hover lift<br>
+        ✓ Gradient gallery placeholders<br>
+        ✗ Single page only<br>
+        ✗ Older stack (Next 14)
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#faf9f5; padding:32px; border-radius:8px 8px 0 0; border-bottom:1px solid #e8e6dc;">
+      <div style="font-family:'Helvetica Neue',sans-serif; color:#141413; font-size:28px; font-weight:700; margin-bottom:12px;">ClaudeOC</div>
+      <div style="color:#5e5d59; font-size:14px; margin-bottom:16px;">Orange County's Claude Community</div>
+      <div style="display:flex; gap:8px; margin-bottom:16px;">
+        <span style="background:#141413; color:#faf9f5; padding:8px 16px; border-radius:6px; font-size:12px;">View Events</span>
+        <span style="border:1px solid #d1cfc5; color:#141413; padding:8px 16px; border-radius:6px; font-size:12px;">Join Community</span>
+      </div>
+      <div style="display:flex; gap:16px;">
+        <div style="background:white; border:1px solid #e8e6dc; border-radius:8px; padding:12px 16px; flex:1;">
+          <div style="color:#d97757; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Events</div>
+          <div style="color:#87867f; font-size:10px; margin-top:4px;">Clean cards, warm palette</div>
+        </div>
+        <div style="background:white; border:1px solid #e8e6dc; border-radius:8px; padding:12px 16px; flex:1;">
+          <div style="color:#788c5d; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Training</div>
+          <div style="color:#87867f; font-size:10px; margin-top:4px;">Multi-page, Anthropic brand</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B: Light Mode (site repo — Anthropic brand)</h3>
+      <p>Warm ivory/cream background, terracotta accents, clean cards, Poppins + Lora serif. Mirrors Anthropic's aesthetic. Already has /training and /sponsors pages.</p>
+      <div style="margin-top:8px; font-size:12px; color:#888;">
+        ✓ Matches Anthropic's design language<br>
+        ✓ Multi-page (/, /training, /sponsors)<br>
+        ✓ Shared component library<br>
+        ✓ Newer stack (Next 16, React 19, TW4)<br>
+        ✗ No animations beyond scroll reveal
+      </div>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:linear-gradient(135deg, #faf9f5 0%, #e8e6dc 100%); padding:32px; border-radius:8px 8px 0 0; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:-20px; right:-20px; width:120px; height:120px; background:radial-gradient(circle, rgba(212,131,106,0.15) 0%, transparent 70%); border-radius:50%;"></div>
+      <div style="font-family:Georgia,serif; color:#141413; font-size:28px; font-weight:700; margin-bottom:12px;">ClaudeOC</div>
+      <div style="color:#5e5d59; font-size:14px; margin-bottom:16px;">Orange County's Claude Community</div>
+      <div style="display:flex; gap:8px; margin-bottom:16px;">
+        <span style="background:#C46849; color:white; padding:8px 16px; border-radius:6px; font-size:12px;">View Events</span>
+        <span style="border:1px solid #d1cfc5; color:#141413; padding:8px 16px; border-radius:6px; font-size:12px;">Join Community</span>
+      </div>
+      <div style="display:flex; gap:16px;">
+        <div style="background:rgba(255,255,255,0.7); backdrop-filter:blur(8px); border:1px solid rgba(209,207,197,0.5); border-radius:8px; padding:12px 16px; flex:1;">
+          <div style="color:#C46849; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Events</div>
+          <div style="color:#87867f; font-size:10px; margin-top:4px;">Subtle glass on light</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.7); backdrop-filter:blur(8px); border:1px solid rgba(209,207,197,0.5); border-radius:8px; padding:12px 16px; flex:1;">
+          <div style="color:#788c5d; font-size:11px; text-transform:uppercase; letter-spacing:0.05em;">Impact</div>
+          <div style="color:#87867f; font-size:10px; margin-top:4px;">Warm glows + editorial</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C: Hybrid — Light Anthropic + OG polish ⭐</h3>
+      <p>Light cream Anthropic base with selective dark-mode polish: subtle ambient glows, light glass morphism, scroll animations from OG. Best of both. Serif headlines (editorial feel) + clean sans body.</p>
+      <div style="margin-top:8px; font-size:12px; color:#888;">
+        ✓ Anthropic's warm cream palette<br>
+        ✓ OG's animation polish (toned down)<br>
+        ✓ Editorial serif headlines<br>
+        ✓ Multi-page architecture<br>
+        ✓ Next 16 / React 19 / TW4 stack<br>
+        ★ My recommendation
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:24px; padding:16px; background:rgba(196,104,73,0.08); border-radius:8px; border-left:3px solid #C46849;">
+  <strong style="color:#C46849;">My Recommendation: C (Hybrid)</strong>
+  <p style="margin-top:4px; font-size:14px;">Rationale: You said you like the design of claudeoc-site but the info/content of claudeoc. Option C gives you Anthropic's warm, editorial aesthetic as the foundation — which legitimizes you as an official Ambassador community — while cherry-picking the OG's best interaction design (ambient glows, scroll reveals, glass cards). Build on the newer stack.</p>
+</div>

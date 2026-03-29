@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  /* ─── Anthropic Color Palette ─── */
+  --color-slate-dark: #141413;
+  --color-slate-medium: #3d3d3a;
+  --color-slate-light: #5e5d59;
+  --color-cloud-dark: #87867f;
+  --color-cloud-medium: #b0aea5;
+  --color-cloud-light: #d1cfc5;
+  --color-ivory-light: #faf9f5;
+  --color-ivory-medium: #f0eee6;
+  --color-ivory-dark: #e8e6dc;
+  --color-oat: #e3dacc;
+  --color-manilla: #ebdbbc;
+  --color-kraft: #d4a27f;
+  --color-clay: #d97757;
+  --color-accent: #c6613f;
+  --color-sky: #6a9bcc;
+  --color-olive: #788c5d;
+  --color-cactus: #bcd1ca;
+  --color-heather: #cbcadb;
+  --color-coral: #ebcece;
+  --color-fig: #c46686;
+
+  /* ─── Typography ─── */
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Lora", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* ─── Spacing ─── */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-30: 7.5rem;
+  --spacing-34: 8.5rem;
+  --spacing-38: 9.5rem;
+
+  /* ─── Border Radius ─── */
+  --radius-pill: 100vw;
+}
+
+/* ─── Base Styles ─── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-serif);
+  background-color: var(--color-ivory-light);
+  color: var(--color-slate-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: var(--color-clay);
+  color: white;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ivory-medium);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-cloud-medium);
+  border-radius: 3px;
+}
+
+/* ─── Focus Ring ─── */
+*:focus-visible {
+  outline: 2px solid var(--color-clay);
+  outline-offset: 2px;
+}
