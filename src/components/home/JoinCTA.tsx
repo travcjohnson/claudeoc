@@ -109,7 +109,7 @@ export function JoinCTA() {
             </a>
           </div>
 
-          <p className="reveal reveal-delay-4 mt-6 font-serif text-xs text-cloud-dark">
+          <p className="reveal reveal-delay-4 mt-6 font-serif text-xs text-cloud-dark dark:text-muted">
             Free to join. Events are community-led.
           </p>
         </div>

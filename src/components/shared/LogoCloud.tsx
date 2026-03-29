@@ -10,14 +10,14 @@ export function LogoCloud({ companies, universities }: LogoCloudProps) {
         {companies.map((name) => (
           <div
             key={name}
-            className="rounded-lg border border-slate-dark/5 bg-white px-4 py-3 text-center font-sans text-sm font-semibold text-slate-medium"
+            className="rounded-lg border border-slate-dark/5 bg-white px-4 py-3 text-center font-sans text-sm font-semibold text-slate-medium dark:border-white/5 dark:bg-stone-800 dark:text-cream"
           >
             {name}
           </div>
         ))}
       </div>
       {universities && universities.length > 0 && (
-        <p className="mt-4 font-serif text-sm text-cloud-dark">
+        <p className="mt-4 font-serif text-sm text-cloud-dark dark:text-muted">
           + {universities.join(", ")}...
         </p>
       )}

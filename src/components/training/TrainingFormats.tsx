@@ -26,27 +26,27 @@ const formats = [
 
 export function TrainingFormats() {
   return (
-    <section className="bg-ivory-medium py-24 lg:py-32">
+    <section className="bg-ivory-medium py-24 dark:bg-stone-900 lg:py-32">
       <div className="mx-auto max-w-[89.5rem] px-6 lg:px-10">
         <SectionHeader title="What You Get" />
         <div className="grid gap-6 md:grid-cols-3">
           {formats.map((f) => (
             <div
               key={f.name}
-              className="rounded-xl border border-slate-dark/10 bg-white p-6"
+              className="rounded-xl border border-slate-dark/10 bg-white p-6 dark:border-white/10 dark:bg-stone-800"
             >
-              <h3 className="font-sans text-lg font-semibold text-slate-dark">
+              <h3 className="font-sans text-lg font-semibold text-slate-dark dark:text-cream">
                 {f.name}
               </h3>
               <div className="mt-3 flex gap-4">
-                <span className="font-sans text-xs font-medium uppercase tracking-wider text-cloud-dark">
+                <span className="font-sans text-xs font-medium uppercase tracking-wider text-cloud-dark dark:text-muted">
                   {f.duration}
                 </span>
-                <span className="font-sans text-xs font-medium uppercase tracking-wider text-cloud-dark">
+                <span className="font-sans text-xs font-medium uppercase tracking-wider text-cloud-dark dark:text-muted">
                   {f.capacity}
                 </span>
               </div>
-              <p className="mt-4 font-serif text-sm leading-relaxed text-slate-light">
+              <p className="mt-4 font-serif text-sm leading-relaxed text-slate-light dark:text-muted">
                 {f.description}
               </p>
             </div>

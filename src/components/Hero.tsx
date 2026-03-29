@@ -3,19 +3,19 @@ import { StatRow } from "@/components/shared/StatRow";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen bg-ivory-light flex items-center overflow-hidden">
+    <section className="relative min-h-screen bg-ivory-light dark:bg-stone-950 flex items-center overflow-hidden">
       {/* Decorative background shapes */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-32 -right-32 h-[640px] w-[640px] rounded-full bg-oat/50"
+        className="pointer-events-none absolute -top-32 -right-32 h-[640px] w-[640px] rounded-full bg-oat/50 dark:bg-clay/5"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 -left-24 h-[400px] w-[400px] rounded-full bg-manilla/40"
+        className="pointer-events-none absolute bottom-0 -left-24 h-[400px] w-[400px] rounded-full bg-manilla/40 dark:bg-clay/5"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[900px] w-[900px] rounded-full bg-ivory-medium/60"
+        className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[900px] w-[900px] rounded-full bg-ivory-medium/60 dark:bg-stone-900/30"
       />
 
       <div className="relative z-10 mx-auto w-full max-w-[89.5rem] px-6 lg:px-10 pt-24 pb-20">
@@ -24,7 +24,7 @@ export function Hero() {
           <div className="mb-8"><EyebrowBadge label="Anthropic Ambassador Community" /></div>
 
           {/* Main heading */}
-          <h1 className="font-sans font-bold leading-[0.95] tracking-tight text-slate-dark">
+          <h1 className="font-sans font-bold leading-[0.95] tracking-tight text-slate-dark dark:text-cream">
             <span className="block text-6xl md:text-7xl lg:text-8xl">
               <span className="text-clay">C</span>laude
             </span>
@@ -34,7 +34,7 @@ export function Hero() {
           </h1>
 
           {/* Subheading */}
-          <p className="mt-8 max-w-2xl font-serif text-xl leading-relaxed text-slate-light md:text-2xl">
+          <p className="mt-8 max-w-2xl font-serif text-xl leading-relaxed text-slate-light dark:text-muted md:text-2xl">
             The official Anthropic Ambassador community bringing AI builders,
             leaders, and curious minds together in Orange County.
           </p>
@@ -43,14 +43,14 @@ export function Hero() {
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               href="#events"
-              className="inline-flex items-center gap-2 rounded-lg bg-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-ivory-light transition-colors hover:bg-slate-medium"
+              className="inline-flex items-center gap-2 rounded-lg bg-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-ivory-light transition-colors hover:bg-slate-medium dark:bg-clay dark:hover:bg-accent"
             >
               Next Event
               <span aria-hidden="true">→</span>
             </a>
             <a
               href="#get-involved"
-              className="inline-flex items-center rounded-lg border border-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light"
+              className="inline-flex items-center rounded-lg border border-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light dark:border-cream/20 dark:text-cream dark:hover:bg-cream/10"
             >
               Get Involved
             </a>

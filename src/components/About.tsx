@@ -29,7 +29,7 @@ const expectCards = [
 
 export function About() {
   return (
-    <section id="about" className="bg-ivory-medium py-24 lg:py-32">
+    <section id="about" className="bg-ivory-medium py-24 dark:bg-stone-900 lg:py-32">
       <div className="mx-auto max-w-[89.5rem] px-6 lg:px-10">
         {/* Section header */}
         <SectionHeader
@@ -40,10 +40,10 @@ export function About() {
         {/* Two-column grid */}
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left: narrative */}
-          <div className="flex flex-col gap-6 font-serif text-lg leading-relaxed text-slate-light">
+          <div className="flex flex-col gap-6 font-serif text-lg leading-relaxed text-slate-light dark:text-muted">
             <p>
               ClaudeOC is part of Anthropic&apos;s global{" "}
-              <strong className="font-semibold text-slate-dark">
+              <strong className="font-semibold text-slate-dark dark:text-cream">
                 Claude Ambassador program
               </strong>{" "}
               — a network of community-led chapters connecting builders,
@@ -61,8 +61,8 @@ export function About() {
             </p>
 
             {/* Highlighted pull quote */}
-            <blockquote className="mt-2 rounded-xl border-l-4 border-clay bg-white px-6 py-5">
-              <p className="font-serif text-base italic text-slate-medium leading-relaxed">
+            <blockquote className="mt-2 rounded-xl border-l-4 border-clay bg-white px-6 py-5 dark:bg-stone-800">
+              <p className="font-serif text-base italic text-slate-medium leading-relaxed dark:text-cream/90">
                 &ldquo;We believe the most important conversations about AI happen
                 in rooms where builders and practitioners share what&apos;s
                 actually working — and what isn&apos;t.&rdquo;
@@ -72,23 +72,23 @@ export function About() {
 
           {/* Right: What to Expect cards */}
           <div className="flex flex-col gap-4">
-            <h3 className="font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark mb-2">
+            <h3 className="font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark mb-2 dark:text-muted">
               What to Expect
             </h3>
             {expectCards.map((card) => (
               <div
                 key={card.title}
-                className="rounded-xl border border-slate-dark/10 bg-white p-6"
+                className="rounded-xl border border-slate-dark/10 bg-white p-6 dark:border-white/10 dark:bg-stone-800"
               >
                 <div className="mb-3 flex items-center gap-3">
                   <span className="text-xl" aria-hidden="true">
                     {card.icon}
                   </span>
-                  <h4 className="font-sans text-base font-semibold text-slate-dark">
+                  <h4 className="font-sans text-base font-semibold text-slate-dark dark:text-cream">
                     {card.title}
                   </h4>
                 </div>
-                <p className="font-serif text-sm leading-relaxed text-slate-light">
+                <p className="font-serif text-sm leading-relaxed text-slate-light dark:text-muted">
                   {card.description}
                 </p>
               </div>
@@ -97,14 +97,14 @@ export function About() {
         </div>
 
         {/* Powered by Anthropic */}
-        <div className="mt-16 flex items-center gap-3 border-t border-slate-dark/10 pt-8">
-          <span className="font-sans text-xs uppercase tracking-widest text-cloud-medium">
+        <div className="mt-16 flex items-center gap-3 border-t border-slate-dark/10 pt-8 dark:border-white/10">
+          <span className="font-sans text-xs uppercase tracking-widest text-cloud-medium dark:text-muted">
             Powered by
           </span>
-          <span className="font-sans text-xs font-semibold uppercase tracking-widest text-cloud-medium">
+          <span className="font-sans text-xs font-semibold uppercase tracking-widest text-cloud-medium dark:text-muted">
             Anthropic
           </span>
-          <span className="h-px flex-1 bg-slate-dark/5" />
+          <span className="h-px flex-1 bg-slate-dark/5 dark:bg-white/5" />
         </div>
       </div>
     </section>

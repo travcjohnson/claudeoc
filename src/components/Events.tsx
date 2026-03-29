@@ -44,23 +44,23 @@ function UpcomingEventCard({
   linkLabel,
 }: (typeof upcomingEvents)[number]) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-xl border border-slate-dark/10 bg-white">
+    <article className="flex flex-col overflow-hidden rounded-xl border border-slate-dark/10 bg-white dark:border-white/10 dark:bg-stone-900">
       <div className="h-1 w-full bg-clay" />
       <div className="flex flex-1 flex-col gap-4 p-6 sm:p-8">
         <div className="flex items-start justify-between gap-3">
-          <span className="inline-block rounded-full bg-ivory-dark px-3 py-1 font-sans text-xs font-medium uppercase tracking-wider text-slate-light">
+          <span className="inline-block rounded-full bg-ivory-dark px-3 py-1 font-sans text-xs font-medium uppercase tracking-wider text-slate-light dark:bg-stone-800 dark:text-muted">
             {date}
           </span>
-          <span className="inline-block rounded-full bg-clay/10 px-3 py-1 font-sans text-xs font-medium text-clay">
+          <span className="inline-block rounded-full bg-clay/10 px-3 py-1 font-sans text-xs font-medium text-clay dark:bg-clay/20">
             {status}
           </span>
         </div>
-        <h3 className="font-sans text-xl font-semibold text-slate-dark">
+        <h3 className="font-sans text-xl font-semibold text-slate-dark dark:text-cream">
           {title}
         </h3>
-        <p className="font-serif text-slate-light">{description}</p>
+        <p className="font-serif text-slate-light dark:text-muted">{description}</p>
         <div className="mt-auto flex items-center justify-between gap-4 pt-2">
-          <span className="font-serif text-sm text-cloud-medium">{location}</span>
+          <span className="font-serif text-sm text-cloud-medium dark:text-muted">{location}</span>
           <a
             href={link}
             target="_blank"
@@ -85,25 +85,25 @@ function PastEventCard({
   linkLabel,
 }: (typeof pastEvents)[number]) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-xl border border-slate-dark/10 bg-white">
-      <div className="h-1 w-full bg-cloud-light" />
+    <article className="flex flex-col overflow-hidden rounded-xl border border-slate-dark/10 bg-white dark:border-white/10 dark:bg-stone-900">
+      <div className="h-1 w-full bg-cloud-light dark:bg-stone-800" />
       <div className="flex flex-1 flex-col gap-4 p-6 sm:p-8">
         <div className="flex items-start justify-between gap-3">
-          <span className="inline-block rounded-full bg-ivory-dark px-3 py-1 font-sans text-xs font-medium uppercase tracking-wider text-slate-light">
+          <span className="inline-block rounded-full bg-ivory-dark px-3 py-1 font-sans text-xs font-medium uppercase tracking-wider text-slate-light dark:bg-stone-800 dark:text-muted">
             {date}
           </span>
           {attendees && (
-            <span className="inline-block rounded-full bg-ivory-medium px-3 py-1 font-sans text-xs font-medium text-slate-light">
+            <span className="inline-block rounded-full bg-ivory-medium px-3 py-1 font-sans text-xs font-medium text-slate-light dark:bg-stone-800 dark:text-muted">
               {attendees} Attendees
             </span>
           )}
         </div>
-        <h3 className="font-sans text-xl font-semibold text-slate-dark">
+        <h3 className="font-sans text-xl font-semibold text-slate-dark dark:text-cream">
           {title}
         </h3>
-        <p className="font-serif text-slate-light">{description}</p>
+        <p className="font-serif text-slate-light dark:text-muted">{description}</p>
         <div className="mt-auto flex items-center justify-between gap-4 pt-2">
-          <span className="font-serif text-sm text-cloud-medium">{location}</span>
+          <span className="font-serif text-sm text-cloud-medium dark:text-muted">{location}</span>
           <a
             href={link}
             target="_blank"
@@ -120,14 +120,14 @@ function PastEventCard({
 
 export function Events() {
   return (
-    <section id="events" className="bg-ivory-light py-24 lg:py-32">
+    <section id="events" className="bg-ivory-light py-24 dark:bg-stone-950 lg:py-32">
       <div className="mx-auto max-w-[89.5rem] px-6 lg:px-10">
         {/* Section header */}
         <div className="mb-16 max-w-2xl">
-          <h2 className="mb-4 font-sans text-4xl font-bold text-slate-dark lg:text-5xl">
+          <h2 className="mb-4 font-sans text-4xl font-bold text-slate-dark dark:text-cream lg:text-5xl">
             Events
           </h2>
-          <p className="font-serif text-lg text-slate-light">
+          <p className="font-serif text-lg text-slate-light dark:text-muted">
             Join us for meetups, workshops, and hackathons in Orange County and
             beyond.
           </p>
@@ -135,7 +135,7 @@ export function Events() {
 
         {/* Upcoming Events */}
         <div className="mb-16">
-          <h3 className="mb-8 font-sans text-xl font-semibold text-slate-dark">
+          <h3 className="mb-8 font-sans text-xl font-semibold text-slate-dark dark:text-cream">
             Upcoming Events
           </h3>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -147,7 +147,7 @@ export function Events() {
 
         {/* Past Events */}
         <div className="mb-16">
-          <h3 className="mb-8 font-sans text-xl font-semibold text-slate-dark">
+          <h3 className="mb-8 font-sans text-xl font-semibold text-slate-dark dark:text-cream">
             Past Events
           </h3>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -158,7 +158,7 @@ export function Events() {
         </div>
 
         {/* Luma footer note */}
-        <p className="border-t border-slate-dark/10 pt-8 font-serif text-sm text-cloud-medium">
+        <p className="border-t border-slate-dark/10 pt-8 font-serif text-sm text-cloud-medium dark:border-white/10 dark:text-muted">
           Events are posted on our official Luma page. Follow us for updates.{" "}
           <a
             href="https://lu.ma/claude-oc"

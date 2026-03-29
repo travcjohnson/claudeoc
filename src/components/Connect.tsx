@@ -39,65 +39,65 @@ function CalendarIcon() {
 
 export function Connect() {
   return (
-    <section id="connect" className="bg-ivory-medium py-24 lg:py-32">
+    <section id="connect" className="bg-ivory-medium py-24 dark:bg-stone-900 lg:py-32">
       <div className="max-w-[89.5rem] mx-auto px-6 lg:px-10">
         <div className="max-w-2xl mb-16">
-          <h2 className="font-sans font-bold text-3xl lg:text-4xl text-slate-dark mb-4">
+          <h2 className="font-sans font-bold text-3xl lg:text-4xl text-slate-dark dark:text-cream mb-4">
             Stay Connected
           </h2>
-          <p className="font-serif text-lg text-slate-light leading-relaxed">
+          <p className="font-serif text-lg text-slate-light dark:text-muted leading-relaxed">
             The community doesn&apos;t stop between events. Here&apos;s how to stay in the loop.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {/* WhatsApp Community */}
-          <div className="bg-white rounded-xl border border-slate-dark/10 p-8 flex flex-col">
-            <div className="text-slate-dark mb-6">
+          <div className="bg-white dark:bg-stone-800 rounded-xl border border-slate-dark/10 dark:border-white/10 p-8 flex flex-col">
+            <div className="text-slate-dark dark:text-cream mb-6">
               <ChatBubbleIcon />
             </div>
-            <h3 className="font-sans font-semibold text-lg text-slate-dark mb-3">
+            <h3 className="font-sans font-semibold text-lg text-slate-dark dark:text-cream mb-3">
               Join the Group Chat
             </h3>
-            <p className="font-serif text-slate-light leading-relaxed mb-8 flex-1">
+            <p className="font-serif text-slate-light dark:text-muted leading-relaxed mb-8 flex-1">
               Connect with fellow community members between events. Share projects, ask questions, and stay updated.
             </p>
             <a
               href="#"
-              className="inline-block bg-slate-dark text-ivory-light rounded-lg px-6 py-3 font-sans font-medium text-sm hover:bg-slate-medium transition-colors text-center"
+              className="inline-block bg-slate-dark text-ivory-light rounded-lg px-6 py-3 font-sans font-medium text-sm hover:bg-slate-medium transition-colors text-center dark:bg-clay dark:hover:bg-accent"
             >
               Join WhatsApp Group &rarr;
             </a>
           </div>
 
           {/* Email Updates */}
-          <div className="bg-white rounded-xl border border-slate-dark/10 p-8 flex flex-col">
-            <div className="text-slate-dark mb-6">
+          <div className="bg-white dark:bg-stone-800 rounded-xl border border-slate-dark/10 dark:border-white/10 p-8 flex flex-col">
+            <div className="text-slate-dark dark:text-cream mb-6">
               <EnvelopeIcon />
             </div>
-            <h3 className="font-sans font-semibold text-lg text-slate-dark mb-3">
+            <h3 className="font-sans font-semibold text-lg text-slate-dark dark:text-cream mb-3">
               Get Email Updates
             </h3>
-            <p className="font-serif text-slate-light leading-relaxed mb-8 flex-1">
+            <p className="font-serif text-slate-light dark:text-muted leading-relaxed mb-8 flex-1">
               Hear about upcoming events, Impact Labs, and community news directly in your inbox.
             </p>
             <a
               href="mailto:travis@claudeoc.com?subject=Subscribe%20to%20ClaudeOC%20Updates"
-              className="inline-block bg-slate-dark text-ivory-light rounded-lg px-6 py-3 font-sans font-medium text-sm hover:bg-slate-medium transition-colors text-center"
+              className="inline-block bg-slate-dark text-ivory-light rounded-lg px-6 py-3 font-sans font-medium text-sm hover:bg-slate-medium transition-colors text-center dark:bg-clay dark:hover:bg-accent"
             >
               Subscribe &rarr;
             </a>
           </div>
 
           {/* Follow on Luma */}
-          <div className="bg-white rounded-xl border border-slate-dark/10 p-8 flex flex-col">
+          <div className="bg-white dark:bg-stone-800 rounded-xl border border-slate-dark/10 dark:border-white/10 p-8 flex flex-col">
             <div className="text-clay mb-6">
               <CalendarIcon />
             </div>
-            <h3 className="font-sans font-semibold text-lg text-slate-dark mb-3">
+            <h3 className="font-sans font-semibold text-lg text-slate-dark dark:text-cream mb-3">
               Follow Our Events
             </h3>
-            <p className="font-serif text-slate-light leading-relaxed mb-8 flex-1">
+            <p className="font-serif text-slate-light dark:text-muted leading-relaxed mb-8 flex-1">
               Never miss an event. Follow us on Luma to get notified when new meetups and hackathons are posted.
             </p>
             <a
@@ -111,11 +111,11 @@ export function Connect() {
           </div>
         </div>
 
-        <p className="font-serif text-cloud-medium text-center text-sm">
+        <p className="font-serif text-cloud-medium dark:text-muted text-center text-sm">
           Have a question? Reach out at{' '}
           <a
             href="mailto:travis@claudeoc.com"
-            className="text-slate-light hover:text-slate-dark transition-colors underline underline-offset-2"
+            className="text-slate-light dark:text-cream hover:text-slate-dark dark:hover:text-cream transition-colors underline underline-offset-2"
           >
             travis@claudeoc.com
           </a>
