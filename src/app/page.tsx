@@ -1,11 +1,13 @@
 import { Navigation } from "@/components/Navigation";
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Events } from "@/components/Events";
-import { ImpactLabs } from "@/components/ImpactLabs";
-import { GetInvolved } from "@/components/GetInvolved";
-import { CommunityLeaders } from "@/components/CommunityLeaders";
-import { Connect } from "@/components/Connect";
+import { Hero } from "@/components/home/Hero";
+import { About } from "@/components/home/About";
+import { CommunitySegments } from "@/components/home/CommunitySegments";
+import { UpcomingEvent } from "@/components/home/UpcomingEvent";
+import { ImpactLabsTeaser } from "@/components/home/ImpactLabsTeaser";
+import { PhotoCarousel } from "@/components/home/PhotoCarousel";
+import { GetInvolved } from "@/components/home/GetInvolved";
+import { StayConnected } from "@/components/home/StayConnected";
+import { JoinCTA } from "@/components/home/JoinCTA";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -15,11 +17,13 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <Events />
-        <ImpactLabs />
+        <CommunitySegments />
+        <UpcomingEvent />
+        <ImpactLabsTeaser />
+        <PhotoCarousel />
         <GetInvolved />
-        <CommunityLeaders />
-        <Connect />
+        <StayConnected />
+        <JoinCTA />
       </main>
       <Footer />
     </>
