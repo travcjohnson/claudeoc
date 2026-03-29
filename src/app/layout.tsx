@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ClaudeOC — Orange County Claude Community",
+  title: "ClaudeOC — Orange County's Claude Community",
   description:
-    "The official Anthropic Ambassador community in Orange County. Join us for meetups, hackathons, and conversations about how AI is shaping work.",
+    "Join Orange County's Claude community. 400+ attendees per event. Meetups, hackathons, training, and more. Free to join.",
   openGraph: {
-    title: "ClaudeOC — Orange County Claude Community",
+    title: "ClaudeOC — Orange County's Claude Community",
     description:
       "The official Anthropic Ambassador community in Orange County. Meetups, Impact Labs, and more.",
     type: "website",
@@ -20,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -32,8 +33,15 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Poppins:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap"
           rel="stylesheet"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()`,
+          }}
+        />
       </head>
-      <body>{children}</body>
+      <body>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
