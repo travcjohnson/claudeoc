@@ -1,6 +1,7 @@
 import { EyebrowBadge } from "@/components/shared/EyebrowBadge";
 import { StatRow } from "@/components/shared/StatRow";
 
+// TODO: Replace PLACEHOLDER with actual YouTube video ID
 const YOUTUBE_EMBED_URL = "https://www.youtube.com/embed/PLACEHOLDER";
 
 const stats = [
@@ -12,33 +13,40 @@ const stats = [
 
 export function TrainingHero() {
   return (
-    <section className="bg-ivory-light pt-32 pb-24 lg:pb-32">
+    <section className="bg-ivory-light pt-32 pb-24 dark:bg-stone-950 lg:pb-32">
       <div className="mx-auto max-w-[89.5rem] px-6 lg:px-10">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Text column — DOM first for mobile, visually right on desktop */}
           <div className="flex flex-col items-start">
             <EyebrowBadge label="Anthropic Ambassador" />
-            <h1 className="mt-8 font-sans text-4xl font-bold tracking-tight text-slate-dark md:text-5xl">
+            <h1 className="mt-8 font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
               Travis Johnson
             </h1>
-            <p className="mt-3 font-sans text-lg font-medium text-slate-medium">
+            <p className="mt-3 font-sans text-lg font-medium text-slate-medium dark:text-stone-300">
               1 of 50 Anthropic AI Ambassadors. Worldwide.
             </p>
-            <p className="mt-5 max-w-lg font-serif text-lg leading-relaxed text-slate-light">
-              I bring hands-on AI training to your leadership team — customized
-              to your industry, at your office.
+            <p className="mt-4 font-sans text-base font-semibold text-clay">
+              Anthropic shipped 73 product updates in the last 60 days.{" "}
+              <span className="text-slate-dark dark:text-cream">
+                Your team is already behind.
+              </span>
+            </p>
+            <p className="mt-5 max-w-lg font-serif text-lg leading-relaxed text-slate-light dark:text-stone-300">
+              I come to your office and get everyone up to speed&nbsp;&mdash;
+              what Claude can do today, what&apos;s coming, and how teams like
+              yours are using it.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a
-                href="mailto:travis@aurapathai.com?subject=AI Training Session"
+                href="mailto:travis@aurapathai.com?subject=Free Lunch %26 Learn"
                 className="inline-flex items-center gap-2 rounded-lg bg-clay px-7 py-3.5 font-sans text-sm font-medium text-white transition-colors hover:bg-accent"
               >
-                Book a Training Session
-                <span aria-hidden="true">→</span>
+                Book a Free Session
+                <span aria-hidden="true">&rarr;</span>
               </a>
               <a
                 href="#video"
-                className="inline-flex items-center rounded-lg border border-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light"
+                className="inline-flex items-center rounded-lg border border-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light dark:border-white/20 dark:text-cream dark:hover:bg-white/10"
               >
                 Watch My Story ▶
               </a>
@@ -46,7 +54,7 @@ export function TrainingHero() {
           </div>
           {/* Video column — DOM second, visually left on desktop */}
           <div id="video" className="lg:order-first">
-            <div className="aspect-video w-full overflow-hidden rounded-xl bg-ivory-medium">
+            <div className="aspect-video w-full overflow-hidden rounded-xl bg-ivory-medium dark:bg-stone-800">
               <iframe
                 src={YOUTUBE_EMBED_URL}
                 title="How I became a Claude Community Ambassador"
@@ -57,7 +65,7 @@ export function TrainingHero() {
             </div>
           </div>
         </div>
-        <div className="mt-16 border-t border-slate-dark/10 pt-8">
+        <div className="mt-16 border-t border-slate-dark/10 pt-8 dark:border-white/10">
           <StatRow stats={stats} />
         </div>
       </div>
