@@ -75,16 +75,20 @@ export function Hero() {
           Community
         </h1>
 
-        {/* Urgency line */}
+        {/* Subtitle */}
         <p
-          className="mx-auto mb-4 max-w-2xl animate-fade-up font-serif text-xl leading-relaxed text-slate-light dark:text-muted md:text-2xl"
-          style={{ animationDelay: "0.35s", opacity: 0 }}
+          className="mx-auto mb-2 max-w-2xl animate-fade-up font-serif text-xl leading-relaxed text-slate-light dark:text-muted md:text-2xl"
+          style={{ animationDelay: "0.3s", opacity: 0 }}
         >
-          Anthropic shipped 73 product updates in the last 60 days.
-          <br className="hidden sm:block" />
-          <span className="font-semibold text-clay">
-            Your team is already behind.
-          </span>
+          Claude is moving fast. So are we.
+        </p>
+        <p
+          className="mx-auto mb-4 max-w-2xl animate-fade-up font-serif text-lg leading-relaxed text-cloud-dark dark:text-muted"
+          style={{ animationDelay: "0.4s", opacity: 0 }}
+        >
+          Founders, engineers, operators, and the AI-curious&nbsp;&mdash;
+          learning together, building together, shipping real things
+          in Orange County.
         </p>
 
         {/* CTAs */}

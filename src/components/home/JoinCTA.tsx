@@ -1,9 +1,15 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const WHATSAPP_URL = "https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK";
 
 export function JoinCTA() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [showEmail, setShowEmail] = useState(false);
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,6 +27,33 @@ export function JoinCTA() {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (showEmail && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [showEmail]);
+
+  const handleJoin = () => {
+    if (!showEmail) {
+      setShowEmail(true);
+      return;
+    }
+    if (!email || !email.includes("@")) return;
+    setSubmitting(true);
+    // Store email locally for now — can be replaced with API call later
+    try {
+      const emails = JSON.parse(localStorage.getItem("claudeoc_emails") || "[]");
+      emails.push({ email, date: new Date().toISOString() });
+      localStorage.setItem("claudeoc_emails", JSON.stringify(emails));
+    } catch {
+      // silent fail
+    }
+    window.open(WHATSAPP_URL, "_blank");
+    setSubmitting(false);
+    setShowEmail(false);
+    setEmail("");
+  };
 
   return (
     <section
@@ -90,23 +123,44 @@ export function JoinCTA() {
           </div>
 
           {/* CTAs */}
-          <div className="reveal reveal-delay-3 flex flex-col justify-center gap-4 sm:flex-row">
-            <a
-              href="https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg bg-clay px-10 py-4 font-sans text-base font-medium text-white transition-colors hover:bg-accent"
-            >
-              Join the Community
-            </a>
-            <a
-              href="https://lu.ma/claudeoc"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg border border-ivory-light/20 px-10 py-4 font-sans text-base font-medium text-ivory-light transition-colors hover:bg-ivory-light/10"
-            >
-              View Events
-            </a>
+          <div className="reveal reveal-delay-3 flex flex-col items-center justify-center gap-4">
+            {showEmail ? (
+              <div className="flex w-full max-w-md flex-col gap-3 sm:flex-row">
+                <input
+                  ref={inputRef}
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleJoin()}
+                  placeholder="your@email.com"
+                  className="min-w-0 flex-1 rounded-lg border border-ivory-light/20 bg-ivory-light/5 px-4 py-4 font-serif text-base text-ivory-light placeholder:text-cloud-dark focus:outline-none focus:ring-2 focus:ring-clay/50"
+                />
+                <button
+                  onClick={handleJoin}
+                  disabled={submitting || !email.includes("@")}
+                  className="shrink-0 rounded-lg bg-clay px-8 py-4 font-sans text-base font-medium text-white transition-colors hover:bg-accent disabled:opacity-50"
+                >
+                  {submitting ? "..." : "Join →"}
+                </button>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <button
+                  onClick={handleJoin}
+                  className="rounded-lg bg-clay px-10 py-4 font-sans text-base font-medium text-white transition-colors hover:bg-accent"
+                >
+                  Join the Community
+                </button>
+                <a
+                  href="https://lu.ma/claudeoc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-lg border border-ivory-light/20 px-10 py-4 font-sans text-base font-medium text-ivory-light transition-colors hover:bg-ivory-light/10"
+                >
+                  View Events
+                </a>
+              </div>
+            )}
           </div>
 
           <p className="reveal reveal-delay-4 mt-6 font-serif text-xs text-cloud-dark dark:text-muted">

@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GlassCard } from "@/components/shared/GlassCard";
+
+const WHATSAPP_URL = "https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK";
 
 export function StayConnected() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -22,6 +24,34 @@ export function StayConnected() {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
+  const [showWhatsAppEmail, setShowWhatsAppEmail] = useState(false);
+  const [whatsAppEmail, setWhatsAppEmail] = useState("");
+  const whatsAppInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (showWhatsAppEmail && whatsAppInputRef.current) {
+      whatsAppInputRef.current.focus();
+    }
+  }, [showWhatsAppEmail]);
+
+  const handleWhatsAppJoin = () => {
+    if (!showWhatsAppEmail) {
+      setShowWhatsAppEmail(true);
+      return;
+    }
+    if (!whatsAppEmail || !whatsAppEmail.includes("@")) return;
+    try {
+      const emails = JSON.parse(localStorage.getItem("claudeoc_emails") || "[]");
+      emails.push({ email: whatsAppEmail, source: "whatsapp", date: new Date().toISOString() });
+      localStorage.setItem("claudeoc_emails", JSON.stringify(emails));
+    } catch {
+      // silent fail
+    }
+    window.open(WHATSAPP_URL, "_blank");
+    setShowWhatsAppEmail(false);
+    setWhatsAppEmail("");
+  };
 
   return (
     <section ref={sectionRef} className="bg-ivory-medium py-24 dark:bg-stone-900 lg:py-32">
@@ -75,15 +105,34 @@ export function StayConnected() {
                   lives between meetups.
                 </p>
 
-                <a
-                  href="https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-clay px-6 py-3 font-sans text-sm font-medium text-white transition-colors hover:bg-accent"
-                >
-                  Join WhatsApp
-                  <span aria-hidden="true">&rarr;</span>
-                </a>
+                {showWhatsAppEmail ? (
+                  <div className="flex gap-2">
+                    <input
+                      ref={whatsAppInputRef}
+                      type="email"
+                      value={whatsAppEmail}
+                      onChange={(e) => setWhatsAppEmail(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && handleWhatsAppJoin()}
+                      placeholder="your@email.com"
+                      className="min-w-0 flex-1 rounded-lg border border-slate-dark/10 bg-white px-3 py-2.5 font-serif text-sm text-slate-dark placeholder:text-cloud-medium focus:outline-none focus:ring-2 focus:ring-clay/40 dark:border-cream/10 dark:bg-stone-800 dark:text-cream dark:placeholder:text-muted"
+                    />
+                    <button
+                      onClick={handleWhatsAppJoin}
+                      disabled={!whatsAppEmail.includes("@")}
+                      className="shrink-0 rounded-lg bg-clay px-4 py-2.5 font-sans text-sm font-medium text-white transition-colors hover:bg-accent disabled:opacity-50"
+                    >
+                      Join →
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={handleWhatsAppJoin}
+                    className="inline-flex items-center gap-2 rounded-lg bg-clay px-6 py-3 font-sans text-sm font-medium text-white transition-colors hover:bg-accent"
+                  >
+                    Join WhatsApp
+                    <span aria-hidden="true">&rarr;</span>
+                  </button>
+                )}
               </div>
             </GlassCard>
           </div>
