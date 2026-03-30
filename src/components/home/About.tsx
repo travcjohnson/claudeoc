@@ -111,6 +111,22 @@ export function About() {
             );
           })}
         </div>
+
+        {/* Join CTA Banner */}
+        <div className="reveal reveal-delay-4 mt-12 flex items-center justify-between rounded-xl border border-clay/20 bg-clay/5 px-8 py-5 dark:border-clay/15 dark:bg-clay/5">
+          <p className="font-sans text-base font-medium text-slate-dark dark:text-cream">
+            Ready to join?{" "}
+            <span className="text-slate-light dark:text-muted">
+              Free to join. All levels welcome.
+            </span>
+          </p>
+          <a
+            href="/community"
+            className="shrink-0 rounded-lg bg-clay px-6 py-2.5 font-sans text-sm font-medium text-white transition-colors hover:bg-accent"
+          >
+            Join the Community
+          </a>
+        </div>
       </div>
     </section>
   );

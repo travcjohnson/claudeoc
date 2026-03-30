@@ -1,38 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { GlassCard } from "@/components/shared/GlassCard";
-
-const segments = [
-  {
-    badge: "Professional Developers",
-    heading: "Built for Engineers",
-    description:
-      "For software engineers, architects, and technical leads integrating Claude into production workflows. Deep dives, architecture discussions, and real-world case studies.",
-    tags: ["Production Workflows", "Architecture", "Best Practices", "Team Integration"],
-    accentHex: "#6a9bcc",
-    bgClass: "bg-sky/10 dark:bg-sky/10",
-    borderClass: "border-sky/20",
-    textClass: "text-sky",
-    tagBg: "bg-sky/8 dark:bg-sky/10",
-    tagBorder: "border-sky/15",
-    tagText: "text-sky",
-  },
-  {
-    badge: "Vibe Coders",
-    heading: "For the Curious & Creative",
-    description:
-      "For creators, entrepreneurs, and curious minds exploring what's possible with AI-assisted development. No gatekeeping — just people building cool things.",
-    tags: ["No-Code Friendly", "Side Projects", "Startups", "Creative Builds"],
-    accentHex: "#d97757",
-    bgClass: "bg-clay/10 dark:bg-clay/10",
-    borderClass: "border-clay/20",
-    textClass: "text-clay",
-    tagBg: "bg-clay/8 dark:bg-clay/10",
-    tagBorder: "border-clay/15",
-    tagText: "text-clay",
-  },
-];
 
 export function CommunitySegments() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -55,85 +23,102 @@ export function CommunitySegments() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 lg:py-32">
+    <section
+      ref={sectionRef}
+      className="bg-ivory-medium py-24 dark:bg-stone-900 lg:py-32"
+    >
       <div className="mx-auto max-w-[89.5rem] px-6 lg:px-10">
-        {/* Header */}
-        <div className="mb-16 text-center">
-          <h2 className="reveal font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
-            Find Your Community
-          </h2>
-          <p className="reveal reveal-delay-1 mx-auto mt-5 max-w-xl font-serif text-xl leading-relaxed text-slate-light dark:text-muted">
-            Whether you&apos;re a seasoned developer or just getting started with AI
-            tools, there&apos;s a place for you.
-          </p>
-        </div>
-
-        {/* Two segment cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {segments.map((seg, i) => (
-            <div key={seg.badge} className={`reveal reveal-delay-${i + 1}`}>
-              <GlassCard className="relative overflow-hidden p-8">
-                {/* Background glow */}
-                <div
-                  className="pointer-events-none absolute right-0 top-0 h-48 w-48 rounded-full opacity-10 blur-3xl"
-                  style={{
-                    background: seg.accentHex,
-                    transform: "translate(30%, -30%)",
-                  }}
-                />
-
-                <div className="relative z-10">
-                  {/* Badge */}
-                  <span
-                    className={`mb-4 inline-block rounded-full border px-3 py-1 font-sans text-xs font-medium ${seg.borderClass} ${seg.bgClass} ${seg.textClass}`}
-                  >
-                    {seg.badge}
-                  </span>
-
-                  <h3 className="mb-3 mt-3 font-sans text-2xl font-semibold text-slate-dark dark:text-cream">
-                    {seg.heading}
-                  </h3>
-                  <p className="mb-8 font-serif leading-relaxed text-slate-light dark:text-muted">
-                    {seg.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="mb-8 flex flex-wrap gap-2">
-                    {seg.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className={`rounded-full border px-3 py-1 font-sans text-xs ${seg.tagBorder} ${seg.tagBg} ${seg.tagText}`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          {/* Left — Photo / Visual */}
+          <div className="reveal">
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-clay/20 via-ivory-dark to-sky/10 dark:from-clay/10 dark:via-stone-800 dark:to-sky/5">
+              <div className="aspect-[4/3] flex items-center justify-center p-12">
+                {/* Placeholder for Travis photo — replace with real image */}
+                <div className="text-center">
+                  <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-2 border-clay/30 bg-white dark:bg-stone-800">
+                    <span className="font-sans text-3xl font-bold text-clay">TJ</span>
                   </div>
-
-                  <a
-                    href="https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 font-sans text-sm font-medium transition-colors ${seg.textClass}`}
-                  >
-                    Join Now
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </a>
+                  <p className="font-sans text-xs uppercase tracking-widest text-cloud-dark dark:text-muted">
+                    Photo coming soon
+                  </p>
                 </div>
-              </GlassCard>
+              </div>
             </div>
-          ))}
+          </div>
+
+          {/* Right — Bio */}
+          <div>
+            <div className="reveal">
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-dark/10 bg-white px-4 py-1.5 dark:border-cream/10 dark:bg-stone-800">
+                <span className="h-2 w-2 rounded-full bg-clay" />
+                <span className="font-sans text-xs font-medium uppercase tracking-widest text-slate-light dark:text-muted">
+                  Your Host
+                </span>
+              </span>
+            </div>
+
+            <h2 className="reveal reveal-delay-1 mt-4 font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
+              Travis Johnson
+            </h2>
+
+            <p className="reveal reveal-delay-2 mt-5 font-serif text-lg leading-relaxed text-slate-light dark:text-muted">
+              Claude Ambassador — one of a select group recognized by Anthropic
+              for advancing practical AI adoption in professional workflows — and
+              co-founder of{" "}
+              <span className="font-medium text-slate-dark dark:text-cream">
+                AuraPath AI
+              </span>
+              . Director of Professional Development for the Orange County chapter
+              of Product Managers, where he&apos;s taught 500+ people hands-on AI
+              skills through workshops, hackathons, and meetups.
+            </p>
+
+            <p className="reveal reveal-delay-2 mt-4 font-serif text-lg leading-relaxed text-slate-light dark:text-muted">
+              With 10+ years of product management spanning e-commerce, CPG,
+              healthcare, and HR tech — Travis brings a rare combination: deep
+              product roots, daily hands-on work building with AI, and a
+              founder&apos;s perspective on what it actually looks like to make
+              these tools part of how you think, build, and ship.
+            </p>
+
+            {/* Credentials */}
+            <div className="reveal reveal-delay-3 mt-8 flex flex-wrap gap-3">
+              {[
+                "Claude Ambassador",
+                "Co-founder, AuraPath AI",
+                "Dir. of PD, OC Product Managers",
+                "500+ People Trained",
+              ].map((cred) => (
+                <span
+                  key={cred}
+                  className="rounded-full border border-slate-dark/8 bg-white px-3 py-1.5 font-sans text-xs font-medium text-slate-light dark:border-cream/10 dark:bg-stone-800 dark:text-muted"
+                >
+                  {cred}
+                </span>
+              ))}
+            </div>
+
+            {/* Links */}
+            <div className="reveal reveal-delay-4 mt-8 flex items-center gap-4">
+              <a
+                href="https://linkedin.com/in/travcjohnson"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-sans text-sm font-medium text-clay transition-colors hover:text-accent"
+              >
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+                LinkedIn
+              </a>
+              <a
+                href="/training"
+                className="inline-flex items-center gap-2 font-sans text-sm font-medium text-slate-light transition-colors hover:text-slate-dark dark:text-muted dark:hover:text-cream"
+              >
+                Book a Training →
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
