@@ -16,7 +16,7 @@ export function DarkCTA({
   linkedIn,
 }: DarkCTAProps) {
   return (
-    <section className="bg-slate-dark py-24 lg:py-32">
+    <section className="bg-slate-dark dark:bg-stone-900 py-24 lg:py-32">
       <div className="mx-auto max-w-[89.5rem] px-6 lg:px-10 text-center">
         <h2 className="font-sans text-3xl font-bold text-ivory-light md:text-4xl">
           {headline}

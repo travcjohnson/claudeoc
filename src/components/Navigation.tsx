@@ -66,7 +66,7 @@ export function Navigation() {
 
         <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5" aria-label="Toggle navigation">
+          <button onClick={() => setMobileOpen(!mobileOpen)} className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5" aria-label="Toggle navigation" aria-expanded={mobileOpen}>
             <span className={`block h-0.5 w-5 bg-slate-dark transition-all duration-300 dark:bg-cream ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
             <span className={`block h-0.5 w-5 bg-slate-dark transition-all duration-300 dark:bg-cream ${mobileOpen ? "opacity-0" : ""}`} />
             <span className={`block h-0.5 w-5 bg-slate-dark transition-all duration-300 dark:bg-cream ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />

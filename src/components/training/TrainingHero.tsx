@@ -1,8 +1,8 @@
 import { EyebrowBadge } from "@/components/shared/EyebrowBadge";
 import { StatRow } from "@/components/shared/StatRow";
 
-// TODO: Replace PLACEHOLDER with actual YouTube video ID
-const YOUTUBE_EMBED_URL = "https://www.youtube.com/embed/PLACEHOLDER";
+// TODO: Replace with actual YouTube video ID once available
+const YOUTUBE_VIDEO_ID: string | null = null;
 
 const stats = [
   { value: "500+", label: "People Trained IRL" },
@@ -55,13 +55,26 @@ export function TrainingHero() {
           {/* Video column — DOM second, visually left on desktop */}
           <div id="video" className="lg:order-first">
             <div className="aspect-video w-full overflow-hidden rounded-xl bg-ivory-medium dark:bg-stone-800">
-              <iframe
-                src={YOUTUBE_EMBED_URL}
-                title="How I became a Claude Community Ambassador"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="h-full w-full"
-              />
+              {YOUTUBE_VIDEO_ID ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}`}
+                  title="How I became a Claude Community Ambassador"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="h-full w-full"
+                />
+              ) : (
+                <div className="flex h-full w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-dark/20 dark:border-white/15">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-clay/10 dark:bg-clay/20">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-clay">
+                      <path d="M8 5v14l11-7L8 5z" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <span className="mt-4 font-sans text-sm font-medium text-slate-light dark:text-stone-400">
+                    Video coming soon
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </div>

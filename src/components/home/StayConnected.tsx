@@ -107,7 +107,9 @@ export function StayConnected() {
 
                 {showWhatsAppEmail ? (
                   <div className="flex gap-2">
+                    <label htmlFor="whatsapp-email" className="sr-only">Email address</label>
                     <input
+                      id="whatsapp-email"
                       ref={whatsAppInputRef}
                       type="email"
                       value={whatsAppEmail}
