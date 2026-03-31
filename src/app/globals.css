@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* ─── Anthropic Color Palette (Light) ─── */
   --color-slate-dark: #141413;
