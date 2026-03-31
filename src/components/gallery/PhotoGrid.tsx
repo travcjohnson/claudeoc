@@ -27,7 +27,7 @@ export function PhotoGrid() {
           </p>
         </div>
 
-        <div className="grid auto-rows-[180px] grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid auto-rows-[140px] md:auto-rows-[180px] grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
           {photos.map((photo, i) => (
             <div
               key={i}

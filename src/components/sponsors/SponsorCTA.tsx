@@ -18,6 +18,7 @@ export function SponsorCTA() {
             formId=""
             placeholder
             placeholderText="Sponsor interest form coming soon — email travis@aurapathai.com"
+            title="Sponsor interest form"
           />
         </div>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-serif text-sm text-cloud-medium">

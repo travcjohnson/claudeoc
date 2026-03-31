@@ -72,11 +72,10 @@ export function PhotoCarousel() {
         </div>
 
         {/* Masonry grid */}
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
           {/* Large featured card */}
           <div
-            className="reveal group relative col-span-2 cursor-pointer overflow-hidden rounded-2xl md:col-span-1 md:row-span-2"
-            style={{ minHeight: "320px" }}
+            className="reveal group relative sm:col-span-2 cursor-pointer overflow-hidden rounded-2xl md:col-span-1 md:row-span-2 min-h-[320px]"
           >
             <div
               className={`${galleryItems[4].className} absolute inset-0 transition-transform duration-700 group-hover:scale-105`}
@@ -101,8 +100,7 @@ export function PhotoCarousel() {
           {galleryItems.slice(0, 4).map((item, i) => (
             <div
               key={item.label}
-              className={`reveal reveal-delay-${(i % 3) + 1} group relative cursor-pointer overflow-hidden rounded-2xl`}
-              style={{ minHeight: "200px" }}
+              className={`reveal reveal-delay-${(i % 3) + 1} group relative cursor-pointer overflow-hidden rounded-2xl min-h-[200px]`}
             >
               <div
                 className={`${item.className} absolute inset-0 transition-transform duration-700 group-hover:scale-105`}

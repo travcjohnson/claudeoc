@@ -14,7 +14,7 @@ export function ParticipantForm() {
           and what you hope to get from the community.
         </p>
         <div className="mt-8 max-w-2xl">
-          <TallyEmbed formId="rjl0MN" />
+          <TallyEmbed formId="rjl0MN" title="Community participant application" />
         </div>
       </div>
     </section>

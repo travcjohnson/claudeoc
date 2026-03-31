@@ -192,6 +192,19 @@ html.dark ::-webkit-scrollbar-thumb { background: var(--color-clay); }
   background: conic-gradient(from 0deg at 50% 50%, #d4836a, #e8a88e, #60a5fa, #4ade80, #d4836a);
 }
 
+/* ─── Screen Reader Only ─── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition: none; opacity: 1; transform: none; }

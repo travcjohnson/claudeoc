@@ -126,7 +126,9 @@ export function JoinCTA() {
           <div className="reveal reveal-delay-3 flex flex-col items-center justify-center gap-4">
             {showEmail ? (
               <div className="flex w-full max-w-md flex-col gap-3 sm:flex-row">
+                <label htmlFor="join-email" className="sr-only">Email address</label>
                 <input
+                  id="join-email"
                   ref={inputRef}
                   type="email"
                   value={email}

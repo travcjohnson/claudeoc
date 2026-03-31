@@ -6,9 +6,10 @@ interface TallyEmbedProps {
   formId: string;
   placeholder?: boolean;
   placeholderText?: string;
+  title?: string;
 }
 
-export function TallyEmbed({ formId, placeholder, placeholderText }: TallyEmbedProps) {
+export function TallyEmbed({ formId, placeholder, placeholderText, title }: TallyEmbedProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,7 +46,7 @@ export function TallyEmbed({ formId, placeholder, placeholderText }: TallyEmbedP
         frameBorder="0"
         marginHeight={0}
         marginWidth={0}
-        title="Form"
+        title={title || "Application form"}
         className="rounded-xl"
       />
     </div>

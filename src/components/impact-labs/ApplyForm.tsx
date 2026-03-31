@@ -17,7 +17,7 @@ export function ApplyForm() {
         </div>
 
         <div className="max-w-2xl">
-          <TallyEmbed formId="Y5ZolB" />
+          <TallyEmbed formId="Y5ZolB" title="Organization nomination form" />
         </div>
       </div>
     </section>
