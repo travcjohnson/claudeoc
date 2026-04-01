@@ -45,12 +45,14 @@ export function TrainingHero() {
                 Book a Free Session
                 <span aria-hidden="true">&rarr;</span>
               </a>
-              <a
-                href="#video"
-                className="inline-flex items-center rounded-lg border border-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light dark:border-white/20 dark:text-cream dark:hover:bg-white/10"
-              >
-                Watch My Story ▶
-              </a>
+              {YOUTUBE_VIDEO_ID && (
+                <a
+                  href="#video"
+                  className="inline-flex items-center rounded-lg border border-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light dark:border-white/20 dark:text-cream dark:hover:bg-white/10"
+                >
+                  Watch My Story ▶
+                </a>
+              )}
             </div>
           </div>
           {/* Video column — DOM second, visually left on desktop */}

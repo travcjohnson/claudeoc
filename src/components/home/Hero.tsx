@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { EyebrowBadge } from "@/components/shared/EyebrowBadge";
 import { StatRow } from "@/components/shared/StatRow";
 import { CONTACT } from "@/lib/constants";
@@ -12,6 +12,31 @@ const MOUSE_GLOW_STYLE = { background: "radial-gradient(600px circle at var(--mo
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
+  const [showJoinEmail, setShowJoinEmail] = useState(false);
+  const [joinEmail, setJoinEmail] = useState("");
+  const joinInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (showJoinEmail && joinInputRef.current) {
+      joinInputRef.current.focus();
+    }
+  }, [showJoinEmail]);
+
+  const handleJoinClick = () => {
+    if (!showJoinEmail) {
+      setShowJoinEmail(true);
+      return;
+    }
+    if (!joinEmail || !joinEmail.includes("@")) return;
+    try {
+      const emails = JSON.parse(localStorage.getItem("claudeoc_emails") || "[]");
+      emails.push({ email: joinEmail, source: "hero-join", date: new Date().toISOString() });
+      localStorage.setItem("claudeoc_emails", JSON.stringify(emails));
+    } catch { /* silent */ }
+    window.open(CONTACT.whatsapp, "_blank");
+    setShowJoinEmail(false);
+    setJoinEmail("");
+  };
 
   useEffect(() => {
     const el = heroRef.current;
@@ -93,14 +118,35 @@ export function Hero() {
           >
             View Upcoming Events
           </a>
-          <a
-            href={CONTACT.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full rounded-lg border border-slate-dark/20 bg-transparent px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light dark:border-cream/20 dark:text-cream dark:hover:bg-cream/10 sm:w-auto"
-          >
-            Join the Community
-          </a>
+          {showJoinEmail ? (
+            <div className="flex w-full items-center gap-2 sm:w-auto">
+              <label htmlFor="hero-join-email" className="sr-only">Email address</label>
+              <input
+                ref={joinInputRef}
+                id="hero-join-email"
+                type="email"
+                value={joinEmail}
+                onChange={(e) => setJoinEmail(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleJoinClick()}
+                placeholder="your@email.com"
+                className="min-w-0 flex-1 rounded-lg border border-slate-dark/20 bg-white px-4 py-3.5 font-serif text-sm text-slate-dark placeholder:text-cloud-dark focus:outline-none focus:ring-2 focus:ring-clay/40 dark:border-cream/20 dark:bg-stone-800 dark:text-cream dark:placeholder:text-muted"
+              />
+              <button
+                onClick={handleJoinClick}
+                disabled={!joinEmail.includes("@")}
+                className="shrink-0 rounded-lg bg-clay px-5 py-3.5 font-sans text-sm font-medium text-white transition-colors hover:bg-accent disabled:opacity-50"
+              >
+                Join →
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={handleJoinClick}
+              className="w-full rounded-lg border border-slate-dark/20 bg-transparent px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light dark:border-cream/20 dark:text-cream dark:hover:bg-cream/10 sm:w-auto"
+            >
+              Join the Community
+            </button>
+          )}
         </div>
 
         {/* Stats */}

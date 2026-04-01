@@ -118,7 +118,7 @@ export function ClosingCTA() {
               Event recaps, builder spotlights, and what&apos;s new in Claude. Monthly.
             </p>
             {newsletterSubmitted ? (
-              <p className="font-sans text-sm font-medium text-olive">Thanks! We&apos;ll be in touch.</p>
+              <p className="font-sans text-sm font-medium text-olive">You&apos;re in! Check your inbox.</p>
             ) : (
               <form className="flex gap-2" onSubmit={handleNewsletterSubmit}>
                 <label htmlFor="cta-newsletter-email" className="sr-only">Email address</label>

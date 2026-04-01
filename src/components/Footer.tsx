@@ -46,7 +46,7 @@ export function Footer() {
         </div>
         <div className="mt-12 border-t border-slate-dark/10 pt-8 text-center dark:border-white/5">
           <p className="font-serif text-xs text-cloud-dark dark:text-muted">
-            &copy; {new Date().getFullYear()} ClaudeOC. Part of Anthropic&apos;s global Ambassador network.
+            &copy; {new Date().getFullYear()}{" "}ClaudeOC. Part of Anthropic&apos;s global Ambassador network.
           </p>
           <p className="mt-2 font-serif text-xs text-cloud-dark dark:text-muted">
             {CONTACT.email} &middot; {CONTACT.phone}

@@ -16,6 +16,10 @@ const photos: Photo[] = [
   { src: "/images/gallery/inaugural-meetup.jpg", alt: "Inaugural meetup — projector and packed venue", span: "col-span-2 row-span-1" },
   { src: "/images/gallery/flux-lightning-talks.jpg", alt: "Speaker presenting to engaged audience", span: "col-span-1 row-span-1" },
   { src: "/images/gallery/flux-oc-kickoff.jpg", alt: "Packed kickoff event — cinematic wide shot", span: "col-span-1 row-span-1" },
+  { src: "/images/community/travis-presenting.jpg", alt: "Travis presenting The Code Tab", span: "col-span-2 row-span-1" },
+  { src: "/images/community/crowd-laptops.jpg", alt: "Packed room — laptops open, ready to build", span: "col-span-1 row-span-1" },
+  { src: "/images/community/travis-crowd.jpg", alt: "Travis engaging with attendees", span: "col-span-1 row-span-1" },
+  { src: "/images/community/attendee-focused.jpg", alt: "Attendee deep in focus", span: "col-span-1 row-span-1" },
 ];
 
 export function PhotoGrid() {

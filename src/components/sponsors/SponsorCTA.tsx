@@ -16,9 +16,7 @@ export function SponsorCTA() {
         </p>
         <div className="mx-auto mt-8 max-w-lg">
           <TallyEmbed
-            formId=""
-            placeholder
-            placeholderText={`Sponsor interest form coming soon — email ${CONTACT.email}`}
+            formId="68d1gP"
             title="Sponsor interest form"
           />
         </div>

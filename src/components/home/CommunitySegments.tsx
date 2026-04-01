@@ -16,16 +16,12 @@ export function CommunitySegments() {
           {/* Left — Photo / Visual */}
           <div className="reveal">
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-clay/20 via-ivory-dark to-sky/10 dark:from-clay/10 dark:via-stone-800 dark:to-sky/5">
-              <div className="aspect-[4/3] flex items-center justify-center p-12">
-                {/* Placeholder for Travis photo — replace with real image */}
-                <div className="text-center">
-                  <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full border-2 border-clay/30 bg-white dark:bg-stone-800">
-                    <span className="font-sans text-3xl font-bold text-clay">TJ</span>
-                  </div>
-                  <p className="font-sans text-xs uppercase tracking-widest text-cloud-dark dark:text-muted">
-                    Photo coming soon
-                  </p>
-                </div>
+              <div className="aspect-[4/3]">
+                <img
+                  src="/images/travis/headshot.jpg"
+                  alt="Travis Johnson speaking at a ClaudeOC event"
+                  className="h-full w-full rounded-2xl object-cover object-top"
+                />
               </div>
             </div>
           </div>
