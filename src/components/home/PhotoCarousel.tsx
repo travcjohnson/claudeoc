@@ -2,31 +2,37 @@
 
 import { useReveal } from "@/hooks/useReveal";
 
-const galleryItems = [
+const featuredPhoto = {
+  src: "/images/gallery/oc-kickoff-featured.jpg",
+  alt: "Travis presenting at the ClaudeOC kickoff event",
+  label: "OC Kickoff · Feb 2026",
+  sub: "300+ registrations · 3× oversubscribed",
+};
+
+const galleryPhotos = [
   {
-    className: "gallery-card-1",
+    src: "/images/gallery/inaugural-meetup.jpg",
+    alt: "Packed venue at the ClaudeOC inaugural meetup",
     label: "ClaudeOC Inaugural Meetup",
-    sub: "Feb 28, 2026 \u00b7 Tustin, CA",
+    sub: "Feb 28, 2026 · Tustin, CA",
   },
   {
-    className: "gallery-card-2",
+    src: "/images/gallery/hands-on-building.jpg",
+    alt: "Attendees working on laptops during a hands-on building session",
     label: "Hands-on Building Session",
     sub: "Live demos & collaboration",
   },
   {
-    className: "gallery-card-3",
+    src: "/images/gallery/community-networking.jpg",
+    alt: "Community members chatting and networking after the event",
     label: "Community Networking",
     sub: "Builders connecting after hours",
   },
   {
-    className: "gallery-card-4",
+    src: "/images/gallery/lightning-talks.jpg",
+    alt: "Speaker presenting to an audience during lightning talks",
     label: "Lightning Talks",
     sub: "Members sharing their projects",
-  },
-  {
-    className: "gallery-card-5",
-    label: "OC Kickoff \u00b7 Feb 2026",
-    sub: "300+ registrations \u00b7 3\u00d7 oversubscribed",
   },
 ];
 
@@ -60,16 +66,19 @@ export function PhotoCarousel() {
           <div
             className="reveal group relative sm:col-span-2 cursor-pointer overflow-hidden rounded-2xl md:col-span-1 md:row-span-2 aspect-[16/10]"
           >
-            <div
-              className={`${galleryItems[4].className} absolute inset-0 transition-transform duration-700 group-hover:scale-105`}
+            <img
+              src={featuredPhoto.src}
+              alt={featuredPhoto.alt}
+              loading="lazy"
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5">
               <div className="mb-1 font-sans text-xl font-semibold text-white">
-                {galleryItems[4].label}
+                {featuredPhoto.label}
               </div>
               <div className="font-serif text-xs text-white/60">
-                {galleryItems[4].sub}
+                {featuredPhoto.sub}
               </div>
             </div>
             <div className="absolute right-4 top-4">
@@ -80,20 +89,23 @@ export function PhotoCarousel() {
           </div>
 
           {/* Regular cards */}
-          {galleryItems.slice(0, 4).map((item, i) => (
+          {galleryPhotos.map((photo, i) => (
             <div
-              key={item.label}
+              key={photo.label}
               className={`reveal reveal-delay-${(i % 3) + 1} group relative cursor-pointer overflow-hidden rounded-2xl aspect-[4/3]`}
             >
-              <div
-                className={`${item.className} absolute inset-0 transition-transform duration-700 group-hover:scale-105`}
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <div className="mb-0.5 font-sans text-sm font-semibold text-white">
-                  {item.label}
+                  {photo.label}
                 </div>
-                <div className="font-serif text-xs text-white/50">{item.sub}</div>
+                <div className="font-serif text-xs text-white/50">{photo.sub}</div>
               </div>
             </div>
           ))}

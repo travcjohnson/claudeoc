@@ -1,17 +1,21 @@
-interface PhotoPlaceholder {
-  cardClass: string;
+import Image from "next/image";
+
+interface Photo {
+  src: string;
+  alt: string;
   span: string;
 }
 
-const photos: PhotoPlaceholder[] = [
-  { cardClass: "gallery-card-1", span: "col-span-2 row-span-2" },
-  { cardClass: "gallery-card-2", span: "col-span-1 row-span-1" },
-  { cardClass: "gallery-card-3", span: "col-span-1 row-span-1" },
-  { cardClass: "gallery-card-4", span: "col-span-1 row-span-2" },
-  { cardClass: "gallery-card-5", span: "col-span-1 row-span-1" },
-  { cardClass: "gallery-card-1", span: "col-span-1 row-span-1" },
-  { cardClass: "gallery-card-2", span: "col-span-2 row-span-1" },
-  { cardClass: "gallery-card-3", span: "col-span-1 row-span-1" },
+const photos: Photo[] = [
+  { src: "/images/gallery/oc-kickoff-featured.jpg", alt: "OC Kickoff — Travis presenting to a packed room", span: "col-span-2 row-span-2" },
+  { src: "/images/gallery/flux-inaugural-meetup.jpg", alt: "Inaugural meetup — golden hour networking", span: "col-span-1 row-span-1" },
+  { src: "/images/gallery/hands-on-building.jpg", alt: "Hands-on building — attendees coding on laptops", span: "col-span-1 row-span-1" },
+  { src: "/images/gallery/lightning-talks.jpg", alt: "Lightning talks — Travis with mic", span: "col-span-1 row-span-2" },
+  { src: "/images/gallery/flux-hands-on-building.jpg", alt: "Workshop collaboration around a laptop", span: "col-span-1 row-span-1" },
+  { src: "/images/gallery/community-networking.jpg", alt: "Community networking — attendees in conversation", span: "col-span-1 row-span-1" },
+  { src: "/images/gallery/inaugural-meetup.jpg", alt: "Inaugural meetup — projector and packed venue", span: "col-span-2 row-span-1" },
+  { src: "/images/gallery/flux-lightning-talks.jpg", alt: "Speaker presenting to engaged audience", span: "col-span-1 row-span-1" },
+  { src: "/images/gallery/flux-oc-kickoff.jpg", alt: "Packed kickoff event — cinematic wide shot", span: "col-span-1 row-span-1" },
 ];
 
 export function PhotoGrid() {
@@ -31,9 +35,17 @@ export function PhotoGrid() {
           {photos.map((photo, i) => (
             <div
               key={i}
-              className={`${photo.cardClass} ${photo.span} relative overflow-hidden rounded-xl`}
+              className={`${photo.span} group relative overflow-hidden rounded-xl`}
             >
-              <div className="absolute inset-0 flex items-end p-4">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="(max-width: 768px) 50vw, 25vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="absolute inset-0 flex items-end p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <div className="rounded-md bg-black/30 px-3 py-1.5 backdrop-blur-sm">
                   <p className="font-sans text-xs font-medium text-white/90">
                     ClaudeOC Inaugural Meetup

@@ -1,5 +1,13 @@
+import Image from "next/image";
 import { GlassCard } from "@/components/shared/GlassCard";
 import { CONTACT } from "@/lib/constants";
+
+const eventPhotos = [
+  { src: "/images/gallery/oc-kickoff-featured.jpg", alt: "Travis presenting to packed room" },
+  { src: "/images/gallery/hands-on-building.jpg", alt: "Attendees coding on laptops" },
+  { src: "/images/gallery/lightning-talks.jpg", alt: "Travis speaking with mic" },
+  { src: "/images/gallery/community-networking.jpg", alt: "Attendees networking" },
+];
 
 const pastEvents = [
   {
@@ -56,16 +64,18 @@ export function PastEvents() {
                 </div>
 
                 <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                  {Array.from({ length: event.photoSlots }, (_, i) => (
+                  {eventPhotos.map((photo, i) => (
                     <div
                       key={i}
-                      className={`gallery-card-${(i % 5) + 1} aspect-[4/3] rounded-lg`}
+                      className="relative aspect-[4/3] overflow-hidden rounded-lg"
                     >
-                      <div className="flex h-full items-end p-3">
-                        <span className="rounded-md bg-black/30 px-2 py-1 font-sans text-[10px] font-medium text-white/80 backdrop-blur-sm">
-                          Photo {i + 1}
-                        </span>
-                      </div>
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="(max-width: 640px) 50vw, 25vw"
+                        className="object-cover"
+                      />
                     </div>
                   ))}
                 </div>
