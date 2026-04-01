@@ -8,7 +8,7 @@ export function PastLab() {
           <h2 className="font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
             Proof It Works
           </h2>
-          <p className="mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-muted">
+          <p className="mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light">
             The first Claude Impact Lab launched in San Diego. The format is now
             expanding to cities globally.
           </p>
@@ -37,7 +37,7 @@ export function PastLab() {
               <h3 className="mt-2 font-sans text-xl font-bold text-slate-dark dark:text-cream">
                 27 teams built AI tools using City open data
               </h3>
-              <p className="mt-3 font-serif text-base leading-relaxed text-slate-light dark:text-muted">
+              <p className="mt-3 font-serif text-base leading-relaxed text-slate-light dark:text-cloud-light">
                 Builders paired with city staff and nonprofit leaders to create
                 working prototypes in a single day — from public transit
                 accessibility tools to permit search assistants. The event proved

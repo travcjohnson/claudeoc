@@ -6,19 +6,20 @@ export function ImpactLabsTeaser() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const reveals = el.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target
-              .querySelectorAll(".reveal")
-              .forEach((el) => el.classList.add("visible"));
+            entry.target.classList.add("visible");
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    reveals.forEach((reveal) => observer.observe(reveal));
     return () => observer.disconnect();
   }, []);
 
@@ -42,7 +43,7 @@ export function ImpactLabsTeaser() {
             That Need It Most
           </h2>
 
-          <p className="reveal reveal-delay-2 mx-auto mt-6 max-w-2xl font-serif text-lg leading-relaxed text-slate-light dark:text-muted">
+          <p className="reveal reveal-delay-2 mx-auto mt-6 max-w-2xl font-serif text-lg leading-relaxed text-slate-light dark:text-cloud-light">
             Impact Labs are one-day hackathons pairing local nonprofits and government
             agencies with volunteer AI builders to solve real community problems.
             Part of Anthropic&apos;s global Ambassador program.

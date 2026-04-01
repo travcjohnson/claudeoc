@@ -40,19 +40,20 @@ export function GetInvolved() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const reveals = el.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target
-              .querySelectorAll(".reveal")
-              .forEach((el) => el.classList.add("visible"));
+            entry.target.classList.add("visible");
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    reveals.forEach((reveal) => observer.observe(reveal));
     return () => observer.disconnect();
   }, []);
 
@@ -66,7 +67,7 @@ export function GetInvolved() {
           <h2 className="reveal font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
             Get Involved
           </h2>
-          <p className="reveal reveal-delay-1 mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-muted">
+          <p className="reveal reveal-delay-1 mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light">
             The best communities are built by the people in them.
           </p>
         </div>
@@ -86,7 +87,7 @@ export function GetInvolved() {
                   <h3 className="mb-3 font-sans text-xl font-semibold text-slate-dark dark:text-cream">
                     {card.title}
                   </h3>
-                  <p className="mb-8 font-serif text-sm leading-relaxed text-slate-light dark:text-muted">
+                  <p className="mb-8 font-serif text-sm leading-relaxed text-slate-light dark:text-cloud-light">
                     {card.description}
                   </p>
 

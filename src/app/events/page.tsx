@@ -27,7 +27,7 @@ export default function EventsPage() {
             <h1 className="font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl lg:text-6xl">
               Events
             </h1>
-            <p className="mt-6 max-w-2xl font-serif text-xl leading-relaxed text-slate-light dark:text-muted">
+            <p className="mt-6 max-w-2xl font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light">
               Meetups, workshops, and Impact Labs across Orange County. Come build
               with us.
             </p>

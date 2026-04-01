@@ -4,6 +4,11 @@ import { useEffect, useRef } from "react";
 import { EyebrowBadge } from "@/components/shared/EyebrowBadge";
 import { StatRow } from "@/components/shared/StatRow";
 
+const MOUSE_STYLE_INITIAL = { "--mouse-x": "50%", "--mouse-y": "50%" } as React.CSSProperties;
+const GLOW_CORAL_STYLE = { background: "radial-gradient(circle, rgba(212,131,106,0.4), transparent 70%)" };
+const GLOW_BLUE_STYLE = { background: "radial-gradient(circle, rgba(96,165,250,0.4), transparent 70%)", animationDelay: "2s" };
+const MOUSE_GLOW_STYLE = { background: "radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(212,131,106,0.06), transparent 70%)" };
+
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
 
@@ -25,34 +30,22 @@ export function Hero() {
     <section
       ref={heroRef}
       className="relative flex min-h-screen items-center justify-center overflow-hidden dark:dot-grid"
-      style={
-        { "--mouse-x": "50%", "--mouse-y": "50%" } as React.CSSProperties
-      }
+      style={MOUSE_STYLE_INITIAL}
     >
       {/* Mouse-tracking ambient glow */}
       <div
         className="pointer-events-none absolute inset-0 hidden dark:block"
-        style={{
-          background:
-            "radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(212,131,106,0.06), transparent 70%)",
-        }}
+        style={MOUSE_GLOW_STYLE}
       />
 
       {/* Static ambient glows */}
       <div
         className="pointer-events-none absolute left-1/4 top-1/4 h-96 w-96 rounded-full opacity-0 blur-3xl animate-glow-pulse dark:opacity-20"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(212,131,106,0.4), transparent 70%)",
-        }}
+        style={GLOW_CORAL_STYLE}
       />
       <div
         className="pointer-events-none absolute bottom-1/3 right-1/4 h-80 w-80 rounded-full opacity-0 blur-3xl animate-glow-pulse dark:opacity-10"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(96,165,250,0.4), transparent 70%)",
-          animationDelay: "2s",
-        }}
+        style={GLOW_BLUE_STYLE}
       />
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
@@ -77,13 +70,13 @@ export function Hero() {
 
         {/* Subtitle */}
         <p
-          className="mx-auto mb-2 max-w-2xl animate-fade-up font-serif text-xl leading-relaxed text-slate-light dark:text-muted md:text-2xl"
+          className="mx-auto mb-2 max-w-2xl animate-fade-up font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light md:text-2xl"
           style={{ animationDelay: "0.3s", opacity: 0 }}
         >
           Claude is moving fast. So are we.
         </p>
         <p
-          className="mx-auto mb-4 max-w-2xl animate-fade-up font-serif text-lg leading-relaxed text-cloud-dark dark:text-muted"
+          className="mx-auto mb-4 max-w-2xl animate-fade-up font-serif text-lg leading-relaxed text-cloud-dark dark:text-cloud-light"
           style={{ animationDelay: "0.4s", opacity: 0 }}
         >
           Founders, engineers, operators, and the AI-curious&nbsp;&mdash;

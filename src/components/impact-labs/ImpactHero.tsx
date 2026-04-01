@@ -12,14 +12,14 @@ export function ImpactHero() {
             <span className="text-clay">who serve communities</span>
           </h1>
 
-          <p className="mt-6 max-w-2xl font-serif text-xl leading-relaxed text-slate-light dark:text-muted">
+          <p className="mt-6 max-w-2xl font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light">
             Impact Labs are one-day build events that pair nonprofit and
             government organizations with volunteer AI builders — producing
             working prototypes that address real operational challenges.
             Part of Anthropic&apos;s global Claude Communities program.
           </p>
 
-          <p className="mt-4 max-w-2xl font-serif text-lg leading-relaxed text-cloud-dark dark:text-muted/80">
+          <p className="mt-4 max-w-2xl font-serif text-lg leading-relaxed text-cloud-dark dark:text-cloud-light/80">
             Your team defines the problem. Our builders create the solution.
             You walk away with a tool you can use on Monday morning.
           </p>

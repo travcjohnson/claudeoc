@@ -11,7 +11,7 @@ export function SectionHeader({
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-muted">
+        <p className="mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light">
           {subtitle}
         </p>
       )}

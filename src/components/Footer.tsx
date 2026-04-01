@@ -7,7 +7,7 @@ export function Footer() {
             <span className="font-sans text-lg font-semibold text-slate-dark dark:text-cream">
               Claude<span className="text-clay">OC</span>
             </span>
-            <p className="mt-3 font-serif text-sm leading-relaxed text-slate-light dark:text-muted">
+            <p className="mt-3 font-serif text-sm leading-relaxed text-slate-light dark:text-cloud-light">
               Orange County&apos;s Claude community. Part of Anthropic&apos;s global Ambassador network.
             </p>
             <div className="mt-4 flex gap-3">
@@ -19,26 +19,26 @@ export function Footer() {
           <div>
             <h3 className="font-sans text-sm font-semibold uppercase tracking-wider text-slate-dark dark:text-cream">Community</h3>
             <ul className="mt-4 space-y-3">
-              <li><a href="/events" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">Events</a></li>
-              <li><a href="/impact-labs" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">Impact Labs</a></li>
-              <li><a href="/community" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">Join Community</a></li>
-              <li><a href="/gallery" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">Gallery</a></li>
+              <li><a href="/events" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-cloud-light dark:hover:text-clay">Events</a></li>
+              <li><a href="/impact-labs" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-cloud-light dark:hover:text-clay">Impact Labs</a></li>
+              <li><a href="/community" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-cloud-light dark:hover:text-clay">Join Community</a></li>
+              <li><a href="/gallery" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-cloud-light dark:hover:text-clay">Gallery</a></li>
             </ul>
           </div>
           <div>
             <h3 className="font-sans text-sm font-semibold uppercase tracking-wider text-slate-dark dark:text-cream">Programs</h3>
             <ul className="mt-4 space-y-3">
-              <li><a href="/training" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">Training</a></li>
-              <li><a href="/sponsors" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">Sponsors</a></li>
-              <li><a href="https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK" target="_blank" rel="noopener noreferrer" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">WhatsApp Group</a></li>
+              <li><a href="/training" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-cloud-light dark:hover:text-clay">Training</a></li>
+              <li><a href="/sponsors" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-cloud-light dark:hover:text-clay">Sponsors</a></li>
+              <li><a href="https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK" target="_blank" rel="noopener noreferrer" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-cloud-light dark:hover:text-clay">WhatsApp Group</a></li>
             </ul>
           </div>
           <div>
             <h3 className="font-sans text-sm font-semibold uppercase tracking-wider text-slate-dark dark:text-cream">Resources</h3>
             <ul className="mt-4 space-y-3">
-              <li><a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">Claude</a></li>
-              <li><a href="https://docs.anthropic.com" target="_blank" rel="noopener noreferrer" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">Documentation</a></li>
-              <li><a href="https://anthropic.com" target="_blank" rel="noopener noreferrer" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">Anthropic</a></li>
+              <li><a href="https://claude.ai" target="_blank" rel="noopener noreferrer" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-cloud-light dark:hover:text-clay">Claude</a></li>
+              <li><a href="https://docs.anthropic.com" target="_blank" rel="noopener noreferrer" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-cloud-light dark:hover:text-clay">Documentation</a></li>
+              <li><a href="https://anthropic.com" target="_blank" rel="noopener noreferrer" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-cloud-light dark:hover:text-clay">Anthropic</a></li>
             </ul>
           </div>
         </div>

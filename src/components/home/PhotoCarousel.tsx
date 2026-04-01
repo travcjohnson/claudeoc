@@ -34,19 +34,20 @@ export function PhotoCarousel() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const reveals = el.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target
-              .querySelectorAll(".reveal")
-              .forEach((el) => el.classList.add("visible"));
+            entry.target.classList.add("visible");
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    reveals.forEach((reveal) => observer.observe(reveal));
     return () => observer.disconnect();
   }, []);
 
@@ -66,7 +67,7 @@ export function PhotoCarousel() {
           <h2 className="reveal reveal-delay-1 font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
             From Our Meetups
           </h2>
-          <p className="reveal reveal-delay-2 mx-auto mt-5 max-w-xl font-serif text-lg leading-relaxed text-slate-light dark:text-muted">
+          <p className="reveal reveal-delay-2 mx-auto mt-5 max-w-xl font-serif text-lg leading-relaxed text-slate-light dark:text-cloud-light">
             Real moments from ClaudeOC events across Orange County.
           </p>
         </div>

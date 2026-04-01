@@ -17,13 +17,13 @@ export function FeaturedEvent() {
               <h3 className="mt-6 font-sans text-2xl font-bold text-slate-dark dark:text-cream md:text-3xl">
                 ClaudeOC Meetup
               </h3>
-              <p className="mt-4 font-serif text-base leading-relaxed text-slate-light dark:text-muted">
+              <p className="mt-4 font-serif text-base leading-relaxed text-slate-light dark:text-cloud-light">
                 Join us for the next ClaudeOC meetup. Live demos, hands-on building
                 time, and conversations with the builders shaping AI adoption in Orange
                 County. All experience levels welcome.
               </p>
               <div className="mt-6 flex flex-wrap gap-4 text-sm">
-                <span className="inline-flex items-center gap-2 font-sans font-medium text-slate-medium dark:text-muted">
+                <span className="inline-flex items-center gap-2 font-sans font-medium text-slate-medium dark:text-cloud-light">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                     <line x1="16" y1="2" x2="16" y2="6" />
@@ -32,7 +32,7 @@ export function FeaturedEvent() {
                   </svg>
                   Check Luma for date
                 </span>
-                <span className="inline-flex items-center gap-2 font-sans font-medium text-slate-medium dark:text-muted">
+                <span className="inline-flex items-center gap-2 font-sans font-medium text-slate-medium dark:text-cloud-light">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />

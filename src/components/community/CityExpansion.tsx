@@ -43,7 +43,7 @@ export function CityExpansion() {
         <h2 className="font-sans text-2xl font-bold text-slate-dark dark:text-cream md:text-3xl">
           City Chapters
         </h2>
-        <p className="mt-4 max-w-xl font-serif text-base leading-relaxed text-slate-light dark:text-muted">
+        <p className="mt-4 max-w-xl font-serif text-base leading-relaxed text-slate-light dark:text-cloud-light">
           We are expanding across Orange County. Find a chapter near you or start
           one in your city.
         </p>

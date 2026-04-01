@@ -16,7 +16,7 @@ export function SponsorsHero() {
         <h1 className="mt-8 max-w-3xl font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl lg:text-6xl">
           Partner With Orange County&apos;s Fastest-Growing AI Community
         </h1>
-        <p className="mt-6 max-w-2xl font-serif text-xl leading-relaxed text-slate-light dark:text-muted">
+        <p className="mt-6 max-w-2xl font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light">
           ClaudeOC is part of Anthropic&apos;s global Ambassador network. We
           connect your brand with the builders, leaders, and decision-makers
           shaping AI adoption in Southern California.

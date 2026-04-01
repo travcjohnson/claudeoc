@@ -40,19 +40,20 @@ export function About() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const reveals = el.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target
-              .querySelectorAll(".reveal")
-              .forEach((el) => el.classList.add("visible"));
+            entry.target.classList.add("visible");
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    reveals.forEach((reveal) => observer.observe(reveal));
     return () => observer.disconnect();
   }, []);
 
@@ -75,7 +76,7 @@ export function About() {
           <h2 className="reveal reveal-delay-1 mt-4 font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
             How the Community Works
           </h2>
-          <p className="reveal reveal-delay-2 mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-muted">
+          <p className="reveal reveal-delay-2 mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light">
             More than a community — a catalyst for what you&apos;ll build next.
           </p>
         </div>
@@ -99,7 +100,7 @@ export function About() {
                     <h3 className="mb-2 font-sans text-lg font-semibold text-slate-dark dark:text-cream">
                       {f.title}
                     </h3>
-                    <p className="font-serif text-sm leading-relaxed text-slate-light dark:text-muted">
+                    <p className="font-serif text-sm leading-relaxed text-slate-light dark:text-cloud-light">
                       {f.description}
                     </p>
                   </div>

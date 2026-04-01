@@ -9,7 +9,7 @@ export function ParticipantForm() {
         <h2 className="font-sans text-2xl font-bold text-slate-dark dark:text-cream md:text-3xl">
           Apply to Join
         </h2>
-        <p className="mt-4 max-w-xl font-serif text-base leading-relaxed text-slate-light dark:text-muted">
+        <p className="mt-4 max-w-xl font-serif text-base leading-relaxed text-slate-light dark:text-cloud-light">
           Tell us a bit about yourself — your background, what you are working on,
           and what you hope to get from the community.
         </p>

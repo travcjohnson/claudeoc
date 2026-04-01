@@ -32,16 +32,16 @@ export function EventHighlights() {
               <p className="font-sans text-2xl font-bold text-slate-dark dark:text-cream">
                 {h.stat}
               </p>
-              <p className="mt-1 font-sans text-sm font-semibold text-slate-medium dark:text-muted">
+              <p className="mt-1 font-sans text-sm font-semibold text-slate-medium dark:text-cloud-light">
                 {h.label}
               </p>
-              <p className="mt-3 font-serif text-sm text-slate-light dark:text-muted">
+              <p className="mt-3 font-serif text-sm text-slate-light dark:text-cloud-light">
                 {h.description}
               </p>
             </div>
           ))}
         </div>
-        <p className="mt-12 text-center font-serif text-lg italic text-slate-light dark:text-muted">
+        <p className="mt-12 text-center font-serif text-lg italic text-slate-light dark:text-cloud-light">
           Vision: 10,000-person SoCal AI hackathon
         </p>
       </div>

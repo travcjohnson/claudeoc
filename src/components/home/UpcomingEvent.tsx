@@ -6,19 +6,20 @@ export function UpcomingEvent() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const reveals = el.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target
-              .querySelectorAll(".reveal")
-              .forEach((el) => el.classList.add("visible"));
+            entry.target.classList.add("visible");
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    reveals.forEach((reveal) => observer.observe(reveal));
     return () => observer.disconnect();
   }, []);
 
@@ -33,7 +34,7 @@ export function UpcomingEvent() {
           <h2 className="reveal font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
             Next Event
           </h2>
-          <p className="reveal reveal-delay-1 mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-muted">
+          <p className="reveal reveal-delay-1 mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light">
             Every meetup is a room full of builders, not spectators.
           </p>
         </div>
@@ -63,7 +64,7 @@ export function UpcomingEvent() {
                 <h3 className="mb-3 font-sans text-2xl font-bold text-slate-dark dark:text-cream md:text-3xl">
                   ClaudeOC Meetup
                 </h3>
-                <p className="mb-6 font-serif leading-relaxed text-slate-light dark:text-muted">
+                <p className="mb-6 font-serif leading-relaxed text-slate-light dark:text-cloud-light">
                   Live demos, hands-on building, and real conversations with OC&apos;s
                   most active AI community. All levels welcome.
                 </p>

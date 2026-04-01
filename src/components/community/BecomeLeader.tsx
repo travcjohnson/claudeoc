@@ -15,7 +15,7 @@ export function BecomeLeader() {
           <h2 className="font-sans text-2xl font-bold text-slate-dark dark:text-cream md:text-3xl">
             Organize Claude Code in Your City
           </h2>
-          <p className="mt-4 max-w-xl font-serif text-base leading-relaxed text-slate-light dark:text-muted">
+          <p className="mt-4 max-w-xl font-serif text-base leading-relaxed text-slate-light dark:text-cloud-light">
             Want to bring the ClaudeOC experience to your neighborhood? We provide
             the playbook, resources, and community backing.
           </p>
@@ -23,7 +23,7 @@ export function BecomeLeader() {
             {benefits.map((benefit) => (
               <li
                 key={benefit}
-                className="flex items-start gap-3 font-serif text-sm leading-relaxed text-slate-light dark:text-muted"
+                className="flex items-start gap-3 font-serif text-sm leading-relaxed text-slate-light dark:text-cloud-light"
               >
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-clay" />
                 {benefit}

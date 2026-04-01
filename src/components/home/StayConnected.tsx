@@ -4,24 +4,27 @@ import { useEffect, useRef, useState } from "react";
 import { GlassCard } from "@/components/shared/GlassCard";
 
 const WHATSAPP_URL = "https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK";
+const GLOW_CLAY_STYLE = { background: "#d97757", transform: "translate(30%, -30%)" };
+const GLOW_SKY_STYLE = { background: "#6a9bcc", transform: "translate(30%, -30%)" };
 
 export function StayConnected() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const reveals = el.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target
-              .querySelectorAll(".reveal")
-              .forEach((el) => el.classList.add("visible"));
+            entry.target.classList.add("visible");
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    reveals.forEach((reveal) => observer.observe(reveal));
     return () => observer.disconnect();
   }, []);
 
@@ -69,7 +72,7 @@ export function StayConnected() {
           <h2 className="reveal reveal-delay-1 font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
             Stay in the Loop
           </h2>
-          <p className="reveal reveal-delay-2 mx-auto mt-5 max-w-xl font-serif text-lg leading-relaxed text-slate-light dark:text-muted">
+          <p className="reveal reveal-delay-2 mx-auto mt-5 max-w-xl font-serif text-lg leading-relaxed text-slate-light dark:text-cloud-light">
             The conversation doesn&apos;t stop when the event does.
           </p>
         </div>
@@ -81,10 +84,7 @@ export function StayConnected() {
             <GlassCard className="relative overflow-hidden p-8">
               <div
                 className="pointer-events-none absolute right-0 top-0 h-48 w-48 rounded-full opacity-10 blur-3xl"
-                style={{
-                  background: "#d97757",
-                  transform: "translate(30%, -30%)",
-                }}
+                style={GLOW_CLAY_STYLE}
               />
               <div className="relative z-10">
                 <div
@@ -99,7 +99,7 @@ export function StayConnected() {
                 <h3 className="mb-3 font-sans text-xl font-semibold text-slate-dark dark:text-cream">
                   WhatsApp Community
                 </h3>
-                <p className="mb-8 font-serif text-sm leading-relaxed text-slate-light dark:text-muted">
+                <p className="mb-8 font-serif text-sm leading-relaxed text-slate-light dark:text-cloud-light">
                   The fastest way to connect. Real conversations, event announcements,
                   and members sharing what they&apos;re building. This is where the community
                   lives between meetups.
@@ -144,10 +144,7 @@ export function StayConnected() {
             <GlassCard className="relative overflow-hidden p-8">
               <div
                 className="pointer-events-none absolute right-0 top-0 h-48 w-48 rounded-full opacity-10 blur-3xl"
-                style={{
-                  background: "#6a9bcc",
-                  transform: "translate(30%, -30%)",
-                }}
+                style={GLOW_SKY_STYLE}
               />
               <div className="relative z-10">
                 <div
@@ -166,7 +163,7 @@ export function StayConnected() {
                 <h3 className="mb-3 font-sans text-xl font-semibold text-slate-dark dark:text-cream">
                   Newsletter
                 </h3>
-                <p className="mb-6 font-serif text-sm leading-relaxed text-slate-light dark:text-muted">
+                <p className="mb-6 font-serif text-sm leading-relaxed text-slate-light dark:text-cloud-light">
                   Event recaps, builder spotlights, and what&apos;s new in Claude.
                   Monthly. No spam.
                 </p>

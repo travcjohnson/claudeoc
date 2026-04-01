@@ -15,7 +15,7 @@ export function WhatsAppJoin() {
               <h2 className="font-sans text-2xl font-bold text-slate-dark dark:text-cream">
                 Join the WhatsApp Community
               </h2>
-              <p className="mt-3 max-w-xl font-serif text-base leading-relaxed text-slate-light dark:text-muted">
+              <p className="mt-3 max-w-xl font-serif text-base leading-relaxed text-slate-light dark:text-cloud-light">
                 The community lives between events. Share what you are building,
                 ask questions, and connect with builders across Orange County.
               </p>

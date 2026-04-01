@@ -14,7 +14,7 @@ export function WhoShouldApply() {
           <h2 className="font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
             Who Should Apply
           </h2>
-          <p className="mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-muted">
+          <p className="mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light">
             If your organization serves the public and your team spends hours on
             tasks that feel like they should be easier — you are exactly who this
             program is for.
@@ -33,7 +33,7 @@ export function WhoShouldApply() {
           ))}
         </div>
 
-        <p className="mt-8 font-serif text-base leading-relaxed text-cloud-dark dark:text-muted">
+        <p className="mt-8 font-serif text-base leading-relaxed text-cloud-dark dark:text-cloud-light">
           Past projects have tackled intake form automation, grant reporting
           workflows, public records search, patient triage tools, and
           environmental monitoring dashboards. If you have a process that eats

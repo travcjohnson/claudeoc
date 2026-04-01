@@ -10,7 +10,7 @@ export function ApplyForm() {
           <h2 className="font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
             Know an org with a real problem?
           </h2>
-          <p className="mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-muted">
+          <p className="mt-5 font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light">
             Tell us about it. We review every submission and reach out directly
             to organizations that are a strong fit.
           </p>

@@ -41,7 +41,7 @@ export function SponsorTiers() {
                 {tier.perks.map((perk) => (
                   <li
                     key={perk}
-                    className="flex items-start gap-3 font-serif text-sm leading-relaxed text-slate-light dark:text-muted"
+                    className="flex items-start gap-3 font-serif text-sm leading-relaxed text-slate-light dark:text-cloud-light"
                   >
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-clay" />
                     {perk}
@@ -51,7 +51,7 @@ export function SponsorTiers() {
             </div>
           ))}
         </div>
-        <p className="mt-6 font-serif text-xs text-cloud-dark dark:text-muted">
+        <p className="mt-6 font-serif text-xs text-cloud-dark dark:text-cloud-light">
           Anthropic co-branding is not permitted per program guidelines. Sponsors
           partner with ClaudeOC, the community.
         </p>

@@ -46,7 +46,7 @@ export function TrainingFormats() {
                   {f.capacity}
                 </span>
               </div>
-              <p className="mt-4 font-serif text-sm leading-relaxed text-slate-light dark:text-muted">
+              <p className="mt-4 font-serif text-sm leading-relaxed text-slate-light dark:text-cloud-light">
                 {f.description}
               </p>
             </div>

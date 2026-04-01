@@ -30,13 +30,13 @@ export function AudienceProfile() {
         <SectionHeader title="Your Audience" />
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
-            <h3 className="mb-6 font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark dark:text-muted">
+            <h3 className="mb-6 font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark dark:text-cloud-light">
               Who Attends
             </h3>
             <div className="flex flex-col gap-3">
               {roles.map((r) => (
                 <div key={r.label} className="flex items-center gap-4">
-                  <span className="w-28 shrink-0 font-sans text-sm font-medium text-slate-medium dark:text-muted">
+                  <span className="w-28 shrink-0 font-sans text-sm font-medium text-slate-medium dark:text-cloud-light">
                     {r.label}
                   </span>
                   <div className="flex-1 rounded-full bg-clay/20 h-5">
@@ -53,7 +53,7 @@ export function AudienceProfile() {
             </div>
           </div>
           <div>
-            <h3 className="mb-6 font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark dark:text-muted">
+            <h3 className="mb-6 font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark dark:text-cloud-light">
               Where They Work
             </h3>
             <LogoCloud companies={companies} universities={universities} />

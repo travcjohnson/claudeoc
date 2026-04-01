@@ -133,28 +133,12 @@ html.dark ::-webkit-scrollbar-thumb { background: var(--color-clay); }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
 
-/* ─── Glass Card (dark mode only) ─── */
-.glass {
-  background: rgba(45, 41, 38, 0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(250, 249, 246, 0.06);
-}
-.glass-hover {
-  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-}
-.glass-hover:hover {
-  background: rgba(45, 41, 38, 0.7);
-  border-color: rgba(212, 131, 106, 0.2);
-  transform: translateY(-2px);
-}
-
-/* ─── Glow Effects (dark mode) ─── */
-.glow-coral {
-  box-shadow: 0 0 60px rgba(212, 131, 106, 0.15), 0 0 120px rgba(212, 131, 106, 0.05);
-}
-.glow-blue {
-  box-shadow: 0 0 60px rgba(96, 165, 250, 0.15), 0 0 120px rgba(96, 165, 250, 0.05);
+/* Fallback: make reveals visible when JS is unavailable */
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ─── Gradient Text ─── */
@@ -210,5 +194,4 @@ html.dark ::-webkit-scrollbar-thumb { background: var(--color-clay); }
 /* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition: none; opacity: 1; transform: none; }
-  .glass-hover:hover { transform: none; }
 }

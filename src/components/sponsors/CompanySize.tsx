@@ -20,17 +20,17 @@ export function CompanySize() {
               <h3 className="font-sans text-lg font-semibold text-slate-dark dark:text-cream">
                 {s.name}
               </h3>
-              <p className="mt-1 font-sans text-xs font-medium uppercase tracking-wider text-cloud-dark dark:text-muted">
+              <p className="mt-1 font-sans text-xs font-medium uppercase tracking-wider text-cloud-dark dark:text-cloud-light">
                 {s.range} employees
               </p>
               <p className="mt-4 font-sans text-3xl font-bold text-slate-dark dark:text-cream">
                 {s.count}
               </p>
-              <p className="mt-1 font-sans text-sm text-cloud-dark dark:text-muted">{s.pct}</p>
+              <p className="mt-1 font-sans text-sm text-cloud-dark dark:text-cloud-light">{s.pct}</p>
             </div>
           ))}
         </div>
-        <p className="mt-6 font-serif text-sm text-cloud-dark dark:text-muted">
+        <p className="mt-6 font-serif text-sm text-cloud-dark dark:text-cloud-light">
           Balanced mix: startups evaluating tools + enterprises scaling AI adoption
         </p>
       </div>

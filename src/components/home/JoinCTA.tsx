@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const WHATSAPP_URL = "https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK";
+const AMBIENT_GLOW_STYLE = { background: "radial-gradient(ellipse, #D4836A, transparent 70%)" };
 
 export function JoinCTA() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -12,19 +13,20 @@ export function JoinCTA() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const reveals = el.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target
-              .querySelectorAll(".reveal")
-              .forEach((el) => el.classList.add("visible"));
+            entry.target.classList.add("visible");
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    reveals.forEach((reveal) => observer.observe(reveal));
     return () => observer.disconnect();
   }, []);
 
@@ -65,9 +67,7 @@ export function JoinCTA() {
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <div
           className="h-[400px] w-[600px] rounded-full opacity-10 blur-3xl animate-glow-pulse"
-          style={{
-            background: "radial-gradient(ellipse, #D4836A, transparent 70%)",
-          }}
+          style={AMBIENT_GLOW_STYLE}
         />
       </div>
 

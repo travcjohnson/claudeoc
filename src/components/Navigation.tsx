@@ -50,7 +50,7 @@ export function Navigation() {
         <ul className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a href={link.href} className="font-sans text-[0.85rem] font-medium text-slate-light transition-colors hover:text-slate-dark dark:text-muted dark:hover:text-cream">
+              <a href={link.href} className="font-sans text-[0.85rem] font-medium text-slate-light transition-colors hover:text-slate-dark dark:text-cloud-light dark:hover:text-cream">
                 {link.label}
               </a>
             </li>

@@ -9,7 +9,7 @@ export function SponsorCTA() {
         <h2 className="font-sans text-3xl font-bold text-ivory-light md:text-4xl">
           Interested in reaching this audience?
         </h2>
-        <p className="mx-auto mt-4 max-w-lg font-serif text-base text-cloud-medium">
+        <p className="mx-auto mt-4 max-w-lg font-serif text-base text-cloud-medium dark:text-cloud-light">
           Express your interest below and we will follow up with partnership
           details.
         </p>
@@ -21,7 +21,7 @@ export function SponsorCTA() {
             title="Sponsor interest form"
           />
         </div>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-serif text-sm text-cloud-medium">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-serif text-sm text-cloud-medium dark:text-cloud-light">
           <span>travis@aurapathai.com</span>
           <span className="hidden sm:inline" aria-hidden="true">&middot;</span>
           <span>(734) 476-3021</span>
