@@ -51,16 +51,12 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         {/* Eyebrow */}
-        <div
-          className="mb-8 animate-fade-in anim-delay-1"
-        >
+        <div className="mb-8 animate-fade-in">
           <EyebrowBadge label="Anthropic Ambassador Community" />
         </div>
 
         {/* Headline */}
-        <h1
-          className="mb-6 animate-fade-up anim-delay-2 font-sans text-5xl font-bold leading-[1.05] tracking-tight text-slate-dark dark:text-cream md:text-7xl lg:text-8xl"
-        >
+        <h1 className="entrance-fade-up mb-6 font-sans text-5xl font-bold leading-[1.05] tracking-tight text-slate-dark dark:text-cream md:text-7xl lg:text-8xl">
           Orange County&apos;s
           <br />
           <span className="text-clay font-serif italic">Claude</span>{" "}
@@ -68,23 +64,12 @@ export function Hero() {
         </h1>
 
         {/* Subtitle */}
-        <p
-          className="mx-auto mb-2 max-w-2xl animate-fade-up anim-delay-3 font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light md:text-2xl"
-        >
-          Claude is moving fast. So are we.
-        </p>
-        <p
-          className="mx-auto mb-4 max-w-2xl animate-fade-up anim-delay-4 font-serif text-lg leading-relaxed text-cloud-dark dark:text-cloud-light"
-        >
-          Founders, engineers, operators, and the AI-curious&nbsp;&mdash;
-          learning together, building together, shipping real things
-          in Orange County.
+        <p className="mx-auto mb-4 max-w-2xl font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light md:text-2xl">
+          Founders, engineers, and operators learning and building together in Orange County.
         </p>
 
-        {/* CTAs */}
-        <div
-          className="mt-10 flex animate-fade-up anim-delay-5 flex-col items-center justify-center gap-4 sm:flex-row"
-        >
+        {/* CTA */}
+        <div className="entrance-fade-up entrance-delay-2 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
             href={CONTACT.luma}
             target="_blank"
@@ -93,20 +78,10 @@ export function Hero() {
           >
             View Upcoming Events
           </a>
-          <a
-            href={CONTACT.whatsapp}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full rounded-lg border border-slate-dark/20 bg-transparent px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light dark:border-cream/20 dark:text-cream dark:hover:bg-cream/10 sm:w-auto"
-          >
-            Join the Community
-          </a>
         </div>
 
         {/* Stats */}
-        <div
-          className="mt-16 flex animate-fade-up anim-delay-6 justify-center"
-        >
+        <div className="mt-16 flex justify-center">
           <StatRow
             stats={[
               { value: "400+", label: "Registrants" },
@@ -115,12 +90,18 @@ export function Hero() {
             ]}
           />
         </div>
+
+        {/* Hero image */}
+        <img
+          src="/images/events/claudeoc-inaugural.jpg"
+          alt="ClaudeOC meetup"
+          loading="eager"
+          className="mx-auto mt-12 max-w-4xl w-full rounded-2xl object-cover aspect-[21/9]"
+        />
       </div>
 
       {/* Scroll indicator */}
-      <div
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 animate-fade-in anim-delay-7 flex-col items-center gap-2"
-      >
+      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 animate-fade-in flex-col items-center gap-2">
         <span className="font-sans text-xs uppercase tracking-widest text-cloud-dark dark:text-muted">
           Scroll
         </span>
