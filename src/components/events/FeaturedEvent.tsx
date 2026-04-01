@@ -5,7 +5,7 @@ export function FeaturedEvent() {
   return (
     <section className="bg-ivory-light py-24 dark:bg-stone-950 lg:py-32">
       <div className="mx-auto max-w-[89.5rem] px-6 lg:px-10">
-        <h2 className="font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark dark:text-muted">
+        <h2 className="font-sans text-sm font-semibold uppercase tracking-widest text-cloud-dark dark:text-cloud-light">
           Next Event
         </h2>
         <GlassCard className="mt-8 p-0 overflow-hidden" hover={false}>
@@ -54,22 +54,11 @@ export function FeaturedEvent() {
               </div>
             </div>
             <div className="relative hidden lg:block">
-              <div className="absolute inset-0 bg-gradient-to-br from-clay/10 via-sky/10 to-olive/10 dark:from-clay/20 dark:via-sky/15 dark:to-olive/15" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-2xl bg-clay/10 dark:bg-clay/20">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-clay">
-                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                      <line x1="16" y1="2" x2="16" y2="6" />
-                      <line x1="8" y1="2" x2="8" y2="6" />
-                      <line x1="3" y1="10" x2="21" y2="10" />
-                    </svg>
-                  </div>
-                  <p className="mt-4 font-sans text-sm font-medium text-cloud-dark dark:text-cloud-light">
-                    Event details on Luma
-                  </p>
-                </div>
-              </div>
+              <img
+                src="/images/events/claudeoc-upcoming.jpg"
+                alt="ClaudeOC upcoming meetup"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
             </div>
           </div>
         </GlassCard>

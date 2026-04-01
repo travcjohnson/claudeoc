@@ -72,7 +72,7 @@ export function PhotoCarousel() {
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-5">
               <div className="mb-1 font-sans text-xl font-semibold text-white">
                 {featuredPhoto.label}
@@ -100,7 +100,7 @@ export function PhotoCarousel() {
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-4">
                 <div className="mb-0.5 font-sans text-sm font-semibold text-white">
                   {photo.label}
