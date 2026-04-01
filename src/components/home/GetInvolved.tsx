@@ -99,13 +99,6 @@ export function GetInvolved() {
           })}
         </div>
 
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-4 border-t border-slate-dark/5 pt-8 dark:border-white/5">
-          <span className="font-sans text-xs uppercase tracking-widest text-cloud-dark dark:text-cloud-light">Explore</span>
-          <a href="/training" className="font-sans text-sm font-medium text-clay transition-colors hover:text-accent">Training Programs →</a>
-          <a href="/sponsors" className="font-sans text-sm font-medium text-clay transition-colors hover:text-accent">Become a Sponsor →</a>
-          <a href="/impact-labs" className="font-sans text-sm font-medium text-clay transition-colors hover:text-accent">Impact Labs →</a>
-          <a href="/events" className="font-sans text-sm font-medium text-clay transition-colors hover:text-accent">Events →</a>
-        </div>
       </div>
     </section>
   );

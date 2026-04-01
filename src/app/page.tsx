@@ -6,8 +6,7 @@ import { UpcomingEvent } from "@/components/home/UpcomingEvent";
 import { ImpactLabsTeaser } from "@/components/home/ImpactLabsTeaser";
 import { PhotoCarousel } from "@/components/home/PhotoCarousel";
 import { GetInvolved } from "@/components/home/GetInvolved";
-import { StayConnected } from "@/components/home/StayConnected";
-import { JoinCTA } from "@/components/home/JoinCTA";
+import { ClosingCTA } from "@/components/home/ClosingCTA";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -22,8 +21,7 @@ export default function Home() {
         <ImpactLabsTeaser />
         <PhotoCarousel />
         <GetInvolved />
-        <StayConnected />
-        <JoinCTA />
+        <ClosingCTA />
       </main>
       <Footer />
     </>
