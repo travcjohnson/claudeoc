@@ -65,7 +65,7 @@ export function FeaturedEvent() {
                       <line x1="3" y1="10" x2="21" y2="10" />
                     </svg>
                   </div>
-                  <p className="mt-4 font-sans text-sm font-medium text-cloud-dark dark:text-muted">
+                  <p className="mt-4 font-sans text-sm font-medium text-cloud-dark dark:text-cloud-light">
                     Event details on Luma
                   </p>
                 </div>

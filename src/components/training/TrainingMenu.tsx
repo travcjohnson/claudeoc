@@ -65,7 +65,7 @@ export function TrainingMenu() {
                     )}
                   </div>
                 </div>
-                <p className="mt-2 font-sans text-xs font-medium uppercase tracking-wider text-cloud-dark dark:text-stone-400">
+                <p className="mt-2 font-sans text-xs font-medium uppercase tracking-wider text-cloud-dark dark:text-muted">
                   {tier.details}
                 </p>
                 <p className="mt-4 max-w-2xl font-serif text-base leading-relaxed text-slate-light dark:text-stone-300">
@@ -75,7 +75,7 @@ export function TrainingMenu() {
             ))}
           </div>
 
-          <p className="mt-12 border-t border-slate-dark/10 pt-8 text-center font-serif text-sm italic text-cloud-dark dark:border-white/10 dark:text-stone-400">
+          <p className="mt-12 border-t border-slate-dark/10 pt-8 text-center font-serif text-sm italic text-cloud-dark dark:border-white/10 dark:text-cloud-light">
             Larger programs and ongoing engagements available&nbsp;&mdash;&nbsp;
             <a
               href={`mailto:${CONTACT.email}?subject=Custom Training Program`}

@@ -96,7 +96,7 @@ export function About() {
         <div className="reveal reveal-delay-4 mt-12 flex items-center justify-between rounded-xl border border-clay/20 bg-clay/5 px-8 py-5 dark:border-clay/15 dark:bg-clay/5">
           <p className="font-sans text-base font-medium text-slate-dark dark:text-cream">
             Ready to join?{" "}
-            <span className="text-slate-light dark:text-muted">
+            <span className="text-slate-light dark:text-cloud-light">
               Free to join. All levels welcome.
             </span>
           </p>

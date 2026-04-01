@@ -38,11 +38,11 @@ export function PastEvents() {
                       {event.name}
                     </h3>
                     <div className="mt-2 flex flex-wrap gap-3 text-sm">
-                      <span className="font-sans font-medium text-slate-light dark:text-muted">
+                      <span className="font-sans font-medium text-slate-light dark:text-cloud-light">
                         {event.date}
                       </span>
                       <span className="text-cloud-medium" aria-hidden="true">&middot;</span>
-                      <span className="font-sans font-medium text-slate-light dark:text-muted">
+                      <span className="font-sans font-medium text-slate-light dark:text-cloud-light">
                         {event.location}
                       </span>
                     </div>

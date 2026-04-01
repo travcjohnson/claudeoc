@@ -72,7 +72,7 @@ export function TrainingHero() {
                       <path d="M8 5v14l11-7L8 5z" fill="currentColor" />
                     </svg>
                   </div>
-                  <span className="mt-4 font-sans text-sm font-medium text-slate-light dark:text-stone-400">
+                  <span className="mt-4 font-sans text-sm font-medium text-slate-light dark:text-muted">
                     Video coming soon
                   </span>
                 </div>

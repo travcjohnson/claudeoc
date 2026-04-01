@@ -29,7 +29,7 @@ export function TallyEmbed({ formId, placeholder, placeholderText, title }: Tall
         <div className="inline-flex items-center gap-2 rounded-full bg-clay/10 px-3 py-1 text-xs font-medium text-clay">
           Coming soon
         </div>
-        <p className="mt-3 font-serif text-sm text-cloud-dark dark:text-muted">
+        <p className="mt-3 font-serif text-sm text-cloud-dark dark:text-cloud-light">
           {placeholderText || "Form coming soon"}
         </p>
       </div>

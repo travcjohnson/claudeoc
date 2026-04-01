@@ -75,7 +75,7 @@ export function CommunitySegments() {
               ].map((cred) => (
                 <span
                   key={cred}
-                  className="rounded-full border border-slate-dark/8 bg-white px-4 py-2.5 font-sans text-xs font-medium text-slate-light dark:border-cream/10 dark:bg-stone-800 dark:text-muted"
+                  className="rounded-full border border-slate-dark/8 bg-white px-4 py-2.5 font-sans text-xs font-medium text-slate-light dark:border-cream/10 dark:bg-stone-800 dark:text-cloud-light"
                 >
                   {cred}
                 </span>
@@ -97,7 +97,7 @@ export function CommunitySegments() {
               </a>
               <a
                 href="/training"
-                className="inline-flex items-center gap-2 font-sans text-sm font-medium text-slate-light transition-colors hover:text-slate-dark dark:text-muted dark:hover:text-cream"
+                className="inline-flex items-center gap-2 font-sans text-sm font-medium text-slate-light transition-colors hover:text-slate-dark dark:text-cloud-light dark:hover:text-cream"
               >
                 Book a Training →
               </a>

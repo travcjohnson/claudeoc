@@ -24,7 +24,7 @@ export function TheRoom() {
               <span className="font-sans text-5xl font-bold text-slate-dark dark:text-cream md:text-6xl">
                 {stat.value}
               </span>
-              <span className="font-sans text-sm font-medium uppercase tracking-wider text-cloud-dark dark:text-stone-400">
+              <span className="font-sans text-sm font-medium uppercase tracking-wider text-cloud-dark dark:text-muted">
                 {stat.label}
               </span>
             </div>
@@ -32,7 +32,7 @@ export function TheRoom() {
         </div>
 
         {/* Sub-roles */}
-        <p className="mt-8 font-serif text-sm text-cloud-dark dark:text-stone-400">
+        <p className="mt-8 font-serif text-sm text-cloud-dark dark:text-cloud-light">
           9 CEOs · 8 Directors · 5 VPs · 3 CTOs · 3 COOs
         </p>
 

@@ -47,7 +47,7 @@ export function ImpactHero() {
             &ldquo;Technology should amplify human resilience, not replace
             it.&rdquo;
           </p>
-          <p className="mt-2 font-sans text-sm font-medium text-cloud-dark dark:text-muted">
+          <p className="mt-2 font-sans text-sm font-medium text-cloud-dark dark:text-cloud-light">
             — Travis Johnson
           </p>
         </div>

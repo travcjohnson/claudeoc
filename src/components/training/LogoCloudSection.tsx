@@ -43,7 +43,7 @@ export function LogoCloudSection() {
           ))}
         </div>
 
-        <p className="mt-4 font-serif text-sm text-cloud-dark dark:text-stone-400">
+        <p className="mt-4 font-serif text-sm text-cloud-dark dark:text-cloud-light">
           {universities}
         </p>
       </div>

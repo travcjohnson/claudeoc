@@ -47,7 +47,7 @@ export function ImpactLabsTeaser() {
           </div>
 
           {/* Proof point */}
-          <p className="reveal reveal-delay-4 mt-8 font-sans text-sm text-cloud-dark dark:text-muted">
+          <p className="reveal reveal-delay-4 mt-8 font-sans text-sm text-cloud-dark dark:text-cloud-light">
             San Diego pilot: 27 teams, city open data, working prototypes delivered in one day.
           </p>
         </div>

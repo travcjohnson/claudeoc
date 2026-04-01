@@ -30,7 +30,7 @@ export function DarkCTA({
             <span aria-hidden="true">→</span>
           </a>
         </div>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-serif text-sm text-cloud-medium">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-serif text-sm text-cloud-medium dark:text-cloud-light">
           <span>{contactEmail}</span>
           <span className="hidden sm:inline" aria-hidden="true">·</span>
           <span>{contactPhone}</span>

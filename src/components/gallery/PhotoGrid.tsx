@@ -26,7 +26,7 @@ export function PhotoGrid() {
           <h2 className="font-sans text-xl font-bold text-slate-dark dark:text-cream">
             ClaudeOC Inaugural Meetup
           </h2>
-          <p className="mt-1 font-sans text-sm font-medium text-slate-light dark:text-muted">
+          <p className="mt-1 font-sans text-sm font-medium text-slate-light dark:text-cloud-light">
             Feb 28, 2026 &middot; Tustin, CA
           </p>
         </div>

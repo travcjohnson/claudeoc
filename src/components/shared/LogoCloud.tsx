@@ -17,7 +17,7 @@ export function LogoCloud({ companies, universities }: LogoCloudProps) {
         ))}
       </div>
       {universities && universities.length > 0 && (
-        <p className="mt-4 font-serif text-sm text-cloud-dark dark:text-muted">
+        <p className="mt-4 font-serif text-sm text-cloud-dark dark:text-cloud-light">
           + {universities.join(", ")}...
         </p>
       )}
