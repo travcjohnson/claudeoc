@@ -36,7 +36,7 @@ export function AudienceProfile() {
             <div className="flex flex-col gap-3">
               {roles.map((r) => (
                 <div key={r.label} className="flex items-center gap-4">
-                  <span className="w-28 shrink-0 font-sans text-sm font-medium text-slate-medium dark:text-cloud-light">
+                  <span className="w-20 sm:w-28 shrink-0 font-sans text-xs sm:text-sm font-medium text-slate-medium dark:text-cloud-light">
                     {r.label}
                   </span>
                   <div className="flex-1 rounded-full bg-clay/20 h-5">

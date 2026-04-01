@@ -1,4 +1,5 @@
 import { GlassCard } from "@/components/shared/GlassCard";
+import { CONTACT } from "@/lib/constants";
 
 const pastEvents = [
   {
@@ -6,7 +7,7 @@ const pastEvents = [
     date: "Feb 28, 2026",
     location: "Tustin, CA",
     attendees: "300+",
-    link: "https://luma.com/kjwrri63",
+    link: CONTACT.lumaFirstEvent,
     photoSlots: 4,
   },
 ];

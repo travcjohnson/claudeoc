@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { EyebrowBadge } from "@/components/shared/EyebrowBadge";
 import { StatRow } from "@/components/shared/StatRow";
+import { CONTACT } from "@/lib/constants";
 
 const MOUSE_STYLE_INITIAL = { "--mouse-x": "50%", "--mouse-y": "50%" } as React.CSSProperties;
 const GLOW_CORAL_STYLE = { background: "radial-gradient(circle, rgba(212,131,106,0.4), transparent 70%)" };
@@ -40,7 +41,7 @@ export function Hero() {
 
       {/* Static ambient glows */}
       <div
-        className="pointer-events-none absolute left-1/4 top-1/4 h-96 w-96 rounded-full opacity-0 blur-3xl animate-glow-pulse dark:opacity-20"
+        className="pointer-events-none absolute left-1/4 top-1/4 h-72 w-72 rounded-full opacity-0 blur-3xl animate-glow-pulse dark:opacity-20"
         style={GLOW_CORAL_STYLE}
       />
       <div
@@ -51,33 +52,29 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         {/* Eyebrow */}
         <div
-          className="mb-8 animate-fade-in"
-          style={{ animationDelay: "0.1s", opacity: 0 }}
+          className="mb-8 animate-fade-in anim-delay-1"
         >
           <EyebrowBadge label="Anthropic Ambassador Community" />
         </div>
 
         {/* Headline */}
         <h1
-          className="mb-6 animate-fade-up font-sans text-5xl font-bold leading-[1.05] tracking-tight text-slate-dark dark:text-cream md:text-7xl lg:text-8xl"
-          style={{ animationDelay: "0.2s", opacity: 0 }}
+          className="mb-6 animate-fade-up anim-delay-2 font-sans text-5xl font-bold leading-[1.05] tracking-tight text-slate-dark dark:text-cream md:text-7xl lg:text-8xl"
         >
           Orange County&apos;s
           <br />
-          <span className="gradient-text font-serif italic">Claude</span>{" "}
+          <span className="text-clay font-serif italic">Claude</span>{" "}
           Community
         </h1>
 
         {/* Subtitle */}
         <p
-          className="mx-auto mb-2 max-w-2xl animate-fade-up font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light md:text-2xl"
-          style={{ animationDelay: "0.3s", opacity: 0 }}
+          className="mx-auto mb-2 max-w-2xl animate-fade-up anim-delay-3 font-serif text-xl leading-relaxed text-slate-light dark:text-cloud-light md:text-2xl"
         >
           Claude is moving fast. So are we.
         </p>
         <p
-          className="mx-auto mb-4 max-w-2xl animate-fade-up font-serif text-lg leading-relaxed text-cloud-dark dark:text-cloud-light"
-          style={{ animationDelay: "0.4s", opacity: 0 }}
+          className="mx-auto mb-4 max-w-2xl animate-fade-up anim-delay-4 font-serif text-lg leading-relaxed text-cloud-dark dark:text-cloud-light"
         >
           Founders, engineers, operators, and the AI-curious&nbsp;&mdash;
           learning together, building together, shipping real things
@@ -86,11 +83,10 @@ export function Hero() {
 
         {/* CTAs */}
         <div
-          className="mt-10 flex animate-fade-up flex-col items-center justify-center gap-4 sm:flex-row"
-          style={{ animationDelay: "0.55s", opacity: 0 }}
+          className="mt-10 flex animate-fade-up anim-delay-5 flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <a
-            href="https://lu.ma/claudeoc"
+            href={CONTACT.luma}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full rounded-lg bg-clay px-7 py-3.5 font-sans text-sm font-medium text-white transition-colors hover:bg-accent sm:w-auto"
@@ -98,7 +94,7 @@ export function Hero() {
             View Upcoming Events
           </a>
           <a
-            href="https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK"
+            href={CONTACT.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full rounded-lg border border-slate-dark/20 bg-transparent px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light dark:border-cream/20 dark:text-cream dark:hover:bg-cream/10 sm:w-auto"
@@ -109,8 +105,7 @@ export function Hero() {
 
         {/* Stats */}
         <div
-          className="mt-16 flex animate-fade-up justify-center"
-          style={{ animationDelay: "0.7s", opacity: 0 }}
+          className="mt-16 flex animate-fade-up anim-delay-6 justify-center"
         >
           <StatRow
             stats={[
@@ -124,8 +119,7 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div
-        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 animate-fade-in flex-col items-center gap-2"
-        style={{ animationDelay: "1.2s", opacity: 0 }}
+        className="absolute bottom-8 left-1/2 flex -translate-x-1/2 animate-fade-in anim-delay-7 flex-col items-center gap-2"
       >
         <span className="font-sans text-xs uppercase tracking-widest text-cloud-dark dark:text-muted">
           Scroll

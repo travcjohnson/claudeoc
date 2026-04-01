@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { GlassCard } from "@/components/shared/GlassCard";
+import { ACCENT_COLORS, CONTACT } from "@/lib/constants";
+import { useReveal } from "@/hooks/useReveal";
 
 const cards = [
   {
@@ -9,7 +10,7 @@ const cards = [
     description:
       "Have deep experience with Claude, AI agents, or a specific use case? Share it with the community. We're always looking for speakers and workshop leaders.",
     cta: "Apply to Speak",
-    href: "mailto:travis@aurapathai.com?subject=ClaudeOC%20Speaker%20Interest",
+    href: `mailto:${CONTACT.email}?subject=ClaudeOC%20Speaker%20Interest`,
     accent: "clay",
   },
   {
@@ -17,7 +18,7 @@ const cards = [
     description:
       "Join the builders channel on WhatsApp. Share projects, get feedback, find collaborators. The best ideas come from people working on real problems together.",
     cta: "Join Builders Channel",
-    href: "https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK",
+    href: CONTACT.whatsapp,
     accent: "sky",
   },
   {
@@ -25,37 +26,15 @@ const cards = [
     description:
       "This community is shaped by its members. Tell us what topics you want covered, what format works best, and how we can make events even better.",
     cta: "Send Feedback",
-    href: "mailto:travis@aurapathai.com?subject=ClaudeOC%20Feedback",
+    href: `mailto:${CONTACT.email}?subject=ClaudeOC%20Feedback`,
     accent: "olive",
   },
 ];
 
-const accentStyles: Record<string, { dot: string; text: string }> = {
-  clay: { dot: "bg-clay", text: "text-clay" },
-  sky: { dot: "bg-sky", text: "text-sky" },
-  olive: { dot: "bg-olive", text: "text-olive" },
-};
+const accentStyles = ACCENT_COLORS;
 
 export function GetInvolved() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const reveals = el.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    reveals.forEach((reveal) => observer.observe(reveal));
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal<HTMLElement>();
 
   return (
     <section
@@ -79,7 +58,7 @@ export function GetInvolved() {
               <div key={card.title} className={`reveal reveal-delay-${i + 1}`}>
                 <GlassCard className="flex h-full flex-col p-8">
                   <div
-                    className={`mb-6 flex h-10 w-10 items-center justify-center rounded-xl border border-slate-dark/10 bg-white dark:border-cream/10 dark:bg-stone-900`}
+                    className={`mb-6 flex h-10 w-10 items-center justify-center rounded-xl border border-slate-dark/10 bg-white dark:border-cream/10 dark:bg-stone-800`}
                   >
                     <span className={`h-3 w-3 rounded-full ${styles.dot}`} />
                   </div>

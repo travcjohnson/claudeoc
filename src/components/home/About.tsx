@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { GlassCard } from "@/components/shared/GlassCard";
+import { ACCENT_COLORS } from "@/lib/constants";
+import { useReveal } from "@/hooks/useReveal";
 
 const features = [
   {
@@ -30,32 +31,10 @@ const features = [
   },
 ];
 
-const accentColors: Record<string, { dot: string; border: string }> = {
-  clay: { dot: "bg-clay", border: "border-clay/30" },
-  sky: { dot: "bg-sky", border: "border-sky/30" },
-  olive: { dot: "bg-olive", border: "border-olive/30" },
-};
+const accentColors = ACCENT_COLORS;
 
 export function About() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const reveals = el.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    reveals.forEach((reveal) => observer.observe(reveal));
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal<HTMLElement>();
 
   return (
     <section
@@ -66,7 +45,7 @@ export function About() {
         {/* Header */}
         <div className="mb-16 max-w-2xl">
           <div className="reveal">
-            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-dark/10 bg-white px-4 py-1.5 dark:border-cream/10 dark:bg-stone-900">
+            <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-dark/10 bg-white px-4 py-1.5 dark:border-cream/10 dark:bg-stone-800">
               <span className="h-2 w-2 rounded-full bg-clay" />
               <span className="font-sans text-xs font-medium uppercase tracking-widest text-slate-light dark:text-muted">
                 Why Join
@@ -92,7 +71,7 @@ export function About() {
               >
                 <GlassCard className="flex h-full flex-col gap-4">
                   <div
-                    className={`flex h-10 w-10 items-center justify-center rounded-xl border ${colors.border} bg-white dark:bg-stone-900`}
+                    className={`flex h-10 w-10 items-center justify-center rounded-xl border ${colors.border} bg-white dark:bg-stone-800`}
                   >
                     <span className={`h-3 w-3 rounded-full ${colors.dot}`} />
                   </div>

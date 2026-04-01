@@ -1,5 +1,6 @@
 import { EyebrowBadge } from "@/components/shared/EyebrowBadge";
 import { StatRow } from "@/components/shared/StatRow";
+import { CONTACT } from "@/lib/constants";
 
 // TODO: Replace with actual YouTube video ID once available
 const YOUTUBE_VIDEO_ID: string | null = null;
@@ -38,7 +39,7 @@ export function TrainingHero() {
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a
-                href="mailto:travis@aurapathai.com?subject=Free Lunch %26 Learn"
+                href={`mailto:${CONTACT.email}?subject=Free Lunch %26 Learn`}
                 className="inline-flex items-center gap-2 rounded-lg bg-clay px-7 py-3.5 font-sans text-sm font-medium text-white transition-colors hover:bg-accent"
               >
                 Book a Free Session

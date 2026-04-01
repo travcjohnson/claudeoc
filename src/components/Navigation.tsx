@@ -36,7 +36,7 @@ export function Navigation() {
       }`}
     >
       <nav className="mx-auto flex max-w-[89.5rem] items-center justify-between px-6 py-4 lg:px-10">
-        <a href="/" className="flex items-center gap-2.5 no-underline">
+        <a href="/" className="flex items-center gap-2.5 no-underline" aria-label="ClaudeOC home">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-clay">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="text-white">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6zm4 4h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor" opacity="0.9" />
@@ -66,7 +66,7 @@ export function Navigation() {
 
         <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5" aria-label="Toggle navigation" aria-expanded={mobileOpen}>
+          <button onClick={() => setMobileOpen(!mobileOpen)} className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5" aria-label="Toggle navigation" aria-expanded={mobileOpen} aria-controls="mobile-menu">
             <span className={`block h-0.5 w-5 bg-slate-dark transition-all duration-300 dark:bg-cream ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
             <span className={`block h-0.5 w-5 bg-slate-dark transition-all duration-300 dark:bg-cream ${mobileOpen ? "opacity-0" : ""}`} />
             <span className={`block h-0.5 w-5 bg-slate-dark transition-all duration-300 dark:bg-cream ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />
@@ -74,7 +74,7 @@ export function Navigation() {
         </div>
       </nav>
 
-      <div className={`fixed inset-0 z-40 bg-ivory-light transition-all duration-300 dark:bg-stone-950 lg:hidden ${mobileOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}>
+      <div id="mobile-menu" className={`fixed inset-0 z-40 bg-ivory-light transition-all duration-300 dark:bg-stone-950 lg:hidden ${mobileOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}>
         <div className="flex h-full flex-col items-center justify-center gap-8">
           {navLinks.map((link) => (
             <a key={link.href} href={link.href} onClick={() => setMobileOpen(false)} className="font-sans text-2xl font-medium text-slate-dark transition-colors hover:text-clay dark:text-cream">

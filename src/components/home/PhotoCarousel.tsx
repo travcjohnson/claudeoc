@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useReveal } from "@/hooks/useReveal";
 
 const galleryItems = [
   {
@@ -31,25 +31,7 @@ const galleryItems = [
 ];
 
 export function PhotoCarousel() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const reveals = el.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    reveals.forEach((reveal) => observer.observe(reveal));
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal<HTMLElement>();
 
   return (
     <section ref={sectionRef} className="py-24 lg:py-32">
@@ -57,7 +39,7 @@ export function PhotoCarousel() {
         {/* Header */}
         <div className="mb-16 text-center">
           <div className="reveal mb-4">
-            <span className="inline-flex items-center gap-2 rounded-full border border-slate-dark/10 bg-white px-4 py-1.5 dark:border-cream/10 dark:bg-stone-900">
+            <span className="inline-flex items-center gap-2 rounded-full border border-slate-dark/10 bg-white px-4 py-1.5 dark:border-cream/10 dark:bg-stone-800">
               <span className="h-2 w-2 rounded-full bg-clay" />
               <span className="font-sans text-xs font-medium uppercase tracking-widest text-slate-light dark:text-muted">
                 Gallery
@@ -76,7 +58,7 @@ export function PhotoCarousel() {
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
           {/* Large featured card */}
           <div
-            className="reveal group relative sm:col-span-2 cursor-pointer overflow-hidden rounded-2xl md:col-span-1 md:row-span-2 min-h-[320px]"
+            className="reveal group relative sm:col-span-2 cursor-pointer overflow-hidden rounded-2xl md:col-span-1 md:row-span-2 aspect-[16/10]"
           >
             <div
               className={`${galleryItems[4].className} absolute inset-0 transition-transform duration-700 group-hover:scale-105`}
@@ -101,7 +83,7 @@ export function PhotoCarousel() {
           {galleryItems.slice(0, 4).map((item, i) => (
             <div
               key={item.label}
-              className={`reveal reveal-delay-${(i % 3) + 1} group relative cursor-pointer overflow-hidden rounded-2xl min-h-[200px]`}
+              className={`reveal reveal-delay-${(i % 3) + 1} group relative cursor-pointer overflow-hidden rounded-2xl aspect-[4/3]`}
             >
               <div
                 className={`${item.className} absolute inset-0 transition-transform duration-700 group-hover:scale-105`}

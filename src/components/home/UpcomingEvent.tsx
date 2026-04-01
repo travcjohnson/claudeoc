@@ -1,27 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { CONTACT } from "@/lib/constants";
+import { useReveal } from "@/hooks/useReveal";
 
 export function UpcomingEvent() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const reveals = el.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    reveals.forEach((reveal) => observer.observe(reveal));
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal<HTMLElement>();
 
   return (
     <section
@@ -42,7 +25,7 @@ export function UpcomingEvent() {
         {/* Featured event card */}
         <div className="reveal reveal-delay-2">
           <a
-            href="https://lu.ma/claudeoc"
+            href={CONTACT.luma}
             target="_blank"
             rel="noopener noreferrer"
             className="group block overflow-hidden rounded-xl border border-slate-dark/10 bg-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg dark:border-cream/6 dark:bg-stone-900/50 dark:backdrop-blur-xl"

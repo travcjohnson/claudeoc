@@ -25,7 +25,7 @@ export function WhoShouldApply() {
           {orgTypes.map((type) => (
             <span
               key={type}
-              className="inline-flex items-center gap-2 rounded-full border border-slate-dark/10 bg-white px-5 py-2.5 font-sans text-sm font-medium text-slate-dark transition-colors dark:border-white/10 dark:bg-stone-900 dark:text-cream"
+              className="inline-flex items-center gap-2 rounded-full border border-slate-dark/10 bg-white px-5 py-2.5 font-sans text-sm font-medium text-slate-dark transition-colors dark:border-white/10 dark:bg-stone-800 dark:text-cream"
             >
               <span className="h-2 w-2 rounded-full bg-clay" />
               {type}

@@ -2,41 +2,37 @@
 
 import { useEffect, useRef, useState } from "react";
 import { GlassCard } from "@/components/shared/GlassCard";
-
-const WHATSAPP_URL = "https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK";
+import { CONTACT } from "@/lib/constants";
+import { useReveal } from "@/hooks/useReveal";
 const GLOW_CLAY_STYLE = { background: "#d97757", transform: "translate(30%, -30%)" };
 const GLOW_SKY_STYLE = { background: "#6a9bcc", transform: "translate(30%, -30%)" };
 
 export function StayConnected() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const reveals = el.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    reveals.forEach((reveal) => observer.observe(reveal));
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal<HTMLElement>();
 
   const [showWhatsAppEmail, setShowWhatsAppEmail] = useState(false);
   const [whatsAppEmail, setWhatsAppEmail] = useState("");
   const whatsAppInputRef = useRef<HTMLInputElement>(null);
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
 
   useEffect(() => {
     if (showWhatsAppEmail && whatsAppInputRef.current) {
       whatsAppInputRef.current.focus();
     }
   }, [showWhatsAppEmail]);
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail.includes("@")) return;
+    try {
+      const emails = JSON.parse(localStorage.getItem("claudeoc_emails") || "[]");
+      emails.push({ email: newsletterEmail, source: "newsletter", date: new Date().toISOString() });
+      localStorage.setItem("claudeoc_emails", JSON.stringify(emails));
+    } catch { /* silent */ }
+    setNewsletterEmail("");
+    setNewsletterSubmitted(true);
+  };
 
   const handleWhatsAppJoin = () => {
     if (!showWhatsAppEmail) {
@@ -51,7 +47,7 @@ export function StayConnected() {
     } catch {
       // silent fail
     }
-    window.open(WHATSAPP_URL, "_blank");
+    window.open(CONTACT.whatsapp, "_blank");
     setShowWhatsAppEmail(false);
     setWhatsAppEmail("");
   };
@@ -168,21 +164,30 @@ export function StayConnected() {
                   Monthly. No spam.
                 </p>
 
-                <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-                  <label htmlFor="newsletter-email" className="sr-only">Email address</label>
-                  <input
-                    id="newsletter-email"
-                    type="email"
-                    placeholder="your@email.com"
-                    className="min-w-0 flex-1 rounded-lg border border-slate-dark/10 bg-white px-3 py-2.5 font-serif text-sm text-slate-dark placeholder:text-cloud-medium focus:outline-none focus:ring-2 focus:ring-clay/40 dark:border-cream/10 dark:bg-stone-800 dark:text-cream dark:placeholder:text-muted"
-                  />
-                  <button
-                    type="submit"
-                    className="shrink-0 rounded-lg bg-slate-dark px-4 py-2.5 font-sans text-sm font-medium text-ivory-light transition-colors hover:bg-slate-medium dark:bg-cream dark:text-stone-950 dark:hover:bg-cream/90"
-                  >
-                    Subscribe
-                  </button>
-                </form>
+                {newsletterSubmitted ? (
+                  <p className="rounded-lg border border-olive/20 bg-olive/5 px-4 py-3 font-serif text-sm text-olive dark:border-olive/30 dark:bg-olive/10">
+                    Thanks! We&apos;ll be in touch.
+                  </p>
+                ) : (
+                  <form className="flex gap-2" onSubmit={handleNewsletterSubmit}>
+                    <label htmlFor="newsletter-email" className="sr-only">Email address</label>
+                    <input
+                      id="newsletter-email"
+                      type="email"
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      placeholder="your@email.com"
+                      className="min-w-0 flex-1 rounded-lg border border-slate-dark/10 bg-white px-3 py-2.5 font-serif text-sm text-slate-dark placeholder:text-cloud-medium focus:outline-none focus:ring-2 focus:ring-clay/40 dark:border-cream/10 dark:bg-stone-800 dark:text-cream dark:placeholder:text-muted"
+                    />
+                    <button
+                      type="submit"
+                      disabled={!newsletterEmail.includes("@")}
+                      className="shrink-0 rounded-lg bg-slate-dark px-4 py-2.5 font-sans text-sm font-medium text-ivory-light transition-colors hover:bg-slate-medium disabled:opacity-50 dark:bg-cream dark:text-stone-950 dark:hover:bg-cream/90"
+                    >
+                      Subscribe
+                    </button>
+                  </form>
+                )}
               </div>
             </GlassCard>
           </div>

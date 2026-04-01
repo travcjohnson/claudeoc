@@ -22,7 +22,7 @@ export function ExperienceLevels() {
           <div className="flex flex-col gap-3">
             {levels.map((l) => (
               <div key={l.label} className="flex items-center gap-4">
-                <span className="w-40 shrink-0 font-sans text-sm font-medium text-slate-medium dark:text-cloud-light">
+                <span className="w-24 sm:w-40 shrink-0 font-sans text-xs sm:text-sm font-medium text-slate-medium dark:text-cloud-light">
                   {l.label}
                 </span>
                 <div className="flex-1 rounded-full bg-clay/20 h-5">

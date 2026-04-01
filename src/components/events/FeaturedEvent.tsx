@@ -1,4 +1,5 @@
 import { GlassCard } from "@/components/shared/GlassCard";
+import { CONTACT } from "@/lib/constants";
 
 export function FeaturedEvent() {
   return (
@@ -42,7 +43,7 @@ export function FeaturedEvent() {
               </div>
               <div className="mt-8">
                 <a
-                  href="https://lu.ma/claudeoc"
+                  href={CONTACT.luma}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-lg bg-clay px-7 py-3.5 font-sans text-sm font-medium text-white transition-colors hover:bg-accent"

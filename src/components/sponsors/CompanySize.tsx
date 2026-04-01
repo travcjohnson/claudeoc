@@ -15,7 +15,7 @@ export function CompanySize() {
           {segments.map((s) => (
             <div
               key={s.name}
-              className="rounded-xl border border-slate-dark/10 bg-white p-6 text-center dark:border-white/10 dark:bg-stone-950"
+              className="rounded-xl border border-slate-dark/10 bg-white p-6 text-center dark:border-white/10 dark:bg-stone-800"
             >
               <h3 className="font-sans text-lg font-semibold text-slate-dark dark:text-cream">
                 {s.name}

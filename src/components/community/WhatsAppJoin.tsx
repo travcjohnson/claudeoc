@@ -1,4 +1,5 @@
 import { GlassCard } from "@/components/shared/GlassCard";
+import { CONTACT } from "@/lib/constants";
 
 export function WhatsAppJoin() {
   return (
@@ -21,7 +22,7 @@ export function WhatsAppJoin() {
               </p>
               <div className="mt-6">
                 <a
-                  href="https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK"
+                  href={CONTACT.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-lg bg-olive px-7 py-3.5 font-sans text-sm font-medium text-white transition-colors hover:bg-olive/90"

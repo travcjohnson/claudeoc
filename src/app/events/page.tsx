@@ -3,6 +3,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { FeaturedEvent } from "@/components/events/FeaturedEvent";
 import { PastEvents } from "@/components/events/PastEvents";
+import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Events — ClaudeOC",
@@ -33,7 +34,7 @@ export default function EventsPage() {
             </p>
             <div className="mt-8">
               <a
-                href="https://lu.ma/claudeoc"
+                href={CONTACT.luma}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg bg-clay px-7 py-3.5 font-sans text-sm font-medium text-white transition-colors hover:bg-accent"

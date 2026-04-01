@@ -1,4 +1,5 @@
 import { GlassCard } from "@/components/shared/GlassCard";
+import { CONTACT } from "@/lib/constants";
 
 const benefits = [
   "Host events in your city with community support",
@@ -32,7 +33,7 @@ export function BecomeLeader() {
           </ul>
           <div className="mt-8">
             <a
-              href="mailto:travis@aurapathai.com?subject=ClaudeOC City Leader Application"
+              href={`mailto:${CONTACT.email}?subject=ClaudeOC City Leader Application`}
               className="inline-flex items-center gap-2 rounded-lg bg-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-ivory-light transition-colors hover:bg-slate-medium dark:bg-clay dark:hover:bg-accent"
             >
               Apply to Lead

@@ -1,3 +1,5 @@
+import { CONTACT } from "@/lib/constants";
+
 const tiers = [
   {
     name: "Free Lunch & Learn",
@@ -76,7 +78,7 @@ export function TrainingMenu() {
           <p className="mt-12 border-t border-slate-dark/10 pt-8 text-center font-serif text-sm italic text-cloud-dark dark:border-white/10 dark:text-stone-400">
             Larger programs and ongoing engagements available&nbsp;&mdash;&nbsp;
             <a
-              href="mailto:travis@aurapathai.com?subject=Custom Training Program"
+              href={`mailto:${CONTACT.email}?subject=Custom Training Program`}
               className="not-italic text-clay transition-colors hover:text-accent"
             >
               let&apos;s talk

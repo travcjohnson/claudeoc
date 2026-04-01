@@ -1,27 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { CONTACT } from "@/lib/constants";
+import { useReveal } from "@/hooks/useReveal";
 
 export function CommunitySegments() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const reveals = el.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    reveals.forEach((reveal) => observer.observe(reveal));
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal<HTMLElement>();
 
   return (
     <section
@@ -92,7 +75,7 @@ export function CommunitySegments() {
               ].map((cred) => (
                 <span
                   key={cred}
-                  className="rounded-full border border-slate-dark/8 bg-white px-3 py-1.5 font-sans text-xs font-medium text-slate-light dark:border-cream/10 dark:bg-stone-800 dark:text-muted"
+                  className="rounded-full border border-slate-dark/8 bg-white px-4 py-2.5 font-sans text-xs font-medium text-slate-light dark:border-cream/10 dark:bg-stone-800 dark:text-muted"
                 >
                   {cred}
                 </span>
@@ -102,7 +85,7 @@ export function CommunitySegments() {
             {/* Links */}
             <div className="reveal reveal-delay-4 mt-8 flex items-center gap-4">
               <a
-                href="https://linkedin.com/in/travcjohnson"
+                href={CONTACT.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-sans text-sm font-medium text-clay transition-colors hover:text-accent"

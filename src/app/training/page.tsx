@@ -7,6 +7,7 @@ import { TheRoom } from "@/components/training/TheRoom";
 import { TrainingMenu } from "@/components/training/TrainingMenu";
 import { TrainerBackground } from "@/components/training/TrainerBackground";
 import { DarkCTA } from "@/components/shared/DarkCTA";
+import { CONTACT } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "AI Training — Travis Johnson | ClaudeOC",
@@ -35,9 +36,9 @@ export default function TrainingPage() {
         <DarkCTA
           headline="Ready to bring AI training to your team?"
           buttonText="Book a Free Session"
-          buttonHref="mailto:travis@aurapathai.com?subject=AI Training Session"
-          contactEmail="travis@aurapathai.com"
-          contactPhone="(734) 476-3021"
+          buttonHref={`mailto:${CONTACT.email}?subject=AI Training Session`}
+          contactEmail={CONTACT.email}
+          contactPhone={CONTACT.phone}
           linkedIn="linkedin.com/in/travcjohnson"
         />
       </main>

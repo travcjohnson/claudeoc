@@ -1,6 +1,7 @@
 "use client";
 
 import { TallyEmbed } from "@/components/shared/TallyEmbed";
+import { CONTACT } from "@/lib/constants";
 
 export function SponsorCTA() {
   return (
@@ -17,14 +18,14 @@ export function SponsorCTA() {
           <TallyEmbed
             formId=""
             placeholder
-            placeholderText="Sponsor interest form coming soon — email travis@aurapathai.com"
+            placeholderText={`Sponsor interest form coming soon — email ${CONTACT.email}`}
             title="Sponsor interest form"
           />
         </div>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-serif text-sm text-cloud-medium dark:text-cloud-light">
-          <span>travis@aurapathai.com</span>
+          <span>{CONTACT.email}</span>
           <span className="hidden sm:inline" aria-hidden="true">&middot;</span>
-          <span>(734) 476-3021</span>
+          <span>{CONTACT.phone}</span>
         </div>
       </div>
     </section>

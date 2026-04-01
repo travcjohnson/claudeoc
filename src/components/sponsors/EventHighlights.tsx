@@ -27,7 +27,7 @@ export function EventHighlights() {
           {highlights.map((h) => (
             <div
               key={h.label}
-              className="rounded-xl border border-slate-dark/10 bg-white p-6 dark:border-white/10 dark:bg-stone-950"
+              className="rounded-xl border border-slate-dark/10 bg-white p-6 dark:border-white/10 dark:bg-stone-800"
             >
               <p className="font-sans text-2xl font-bold text-slate-dark dark:text-cream">
                 {h.stat}

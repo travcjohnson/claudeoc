@@ -1,34 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-const WHATSAPP_URL = "https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK";
+import { CONTACT } from "@/lib/constants";
+import { useReveal } from "@/hooks/useReveal";
 const AMBIENT_GLOW_STYLE = { background: "radial-gradient(ellipse, #D4836A, transparent 70%)" };
 
 export function JoinCTA() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useReveal<HTMLElement>();
   const [showEmail, setShowEmail] = useState(false);
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const reveals = el.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
-    );
-    reveals.forEach((reveal) => observer.observe(reveal));
-    return () => observer.disconnect();
-  }, []);
 
   useEffect(() => {
     if (showEmail && inputRef.current) {
@@ -51,7 +33,7 @@ export function JoinCTA() {
     } catch {
       // silent fail
     }
-    window.open(WHATSAPP_URL, "_blank");
+    window.open(CONTACT.whatsapp, "_blank");
     setSubmitting(false);
     setShowEmail(false);
     setEmail("");
@@ -154,7 +136,7 @@ export function JoinCTA() {
                   Join the Community
                 </button>
                 <a
-                  href="https://lu.ma/claudeoc"
+                  href={CONTACT.luma}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-lg border border-ivory-light/20 px-10 py-4 font-sans text-base font-medium text-ivory-light transition-colors hover:bg-ivory-light/10"
