@@ -5,7 +5,7 @@ import { CONTACT } from "@/lib/constants";
 const VIDEO_SRC = "/videos/claude-ambassador.mp4";
 
 const stats = [
-  { value: "500+", label: "People Trained IRL" },
+  { value: "1,000+", label: "People Trained IRL" },
   { value: "70K", label: "Prompts Completed" },
   { value: "100+", label: "Projects Built" },
   { value: "10yr", label: "Product Management" },
@@ -20,35 +20,24 @@ export function TrainingHero() {
           <div className="flex flex-col items-start">
             <EyebrowBadge label="Anthropic Ambassador" />
             <h1 className="mt-8 font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
-              Travis Johnson
+              Free AI Training{" "}
+              <span className="text-clay">for Your Team</span>
             </h1>
             <p className="mt-3 font-sans text-lg font-medium text-slate-medium dark:text-stone-300">
-              1 of 50 Anthropic AI Ambassadors. Worldwide.
-            </p>
-            <p className="mt-4 font-sans text-base font-semibold text-clay">
-              Anthropic shipped 73 product updates in the last 60 days.{" "}
-              <span className="text-slate-dark dark:text-cream">
-                Your team is already behind.
-              </span>
+              10 sessions this quarter &middot; Apply to reserve yours.
             </p>
             <p className="mt-5 max-w-lg font-serif text-lg leading-relaxed text-slate-light dark:text-stone-300">
-              I come to your office and get everyone up to speed&nbsp;&mdash;
-              what Claude can do today, what&apos;s coming, and how teams like
-              yours are using it.
+              I come to your office and show your team what Claude can actually
+              do&nbsp;&mdash; tailored to your industry, your workflows, your
+              people. 90 minutes. One afternoon. Real impact.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a
-                href={`mailto:${CONTACT.email}?subject=Free Lunch %26 Learn`}
+                href={`mailto:${CONTACT.email}?subject=Free Training Application`}
                 className="inline-flex items-center gap-2 rounded-lg bg-clay px-7 py-3.5 font-sans text-sm font-medium text-white transition-colors hover:bg-accent"
               >
-                Book a Free Session
+                Apply for a Free Session
                 <span aria-hidden="true">&rarr;</span>
-              </a>
-              <a
-                href="#video"
-                className="inline-flex items-center rounded-lg border border-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light dark:border-white/20 dark:text-cream dark:hover:bg-white/10"
-              >
-                Watch My Story ▶
               </a>
             </div>
           </div>
