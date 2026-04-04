@@ -3,6 +3,7 @@
 import { useReveal } from "@/hooks/useReveal";
 import { useState, useEffect, useRef } from "react";
 import { CONTACT } from "@/lib/constants";
+import { captureEmail } from "@/lib/capture-email";
 
 export function ClosingCTA() {
   const sectionRef = useReveal<HTMLElement>();
@@ -24,11 +25,7 @@ export function ClosingCTA() {
       return;
     }
     if (!whatsAppEmail || !whatsAppEmail.includes("@")) return;
-    try {
-      const emails = JSON.parse(localStorage.getItem("claudeoc_emails") || "[]");
-      emails.push({ email: whatsAppEmail, source: "whatsapp", date: new Date().toISOString() });
-      localStorage.setItem("claudeoc_emails", JSON.stringify(emails));
-    } catch { /* silent */ }
+    captureEmail(whatsAppEmail, "whatsapp");
     window.open(CONTACT.whatsapp, "_blank");
     setShowWhatsAppEmail(false);
     setWhatsAppEmail("");
@@ -37,11 +34,7 @@ export function ClosingCTA() {
   const handleNewsletterSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newsletterEmail.includes("@")) return;
-    try {
-      const emails = JSON.parse(localStorage.getItem("claudeoc_emails") || "[]");
-      emails.push({ email: newsletterEmail, source: "newsletter", date: new Date().toISOString() });
-      localStorage.setItem("claudeoc_emails", JSON.stringify(emails));
-    } catch { /* silent */ }
+    captureEmail(newsletterEmail, "newsletter");
     setNewsletterEmail("");
     setNewsletterSubmitted(true);
   };

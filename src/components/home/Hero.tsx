@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { EyebrowBadge } from "@/components/shared/EyebrowBadge";
 import { StatRow } from "@/components/shared/StatRow";
 import { CONTACT } from "@/lib/constants";
+import { captureEmail } from "@/lib/capture-email";
 
 const MOUSE_STYLE_INITIAL = { "--mouse-x": "50%", "--mouse-y": "50%" } as React.CSSProperties;
 const GLOW_CORAL_STYLE = { background: "radial-gradient(circle, rgba(212,131,106,0.4), transparent 70%)" };
@@ -28,11 +29,7 @@ export function Hero() {
       return;
     }
     if (!joinEmail || !joinEmail.includes("@")) return;
-    try {
-      const emails = JSON.parse(localStorage.getItem("claudeoc_emails") || "[]");
-      emails.push({ email: joinEmail, source: "hero-join", date: new Date().toISOString() });
-      localStorage.setItem("claudeoc_emails", JSON.stringify(emails));
-    } catch { /* silent */ }
+    captureEmail(joinEmail, "hero-join");
     window.open(CONTACT.whatsapp, "_blank");
     setShowJoinEmail(false);
     setJoinEmail("");
