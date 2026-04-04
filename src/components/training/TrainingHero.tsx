@@ -2,8 +2,7 @@ import { EyebrowBadge } from "@/components/shared/EyebrowBadge";
 import { StatRow } from "@/components/shared/StatRow";
 import { CONTACT } from "@/lib/constants";
 
-// TODO: Replace with actual YouTube video ID once available
-const YOUTUBE_VIDEO_ID: string | null = null;
+const VIDEO_SRC = "/videos/claude-ambassador.mp4";
 
 const stats = [
   { value: "500+", label: "People Trained IRL" },
@@ -45,40 +44,27 @@ export function TrainingHero() {
                 Book a Free Session
                 <span aria-hidden="true">&rarr;</span>
               </a>
-              {YOUTUBE_VIDEO_ID && (
-                <a
-                  href="#video"
-                  className="inline-flex items-center rounded-lg border border-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light dark:border-white/20 dark:text-cream dark:hover:bg-white/10"
-                >
-                  Watch My Story ▶
-                </a>
-              )}
+              <a
+                href="#video"
+                className="inline-flex items-center rounded-lg border border-slate-dark px-7 py-3.5 font-sans text-sm font-medium text-slate-dark transition-colors hover:bg-slate-dark hover:text-ivory-light dark:border-white/20 dark:text-cream dark:hover:bg-white/10"
+              >
+                Watch My Story ▶
+              </a>
             </div>
           </div>
           {/* Video column — DOM second, visually left on desktop */}
           <div id="video" className="lg:order-first">
-            <div className="aspect-video w-full overflow-hidden rounded-xl bg-ivory-medium dark:bg-stone-800">
-              {YOUTUBE_VIDEO_ID ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}`}
-                  title="How I became a Claude Community Ambassador"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  loading="lazy"
-                  className="h-full w-full"
-                />
-              ) : (
-                <div className="flex h-full w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-slate-dark/20 dark:border-white/15">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-clay/10 dark:bg-clay/20">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-clay">
-                      <path d="M8 5v14l11-7L8 5z" fill="currentColor" />
-                    </svg>
-                  </div>
-                  <span className="mt-4 font-sans text-sm font-medium text-slate-light dark:text-muted">
-                    Video coming soon
-                  </span>
-                </div>
-              )}
+            <div className="mx-auto w-full max-w-xs overflow-hidden rounded-xl bg-ivory-medium shadow-lg dark:bg-stone-800">
+              <video
+                src={VIDEO_SRC}
+                controls
+                playsInline
+                preload="metadata"
+                poster="/images/travis/headshot.jpg"
+                className="h-full w-full"
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
