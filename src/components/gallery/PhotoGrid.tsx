@@ -54,7 +54,7 @@ export function PhotoGrid() {
                   <p className="font-sans text-xs font-medium text-white/90">
                     ClaudeOC Inaugural Meetup
                   </p>
-                  <p className="font-sans text-[10px] text-white/70">
+                  <p className="font-sans text-xs text-white/70">
                     Feb 28, 2026
                   </p>
                 </div>

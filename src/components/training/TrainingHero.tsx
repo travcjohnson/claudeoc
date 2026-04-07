@@ -1,14 +1,13 @@
 import { EyebrowBadge } from "@/components/shared/EyebrowBadge";
 import { StatRow } from "@/components/shared/StatRow";
-import { CONTACT } from "@/lib/constants";
 
 const VIDEO_SRC = "/videos/claude-ambassador.mp4";
 
 const stats = [
-  { value: "1,000+", label: "People Trained IRL" },
-  { value: "70K", label: "Prompts Completed" },
-  { value: "100+", label: "Projects Built" },
-  { value: "10yr", label: "Product Management" },
+  { value: "1 of 50", label: "Ambassadors Globally" },
+  { value: "100+", label: "Executives & C-Suite" },
+  { value: "1,000+", label: "Across Industries" },
+  { value: "Day-One", label: "Working AI Agents" },
 ];
 
 export function TrainingHero() {
@@ -20,23 +19,23 @@ export function TrainingHero() {
           <div className="flex flex-col items-start">
             <EyebrowBadge label="Anthropic Ambassador" />
             <h1 className="mt-8 font-sans text-4xl font-bold tracking-tight text-slate-dark dark:text-cream md:text-5xl">
-              Free AI Training{" "}
+              AI Training{" "}
               <span className="text-clay">for Your Team</span>
             </h1>
             <p className="mt-3 font-sans text-lg font-medium text-slate-medium dark:text-stone-300">
-              10 sessions this quarter &middot; Apply to reserve yours.
+              Limited sessions for qualified OC companies.
             </p>
             <p className="mt-5 max-w-lg font-serif text-lg leading-relaxed text-slate-light dark:text-stone-300">
               I come to your office and show your team what Claude can actually
               do&nbsp;&mdash; tailored to your industry, your workflows, your
-              people. 90 minutes. One afternoon. Real impact.
+              people. 60&ndash;90 minutes. One afternoon. Real impact.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a
-                href={`mailto:${CONTACT.email}?subject=Free Training Application`}
+                href="#request"
                 className="inline-flex items-center gap-2 rounded-lg bg-clay px-7 py-3.5 font-sans text-sm font-medium text-white transition-colors hover:bg-accent"
               >
-                Apply for a Free Session
+                Request a Session
                 <span aria-hidden="true">&rarr;</span>
               </a>
             </div>

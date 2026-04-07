@@ -12,11 +12,11 @@ import { CONTACT } from "@/lib/constants";
 export const metadata: Metadata = {
   title: "AI Training — Travis Johnson | ClaudeOC",
   description:
-    "Free AI training for OC companies from a Claude Ambassador. 10 complimentary sessions this quarter. Apply to reserve yours.",
+    "Complimentary AI training for qualified Orange County companies. Limited sessions available from a Claude Ambassador.",
   openGraph: {
     title: "AI Training — Travis Johnson | ClaudeOC",
     description:
-      "Free AI training for OC companies from a Claude Ambassador. 10 complimentary sessions this quarter. Apply to reserve yours.",
+      "Complimentary AI training for qualified Orange County companies. Limited sessions available from a Claude Ambassador.",
     type: "website",
     url: "https://claudeoc.com/training",
   },
@@ -30,13 +30,13 @@ export default function TrainingPage() {
         <TrainingHero />
         <LogoCloudSection />
         <TheRoom />
-        <TrainingMenu />
         <TrainerBackground />
+        <TrainingMenu />
 
         <DarkCTA
-          headline="10 sessions this quarter. Apply for yours."
-          buttonText="Apply for Free Training"
-          buttonHref={`mailto:${CONTACT.email}?subject=Free Training Application`}
+          headline="Limited sessions available. Apply for yours."
+          buttonText="Request a Session"
+          buttonHref="#request"
           contactEmail={CONTACT.email}
           contactPhone={CONTACT.phone}
           linkedIn="linkedin.com/in/travcjohnson"
