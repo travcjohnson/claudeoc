@@ -129,13 +129,6 @@ html.dark ::-webkit-scrollbar-thumb { background: var(--color-clay); }
   transform: translateY(0);
 }
 
-/* Fallback: ensure reveals become visible even if observer hasn't fired */
-.reveal:not(.visible) {
-  animation: revealFallback 0s 1.2s both;
-}
-@keyframes revealFallback {
-  to { opacity: 1; transform: translateY(0); }
-}
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
@@ -161,19 +154,7 @@ html.dark ::-webkit-scrollbar-thumb { background: var(--color-clay); }
   background: linear-gradient(90deg, transparent, rgba(212, 131, 106, 0.3), transparent);
 }
 
-/* ─── Gallery Gradient Cards ─── */
-.gallery-card-1 {
-  background: linear-gradient(135deg, #2D2926 0%, #5e3d2e 40%, #d4836a 80%, #e8a88e 100%);
-}
-.gallery-card-2 {
-  background: linear-gradient(225deg, #2D2926 0%, #3d4a52 40%, #6a9bcc 80%, #9dbbd9 100%);
-}
-.gallery-card-3 {
-  background: linear-gradient(315deg, #2D2926 0%, #3d4a3a 40%, #788c5d 80%, #a3b48a 100%);
-}
-.gallery-card-4 {
-  background: linear-gradient(45deg, #2D2926 0%, #4a3d4e 40%, #cbcadb 80%, #dddce8 100%);
-}
+/* ─── Gallery Gradient Card (used by UpcomingEvent) ─── */
 .gallery-card-5 {
   background: linear-gradient(135deg, #d4836a 0%, #e3dacc 40%, #6a9bcc 70%, #bcd1ca 100%);
 }
@@ -202,5 +183,31 @@ html.dark ::-webkit-scrollbar-thumb { background: var(--color-clay); }
 
 /* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
   .reveal { transition: none; opacity: 1; transform: none; }
+
+  /* Disable looping ambient animations */
+  .animate-glow-pulse,
+  .animate-float { animation: none; }
+
+  /* Skip entry animations to their final state */
+  .animate-fade-up,
+  .animate-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Neutralize stagger delays so content is immediately visible */
+  .anim-delay-1,
+  .anim-delay-2,
+  .anim-delay-3,
+  .anim-delay-4,
+  .anim-delay-5,
+  .anim-delay-6,
+  .anim-delay-7 {
+    animation-delay: 0s;
+    opacity: 1;
+  }
 }

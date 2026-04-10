@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ThemeToggle } from "@/components/shared/ThemeToggle";
 
 const navLinks = [
@@ -15,6 +15,8 @@ const navLinks = [
 export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
+  const firstMenuLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -24,7 +26,41 @@ export function Navigation() {
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    const main = document.querySelector("main");
+    const footer = document.querySelector("footer");
+
+    if (mobileOpen) {
+      main?.setAttribute("inert", "");
+      footer?.setAttribute("inert", "");
+      // Focus first link once overlay transition starts
+      requestAnimationFrame(() => firstMenuLinkRef.current?.focus());
+    } else {
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
+    };
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (mobileOpen) return;
+    // After the menu closes, return focus to the toggle button
+    if (document.activeElement === document.body) {
+      toggleButtonRef.current?.focus();
+    }
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [mobileOpen]);
 
   return (
@@ -66,7 +102,7 @@ export function Navigation() {
 
         <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
-          <button onClick={() => setMobileOpen(!mobileOpen)} className="relative z-50 flex h-11 w-11 flex-col items-center justify-center gap-1.5" aria-label="Toggle navigation" aria-expanded={mobileOpen} aria-controls="mobile-menu">
+          <button ref={toggleButtonRef} onClick={() => setMobileOpen(!mobileOpen)} className="relative z-50 flex h-11 w-11 flex-col items-center justify-center gap-1.5" aria-label="Toggle navigation" aria-expanded={mobileOpen} aria-controls="mobile-menu">
             <span className={`block h-0.5 w-5 bg-slate-dark transition-all duration-300 dark:bg-cream ${mobileOpen ? "translate-y-2 rotate-45" : ""}`} />
             <span className={`block h-0.5 w-5 bg-slate-dark transition-all duration-300 dark:bg-cream ${mobileOpen ? "opacity-0" : ""}`} />
             <span className={`block h-0.5 w-5 bg-slate-dark transition-all duration-300 dark:bg-cream ${mobileOpen ? "-translate-y-2 -rotate-45" : ""}`} />
@@ -74,10 +110,23 @@ export function Navigation() {
         </div>
       </nav>
 
-      <div id="mobile-menu" className={`fixed inset-0 z-40 bg-ivory-light transition-all duration-300 dark:bg-stone-950 lg:hidden ${mobileOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}>
+      <div
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Main menu"
+        inert={!mobileOpen}
+        className={`fixed inset-0 z-40 bg-ivory-light transition-all duration-300 dark:bg-stone-950 lg:hidden ${mobileOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
+      >
         <div className="flex h-full flex-col items-center justify-center gap-8">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} onClick={() => setMobileOpen(false)} className="font-sans text-2xl font-medium text-slate-dark transition-colors hover:text-clay dark:text-cream">
+          {navLinks.map((link, i) => (
+            <a
+              key={link.href}
+              ref={i === 0 ? firstMenuLinkRef : undefined}
+              href={link.href}
+              onClick={() => setMobileOpen(false)}
+              className="font-sans text-2xl font-medium text-slate-dark transition-colors hover:text-clay dark:text-cream"
+            >
               {link.label}
             </a>
           ))}

@@ -15,14 +15,15 @@ export function CommunitySegments() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           {/* Left — Photo / Visual */}
           <div className="reveal">
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-clay/20 via-ivory-dark to-sky/10 dark:from-clay/10 dark:via-stone-800 dark:to-sky/5">
-              <div className="aspect-[4/3]">
-                <img
-                  src="/images/travis/headshot.jpg"
-                  alt="Travis Johnson speaking at a ClaudeOC event"
-                  className="h-full w-full rounded-2xl object-cover object-top"
-                />
-              </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              <img
+                src="/images/travis/headshot.jpg"
+                alt="Travis Johnson speaking at a ClaudeOC event"
+                width={800}
+                height={533}
+                loading="lazy"
+                className="h-full w-full object-cover object-top"
+              />
             </div>
           </div>
 

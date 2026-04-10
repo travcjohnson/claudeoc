@@ -69,6 +69,8 @@ export function PhotoCarousel() {
             <img
               src={featuredPhoto.src}
               alt={featuredPhoto.alt}
+              width={2100}
+              height={1576}
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
@@ -97,6 +99,8 @@ export function PhotoCarousel() {
               <img
                 src={photo.src}
                 alt={photo.alt}
+                width={2100}
+                height={1576}
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
