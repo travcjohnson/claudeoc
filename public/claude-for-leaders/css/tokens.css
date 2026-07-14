@@ -1,0 +1,93 @@
+/* Design tokens — source unique de vérité pour l'identité visuelle.
+   Modifier ici revient à retoucher toute la présentation. */
+
+:root {
+  /* ——— Couleurs ——— */
+  --bg-cream: #F5F1E8;
+  --bg-black: #0F0F0F;
+  --ink: #0F0F0F;
+  --ink-inverse: #FFFFFF;
+  --ink-muted: #6B6B6B;
+  --ink-muted-dark: #9B9B9B;
+  --accent-clay: #D97757;
+  --accent-bright: #FC750C;
+  --neutral: #E8E4DB;
+  --neutral-2: #D8D3C7;
+
+  --code-bg: #0F0F0F;
+  --code-bg-soft: #1A1A1A;
+  --code-text: #E6EDF3;
+  --code-green: #7EE787;
+  --code-orange: #FFA657;
+  --code-comment: #8B949E;
+  --code-pink: #FF7B72;
+
+  /* Chapter dividers — exception gradient assumée */
+  --gradient-chapter: linear-gradient(120deg, #F28B3C 0%, #D97757 35%, #B5487A 70%, #7B3F9C 100%);
+
+  /* ——— Typographie ——— */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', 'Menlo', 'Courier New', monospace;
+
+  /* Tailles calées sur canvas 1920×1080, scalées via transform */
+  --fs-title-xxl: 150px;
+  --fs-title-xl: 120px;
+  --fs-title-l: 96px;
+  --fs-title-m: 72px;
+  --fs-title-s: 56px;
+  --fs-body-xl: 40px;
+  --fs-body-l: 32px;
+  --fs-body: 26px;
+  --fs-body-s: 22px;
+  --fs-eyebrow: 16px;
+  --fs-footer: 13px;
+  --fs-code: 22px;
+  --fs-code-s: 18px;
+
+  --lh-tight: 1.02;
+  --lh-heading: 1.08;
+  --lh-body: 1.5;
+  --lh-code: 1.55;
+
+  --ls-tight: -0.02em;
+  --ls-body: 0;
+  --ls-eyebrow: 0.18em;
+  --ls-footer: 0.14em;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /* ——— Espaces ——— */
+  --sp-1: 8px;
+  --sp-2: 16px;
+  --sp-3: 24px;
+  --sp-4: 32px;
+  --sp-5: 48px;
+  --sp-6: 64px;
+  --sp-7: 80px;
+  --sp-8: 120px;
+
+  /* ——— Canvas ——— */
+  --canvas-w: 1920px;
+  --canvas-h: 1080px;
+  --pad-x: 80px;
+  --pad-y: 60px;
+
+  /* ——— Durées & easings ——— */
+  --dur-fast: 300ms;
+  --dur-base: 500ms;
+  --dur-slow: 700ms;
+  --dur-xslow: 900ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-slide: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ——— Bordures & radii ——— */
+  --radius: 6px;
+  --radius-lg: 10px;
+  --border-width: 1px;
+  --border-color-light: var(--neutral-2);
+  --border-color-dark: rgba(255, 255, 255, 0.14);
+}

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Management — Claude for Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #141414;
+    --black-2: #1E1E1E;
+    --white: #FFFFFF;
+    --canvas: #FFFFFF;
+    --lime: #C6F432;
+    --lime-text: #7A9B00;    /* lime for LARGE text on white (>=3:1) */
+    --lime-text-sm: #5F7A00; /* lime for small text on white (>=4.5:1) */
+    --amber: #B45309;       /* at-risk text on white */
+    --amber-bright: #F59E0B;
+    --red: #B3402E;         /* muted red, blocked */
+    --ink: #141414;
+    --gray: #6E6E6E;
+    --gray-dark: #9A9A9A;   /* muted text on black */
+    --line: #E4E4E0;
+    --line-dark: #2C2C2C;
+    --track: #ECECE8;
+    --track-dark: #2A2A2A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: 'Archivo', -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  .label {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  /* ── Top bar (off-black) ─────────────── */
+  .topbar {
+    background: var(--black);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 18px 28px;
+  }
+  .topbar-left { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+  .wordmark {
+    font-weight: 800;
+    font-stretch: 115%;
+    font-size: 16px;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+  .wordmark .dot { color: var(--lime); }
+  .page-title {
+    color: var(--gray-dark);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    padding-left: 18px;
+    border-left: 1px solid var(--line-dark);
+  }
+  .back-link {
+    color: var(--lime);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  /* ── Page shell ──────────────────────── */
+  .shell {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 30px 28px 56px;
+  }
+  .dashboard-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--black);
+  }
+  .dashboard-head h1 {
+    font-size: 32px;
+    font-weight: 850;
+    font-stretch: 120%;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    line-height: 1.05;
+  }
+  .dashboard-head h1 .slash { color: var(--lime-text); }
+  .dashboard-head .agency-sub {
+    color: var(--gray);
+    font-size: 13px;
+    margin-top: 6px;
+  }
+  .dashboard-head .asof {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--lime);
+    padding: 5px 12px;
+  }
+
+  /* ── KPI row ─────────────────────────── */
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 2px solid var(--black);
+    margin-bottom: 28px;
+  }
+  .kpi {
+    padding: 18px 20px 16px;
+    border-right: 2px solid var(--black);
+  }
+  .kpi:last-child { border-right: none; }
+  .kpi .kpi-label { color: var(--gray); margin-bottom: 10px; }
+  .kpi .kpi-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .kpi .kpi-value .unit { font-size: 16px; color: var(--gray); font-weight: 500; }
+  .kpi .kpi-note { font-size: 12px; color: var(--gray); margin-top: 8px; font-weight: 500; }
+  .kpi .kpi-note.warn { color: var(--amber); font-weight: 700; }
+  .kpi .kpi-note.good { color: var(--lime-text-sm); font-weight: 700; }
+
+  /* ── Layout ──────────────────────────── */
+  .layout {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 26px;
+    align-items: start;
+  }
+
+  /* ── Mandate list — dark sidebar ─────── */
+  .mandates {
+    background: var(--black);
+    color: var(--white);
+    padding: 20px 14px 14px;
+  }
+  .mandates h2 { color: var(--gray-dark); padding: 0 10px 14px; }
+  .mandate-card {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-left: 3px solid transparent;
+    padding: 14px 12px 13px;
+    cursor: pointer;
+    font-family: inherit;
+    color: var(--white);
+    display: block;
+    transition: background 0.14s ease;
+  }
+  .mandate-card:hover { background: var(--black-2); }
+  .mandate-card.active {
+    background: var(--black-2);
+    border-left-color: var(--lime);
+  }
+  .mandate-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 2px;
+  }
+  .mandate-name {
+    font-weight: 700;
+    font-size: 14px;
+    font-stretch: 108%;
+    letter-spacing: 0.01em;
+  }
+  .mandate-card.active .mandate-name { color: var(--lime); }
+  .mandate-sub { font-size: 12px; color: var(--gray-dark); margin-bottom: 11px; }
+  .chip {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  /* chips on dark sidebar */
+  .mandates .chip.on-track { background: var(--lime); color: var(--black); }
+  .mandates .chip.at-risk { background: var(--amber-bright); color: var(--black); }
+  .mandates .chip.blocked { background: var(--red); color: var(--white); }
+  /* chips on white canvas */
+  .detail .chip.on-track { background: var(--black); color: var(--lime); }
+  .detail .chip.at-risk { background: var(--amber-bright); color: var(--black); }
+  .detail .chip.blocked { background: var(--red); color: var(--white); }
+
+  .burn-row { display: flex; align-items: center; gap: 10px; }
+  .burn-track {
+    flex: 1;
+    height: 10px;
+    background: var(--track-dark);
+    overflow: hidden;
+  }
+  .burn-fill { height: 100%; background: var(--lime); }
+  .burn-fill.warn { background: var(--amber-bright); }
+  .burn-fill.over { background: var(--red); }
+  .burn-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--gray-dark);
+    white-space: nowrap;
+  }
+
+  /* ── Detail pane (white canvas) ──────── */
+  .detail { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+  .panel {
+    border: 2px solid var(--black);
+    padding: 22px 24px;
+    background: var(--white);
+  }
+  .detail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .detail-head h2 {
+    font-size: 24px;
+    font-weight: 850;
+    font-stretch: 118%;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    line-height: 1.1;
+  }
+  .detail-brief { color: var(--gray); font-size: 13.5px; max-width: 62ch; margin-bottom: 18px; }
+  .detail-meta {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    border-top: 2px solid var(--black);
+  }
+  .meta-item .meta-label { color: var(--gray); margin-bottom: 3px; }
+  .meta-item .meta-value {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .panel h3 { color: var(--ink); margin-bottom: 16px; }
+  .panel h3::before { content: "/ "; color: var(--lime-text-sm); }
+  .panel-title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .panel-title-row h3 { margin-bottom: 0; }
+  .task-progress-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* tasks */
+  .task-progress-track {
+    height: 14px;
+    background: var(--track);
+    border: 2px solid var(--black);
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .task-progress-fill {
+    height: 100%;
+    background: var(--lime);
+    transition: width 0.25s ease;
+  }
+  ul.tasks { list-style: none; }
+  .task {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 2px;
+    border-bottom: 1px solid var(--line);
+  }
+  .task:last-child { border-bottom: none; }
+  .task input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 19px;
+    height: 19px;
+    border: 2px solid var(--black);
+    border-radius: 0;
+    background: var(--white);
+    cursor: pointer;
+    flex-shrink: 0;
+    display: grid;
+    place-content: center;
+    transition: background 0.12s ease;
+  }
+  .task input[type="checkbox"]:checked { background: var(--lime); }
+  .task input[type="checkbox"]:checked::after {
+    content: "";
+    width: 9px;
+    height: 5px;
+    border-left: 2.5px solid var(--black);
+    border-bottom: 2.5px solid var(--black);
+    transform: rotate(-45deg) translate(0.5px, -1px);
+  }
+  .task label {
+    flex: 1;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    min-width: 0;
+  }
+  .task.done label { text-decoration: line-through; color: var(--gray); font-weight: 400; }
+  .task .task-owner {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+  .task .task-due {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--gray);
+    white-space: nowrap;
+    min-width: 54px;
+    text-align: right;
+  }
+  .task .task-due.soon { color: var(--amber); font-weight: 600; }
+
+  /* timeline */
+  .timeline-scroll { overflow-x: auto; padding-bottom: 4px; }
+  .timeline { display: flex; gap: 14px; min-width: max-content; }
+  .tl-item {
+    border: 2px solid var(--black);
+    border-top-width: 6px;
+    border-top-color: var(--lime);
+    padding: 12px 14px;
+    min-width: 160px;
+  }
+  .tl-item.risk { border-top-color: var(--amber-bright); }
+  .tl-item.hard { border-top-color: var(--red); }
+  .tl-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray);
+    margin-bottom: 5px;
+  }
+  .tl-title {
+    font-size: 13px;
+    font-weight: 700;
+    font-stretch: 105%;
+    letter-spacing: 0.01em;
+  }
+  .tl-days { font-size: 11.5px; color: var(--gray); margin-top: 4px; font-weight: 500; }
+  .tl-days.soon { color: var(--amber); font-weight: 700; }
+
+  /* team workload */
+  .team-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+  }
+  .member { border: 1px solid var(--line); padding: 13px 14px; }
+  .member-top { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; }
+  .avatar {
+    width: 28px; height: 28px;
+    background: var(--black);
+    color: var(--lime);
+    display: grid;
+    place-content: center;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .member-name { font-size: 12.5px; font-weight: 700; line-height: 1.2; }
+  .member-role {
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+  }
+  .cap-track {
+    height: 10px;
+    background: var(--track);
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .cap-fill { height: 100%; background: var(--lime); border-right: 2px solid var(--black); }
+  .cap-fill.warn { background: var(--amber-bright); }
+  .cap-fill.over { background: var(--red); }
+  .cap-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    color: var(--gray);
+  }
+
+  /* footer */
+  footer {
+    background: var(--black);
+    color: var(--gray-dark);
+    padding: 24px 28px 30px;
+    font-size: 12.5px;
+    text-align: center;
+  }
+  footer a { color: var(--lime); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ── Responsive ──────────────────────── */
+  @media (max-width: 980px) {
+    .layout { grid-template-columns: 1fr; }
+    .kpis { grid-template-columns: 1fr 1fr; }
+    .kpi:nth-child(2) { border-right: none; }
+    .kpi:nth-child(1), .kpi:nth-child(2) { border-bottom: 2px solid var(--black); }
+  }
+  @media (max-width: 560px) {
+    .shell { padding: 22px 16px 40px; }
+    .topbar { padding: 16px 16px; }
+    .dashboard-head h1 { font-size: 24px; }
+    .kpi { padding: 14px 14px 12px; }
+    .kpi .kpi-value { font-size: 26px; }
+    .panel { padding: 18px 16px; }
+    .task .task-owner { display: none; }
+    .detail-meta { gap: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <span class="wordmark">Claude for Leaders<span class="dot">.</span></span>
+    <span class="page-title">Demo — Studio ops dashboard</span>
+  </div>
+  <a class="back-link" href="../index.html">&larr; Back to the deck</a>
+</header>
+
+<main class="shell">
+  <div class="dashboard-head">
+    <div>
+      <h1>Wavecrest<span class="slash"> /</span> Mandates</h1>
+      <div class="agency-sub">Fictional creative studio &middot; Costa Mesa, CA &middot; all data is illustrative</div>
+    </div>
+    <div class="asof">WK OF JUL 13, 2026</div>
+  </div>
+
+  <!-- KPI row -->
+  <section class="kpis" aria-label="Key metrics">
+    <div class="kpi">
+      <div class="kpi-label label">Active mandates</div>
+      <div class="kpi-value" id="kpi-mandates">6</div>
+      <div class="kpi-note">2 renewals in Q3</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label label">Tasks due this week</div>
+      <div class="kpi-value" id="kpi-due">0</div>
+      <div class="kpi-note warn" id="kpi-due-note"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label label">Hours logged (wk)</div>
+      <div class="kpi-value">412<span class="unit"> h</span></div>
+      <div class="kpi-note">of 460 planned</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label label">Team utilization</div>
+      <div class="kpi-value">87<span class="unit">%</span></div>
+      <div class="kpi-note good">Target 80&ndash;90%</div>
+    </div>
+  </section>
+
+  <div class="layout">
+    <!-- Left: mandate list -->
+    <aside class="mandates" aria-label="Client mandates">
+      <h2 class="label">Client mandates</h2>
+      <div id="mandate-list"></div>
+    </aside>
+
+    <!-- Right: detail pane -->
+    <section class="detail" aria-live="polite">
+      <div class="panel">
+        <div class="detail-head">
+          <h2 id="d-name"></h2>
+          <span class="chip" id="d-chip"></span>
+        </div>
+        <p class="detail-brief" id="d-brief"></p>
+        <div class="detail-meta">
+          <div class="meta-item">
+            <div class="meta-label label">Account lead</div>
+            <div class="meta-value" id="d-lead"></div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label label">Budget burned</div>
+            <div class="meta-value" id="d-burn"></div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label label">Retainer</div>
+            <div class="meta-value" id="d-retainer"></div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label label">Renewal</div>
+            <div class="meta-value" id="d-renewal"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title-row">
+          <h3 class="label">Tasks</h3>
+          <span class="task-progress-label" id="d-task-count"></span>
+        </div>
+        <div class="task-progress-track"><div class="task-progress-fill" id="d-task-bar" style="width:0%"></div></div>
+        <ul class="tasks" id="d-tasks"></ul>
+      </div>
+
+      <div class="panel">
+        <h3 class="label">Upcoming deadlines</h3>
+        <div class="timeline-scroll">
+          <div class="timeline" id="d-timeline"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 class="label">Team workload &mdash; this mandate</h3>
+        <div class="team-row" id="d-team"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  Demo built with Claude Code &middot; Travis Johnson &middot; AuraPath AI &middot; <a href="https://aurapathai.com">aurapathai.com</a>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  // ── In-memory data (all fictional) ─────────────────────────
+  var TODAY = new Date(2026, 6, 14); // Jul 14, 2026
+
+  var mandates = [
+    {
+      id: "harborline",
+      name: "Harborline Coffee",
+      scope: "Brand refresh + e-commerce relaunch",
+      status: "on-track",
+      burn: 62,
+      lead: "M. Okafor",
+      retainer: "$18k / mo",
+      renewal: "Oct 2026",
+      brief: "Full rebrand rolling into a Shopify Plus relaunch. Visual identity approved; now in build and content-migration phase ahead of the fall launch window.",
+      tasks: [
+        { t: "Finalize packaging dielines for core SKUs", owner: "Dana", due: "2026-07-10", done: true },
+        { t: "PDP template build (Shopify Plus)", owner: "Leo", due: "2026-07-16", done: false },
+        { t: "Migrate 140 product records + imagery", owner: "Priya", due: "2026-07-17", done: false },
+        { t: "Email flows: welcome + abandon cart", owner: "Sofia", due: "2026-07-22", done: false },
+        { t: "Launch-week paid social creative (3 sets)", owner: "Dana", due: "2026-07-28", done: false }
+      ],
+      deadlines: [
+        { d: "2026-07-17", t: "Catalog migration complete", kind: "risk" },
+        { d: "2026-07-24", t: "Staging site client review", kind: "ok" },
+        { d: "2026-08-04", t: "Public launch", kind: "hard" }
+      ],
+      team: [
+        { n: "Dana R.", role: "Design", pct: 78 },
+        { n: "Leo T.", role: "Dev", pct: 92 },
+        { n: "Priya S.", role: "Content", pct: 64 },
+        { n: "Sofia M.", role: "Lifecycle", pct: 55 }
+      ]
+    },
+    {
+      id: "meridian",
+      name: "Meridian Health Group",
+      scope: "Patient-portal UX + content system",
+      status: "at-risk",
+      burn: 81,
+      lead: "T. Vasquez",
+      retainer: "$26k / mo",
+      renewal: "Sep 2026",
+      brief: "Portal redesign is in usability testing, but legal review of the content system is running two weeks behind and compressing the QA window before the September release.",
+      tasks: [
+        { t: "Round-2 usability test synthesis", owner: "Amara", due: "2026-07-15", done: false },
+        { t: "Legal review: patient-comms templates", owner: "T. Vasquez", due: "2026-07-16", done: false },
+        { t: "Design QA on appointment flows", owner: "Dana", due: "2026-07-21", done: false },
+        { t: "Accessibility audit (WCAG 2.2 AA)", owner: "Leo", due: "2026-07-24", done: false },
+        { t: "Stakeholder demo deck", owner: "Amara", due: "2026-07-09", done: true }
+      ],
+      deadlines: [
+        { d: "2026-07-16", t: "Legal sign-off (slipping)", kind: "risk" },
+        { d: "2026-07-28", t: "QA gate", kind: "risk" },
+        { d: "2026-09-01", t: "Portal release", kind: "hard" }
+      ],
+      team: [
+        { n: "Amara K.", role: "UX Research", pct: 96 },
+        { n: "Dana R.", role: "Design", pct: 71 },
+        { n: "Leo T.", role: "Dev", pct: 84 }
+      ]
+    },
+    {
+      id: "kestrel",
+      name: "Kestrel Outdoor Co.",
+      scope: "Performance marketing retainer",
+      status: "on-track",
+      burn: 48,
+      lead: "S. Whitfield",
+      retainer: "$12k / mo",
+      renewal: "Jan 2027",
+      brief: "Ongoing paid search and social. ROAS holding at 4.1 after the June creative refresh; July focus is expanding the hiking-apparel line into two new regional markets.",
+      tasks: [
+        { t: "July budget reallocation memo", owner: "Sofia", due: "2026-07-08", done: true },
+        { t: "New-market keyword expansion (PNW, Rockies)", owner: "Marcus", due: "2026-07-15", done: false },
+        { t: "Creative test: UGC vs. studio (apparel)", owner: "Dana", due: "2026-07-23", done: false },
+        { t: "Mid-month performance readout", owner: "Marcus", due: "2026-07-18", done: false }
+      ],
+      deadlines: [
+        { d: "2026-07-18", t: "Mid-month readout", kind: "ok" },
+        { d: "2026-07-31", t: "Monthly report + invoice", kind: "ok" },
+        { d: "2026-08-15", t: "Fall campaign kickoff", kind: "ok" }
+      ],
+      team: [
+        { n: "Marcus L.", role: "Paid Media", pct: 66 },
+        { n: "Sofia M.", role: "Lifecycle", pct: 58 },
+        { n: "Dana R.", role: "Design", pct: 40 }
+      ]
+    },
+    {
+      id: "bluefin",
+      name: "Bluefin Analytics",
+      scope: "Product-launch site + demand gen",
+      status: "blocked",
+      burn: 55,
+      lead: "M. Okafor",
+      retainer: "$21k / mo",
+      renewal: "Nov 2026",
+      brief: "Launch site is design-complete but blocked: client's security team has not yet provisioned staging access, and final product screenshots are pending their v2.4 release.",
+      tasks: [
+        { t: "Homepage + pricing page design", owner: "Dana", due: "2026-07-03", done: true },
+        { t: "Obtain staging environment access", owner: "M. Okafor", due: "2026-07-11", done: false },
+        { t: "Product screenshot capture (v2.4)", owner: "Priya", due: "2026-07-20", done: false },
+        { t: "Webinar landing page + reg flow", owner: "Leo", due: "2026-07-27", done: false },
+        { t: "Analyst-brief one-pager", owner: "Priya", due: "2026-07-06", done: true }
+      ],
+      deadlines: [
+        { d: "2026-07-20", t: "Unblock: staging access", kind: "hard" },
+        { d: "2026-08-10", t: "Site content freeze", kind: "risk" },
+        { d: "2026-08-25", t: "Launch webinar", kind: "ok" }
+      ],
+      team: [
+        { n: "Dana R.", role: "Design", pct: 35 },
+        { n: "Leo T.", role: "Dev", pct: 52 },
+        { n: "Priya S.", role: "Content", pct: 74 }
+      ]
+    },
+    {
+      id: "solstice",
+      name: "Solstice Hospitality",
+      scope: "Three-property website rebuild",
+      status: "on-track",
+      burn: 37,
+      lead: "T. Vasquez",
+      retainer: "$15k / mo",
+      renewal: "Feb 2027",
+      brief: "Rebuilding booking-first websites for three boutique properties on a shared design system. Property one (Laguna) is in build; two and three follow on a six-week cadence.",
+      tasks: [
+        { t: "Design system tokens + components v1", owner: "Dana", due: "2026-07-07", done: true },
+        { t: "Laguna property: page builds", owner: "Leo", due: "2026-07-21", done: false },
+        { t: "Booking-engine integration spike", owner: "Leo", due: "2026-07-16", done: false },
+        { t: "Photography art direction (property 2)", owner: "Dana", due: "2026-07-30", done: false }
+      ],
+      deadlines: [
+        { d: "2026-07-25", t: "Laguna internal QA", kind: "ok" },
+        { d: "2026-08-08", t: "Laguna go-live", kind: "hard" },
+        { d: "2026-09-19", t: "Property 2 kickoff", kind: "ok" }
+      ],
+      team: [
+        { n: "Dana R.", role: "Design", pct: 62 },
+        { n: "Leo T.", role: "Dev", pct: 88 },
+        { n: "Amara K.", role: "UX Research", pct: 30 }
+      ]
+    },
+    {
+      id: "northbeam",
+      name: "Northbeam Legal",
+      scope: "Content marketing + SEO retainer",
+      status: "at-risk",
+      burn: 74,
+      lead: "S. Whitfield",
+      retainer: "$9k / mo",
+      renewal: "Aug 2026",
+      brief: "Editorial retainer for a mid-size firm. Organic traffic up 22% YTD, but the renewal conversation is open and two July deliverables slipped after a partner review cycle.",
+      tasks: [
+        { t: "Practice-area pillar page: employment law", owner: "Priya", due: "2026-07-14", done: false },
+        { t: "Q2 SEO performance report", owner: "Marcus", due: "2026-07-10", done: true },
+        { t: "Partner interviews for thought-leadership series", owner: "Priya", due: "2026-07-24", done: false },
+        { t: "Renewal proposal draft", owner: "S. Whitfield", due: "2026-07-17", done: false }
+      ],
+      deadlines: [
+        { d: "2026-07-17", t: "Renewal proposal to client", kind: "risk" },
+        { d: "2026-07-31", t: "July editorial calendar ships", kind: "ok" },
+        { d: "2026-08-14", t: "Contract renewal date", kind: "hard" }
+      ],
+      team: [
+        { n: "Priya S.", role: "Content", pct: 82 },
+        { n: "Marcus L.", role: "SEO", pct: 47 },
+        { n: "Sofia M.", role: "Lifecycle", pct: 25 }
+      ]
+    }
+  ];
+
+  var STATUS_LABEL = { "on-track": "On track", "at-risk": "At risk", "blocked": "Blocked" };
+  var selectedId = mandates[0].id;
+
+  // ── Helpers ────────────────────────────────────────────────
+  function parseDate(s) {
+    var p = s.split("-");
+    return new Date(+p[0], +p[1] - 1, +p[2]);
+  }
+  function fmtShort(s) {
+    var d = parseDate(s);
+    var M = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    return M[d.getMonth()] + " " + d.getDate();
+  }
+  function daysOut(s) {
+    return Math.round((parseDate(s) - TODAY) / 86400000);
+  }
+  function initials(name) {
+    return name.split(/[\s.]+/).filter(Boolean).map(function (w) { return w[0]; }).join("").slice(0, 2).toUpperCase();
+  }
+  function burnClass(pct) {
+    return pct >= 90 ? "over" : pct >= 70 ? "warn" : "";
+  }
+  function getMandate(id) {
+    for (var i = 0; i < mandates.length; i++) if (mandates[i].id === id) return mandates[i];
+    return mandates[0];
+  }
+  function el(id) { return document.getElementById(id); }
+
+  // ── KPI: tasks due this week (open tasks, within 7 days incl. overdue) ──
+  function renderKpis() {
+    var due = 0, overdue = 0;
+    mandates.forEach(function (m) {
+      m.tasks.forEach(function (t) {
+        if (t.done) return;
+        var d = daysOut(t.due);
+        if (d <= 7) { due++; if (d < 0) overdue++; }
+      });
+    });
+    el("kpi-mandates").textContent = mandates.length;
+    el("kpi-due").textContent = due;
+    el("kpi-due-note").textContent = overdue > 0 ? overdue + " overdue" : "";
+  }
+
+  // ── Left list ──────────────────────────────────────────────
+  function renderList() {
+    var html = mandates.map(function (m) {
+      return '<button class="mandate-card' + (m.id === selectedId ? " active" : "") + '" data-id="' + m.id + '" aria-pressed="' + (m.id === selectedId) + '">' +
+        '<div class="mandate-top"><span class="mandate-name">' + m.name + '</span>' +
+        '<span class="chip ' + m.status + '">' + STATUS_LABEL[m.status] + "</span></div>" +
+        '<div class="mandate-sub">' + m.scope + "</div>" +
+        '<div class="burn-row"><div class="burn-track"><div class="burn-fill ' + burnClass(m.burn) + '" style="width:' + m.burn + '%"></div></div>' +
+        '<span class="burn-label">' + m.burn + "% burn</span></div>" +
+        "</button>";
+    }).join("");
+    el("mandate-list").innerHTML = html;
+    Array.prototype.forEach.call(document.querySelectorAll(".mandate-card"), function (btn) {
+      btn.addEventListener("click", function () {
+        selectedId = btn.getAttribute("data-id");
+        renderList();
+        renderDetail();
+      });
+    });
+  }
+
+  // ── Detail pane ────────────────────────────────────────────
+  function renderTaskProgress(m) {
+    var done = m.tasks.filter(function (t) { return t.done; }).length;
+    var pct = m.tasks.length ? Math.round((done / m.tasks.length) * 100) : 0;
+    el("d-task-count").textContent = done + " / " + m.tasks.length + " done · " + pct + "%";
+    el("d-task-bar").style.width = pct + "%";
+  }
+
+  function renderDetail() {
+    var m = getMandate(selectedId);
+
+    el("d-name").textContent = m.name;
+    var chip = el("d-chip");
+    chip.className = "chip " + m.status;
+    chip.textContent = STATUS_LABEL[m.status];
+    el("d-brief").textContent = m.brief;
+    el("d-lead").textContent = m.lead;
+    el("d-burn").textContent = m.burn + "%";
+    el("d-retainer").textContent = m.retainer;
+    el("d-renewal").textContent = m.renewal;
+
+    // tasks
+    var list = el("d-tasks");
+    list.innerHTML = m.tasks.map(function (t, i) {
+      var d = daysOut(t.due);
+      var soon = !t.done && d <= 3;
+      return '<li class="task' + (t.done ? " done" : "") + '">' +
+        '<input type="checkbox" id="task-' + m.id + "-" + i + '" data-i="' + i + '"' + (t.done ? " checked" : "") + ">" +
+        '<label for="task-' + m.id + "-" + i + '">' + t.t + "</label>" +
+        '<span class="task-owner">' + t.owner + "</span>" +
+        '<span class="task-due' + (soon ? " soon" : "") + '">' + fmtShort(t.due) + "</span>" +
+        "</li>";
+    }).join("");
+    Array.prototype.forEach.call(list.querySelectorAll("input[type=checkbox]"), function (cb) {
+      cb.addEventListener("change", function () {
+        var i = +cb.getAttribute("data-i");
+        m.tasks[i].done = cb.checked;
+        cb.closest(".task").classList.toggle("done", cb.checked);
+        renderTaskProgress(m);
+        renderKpis();
+      });
+    });
+    renderTaskProgress(m);
+
+    // deadlines timeline
+    el("d-timeline").innerHTML = m.deadlines.map(function (dl) {
+      var d = daysOut(dl.d);
+      var daysTxt = d < 0 ? Math.abs(d) + "d overdue" : d === 0 ? "today" : "in " + d + "d";
+      var cls = dl.kind === "risk" ? "risk" : dl.kind === "hard" ? "hard" : "";
+      return '<div class="tl-item ' + cls + '">' +
+        '<div class="tl-date">' + fmtShort(dl.d).toUpperCase() + "</div>" +
+        '<div class="tl-title">' + dl.t + "</div>" +
+        '<div class="tl-days' + (d <= 5 ? " soon" : "") + '">' + daysTxt + "</div>" +
+        "</div>";
+    }).join("");
+
+    // team workload
+    el("d-team").innerHTML = m.team.map(function (p) {
+      return '<div class="member">' +
+        '<div class="member-top"><span class="avatar">' + initials(p.n) + "</span>" +
+        '<div><div class="member-name">' + p.n + '</div><div class="member-role">' + p.role + "</div></div></div>" +
+        '<div class="cap-track"><div class="cap-fill ' + burnClass(p.pct) + '" style="width:' + Math.min(p.pct, 100) + '%"></div></div>' +
+        '<div class="cap-label">' + p.pct + "% capacity</div>" +
+        "</div>";
+    }).join("");
+  }
+
+  // ── Init ───────────────────────────────────────────────────
+  renderKpis();
+  renderList();
+  renderDetail();
+})();
+</script>
+
+</body>
+</html>

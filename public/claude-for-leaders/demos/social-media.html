@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shorelight Collective — Social Content Planner · Claude for Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F1FA;
+    --card: #FFFFFF;
+    --ink: #262233;
+    --accent: #A855C8;
+    --accent-dark: #8E3FAF;
+    --accent-tint: #F3E4FA;
+    --sky: #7FB5E8;
+    --peach: #FFB088;
+    --charcoal: #3B3646;
+    --butter: #F5D66B;
+    --gray: #6E6884;
+    --border: #E7E2F1;
+    --r-sm: 14px;
+    --r-md: 16px;
+    --r-lg: 16px;
+    --shadow: 0 2px 10px rgba(38, 34, 51, .06);
+    --shadow-lg: 0 10px 34px rgba(38, 34, 51, .12);
+    --heading: 'Sora', -apple-system, sans-serif;
+    --body: 'Inter', -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  button { font-family: var(--heading); cursor: pointer; }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--card);
+    flex-wrap: wrap;
+  }
+  .wordmark { font-family: var(--heading); font-weight: 700; font-size: 16px; letter-spacing: -0.02em; white-space: nowrap; }
+  .wordmark .dot { color: var(--accent); }
+  .topbar .divider { width: 1px; height: 20px; background: var(--border); }
+  .page-title { font-size: 13.5px; color: var(--gray); font-weight: 500; }
+  .back-link {
+    margin-left: auto;
+    font-family: var(--heading);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .back-link:hover { color: var(--accent-dark); text-decoration: underline; }
+
+  /* ---------- App header ---------- */
+  .app-header {
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 24px 0;
+  }
+  .brand-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .brand-row h1 { font-family: var(--heading); font-size: 25px; font-weight: 700; letter-spacing: -0.02em; }
+  .brand-tag {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent-dark);
+    background: var(--accent-tint);
+    border-radius: 999px;
+    padding: 4px 12px;
+  }
+  .app-sub { color: var(--gray); font-size: 14px; margin-top: 6px; }
+
+  /* ---------- Tabs ---------- */
+  .tabs {
+    display: inline-flex;
+    gap: 4px;
+    margin-top: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px;
+    box-shadow: var(--shadow);
+    flex-wrap: wrap;
+  }
+  .tab {
+    background: none;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--gray);
+    transition: background .15s, color .15s;
+  }
+  .tab:hover { color: var(--ink); }
+  .tab.active { color: #fff; background: var(--accent); }
+
+  /* ---------- Main ---------- */
+  main {
+    max-width: 1180px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px 24px 48px;
+    flex: 1;
+  }
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* ---------- Legend ---------- */
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 16px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--gray); font-weight: 500; }
+  .ch-dot { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+  .ch-linkedin { background: var(--sky); }
+  .ch-instagram { background: var(--peach); }
+  .ch-x { background: var(--charcoal); }
+  .ch-newsletter { background: var(--butter); }
+  .month-label { font-family: var(--mono); font-size: 13px; font-weight: 600; margin-left: auto; color: var(--accent-dark); }
+
+  /* ---------- Calendar ---------- */
+  .cal-head {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .cal-head div {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray);
+    padding: 4px 8px;
+  }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .cal-day {
+    min-width: 0;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow);
+    min-height: 108px;
+    padding: 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .cal-day.pad { background: transparent; border-color: transparent; box-shadow: none; }
+  .cal-day.today { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
+  .cal-date {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray);
+  }
+  .cal-day.today .cal-date { color: var(--accent-dark); font-weight: 600; }
+  .cal-date .wd { display: none; }
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    text-align: left;
+    background: var(--bg);
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-family: var(--body);
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+    transition: border-color .12s, transform .12s, background .12s;
+  }
+  .chip:hover { border-color: var(--accent); background: var(--accent-tint); transform: translateY(-1px); }
+  .chip.selected { border-color: var(--accent); background: var(--accent-tint); box-shadow: 0 0 0 1px var(--accent); }
+  .chip .ch-dot { width: 8px; height: 8px; }
+  .chip span.label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .chip .pub-check { margin-left: auto; font-size: 10px; color: #2E7D4F; flex: none; }
+
+  /* ---------- Queue ---------- */
+  .queue-toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
+  .filter-btn {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 7px 15px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    box-shadow: var(--shadow);
+    transition: background .15s, color .15s;
+  }
+  .filter-btn:hover { color: var(--ink); border-color: var(--accent); }
+  .filter-btn.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .filter-btn.active .ch-dot { outline: 1.5px solid rgba(255,255,255,.75); outline-offset: 1px; }
+  .queue-count { margin-left: auto; font-size: 12.5px; color: var(--gray); font-family: var(--mono); }
+  .queue-list { display: flex; flex-direction: column; gap: 10px; }
+  .queue-row {
+    display: grid;
+    grid-template-columns: 96px 1fr auto auto;
+    gap: 14px;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow);
+    padding: 14px 18px;
+    font-family: var(--body);
+    transition: border-color .12s, transform .12s;
+  }
+  .queue-row:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .queue-row.selected { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
+  .q-date { font-family: var(--mono); font-size: 12px; color: var(--gray); font-weight: 500; }
+  .q-main { min-width: 0; }
+  .q-title { font-family: var(--heading); font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+  .q-title .ch-dot { flex: none; }
+  .q-title span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .q-excerpt {
+    font-size: 12.5px;
+    color: var(--gray);
+    margin-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .q-channel { font-size: 12px; color: var(--gray); font-weight: 500; white-space: nowrap; }
+  .pill {
+    font-family: var(--heading);
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 999px;
+    padding: 5px 12px;
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .pill-draft { background: #F0EDF6; color: var(--gray); }
+  .pill-approved { background: #E4F0FB; color: #2F6FA8; }
+  .pill-scheduled { background: var(--accent-tint); color: var(--accent-dark); }
+  .pill-published { background: #E1F4E8; color: #2E7D4F; }
+  .empty-note { color: var(--gray); font-size: 14px; padding: 24px 4px; }
+
+  /* ---------- Analytics ---------- */
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow);
+    padding: 20px 22px;
+  }
+  .stat-label {
+    font-family: var(--heading);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--gray);
+  }
+  .stat-value { font-family: var(--heading); font-size: 30px; font-weight: 700; margin-top: 8px; letter-spacing: -0.02em; }
+  .stat-value .unit { font-size: 15px; color: var(--gray); font-weight: 600; }
+  .stat-note { font-size: 12.5px; color: var(--gray); margin-top: 5px; }
+  .stat-note b { color: var(--ink); font-weight: 600; }
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow);
+    padding: 20px 22px;
+  }
+  .chart-card h3 { font-family: var(--heading); font-size: 13.5px; font-weight: 600; }
+  .chart-card .chart-sub { font-size: 12px; color: var(--gray); margin-top: 3px; margin-bottom: 18px; }
+  .bar-row { display: grid; grid-template-columns: 92px 1fr 52px; gap: 12px; align-items: center; margin-bottom: 12px; }
+  .bar-row:last-child { margin-bottom: 0; }
+  .bar-name { font-size: 12.5px; font-weight: 600; display: flex; align-items: center; gap: 7px; }
+  .bar-track { background: var(--bg); border-radius: 999px; height: 15px; overflow: hidden; }
+  .bar-fill { display: block; height: 100%; border-radius: 999px; width: 0; transition: width .7s cubic-bezier(.22,.9,.36,1); }
+  .bar-val { font-family: var(--mono); font-size: 12px; color: var(--gray); text-align: right; }
+  .fine-print { font-size: 11.5px; color: var(--gray); margin-top: 16px; }
+
+  /* ---------- Drawer ---------- */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(38, 34, 51, .32);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+    z-index: 40;
+  }
+  .overlay.open { opacity: 1; pointer-events: auto; }
+  .drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: min(420px, 100%);
+    background: var(--card);
+    border-left: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(105%);
+    transition: transform .24s cubic-bezier(.22,.9,.36,1);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+  }
+  .drawer.open { transform: translateX(0); }
+  .drawer-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border);
+  }
+  .drawer-head .q-date { font-size: 12.5px; }
+  .drawer-close {
+    margin-left: auto;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1;
+  }
+  .drawer-close:hover { color: var(--ink); border-color: var(--accent); }
+  .drawer-body { padding: 22px; overflow-y: auto; flex: 1; }
+  .d-channel-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .d-channel { font-size: 12.5px; font-weight: 600; display: flex; align-items: center; gap: 7px; color: var(--gray); }
+  .drawer-body h2 { font-family: var(--heading); font-size: 18px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.35; margin-bottom: 6px; }
+  .d-meta { font-family: var(--mono); font-size: 12px; color: var(--gray); margin-bottom: 18px; }
+  .d-section-label {
+    font-family: var(--heading);
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+    margin-bottom: 8px;
+  }
+  .d-copy {
+    background: var(--bg);
+    border-radius: var(--r-sm);
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.65;
+    white-space: pre-line;
+    margin-bottom: 20px;
+  }
+  .d-tags { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 20px; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--accent-dark);
+    background: var(--accent-tint);
+    border-radius: 999px;
+    padding: 4px 10px;
+  }
+  .d-notes { font-size: 13px; color: var(--gray); line-height: 1.6; }
+  .d-notes b { color: var(--ink); }
+  .drawer-foot {
+    padding: 16px 22px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+  }
+  .btn-primary, .btn-ghost {
+    border-radius: 999px;
+    padding: 11px 18px;
+    font-size: 13.5px;
+    font-weight: 600;
+    border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--accent); color: #fff; flex: 1; }
+  .btn-primary:hover { background: var(--accent-dark); }
+  .btn-ghost { background: var(--card); border-color: var(--border); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent-dark); }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translate(-50%, 12px);
+    background: var(--ink);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s, transform .2s;
+    z-index: 60;
+    max-width: calc(100% - 40px);
+    text-align: center;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--card);
+    padding: 18px 24px;
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--gray);
+  }
+  footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  footer a:hover { color: var(--accent-dark); text-decoration: underline; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .queue-row { grid-template-columns: 1fr auto; grid-template-rows: auto auto; row-gap: 6px; }
+    .q-date { order: 3; }
+    .q-main { order: 1; grid-column: 1; }
+    .q-channel { display: none; }
+    .queue-row .pill { order: 2; justify-self: end; }
+    .stats-strip { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 700px) {
+    .cal-head { display: none; }
+    .cal-grid { display: flex; flex-direction: column; gap: 10px; }
+    .cal-day { min-height: 0; }
+    .cal-day.pad { display: none; }
+    .cal-day.empty-mobile { display: none; }
+    .cal-date { display: flex; gap: 8px; align-items: baseline; }
+    .cal-date .wd { display: inline; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+    .chip { font-size: 13px; padding: 8px 12px; }
+    .month-label { margin-left: 0; width: 100%; }
+    .app-header, main { padding-left: 16px; padding-right: 16px; }
+    .topbar { padding: 12px 16px; }
+    .page-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">Claude for Leaders<span class="dot">.</span></div>
+  <div class="divider"></div>
+  <div class="page-title">Demo &middot; Social media — editorial calendar &amp; scheduled posts</div>
+  <a class="back-link" href="../index.html">&larr; Back to the deck</a>
+</div>
+
+<header class="app-header">
+  <div class="brand-row">
+    <h1>Shorelight Collective</h1>
+    <span class="brand-tag">Coastal small-business marketing &middot; Pelican Cove, CA</span>
+  </div>
+  <p class="app-sub">Social content planner &mdash; July 2026. All brands, people, and metrics on this page are fictional.</p>
+
+  <div class="tabs" role="tablist">
+    <button class="tab active" role="tab" data-view="calendar" aria-selected="true">Calendar</button>
+    <button class="tab" role="tab" data-view="queue" aria-selected="false">Queue</button>
+    <button class="tab" role="tab" data-view="analytics" aria-selected="false">Analytics</button>
+  </div>
+</header>
+
+<main>
+  <!-- Calendar view -->
+  <section class="view active" id="view-calendar">
+    <div class="legend">
+      <div class="legend-item"><span class="ch-dot ch-linkedin"></span>LinkedIn</div>
+      <div class="legend-item"><span class="ch-dot ch-instagram"></span>Instagram</div>
+      <div class="legend-item"><span class="ch-dot ch-x"></span>X</div>
+      <div class="legend-item"><span class="ch-dot ch-newsletter"></span>Newsletter</div>
+      <div class="month-label">JULY 2026</div>
+    </div>
+    <div class="cal-head">
+      <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+  </section>
+
+  <!-- Queue view -->
+  <section class="view" id="view-queue">
+    <div class="queue-toolbar" id="queueFilters">
+      <button class="filter-btn active" data-ch="all">All channels</button>
+      <button class="filter-btn" data-ch="linkedin"><span class="ch-dot ch-linkedin"></span>LinkedIn</button>
+      <button class="filter-btn" data-ch="instagram"><span class="ch-dot ch-instagram"></span>Instagram</button>
+      <button class="filter-btn" data-ch="x"><span class="ch-dot ch-x"></span>X</button>
+      <button class="filter-btn" data-ch="newsletter"><span class="ch-dot ch-newsletter"></span>Newsletter</button>
+      <span class="queue-count" id="queueCount"></span>
+    </div>
+    <div class="queue-list" id="queueList"></div>
+  </section>
+
+  <!-- Analytics view -->
+  <section class="view" id="view-analytics">
+    <div class="stats-strip">
+      <div class="stat-card">
+        <div class="stat-label">Posts this month</div>
+        <div class="stat-value" id="statPosts">0</div>
+        <div class="stat-note" id="statPostsNote"></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Approval rate</div>
+        <div class="stat-value" id="statApproval">0<span class="unit">%</span></div>
+        <div class="stat-note">Drafts moved to approved, scheduled, or published</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Best channel</div>
+        <div class="stat-value" id="statBest">&mdash;</div>
+        <div class="stat-note" id="statBestNote"></div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h3>Avg. engagement per published post, by channel</h3>
+      <div class="chart-sub">Likes + comments + shares, July 1&ndash;13 (fictional sample data)</div>
+      <div id="barChart"></div>
+      <div class="fine-print">Numbers are invented for demo purposes and refresh with the content plan.</div>
+    </div>
+  </section>
+</main>
+
+<!-- Drawer -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Post detail">
+  <div class="drawer-head">
+    <span class="ch-dot" id="dDot"></span>
+    <span class="q-date" id="dDate"></span>
+    <span class="pill" id="dPill"></span>
+    <button class="drawer-close" id="drawerClose" aria-label="Close panel">&times;</button>
+  </div>
+  <div class="drawer-body">
+    <div class="d-channel-row"><span class="d-channel" id="dChannel"></span></div>
+    <h2 id="dTitle"></h2>
+    <div class="d-meta" id="dMeta"></div>
+    <div class="d-section-label">Draft post</div>
+    <div class="d-copy" id="dCopy"></div>
+    <div class="d-section-label">Hashtags</div>
+    <div class="d-tags" id="dTags"></div>
+    <div class="d-notes" id="dNotes"></div>
+  </div>
+  <div class="drawer-foot">
+    <button class="btn-primary" id="dAction"></button>
+    <button class="btn-ghost" id="dEdit">Edit draft</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  Demo built with Claude Code &middot; Travis Johnson &middot; AuraPath AI &middot; <a href="https://aurapathai.com">aurapathai.com</a>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var CHANNELS = {
+    linkedin:   { name: 'LinkedIn',   cls: 'ch-linkedin',   color: '#7FB5E8' },
+    instagram:  { name: 'Instagram',  cls: 'ch-instagram',  color: '#FFB088' },
+    x:          { name: 'X',          cls: 'ch-x',          color: '#3B3646' },
+    newsletter: { name: 'Newsletter', cls: 'ch-newsletter', color: '#F5D66B' }
+  };
+
+  var TODAY_DAY = 14; // July 14, 2026
+
+  // day = July 2026 day of month. eng = fictional engagement for published posts.
+  var POSTS = [
+    { id: 1, day: 1, time: '8:30 AM', channel: 'linkedin', status: 'published', eng: 214,
+      title: 'The July playbook for boardwalk businesses',
+      copy: 'Summer foot traffic on Pelican Cove’s boardwalk triples in July — but most shops still market like it’s February.\n\nThree moves we make for every coastal client before the 4th:\n1. Shift ad budget from awareness to “open now” local intent.\n2. Refresh Google Business hours and photos (yes, it matters that much).\n3. Pre-write the rainy-day promo so a gray morning becomes a sale, not a slump.\n\nThe season is short. The plan shouldn’t be.',
+      tags: ['#CoastalBusiness', '#LocalMarketing', '#SmallBusiness', '#SummerSeason'],
+      notes: 'Anchor post for the July series. <b>Approved by</b> Mara (Creative Director) 6/28.' },
+
+    { id: 2, day: 2, time: '11:00 AM', channel: 'instagram', status: 'published', eng: 486,
+      title: 'Reel: 48 hours with Driftwood Coffee',
+      copy: 'We spent 48 hours behind the counter at Driftwood Coffee Co. before their harbor-side patio launch. ☀️\n\nWhat we captured: the 5 AM pastry pull, the first latte on the new deck, and a line down Anchor Street by 9.\n\nGood marketing isn’t invented — it’s noticed. Sound on for this one.',
+      tags: ['#ShopLocal', '#CoffeeShop', '#BehindTheScenes', '#PelicanCove'],
+      notes: 'Reel, 34 sec. Footage cleared with Driftwood owner Sam K. <b>Best performer</b> of the month so far.' },
+
+    { id: 3, day: 3, time: '7:00 AM', channel: 'newsletter', status: 'published', eng: 341,
+      title: 'The Tideline #42 — Pricing for peak season',
+      copy: 'This week in The Tideline:\n\n• Why “tourist pricing” backfires by August (and what to do instead)\n• A 10-minute menu audit that lifted Gull’s Galley’s average ticket 14%\n• Reader Q: Should my surf shop bother with TikTok? (Short answer: only if you’ll show up weekly.)\n\nRead time: 4 minutes. Forward it to the shop owner next door.',
+      tags: ['#Newsletter', '#PricingStrategy', '#RestaurantMarketing'],
+      notes: 'Sent to 2,180 subscribers. 52% open rate, 341 total clicks. Issue #43 scheduled for 7/10.' },
+
+    { id: 4, day: 6, time: '12:15 PM', channel: 'x', status: 'published', eng: 158,
+      title: 'Hot take: your beach town doesn’t need more ads',
+      copy: 'Hot take for beach-town businesses: you don’t need more ads in July. You need faster replies.\n\nWe audited 20 coastal shops last month. Average time to answer a DM asking “are you open today?” — 9 hours.\n\nThat’s not a marketing problem. That’s a front-door problem.',
+      tags: ['#SmallBiz', '#CustomerExperience', '#LocalSEO'],
+      notes: 'Thread starter — two replies queued with the audit data if it gets traction.' },
+
+    { id: 5, day: 8, time: '9:00 AM', channel: 'linkedin', status: 'published', eng: 189,
+      title: 'Case study: Marina Salt & Supply’s email turnaround',
+      copy: 'Six months ago, Marina Salt & Supply’s email list was 400 names collected on a paper clipboard.\n\nToday: 2,900 subscribers, a 46% open rate, and email driving 22% of monthly revenue.\n\nWhat changed? Nothing fancy. A QR code at the register, one welcome email that sounds like the owner, and a weekly note that’s actually worth reading.\n\nFull breakdown in the comments.',
+      tags: ['#EmailMarketing', '#CaseStudy', '#RetailMarketing', '#CoastalBusiness'],
+      notes: 'Client approved all numbers 7/3. Link to full case study in first comment.' },
+
+    { id: 6, day: 9, time: '5:30 PM', channel: 'instagram', status: 'published', eng: 372,
+      title: 'Carousel: 5 storefront photos that sell',
+      copy: 'Your storefront photo is your handshake. 🤝\n\nSwipe for 5 shots every coastal shop should have on Google and Instagram:\n1. Golden-hour exterior with signage readable\n2. The doorway, wide open, mid-morning\n3. Your best seller in natural light\n4. A real customer moment (with permission!)\n5. You, behind the counter, smiling\n\nShot on a phone. Edited in 10 minutes. No excuses.',
+      tags: ['#SmallBusinessTips', '#Storefront', '#VisualMarketing', '#ShopLocal'],
+      notes: 'Carousel, 6 slides. All example photos are from consenting clients.' },
+
+    { id: 7, day: 10, time: '7:00 AM', channel: 'newsletter', status: 'published', eng: 298,
+      title: 'The Tideline #43 — The rainy-day contingency',
+      copy: 'This week in The Tideline:\n\n• The “marine layer memo”: a pre-written promo you fire off when the fog rolls in\n• How Castaway Books turned a rained-out weekend into their best Tuesday ever\n• Template inside: 3 SMS blasts you can steal, word for word\n\nRead time: 5 minutes.',
+      tags: ['#Newsletter', '#PromoStrategy', '#WeatherMarketing'],
+      notes: 'Sent to 2,205 subscribers. 49% open rate. Template download: 167 clicks.' },
+
+    { id: 8, day: 13, time: '10:45 AM', channel: 'x', status: 'published', eng: 121,
+      title: 'Mid-month check: the numbers that matter',
+      copy: 'Halfway through July. Coastal shop owners, check three numbers today:\n\n1. Google Business profile views vs. June\n2. % of DMs answered within 1 hour\n3. Email signups per 100 transactions\n\nIf you don’t know them, that’s the finding.',
+      tags: ['#SmallBiz', '#Analytics', '#LocalMarketing'],
+      notes: 'Companion graphic in the media library (mid-month-check.png).' },
+
+    { id: 9, day: 15, time: '8:30 AM', channel: 'linkedin', status: 'scheduled', eng: null,
+      title: 'Why we tell clients to skip the trend audio',
+      copy: 'A client asked us last week: “Should we jump on that trending audio?”\n\nOur answer: only if a stranger could watch the video on mute and still know what you sell, where you are, and why they should walk in.\n\nTrends are a delivery vehicle, not a strategy. The shops winning this summer in Pelican Cove are posting less and saying more.',
+      tags: ['#ContentStrategy', '#SocialMediaMarketing', '#SmallBusiness'],
+      notes: 'Scheduled via planner. <b>Approved by</b> Mara 7/11. Pairs with IG post on 7/16.' },
+
+    { id: 10, day: 16, time: '11:00 AM', channel: 'instagram', status: 'scheduled', eng: null,
+      title: 'Reel: The Kelp & Kettle rebrand reveal',
+      copy: 'Nine weeks ago, The Kelp & Kettle was “that tea place near the pier.”\n\nToday we’re revealing the full rebrand: new mark, new menu boards, new patio. 🍵\n\nWatch the before-and-after — and if you’re near the pier this weekend, the first 50 customers get the new house blend on us.',
+      tags: ['#Rebrand', '#BeforeAndAfter', '#TeaShop', '#PelicanCove'],
+      notes: 'Reveal coordinated with client’s in-store event Sat 7/18. Do not move without checking with Priya (Account Lead).' },
+
+    { id: 11, day: 17, time: '7:00 AM', channel: 'newsletter', status: 'scheduled', eng: null,
+      title: 'The Tideline #44 — Hiring for the back half of summer',
+      copy: 'This week in The Tideline:\n\n• The mid-summer staffing cliff: why your best seasonal hires quit in August (and the retention move that costs $0)\n• A 20-minute interview script for hiring counter staff who can actually upsell\n• Community corner: three Pelican Cove shops hiring right now\n\nRead time: 5 minutes.',
+      tags: ['#Newsletter', '#Hiring', '#SeasonalBusiness'],
+      notes: 'Copy locked 7/12. Community corner listings confirmed with all three shops.' },
+
+    { id: 12, day: 20, time: '12:15 PM', channel: 'x', status: 'approved', eng: null,
+      title: 'Thread: anatomy of a $0 marketing win',
+      copy: 'A $0 marketing win from last week, in one thread. 🧵\n\nGull’s Galley moved their specials board 11 feet — from beside the register to the sidewalk, angled toward foot traffic from the parking lot.\n\nLunch covers up 19% week over week. No ads. No app. Just sightlines.\n\nSometimes “marketing” is furniture.',
+      tags: ['#MarketingWins', '#RestaurantBiz', '#SmallBiz'],
+      notes: 'Approved, awaiting a scheduling slot. Suggest pairing with a photo of the actual board placement.' },
+
+    { id: 13, day: 22, time: '9:00 AM', channel: 'linkedin', status: 'approved', eng: null,
+      title: 'What 90 days of coastal client data taught us',
+      copy: 'We pulled 90 days of data across our coastal retail clients. Three patterns held everywhere:\n\n1. Tuesday emails outperform Friday emails by ~30% — owners read before the week swallows them.\n2. Posts with a person in frame get 2–3x the saves of product-only shots.\n3. Review replies within 24 hours correlate with measurably higher walk-in mentions of “saw you online.”\n\nSmall data, honestly gathered, beats big claims.',
+      tags: ['#MarketingData', '#RetailInsights', '#CoastalBusiness', '#SmallBusiness'],
+      notes: 'Approved by Mara 7/13 pending one legal check: confirm no client is identifiable from the stats. <b>[Priya to confirm by 7/18]</b>' },
+
+    { id: 14, day: 24, time: '5:30 PM', channel: 'instagram', status: 'draft', eng: null,
+      title: 'Carousel: the harbor market pop-up checklist',
+      copy: 'Doing a stall at the Pelican Cove Harbor Market this summer? 🎪\n\nSave this checklist:\n• Signage readable from 15 feet\n• A $10-and-under impulse item at the front\n• QR code to your email list (offer a real reason to scan)\n• Card reader charged, plus a backup battery\n• One photo of your booth every hour — future you will thank you\n\nTag a vendor who needs this.',
+      tags: ['#PopUpShop', '#FarmersMarket', '#VendorTips', '#ShopLocal'],
+      notes: 'Draft — needs design pass on slides 3 and 5. Target review in Thursday standup.' },
+
+    { id: 15, day: 27, time: '10:45 AM', channel: 'x', status: 'draft', eng: null,
+      title: 'Poll: what’s your slowest hour?',
+      copy: 'Coastal shop owners: what’s your slowest open hour in summer?\n\n□ 8–9 AM\n□ 2–3 PM\n□ 4–5 PM\n□ We don’t have one 😅\n\nAsking for a reason — next week we’re publishing a “dead hour rescue kit” built from your answers.',
+      tags: ['#SmallBiz', '#Poll', '#RetailLife'],
+      notes: 'Draft. Poll runs 3 days; results feed The Tideline #46.' },
+
+    { id: 16, day: 31, time: '7:00 AM', channel: 'newsletter', status: 'draft', eng: null,
+      title: 'The Tideline #45 — July retro & the August ramp',
+      copy: 'This week in The Tideline:\n\n• July by the numbers: what actually moved revenue for coastal shops this month\n• The August ramp: three campaigns to queue now, before the back-to-school dip\n• Dead hour rescue kit — built from your poll answers (thank you, 214 of you!)\n\nRead time: 6 minutes.',
+      tags: ['#Newsletter', '#MonthlyRetro', '#MarketingPlanning'],
+      notes: 'Draft skeleton only — numbers section fills in after 7/28. Poll figure is a placeholder.' }
+  ];
+
+  var STATUS_LABEL = { draft: 'Draft', approved: 'Approved', scheduled: 'Scheduled', published: 'Published' };
+  var STATUS_ACTION = { draft: 'Submit for approval', approved: 'Schedule post', scheduled: 'Reschedule', published: 'View live post' };
+
+  var byId = {};
+  POSTS.forEach(function (p) { byId[p.id] = p; });
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function fmtDate(day) { return 'Jul ' + String(day).padStart(2, '0') + ', 2026'; }
+
+  /* ---------- Tabs ---------- */
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) {
+        t.classList.toggle('active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+      document.querySelectorAll('.view').forEach(function (v) { v.classList.remove('active'); });
+      document.getElementById('view-' + tab.dataset.view).classList.add('active');
+      if (tab.dataset.view === 'analytics') animateBars();
+    });
+  });
+
+  /* ---------- Calendar (July 2026: 31 days, July 1 = Wednesday) ---------- */
+  var WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var FIRST_DOW = 3; // Wednesday
+  var DAYS_IN_MONTH = 31;
+
+  function buildCalendar() {
+    var grid = document.getElementById('calGrid');
+    var html = '';
+    var i;
+    for (i = 0; i < FIRST_DOW; i++) html += '<div class="cal-day pad" aria-hidden="true"></div>';
+    for (var d = 1; d <= DAYS_IN_MONTH; d++) {
+      var posts = POSTS.filter(function (p) { return p.day === d; });
+      var dow = WEEKDAYS[(FIRST_DOW + d - 1) % 7];
+      var cls = 'cal-day' + (d === TODAY_DAY ? ' today' : '') + (posts.length === 0 ? ' empty-mobile' : '');
+      html += '<div class="' + cls + '">';
+      html += '<div class="cal-date"><span class="wd">' + dow + '</span>' + d + (d === TODAY_DAY ? ' &middot; today' : '') + '</div>';
+      posts.forEach(function (p) {
+        html += '<button class="chip" data-post="' + p.id + '" title="' + esc(p.title) + '">'
+          + '<span class="ch-dot ' + CHANNELS[p.channel].cls + '"></span>'
+          + '<span class="label">' + esc(p.title) + '</span>'
+          + (p.status === 'published' ? '<span class="pub-check">&#10003;</span>' : '')
+          + '</button>';
+      });
+      html += '</div>';
+    }
+    var used = FIRST_DOW + DAYS_IN_MONTH;
+    var trailing = (7 - (used % 7)) % 7;
+    for (i = 0; i < trailing; i++) html += '<div class="cal-day pad" aria-hidden="true"></div>';
+    grid.innerHTML = html;
+  }
+
+  /* ---------- Queue ---------- */
+  var activeFilter = 'all';
+
+  function buildQueue() {
+    var list = document.getElementById('queueList');
+    var posts = POSTS.slice().sort(function (a, b) { return a.day - b.day; })
+      .filter(function (p) { return activeFilter === 'all' || p.channel === activeFilter; });
+    if (posts.length === 0) {
+      list.innerHTML = '<div class="empty-note">No posts for this channel yet this month.</div>';
+    } else {
+      list.innerHTML = posts.map(function (p) {
+        var excerpt = p.copy.replace(/\s+/g, ' ').slice(0, 110);
+        return '<button class="queue-row" data-post="' + p.id + '">'
+          + '<span class="q-date">' + fmtDate(p.day) + '<br>' + p.time + '</span>'
+          + '<span class="q-main"><span class="q-title"><span class="ch-dot ' + CHANNELS[p.channel].cls + '"></span><span>' + esc(p.title) + '</span></span>'
+          + '<span class="q-excerpt">' + esc(excerpt) + '&hellip;</span></span>'
+          + '<span class="q-channel">' + CHANNELS[p.channel].name + '</span>'
+          + '<span class="pill pill-' + p.status + '">' + STATUS_LABEL[p.status] + '</span>'
+          + '</button>';
+      }).join('');
+    }
+    document.getElementById('queueCount').textContent = posts.length + ' of ' + POSTS.length + ' posts';
+  }
+
+  document.getElementById('queueFilters').addEventListener('click', function (e) {
+    var btn = e.target.closest('.filter-btn');
+    if (!btn) return;
+    activeFilter = btn.dataset.ch;
+    this.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.toggle('active', b === btn); });
+    buildQueue();
+  });
+
+  /* ---------- Analytics ---------- */
+  function buildAnalytics() {
+    var total = POSTS.length;
+    var published = POSTS.filter(function (p) { return p.status === 'published'; }).length;
+    var scheduled = POSTS.filter(function (p) { return p.status === 'scheduled'; }).length;
+    var approved = POSTS.filter(function (p) { return p.status === 'approved'; }).length;
+    var drafts = POSTS.filter(function (p) { return p.status === 'draft'; }).length;
+    var advanced = POSTS.filter(function (p) { return p.status !== 'draft'; }).length;
+    var approvalRate = Math.round((advanced / total) * 100);
+
+    document.getElementById('statPosts').textContent = total;
+    document.getElementById('statPostsNote').innerHTML =
+      '<b>' + published + '</b> published &middot; <b>' + scheduled + '</b> scheduled &middot; <b>' + approved + '</b> approved &middot; <b>' + drafts + '</b> in draft';
+    document.getElementById('statApproval').innerHTML = approvalRate + '<span class="unit">%</span>';
+
+    // avg engagement per published post, by channel
+    var chStats = {};
+    Object.keys(CHANNELS).forEach(function (ch) { chStats[ch] = { sum: 0, n: 0 }; });
+    POSTS.forEach(function (p) {
+      if (p.eng != null) { chStats[p.channel].sum += p.eng; chStats[p.channel].n++; }
+    });
+    var rows = Object.keys(CHANNELS).map(function (ch) {
+      return { ch: ch, avg: chStats[ch].n ? Math.round(chStats[ch].sum / chStats[ch].n) : 0 };
+    }).sort(function (a, b) { return b.avg - a.avg; });
+
+    var best = rows[0];
+    document.getElementById('statBest').textContent = CHANNELS[best.ch].name;
+    document.getElementById('statBestNote').innerHTML =
+      '<b>' + best.avg + '</b> avg. engagements per published post';
+
+    var max = best.avg || 1;
+    document.getElementById('barChart').innerHTML = rows.map(function (r) {
+      var pct = Math.max(4, Math.round((r.avg / max) * 100));
+      return '<div class="bar-row">'
+        + '<span class="bar-name"><span class="ch-dot ' + CHANNELS[r.ch].cls + '"></span>' + CHANNELS[r.ch].name + '</span>'
+        + '<span class="bar-track"><span class="bar-fill" data-w="' + pct + '" style="background:' + CHANNELS[r.ch].color + '"></span></span>'
+        + '<span class="bar-val">' + r.avg + '</span>'
+        + '</div>';
+    }).join('');
+  }
+
+  function animateBars() {
+    document.querySelectorAll('#barChart .bar-fill').forEach(function (bar) {
+      bar.style.width = '0';
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { bar.style.width = bar.dataset.w + '%'; });
+      });
+    });
+  }
+
+  /* ---------- Drawer ---------- */
+  var drawer = document.getElementById('drawer');
+  var overlay = document.getElementById('overlay');
+  var currentPost = null;
+
+  function openDrawer(id) {
+    var p = byId[id];
+    if (!p) return;
+    currentPost = p;
+    document.getElementById('dDot').className = 'ch-dot ' + CHANNELS[p.channel].cls;
+    document.getElementById('dDate').textContent = fmtDate(p.day) + ' · ' + p.time;
+    var pill = document.getElementById('dPill');
+    pill.className = 'pill pill-' + p.status;
+    pill.textContent = STATUS_LABEL[p.status];
+    document.getElementById('dChannel').innerHTML =
+      '<span class="ch-dot ' + CHANNELS[p.channel].cls + '"></span>' + CHANNELS[p.channel].name;
+    document.getElementById('dTitle').textContent = p.title;
+    document.getElementById('dMeta').textContent = 'POST-2026-' + String(p.id).padStart(3, '0') + ' · Shorelight Collective';
+    document.getElementById('dCopy').textContent = p.copy;
+    document.getElementById('dTags').innerHTML = p.tags.map(function (t) {
+      return '<span class="tag">' + esc(t) + '</span>';
+    }).join('');
+    document.getElementById('dNotes').innerHTML = '<b>Team notes:</b> ' + p.notes;
+    document.getElementById('dAction').textContent = STATUS_ACTION[p.status];
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    markSelected(id);
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    currentPost = null;
+    markSelected(null);
+  }
+
+  function markSelected(id) {
+    document.querySelectorAll('[data-post]').forEach(function (el) {
+      el.classList.toggle('selected', id != null && Number(el.dataset.post) === id);
+    });
+  }
+
+  document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+
+  document.body.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-post]');
+    if (el) openDrawer(Number(el.dataset.post));
+  });
+
+  /* ---------- Demo toast for action buttons ---------- */
+  var toastEl = document.getElementById('toast');
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2400);
+  }
+  document.getElementById('dAction').addEventListener('click', function () {
+    if (currentPost) toast('Demo only — “' + STATUS_ACTION[currentPost.status] + '” isn’t wired to a live account.');
+  });
+  document.getElementById('dEdit').addEventListener('click', function () {
+    toast('Demo only — the draft editor isn’t included in this preview.');
+  });
+
+  /* ---------- Init ---------- */
+  buildCalendar();
+  buildQueue();
+  buildAnalytics();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+# Files not to version
+
+# Dependencies
+node_modules/
+.venv/
+__pycache__/
+
+# Secrets — NEVER commit
+.env
+*.key
+*.pem
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+tmp/

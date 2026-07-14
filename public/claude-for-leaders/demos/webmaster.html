@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Webmaster — CMS Operations Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #FFFFFF;
+    --cream: #F6F5FB;
+    --ink: #23222B;
+    --clay: #6D5AE6;
+    --olive: #2FA36B;
+    --amber: #E8930C;
+    --gray: #6B6A76;
+    --border: #E6E4F0;
+    --r-sm: 10px;
+    --r-md: 12px;
+    --r-lg: 14px;
+    --mono: "Fira Code", ui-monospace, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--ivory);
+    color: var(--ink);
+    font-family: "Public Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 18px clamp(16px, 4vw, 40px);
+    border-bottom: 1px solid var(--border);
+    background: var(--ivory);
+  }
+  .wordmark {
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .wordmark .dot { color: var(--clay); }
+  .topbar .divider {
+    width: 1px; height: 22px; background: var(--border);
+  }
+  .page-title {
+    font-size: 14px;
+    color: var(--gray);
+    font-weight: 500;
+    flex: 1;
+    min-width: 160px;
+  }
+  .back-link {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--clay);
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 6px 12px;
+    border-radius: var(--r-sm);
+    transition: background 0.15s ease;
+  }
+  .back-link:hover { background: var(--cream); }
+
+  /* ---------- Page header ---------- */
+  .page-head {
+    padding: clamp(24px, 4vw, 40px) clamp(16px, 4vw, 40px) 8px;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .site-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--gray);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .site-label .pulse {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--olive);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(47, 163, 107, 0.45); }
+    50% { box-shadow: 0 0 0 6px rgba(47, 163, 107, 0); }
+  }
+  .page-head h1 {
+    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+  .page-head p.sub {
+    color: var(--gray);
+    margin-top: 6px;
+    max-width: 62ch;
+  }
+
+  /* ---------- Layout ---------- */
+  .wrap {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px clamp(16px, 4vw, 40px) 48px;
+    flex: 1;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 22px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  .col { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+  .panel {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .panel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 20px 12px;
+  }
+  .panel-head h2 {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .panel-head .meta {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--gray);
+    white-space: nowrap;
+  }
+
+  /* ---------- Metrics strip ---------- */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  @media (max-width: 640px) {
+    .metrics { grid-template-columns: minmax(0, 1fr); }
+  }
+  .metric {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 16px 18px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    position: relative;
+  }
+  .metric .label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray);
+  }
+  .metric .value {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-top: 4px;
+  }
+  .metric .value .unit { font-size: 16px; color: var(--gray); }
+  .metric .delta {
+    font-size: 12.5px;
+    color: var(--olive);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .spark {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 26px;
+    margin-top: 10px;
+  }
+  .spark span {
+    flex: 1;
+    background: var(--clay);
+    opacity: 0.32;
+    border-radius: 2px 2px 0 0;
+    min-width: 3px;
+    transform-origin: bottom;
+    animation: grow 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+  .spark span:last-child { opacity: 0.9; }
+  @keyframes grow { from { transform: scaleY(0); } }
+  .spark--olive span { background: var(--olive); }
+
+  /* ---------- Activity feed ---------- */
+  .feed { list-style: none; padding: 4px 8px 10px; }
+  .feed li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: start;
+    padding: 12px;
+    border-radius: var(--r-sm);
+    transition: background 0.15s ease, opacity 0.3s ease;
+  }
+  .feed li + li { border-top: 1px solid var(--border); }
+  .feed li:hover { background: rgba(255, 255, 255, 0.75); }
+  .feed .time {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--gray);
+    padding-top: 3px;
+    white-space: nowrap;
+  }
+  .feed .what { min-width: 0; }
+  .feed .what .action { font-size: 14px; font-weight: 500; }
+  .feed .what .action code {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    background: var(--ivory);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1px 6px;
+    white-space: nowrap;
+  }
+  .feed .what .detail {
+    font-size: 12.5px;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+  .chip {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .chip::before {
+    content: "";
+    width: 6px; height: 6px; border-radius: 50%;
+    background: currentColor;
+  }
+  .chip--done { color: var(--olive); background: rgba(47, 163, 107, 0.12); }
+  .chip--pending { color: var(--amber); background: rgba(232, 147, 12, 0.12); }
+  .chip--scheduled { color: var(--gray); background: rgba(107, 106, 118, 0.11); }
+  .chip--rejected { color: #C24343; background: rgba(194, 67, 67, 0.12); }
+
+  .approve-row {
+    grid-column: 2 / -1;
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .btn {
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: var(--r-sm);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.12s ease, background 0.15s ease, opacity 0.15s ease;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-approve { background: var(--clay); color: #FFFFFF; }
+  .btn-approve:hover { background: #5a48c9; }
+  .btn-reject {
+    background: transparent;
+    color: var(--gray);
+    border-color: var(--border);
+  }
+  .btn-reject:hover { color: var(--ink); border-color: var(--gray); background: var(--ivory); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--clay);
+    border-color: var(--border);
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+  .btn-ghost:hover { background: rgba(109, 90, 230, 0.08); border-color: var(--clay); }
+  .btn[disabled] { opacity: 0.55; cursor: default; pointer-events: none; }
+
+  .resolved-note {
+    grid-column: 2 / -1;
+    font-size: 12.5px;
+    color: var(--gray);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* ---------- Inventory table ---------- */
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 620px;
+    font-size: 13.5px;
+  }
+  thead th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr { transition: background 0.15s ease; }
+  tbody tr:hover { background: rgba(255, 255, 255, 0.75); }
+  td.path { font-family: var(--mono); font-size: 12.5px; white-space: nowrap; }
+  td.num { font-family: var(--mono); font-size: 12.5px; color: var(--gray); text-align: right; }
+  td.date { font-family: var(--mono); font-size: 12px; color: var(--gray); white-space: nowrap; }
+  tr.stale { background: rgba(232, 147, 12, 0.06); }
+  tr.stale:hover { background: rgba(232, 147, 12, 0.1); }
+  tr.stale td.path { font-weight: 500; }
+  .flag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .flag--fresh { color: var(--olive); background: rgba(47, 163, 107, 0.12); }
+  .flag--aging { color: var(--gray); background: rgba(107, 106, 118, 0.11); }
+  .flag--stale { color: var(--amber); background: rgba(232, 147, 12, 0.13); }
+  .flag--queued { color: var(--clay); background: rgba(109, 90, 230, 0.12); }
+
+  /* ---------- Scheduled tasks ---------- */
+  .tasks { list-style: none; padding: 4px 8px 12px; }
+  .tasks li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 13px 12px;
+  }
+  .tasks li + li { border-top: 1px solid var(--border); }
+  .tasks .t-name { font-size: 14px; font-weight: 500; }
+  .tasks .t-cadence {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 1px;
+  }
+  .tasks .t-next {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink);
+    background: var(--ivory);
+    border: 1px solid var(--border);
+    padding: 5px 11px;
+    border-radius: var(--r-sm);
+    white-space: nowrap;
+    text-align: right;
+  }
+  .tasks .t-next .lbl {
+    display: block;
+    font-family: "Public Sans", sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray);
+  }
+
+  /* ---------- Agent status card ---------- */
+  .agent-card {
+    background: var(--ink);
+    color: var(--ivory);
+    border-radius: var(--r-lg);
+    padding: 20px;
+  }
+  .agent-card .row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .agent-card .orb {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--clay);
+    animation: pulse-clay 2s ease-in-out infinite;
+  }
+  @keyframes pulse-clay {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(109, 90, 230, 0.5); }
+    50% { box-shadow: 0 0 0 7px rgba(109, 90, 230, 0); }
+  }
+  .agent-card .status { font-size: 14px; font-weight: 600; }
+  .agent-card .task-line {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: #B3B1C4;
+    line-height: 1.6;
+  }
+  .agent-card .task-line .cursor {
+    display: inline-block;
+    width: 8px; height: 14px;
+    background: var(--clay);
+    vertical-align: -2px;
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translate(-50%, 12px);
+    background: var(--ink);
+    color: var(--ivory);
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 11px 20px;
+    border-radius: var(--r-md);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 50;
+    max-width: calc(100vw - 32px);
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 22px clamp(16px, 4vw, 40px);
+    text-align: center;
+  }
+  footer .credit { font-size: 13px; color: var(--gray); }
+  footer .credit a { color: var(--clay); text-decoration: none; }
+  footer .credit a:hover { text-decoration: underline; }
+  footer .footnote {
+    font-size: 11.5px;
+    color: var(--gray);
+    opacity: 0.75;
+    margin-top: 6px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wordmark">Claude for Leaders<span class="dot">.</span></div>
+  <div class="divider"></div>
+  <div class="page-title">Webmaster — CMS management and updates</div>
+  <a class="back-link" href="../index.html">&larr; Back to the deck</a>
+</header>
+
+<div class="page-head">
+  <div class="site-label"><span class="pulse"></span>coastalcomforthvac.com &middot; agent on duty</div>
+  <h1>Your website, maintained while you sleep</h1>
+  <p class="sub">A Claude agent watches this fictional HVAC company's site around the clock — fixing broken links, refreshing stale pages, and drafting content. Anything customer-facing waits for a human yes.</p>
+</div>
+
+<main class="wrap">
+
+  <!-- Uptime & performance strip -->
+  <section class="metrics" aria-label="Uptime and performance">
+    <div class="metric">
+      <span class="label">Uptime — 30 days</span>
+      <span class="value"><span data-count="99.98" data-decimals="2">0</span><span class="unit">%</span></span>
+      <span class="delta">2 incidents auto-resolved</span>
+      <div class="spark spark--olive" data-spark="82,90,88,94,91,96,93,97,95,98,96,99"></div>
+    </div>
+    <div class="metric">
+      <span class="label">Avg load time</span>
+      <span class="value"><span data-count="1.2" data-decimals="1">0</span><span class="unit">s</span></span>
+      <span class="delta">&minus;0.6s after image compression</span>
+      <div class="spark" data-spark="95,92,90,88,85,70,62,58,55,52,50,48"></div>
+    </div>
+    <div class="metric">
+      <span class="label">Broken links fixed</span>
+      <span class="value"><span data-count="27" data-decimals="0">0</span></span>
+      <span class="delta">this quarter, zero missed</span>
+      <div class="spark spark--olive" data-spark="20,35,28,48,40,60,52,70,64,80,74,92"></div>
+    </div>
+  </section>
+
+  <div class="grid">
+    <!-- Left column -->
+    <div class="col">
+
+      <!-- Agent activity feed -->
+      <section class="panel" aria-label="Agent activity feed">
+        <div class="panel-head">
+          <h2>Agent activity</h2>
+          <span class="meta" id="feed-meta">today &middot; 6 actions</span>
+        </div>
+        <ul class="feed" id="feed">
+          <li data-status="pending" data-item="spring-guide">
+            <span class="time">09:41</span>
+            <div class="what">
+              <div class="action">Draft: &ldquo;Spring maintenance guide&rdquo; awaiting approval</div>
+              <div class="detail">1,240 words &middot; targets &ldquo;AC tune-up Orange County&rdquo; &middot; ready to publish to <code>/blog</code></div>
+            </div>
+            <span class="chip chip--pending js-chip">Awaiting approval</span>
+            <div class="approve-row js-actions">
+              <button class="btn btn-approve" data-act="approve">Approve &amp; publish</button>
+              <button class="btn btn-reject" data-act="reject">Reject</button>
+            </div>
+          </li>
+          <li data-status="pending" data-item="meta-rewrite">
+            <span class="time">09:17</span>
+            <div class="what">
+              <div class="action">Proposed: rewrite meta descriptions on 6 service pages</div>
+              <div class="detail">Current descriptions truncate in search results &middot; diff prepared for review</div>
+            </div>
+            <span class="chip chip--pending js-chip">Awaiting approval</span>
+            <div class="approve-row js-actions">
+              <button class="btn btn-approve" data-act="approve">Approve</button>
+              <button class="btn btn-reject" data-act="reject">Reject</button>
+            </div>
+          </li>
+          <li data-status="done">
+            <span class="time">08:52</span>
+            <div class="what">
+              <div class="action">Updated holiday hours on <code>/contact</code></div>
+              <div class="detail">Pulled from Google Business Profile &middot; verified render on mobile</div>
+            </div>
+            <span class="chip chip--done">Done</span>
+          </li>
+          <li data-status="done">
+            <span class="time">07:30</span>
+            <div class="what">
+              <div class="action">Compressed 14 images (&minus;2.1&nbsp;MB)</div>
+              <div class="detail">Converted to WebP &middot; homepage LCP improved 1.8s &rarr; 1.2s</div>
+            </div>
+            <span class="chip chip--done">Done</span>
+          </li>
+          <li data-status="done">
+            <span class="time">06:15</span>
+            <div class="what">
+              <div class="action">Fixed 3 broken links on <code>/services/heating</code></div>
+              <div class="detail">Two outdated manufacturer URLs, one dead PDF &middot; redirects verified 200 OK</div>
+            </div>
+            <span class="chip chip--done">Done</span>
+          </li>
+          <li data-status="scheduled">
+            <span class="time">Sun 02:00</span>
+            <div class="what">
+              <div class="action">Full-site backup to offsite storage</div>
+              <div class="detail">Weekly &middot; last run completed in 4m 12s, checksum verified</div>
+            </div>
+            <span class="chip chip--scheduled">Scheduled</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Content inventory -->
+      <section class="panel" aria-label="Content inventory">
+        <div class="panel-head">
+          <h2>Content inventory</h2>
+          <span class="meta">8 pages &middot; 2 flagged stale</span>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Page</th>
+                <th>Last updated</th>
+                <th>Freshness</th>
+                <th style="text-align:right">Words</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="inventory">
+              <tr>
+                <td class="path">/</td>
+                <td class="date">2026-07-12</td>
+                <td><span class="flag flag--fresh">Fresh</span></td>
+                <td class="num">640</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="path">/services/cooling</td>
+                <td class="date">2026-07-08</td>
+                <td><span class="flag flag--fresh">Fresh</span></td>
+                <td class="num">1,180</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="path">/contact</td>
+                <td class="date">2026-07-14</td>
+                <td><span class="flag flag--fresh">Fresh</span></td>
+                <td class="num">220</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="path">/services/heating</td>
+                <td class="date">2026-05-30</td>
+                <td><span class="flag flag--aging">Aging</span></td>
+                <td class="num">1,020</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td class="path">/blog/duct-cleaning-faq</td>
+                <td class="date">2026-04-18</td>
+                <td><span class="flag flag--aging">Aging</span></td>
+                <td class="num">890</td>
+                <td></td>
+              </tr>
+              <tr class="stale">
+                <td class="path">/pricing</td>
+                <td class="date">2025-11-02</td>
+                <td><span class="flag flag--stale js-flag">Stale &middot; 8 mo</span></td>
+                <td class="num">460</td>
+                <td><button class="btn btn-ghost js-refresh">Queue refresh</button></td>
+              </tr>
+              <tr class="stale">
+                <td class="path">/about/team</td>
+                <td class="date">2025-09-14</td>
+                <td><span class="flag flag--stale js-flag">Stale &middot; 10 mo</span></td>
+                <td class="num">380</td>
+                <td><button class="btn btn-ghost js-refresh">Queue refresh</button></td>
+              </tr>
+              <tr>
+                <td class="path">/blog/smart-thermostats</td>
+                <td class="date">2026-06-21</td>
+                <td><span class="flag flag--fresh">Fresh</span></td>
+                <td class="num">1,340</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <!-- Right column -->
+    <div class="col">
+
+      <!-- Agent status -->
+      <section class="agent-card" aria-label="Agent status">
+        <div class="row">
+          <span class="orb"></span>
+          <span class="status">Agent active</span>
+        </div>
+        <div class="task-line">crawling /blog for orphaned pages&hellip;<br>next check-in 10:00 AM PT <span class="cursor"></span></div>
+      </section>
+
+      <!-- Scheduled tasks -->
+      <section class="panel" aria-label="Scheduled tasks">
+        <div class="panel-head">
+          <h2>Scheduled tasks</h2>
+          <span class="meta">all on time</span>
+        </div>
+        <ul class="tasks">
+          <li>
+            <div>
+              <div class="t-name">Full-site backup</div>
+              <div class="t-cadence">Weekly &middot; Sundays 2:00 AM</div>
+            </div>
+            <span class="t-next"><span class="lbl">Next run</span>Jul 19 &middot; 02:00</span>
+          </li>
+          <li>
+            <div>
+              <div class="t-name">Broken-link scan</div>
+              <div class="t-cadence">Monthly &middot; 1st of month</div>
+            </div>
+            <span class="t-next"><span class="lbl">Next run</span>Aug 1 &middot; 03:00</span>
+          </li>
+          <li>
+            <div>
+              <div class="t-name">Content freshness review</div>
+              <div class="t-cadence">Quarterly &middot; flags pages &gt; 6 mo old</div>
+            </div>
+            <span class="t-next"><span class="lbl">Next run</span>Oct 1 &middot; 06:00</span>
+          </li>
+          <li>
+            <div>
+              <div class="t-name">Uptime &amp; speed audit</div>
+              <div class="t-cadence">Daily &middot; report on regression only</div>
+            </div>
+            <span class="t-next"><span class="lbl">Next run</span>Jul 15 &middot; 05:30</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- How it works aside -->
+      <section class="panel" aria-label="How this works">
+        <div class="panel-head"><h2>How this works</h2></div>
+        <div style="padding: 0 20px 18px; font-size: 13.5px; color: var(--gray); line-height: 1.65;">
+          <p style="margin-bottom: 10px;">The agent handles routine upkeep on its own: hours, links, image weight, backups. It <strong style="color: var(--ink);">never publishes new customer-facing content without approval</strong> — those items wait in the feed for one click from you.</p>
+          <p>Total human time this week: <strong style="color: var(--ink); font-family: var(--mono); font-size: 13px;">~4 minutes</strong>.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<footer>
+  <div class="credit">Demo built with Claude Code &middot; Travis Johnson &middot; AuraPath AI &middot; <a href="https://aurapathai.com">aurapathai.com</a></div>
+  <div class="footnote">Coastal Comfort HVAC is a fictional company. All activity, metrics, and content shown are demo data.</div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Toast ---------- */
+  var toast = document.getElementById("toast");
+  var toastTimer = null;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove("show"); }, 2600);
+  }
+
+  /* ---------- Animated counters ---------- */
+  var counters = document.querySelectorAll("[data-count]");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  counters.forEach(function (el) {
+    var target = parseFloat(el.getAttribute("data-count"));
+    var decimals = parseInt(el.getAttribute("data-decimals"), 10) || 0;
+    if (reduceMotion) { el.textContent = target.toFixed(decimals); return; }
+    var duration = 1400;
+    var start = null;
+    function step(ts) {
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 4); // ease-out-quart
+      el.textContent = (target * eased).toFixed(decimals);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+
+  /* ---------- Sparklines ---------- */
+  document.querySelectorAll("[data-spark]").forEach(function (spark) {
+    var values = spark.getAttribute("data-spark").split(",").map(Number);
+    values.forEach(function (v, i) {
+      var bar = document.createElement("span");
+      bar.style.height = Math.max(v, 6) + "%";
+      bar.style.animationDelay = (i * 45) + "ms";
+      spark.appendChild(bar);
+    });
+  });
+
+  /* ---------- Approve / reject on feed items ---------- */
+  var feed = document.getElementById("feed");
+  var feedMeta = document.getElementById("feed-meta");
+  function updateFeedMeta() {
+    var pending = feed.querySelectorAll('li[data-status="pending"]').length;
+    var total = feed.querySelectorAll("li").length;
+    feedMeta.textContent = "today · " + total + " actions" + (pending ? " · " + pending + " pending" : "");
+  }
+  updateFeedMeta();
+
+  feed.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-act]");
+    if (!btn) return;
+    var li = btn.closest("li");
+    var act = btn.getAttribute("data-act");
+    var chip = li.querySelector(".js-chip");
+    var actions = li.querySelector(".js-actions");
+    var title = li.querySelector(".action").textContent.trim();
+
+    actions.querySelectorAll("button").forEach(function (b) { b.disabled = true; });
+
+    if (act === "approve") {
+      li.setAttribute("data-status", "done");
+      chip.className = "chip chip--done";
+      chip.textContent = "Done";
+      var note = document.createElement("div");
+      note.className = "resolved-note";
+      note.textContent = "Approved just now — agent is publishing.";
+      actions.replaceWith(note);
+      showToast("Approved. The agent will publish and verify the live page.");
+    } else {
+      li.setAttribute("data-status", "rejected");
+      chip.className = "chip chip--rejected";
+      chip.textContent = "Rejected";
+      li.style.opacity = "0.62";
+      var note2 = document.createElement("div");
+      note2.className = "resolved-note";
+      note2.textContent = "Rejected — agent will revise and resubmit with your feedback.";
+      actions.replaceWith(note2);
+      showToast("Rejected. Draft returned to the agent for revision.");
+    }
+    void title; // title kept for potential logging in a real build
+    updateFeedMeta();
+  });
+
+  /* ---------- Queue refresh on stale inventory rows ---------- */
+  document.getElementById("inventory").addEventListener("click", function (e) {
+    var btn = e.target.closest(".js-refresh");
+    if (!btn) return;
+    var row = btn.closest("tr");
+    var flag = row.querySelector(".js-flag");
+    var page = row.querySelector(".path").textContent.trim();
+
+    flag.className = "flag flag--queued";
+    flag.textContent = "Refresh queued";
+    btn.disabled = true;
+    btn.textContent = "Queued ✓";
+
+    // Add a new scheduled entry at the top of the activity feed
+    var li = document.createElement("li");
+    li.setAttribute("data-status", "scheduled");
+    var now = new Date();
+    var hh = String(now.getHours()).padStart(2, "0");
+    var mm = String(now.getMinutes()).padStart(2, "0");
+    li.innerHTML =
+      '<span class="time">' + hh + ":" + mm + '</span>' +
+      '<div class="what">' +
+        '<div class="action">Queued content refresh for <code></code></div>' +
+        '<div class="detail">Agent will draft an update and submit it for approval</div>' +
+      '</div>' +
+      '<span class="chip chip--scheduled">Scheduled</span>';
+    li.querySelector("code").textContent = page;
+    li.style.opacity = "0";
+    feed.insertBefore(li, feed.firstElementChild);
+    requestAnimationFrame(function () {
+      li.style.transition = "opacity 0.4s ease";
+      li.style.opacity = "1";
+    });
+    updateFeedMeta();
+    showToast("Refresh queued for " + page + " — draft will arrive for approval.");
+  });
+})();
+</script>
+</body>
+</html>

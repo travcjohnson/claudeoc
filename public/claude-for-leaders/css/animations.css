@@ -1,0 +1,44 @@
+/* Keyframes utilitaires + override global pour prefers-reduced-motion. */
+
+/* Utility classes (pour animations CSS simples, quand GSAP n'est pas nécessaire) */
+
+.fx-fade-in {
+  animation: fx-fade var(--dur-base) var(--ease-out) both;
+}
+
+.fx-fade-up {
+  animation: fx-fade-up var(--dur-base) var(--ease-out) both;
+}
+
+.fx-clip-reveal {
+  animation: fx-clip-reveal var(--dur-slow) var(--ease-slide) both;
+}
+
+@keyframes fx-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fx-fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fx-clip-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Override global : prefers-reduced-motion
+   Neutralise toutes les animations (CSS et GSAP respecte via JS).
+   ═══════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

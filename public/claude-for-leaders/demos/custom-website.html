@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saddleback Landscape Studio — Design-Build Landscaping, South Orange County</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --fern:#2E4A34;
+    --fern-deep:#233B29;
+    --fern-darkest:#1B2E20;
+    --sand:#E8DCC8;
+    --cream:#F7F1E3;
+    --cream-bright:#FCF8EE;
+    --terra:#C4693B;
+    --terra-deep:#A85427;
+    --ink:#26301F;
+    --body:#3E4636;
+    --muted:#77705C;
+    --on-fern:#F3ECD9;
+    --on-fern-dim:#BCC9B4;
+    --border:#D9CCAF;
+    --border-light:#E4D9C1;
+    --r-card:16px;
+    --r-btn:12px;
+    --maxw:1160px;
+    --serif:'Bitter',Georgia,serif;
+    --sans:'Karla',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--sans);
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:var(--serif);}
+  img,svg{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,4vw,48px);}
+
+  /* ---------- utility bar ---------- */
+  .utility{
+    background:var(--fern-darkest);
+    color:var(--on-fern-dim);
+    font-size:12.5px;
+    letter-spacing:.02em;
+  }
+  .utility .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    min-height:34px;gap:16px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px;
+  }
+  .utility a{color:var(--on-fern);text-decoration:none;border-bottom:1px solid rgba(243,236,217,.35);padding-bottom:1px;}
+  .utility a:hover{border-bottom-color:var(--on-fern);}
+  .utility em{font-style:normal;color:#8FA087;}
+
+  /* ---------- nav (on fern) ---------- */
+  header.site{
+    position:sticky;top:0;z-index:100;
+    background:var(--fern);
+    border-bottom:1px solid rgba(243,236,217,.14);
+    transition:box-shadow .3s ease,background .3s ease;
+  }
+  header.site.scrolled{box-shadow:0 10px 28px rgba(27,46,32,.35);background:var(--fern-deep);}
+  nav.main{
+    display:flex;align-items:center;justify-content:space-between;
+    min-height:70px;gap:24px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .brand-mark{
+    width:36px;height:36px;border-radius:12px;
+    background:var(--terra);
+    display:grid;place-items:center;flex-shrink:0;
+  }
+  .brand-mark svg{width:21px;height:21px;}
+  .brand-name{
+    font-family:var(--serif);font-weight:700;font-size:16px;
+    letter-spacing:-.01em;line-height:1.15;color:var(--on-fern);
+  }
+  .brand-name span{
+    display:block;font-family:var(--sans);font-weight:600;font-size:10.5px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--on-fern-dim);
+  }
+  .nav-links{display:flex;align-items:center;gap:6px;list-style:none;}
+  .nav-links a{
+    text-decoration:none;font-size:14.5px;font-weight:600;color:var(--on-fern);
+    padding:8px 13px;border-radius:9px;transition:background .2s,color .2s;
+  }
+  .nav-links a:hover{background:rgba(243,236,217,.12);}
+  .nav-cta{
+    background:var(--terra)!important;color:#FFF6EC!important;
+    padding:10px 19px!important;border-radius:11px!important;
+  }
+  .nav-cta:hover{background:var(--terra-deep)!important;}
+  .nav-toggle{
+    display:none;background:none;border:1px solid rgba(243,236,217,.3);border-radius:11px;
+    width:42px;height:42px;cursor:pointer;place-items:center;
+  }
+  .nav-toggle svg{width:20px;height:20px;stroke:var(--on-fern);}
+  @media(max-width:860px){
+    .nav-toggle{display:grid;}
+    .nav-links{
+      position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;align-items:stretch;gap:2px;
+      background:var(--fern-deep);border-bottom:1px solid rgba(243,236,217,.14);
+      padding:12px clamp(20px,4vw,48px) 20px;
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:12px 14px;}
+    .nav-cta{text-align:center;margin-top:8px;}
+  }
+
+  /* ---------- hero (deep fern) ---------- */
+  .hero{
+    position:relative;
+    background:var(--fern);
+    color:var(--on-fern);
+    padding:clamp(56px,8vw,96px) 0 clamp(72px,9vw,110px);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(60% 80% at 85% 0%, rgba(243,236,217,.06), transparent 60%),
+      radial-gradient(50% 60% at 0% 100%, rgba(27,46,32,.6), transparent 60%);
+  }
+  .hero-grid{
+    position:relative;
+    display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+    gap:clamp(32px,6vw,72px);align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--terra);margin-bottom:22px;
+  }
+  .eyebrow .sprig{width:20px;height:20px;flex-shrink:0;}
+  .eyebrow .sprig svg{width:100%;height:100%;stroke:var(--terra);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+  .hero .eyebrow{color:#E0A57F;}
+  .hero .eyebrow .sprig svg{stroke:#E0A57F;}
+  .hero h1{
+    font-size:clamp(38px,5.2vw,62px);
+    font-weight:700;letter-spacing:-.015em;line-height:1.08;
+    margin-bottom:24px;color:#FBF6E9;
+  }
+  .hero h1 em{font-style:italic;color:#E9B98F;}
+  .hero p.lede{
+    font-size:clamp(16px,1.6vw,18.5px);color:var(--on-fern-dim);max-width:52ch;
+    margin-bottom:36px;
+  }
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--sans);font-size:15px;font-weight:700;
+    padding:14px 27px;border-radius:var(--r-btn);text-decoration:none;
+    border:1.5px solid transparent;cursor:pointer;
+    transition:background .2s,transform .15s ease,border-color .2s,color .2s;
+  }
+  .btn:active{transform:scale(.98);}
+  .btn-primary{background:var(--terra);color:#FFF6EC;}
+  .btn-primary:hover{background:var(--terra-deep);}
+  .btn-ghost{background:transparent;color:var(--on-fern);border-color:rgba(243,236,217,.4);}
+  .btn-ghost:hover{border-color:var(--on-fern);background:rgba(243,236,217,.08);}
+  .hero-note{font-size:13px;color:#93A48C;margin-top:24px;}
+  .hero-note strong{color:var(--on-fern);font-weight:700;}
+
+  /* hero visual — layered CSS composition, sandstone card on fern */
+  .hero-visual{position:relative;min-height:380px;}
+  .hv-card{
+    position:absolute;border-radius:var(--r-card);
+    overflow:hidden;
+    box-shadow:0 22px 54px rgba(20,33,23,.45);
+  }
+  .hv-main{
+    inset:0 8% 12% 0;
+    background:
+      radial-gradient(120% 90% at 78% 10%, rgba(252,248,238,.7) 0%, rgba(252,248,238,0) 48%),
+      linear-gradient(160deg,#F0E5CE 0%,#E8DCC8 40%,#CDBB98 100%);
+  }
+  .hv-terrace{
+    position:absolute;left:-6%;right:-6%;height:36%;bottom:-4%;
+    background:linear-gradient(180deg,#5A7A54,#42603F);
+    border-radius:50% 50% 0 0 / 100% 100% 0 0;
+  }
+  .hv-terrace.t2{bottom:-15%;background:linear-gradient(180deg,#3C573A,#2E4531);opacity:.95;}
+  .hv-pot{
+    position:absolute;bottom:28%;right:16%;width:58px;height:52px;
+    background:linear-gradient(180deg,#CE7748,#B25A2D);
+    border-radius:8px 8px 22px 22px / 8px 8px 30px 30px;
+  }
+  .hv-pot::before{
+    content:"";position:absolute;top:-7px;left:-6px;right:-6px;height:13px;
+    background:#C4693B;border-radius:5px;
+  }
+  .hv-pot::after{
+    content:"";position:absolute;top:-30px;left:50%;width:2.5px;height:26px;
+    background:#3C573A;transform:translateX(-50%);
+    box-shadow:-9px 6px 0 -0.5px #4A6B47,9px 6px 0 -0.5px #4A6B47;
+    border-radius:2px;
+  }
+  .hv-sun{
+    position:absolute;top:10%;left:12%;width:60px;height:60px;border-radius:50%;
+    background:radial-gradient(circle at 38% 34%,#FCF8EE,#EBDFC6 70%);
+    box-shadow:0 0 0 10px rgba(252,248,238,.35),0 0 0 22px rgba(252,248,238,.15);
+  }
+  .hv-badge{
+    left:auto;right:0;bottom:2%;width:min(240px,72%);
+    background:var(--cream-bright);padding:18px 20px;
+    border-radius:var(--r-card);
+    box-shadow:0 16px 38px rgba(20,33,23,.4);
+  }
+  .hv-badge .num{font-family:var(--serif);font-size:27px;font-weight:700;line-height:1;color:var(--fern);}
+  .hv-badge .lbl{font-size:12.5px;color:var(--muted);margin-top:5px;}
+  .hv-chip{
+    left:-4%;top:8%;background:var(--cream-bright);padding:12px 16px;
+    display:flex;align-items:center;gap:10px;border-radius:14px;
+    box-shadow:0 12px 30px rgba(20,33,23,.35);
+  }
+  .hv-chip .dot{width:9px;height:9px;border-radius:50%;background:var(--terra);flex-shrink:0;}
+  .hv-chip span{font-size:12.5px;font-weight:700;white-space:nowrap;color:var(--ink);}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{min-height:300px;order:2;}
+  }
+
+  /* ---------- sections common ---------- */
+  section{padding:clamp(64px,9vw,110px) 0;}
+  .sec-head{max-width:660px;margin-bottom:clamp(36px,5vw,56px);}
+  .sec-head h2{
+    font-size:clamp(28px,3.5vw,42px);font-weight:700;
+    letter-spacing:-.015em;line-height:1.14;margin-bottom:16px;color:var(--ink);
+  }
+  .sec-head p{color:var(--body);font-size:16.5px;}
+  .alt{background:var(--sand);}
+
+  /* scroll reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.22,.9,.3,1),transform .7s cubic-bezier(.22,.9,.3,1);}
+  .reveal.in{opacity:1;transform:none;}
+  .reveal.d1{transition-delay:.08s;} .reveal.d2{transition-delay:.16s;}
+  .reveal.d3{transition-delay:.24s;} .reveal.d4{transition-delay:.32s;}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+
+  /* ---------- services (sandstone) ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .svc{
+    background:var(--cream-bright);border:1px solid var(--border-light);
+    border-radius:var(--r-card);
+    padding:30px 26px 28px;
+    transition:border-color .25s,box-shadow .25s,transform .25s ease;
+  }
+  .svc:hover{border-color:#C9B892;box-shadow:0 16px 36px rgba(84,68,38,.14);transform:translateY(-3px);}
+  .svc .icon{
+    width:48px;height:48px;border-radius:14px;background:#E2E8DA;
+    display:grid;place-items:center;margin-bottom:20px;
+  }
+  .svc .icon svg{width:25px;height:25px;stroke:var(--fern);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+  .svc h3{font-size:18px;font-weight:700;margin-bottom:9px;}
+  .svc p{font-size:14px;color:var(--body);line-height:1.64;}
+  @media(max-width:1000px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.svc-grid{grid-template-columns:1fr;}}
+
+  /* ---------- portfolio (cream) ---------- */
+  .pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .pf{
+    border-radius:var(--r-card);overflow:hidden;border:1px solid var(--border-light);
+    background:var(--cream-bright);text-decoration:none;display:block;
+    transition:box-shadow .25s,transform .25s ease;
+  }
+  .pf:hover{box-shadow:0 20px 44px rgba(84,68,38,.16);transform:translateY(-4px);}
+  .pf-img{position:relative;aspect-ratio:4/3;overflow:hidden;}
+  .pf-img::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 55%,rgba(27,46,32,.3));
+  }
+  .pf:nth-child(1) .pf-img{background:
+    radial-gradient(90% 70% at 20% 15%, rgba(252,248,238,.4), transparent 50%),
+    linear-gradient(150deg,#6E8F63 0%,#476B45 55%,#2E4A34 100%);}
+  .pf:nth-child(2) .pf-img{background:
+    radial-gradient(80% 60% at 80% 20%, rgba(252,248,238,.4), transparent 55%),
+    linear-gradient(160deg,#E8DCC8 0%,#D3A277 45%,#B0642F 100%);}
+  .pf:nth-child(3) .pf-img{background:
+    radial-gradient(100% 80% at 30% 80%, rgba(196,105,59,.35), transparent 60%),
+    linear-gradient(145deg,#8AA075 0%,#5C7A52 50%,#33502F 100%);}
+  .pf-img .lines{
+    position:absolute;inset:0;
+    background-image:repeating-linear-gradient(0deg,rgba(252,248,238,.1) 0 1.5px,transparent 1.5px 34px);
+    mask-image:linear-gradient(180deg,transparent 20%,#000 70%);
+    -webkit-mask-image:linear-gradient(180deg,transparent 20%,#000 70%);
+  }
+  .pf-img .shape{position:absolute;border-radius:50%;background:rgba(252,248,238,.16);}
+  .pf:nth-child(1) .shape{width:130px;height:130px;right:-30px;top:-30px;}
+  .pf:nth-child(2) .shape{width:170px;height:170px;left:-50px;bottom:-60px;border-radius:20px;transform:rotate(18deg);}
+  .pf:nth-child(3) .shape{width:110px;height:110px;right:18%;top:22%;}
+  .pf-tag{
+    position:absolute;top:14px;left:14px;z-index:2;
+    background:rgba(252,248,238,.94);border-radius:9px;
+    font-size:11.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+    padding:6px 11px;color:var(--fern);
+  }
+  .pf-body{padding:20px 22px 22px;}
+  .pf-body h3{font-size:17px;font-weight:700;margin-bottom:6px;}
+  .pf-body p{font-size:13.5px;color:var(--body);}
+  .pf-meta{
+    display:flex;gap:14px;margin-top:14px;padding-top:14px;
+    border-top:1px solid var(--border-light);
+    font-size:12px;color:var(--muted);
+  }
+  .pf-meta b{color:var(--terra-deep);font-weight:700;}
+  @media(max-width:900px){.pf-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:600px){.pf-grid{grid-template-columns:1fr;}}
+
+  /* ---------- process (sandstone) ---------- */
+  .proc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+  .step{padding:0 26px 0 0;position:relative;}
+  .step-top{display:flex;align-items:center;gap:0;margin-bottom:22px;}
+  .step-num{
+    width:46px;height:46px;border-radius:50%;flex-shrink:0;
+    border:1.5px solid var(--terra);color:var(--terra-deep);
+    display:grid;place-items:center;
+    font-family:var(--serif);font-weight:700;font-size:16px;background:var(--cream-bright);
+    position:relative;z-index:2;
+  }
+  .step-line{height:1.5px;background:#CBBB98;flex:1;}
+  .step:last-child .step-line{display:none;}
+  .step h3{font-size:17.5px;font-weight:700;margin-bottom:8px;}
+  .step p{font-size:14px;color:var(--body);line-height:1.64;}
+  .step .dur{
+    display:inline-block;margin-top:14px;font-size:11.5px;font-weight:700;
+    letter-spacing:.09em;text-transform:uppercase;color:var(--fern);
+    background:#DDE4D4;border-radius:8px;padding:5px 11px;
+  }
+  @media(max-width:900px){
+    .proc{grid-template-columns:1fr 1fr;row-gap:44px;}
+    .step:nth-child(2) .step-line{display:none;}
+  }
+  @media(max-width:560px){
+    .proc{grid-template-columns:1fr;}
+    .step .step-line{display:none;}
+    .step{padding-right:0;}
+  }
+
+  /* ---------- stats (deep fern) ---------- */
+  .stats{
+    background:var(--fern-deep);color:var(--on-fern);
+    padding:clamp(56px,7vw,84px) 0;
+    position:relative;overflow:hidden;
+  }
+  .stats .leafbg{
+    position:absolute;right:-40px;top:-40px;width:280px;height:280px;opacity:.09;
+    pointer-events:none;
+  }
+  .stats .leafbg svg{width:100%;height:100%;stroke:var(--on-fern);fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative;}
+  .stat{border-left:1.5px solid rgba(243,236,217,.22);padding-left:24px;}
+  .stat .num{
+    font-family:var(--serif);
+    font-size:clamp(34px,4.2vw,52px);font-weight:700;letter-spacing:-.02em;
+    line-height:1;font-variant-numeric:tabular-nums;color:#FBF6E9;
+  }
+  .stat .num .suffix{color:#E0A57F;}
+  .stat .lbl{font-size:13.5px;color:var(--on-fern-dim);margin-top:10px;max-width:22ch;}
+  @media(max-width:820px){.stats-grid{grid-template-columns:1fr 1fr;row-gap:40px;}}
+  @media(max-width:440px){.stats-grid{grid-template-columns:1fr;}}
+
+  /* ---------- contact (cream) ---------- */
+  .contact-grid{
+    display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);
+    gap:clamp(36px,6vw,72px);align-items:start;
+  }
+  .contact-info h2{
+    font-size:clamp(28px,3.4vw,40px);font-weight:700;
+    line-height:1.14;margin-bottom:16px;
+  }
+  .contact-info>p{color:var(--body);font-size:16px;margin-bottom:32px;max-width:44ch;}
+  .ci-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;}
+  .ci-item .ic{
+    width:40px;height:40px;border-radius:12px;background:#E2E8DA;
+    display:grid;place-items:center;flex-shrink:0;
+  }
+  .ci-item .ic svg{width:19px;height:19px;stroke:var(--fern);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+  .ci-item .t{font-size:14.5px;}
+  .ci-item .t b{display:block;font-weight:700;margin-bottom:2px;}
+  .ci-item .t span{color:var(--body);}
+  form.quote{
+    background:var(--cream-bright);border:1px solid var(--border-light);
+    border-radius:var(--r-card);
+    padding:clamp(26px,3.5vw,40px);
+    box-shadow:0 18px 44px rgba(84,68,38,.1);
+  }
+  .f-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .f-field{margin-bottom:16px;}
+  .f-field label{
+    display:block;font-size:13px;font-weight:700;margin-bottom:7px;color:var(--ink);
+  }
+  .f-field input,.f-field select,.f-field textarea{
+    width:100%;font-family:var(--sans);font-size:14.5px;color:var(--ink);
+    background:var(--cream-bright);
+    border:1px solid var(--border);border-radius:11px;
+    padding:12px 14px;
+    transition:border-color .2s,box-shadow .2s;
+    appearance:none;-webkit-appearance:none;
+  }
+  .f-field select{
+    background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%2377705C' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;
+    padding-right:38px;cursor:pointer;
+  }
+  .f-field textarea{min-height:110px;resize:vertical;}
+  .f-field input:focus,.f-field select:focus,.f-field textarea:focus{
+    outline:none;border-color:var(--fern);
+    box-shadow:0 0 0 3px rgba(46,74,52,.16);
+  }
+  .f-field input::placeholder,.f-field textarea::placeholder{color:#A99F87;}
+  form.quote .btn-primary{width:100%;justify-content:center;margin-top:6px;}
+  .f-fine{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;}
+  @media(max-width:900px){.contact-grid{grid-template-columns:1fr;}}
+  @media(max-width:520px){.f-row{grid-template-columns:1fr;}}
+
+  /* toast */
+  .toast{
+    position:fixed;left:50%;bottom:28px;transform:translate(-50%,16px);
+    background:var(--fern-darkest);color:var(--on-fern);
+    border-radius:14px;padding:14px 22px;
+    display:flex;align-items:center;gap:11px;
+    font-size:14px;font-weight:600;
+    box-shadow:0 20px 48px rgba(20,33,23,.4);
+    opacity:0;pointer-events:none;z-index:200;
+    transition:opacity .35s ease,transform .35s cubic-bezier(.22,.9,.3,1);
+    max-width:calc(100vw - 40px);
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+  .toast .check{
+    width:22px;height:22px;border-radius:50%;background:var(--terra);
+    display:grid;place-items:center;flex-shrink:0;
+  }
+  .toast .check svg{width:12px;height:12px;stroke:#FFF6EC;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* ---------- footer (deep fern) ---------- */
+  footer.site{
+    background:var(--fern);color:var(--on-fern);
+    padding:clamp(48px,6vw,72px) 0 0;
+    position:relative;overflow:hidden;
+  }
+  footer.site .leafbg{
+    position:absolute;left:-60px;bottom:-60px;width:300px;height:300px;opacity:.07;
+    pointer-events:none;
+  }
+  footer.site .leafbg svg{width:100%;height:100%;stroke:var(--on-fern);fill:none;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;}
+  .foot-grid{
+    display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;
+    gap:clamp(28px,4vw,48px);padding-bottom:clamp(40px,5vw,56px);
+    position:relative;
+  }
+  .foot-grid h4{
+    font-family:var(--sans);
+    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    color:#93A48C;margin-bottom:16px;
+  }
+  .foot-grid ul{list-style:none;}
+  .foot-grid li{margin-bottom:10px;font-size:14px;color:var(--on-fern-dim);}
+  .foot-grid li a{text-decoration:none;color:var(--on-fern-dim);}
+  .foot-grid li a:hover{color:var(--on-fern);text-decoration:underline;text-underline-offset:3px;}
+  .foot-about p{font-size:14px;color:var(--on-fern-dim);max-width:34ch;margin-top:14px;}
+  .foot-legal{
+    border-top:1px solid rgba(243,236,217,.16);
+    padding:20px 0 24px;position:relative;
+  }
+  .foot-legal .wrap{
+    display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+    font-size:12.5px;color:#93A48C;
+  }
+  .foot-legal a{color:#B9C6B1;}
+  .foot-legal a:hover{color:var(--on-fern);}
+  @media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.foot-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- utility bar -->
+<div class="utility">
+  <div class="wrap">
+    <div><em>Claude for Leaders.</em> — demo · fictional business, all content illustrative</div>
+    <a href="../index.html">&larr; Back to the deck</a>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="site" id="siteHeader">
+  <div class="wrap">
+    <nav class="main" aria-label="Primary">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFF6EC" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21V9"/>
+            <path d="M12 13c0-3.5 2.6-6 6-6 0 3.5-2.6 6-6 6z"/>
+            <path d="M12 17c0-3.5-2.6-6-6-6 0 3.5 2.6 6 6 6z"/>
+          </svg>
+        </span>
+        <span class="brand-name">Saddleback<span>Landscape Studio</span></span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact" class="nav-cta">Request a Consultation</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal in">
+        <span class="eyebrow">
+          <span class="sprig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20c6-1 12-7 14-16"/><path d="M9 15c-2.5.5-4.5-.5-5.5-2.5C6 11.5 8.5 12 9.5 13.5"/><path d="M13 10c-2.5 0-4-1.5-4.5-3.5 2.5-.5 4.5.5 5.5 2"/></svg></span>
+          Design-Build Landscaping · South Orange County
+        </span>
+        <h1>Outdoor spaces designed for the way <em>you actually live.</em></h1>
+        <p class="lede">From first sketch to final walkthrough, one studio handles the entire journey — landscape architecture, permitting, construction, and planting — for homes from Ladera Ranch to Dana Point.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#contact">Start your project
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#work">See our work</a>
+        </div>
+        <p class="hero-note"><strong>Licensed &amp; insured</strong> · CA Lic. #C27-104782 (fictional) · Serving South OC since 2011</p>
+      </div>
+      <div class="hero-visual reveal d2" aria-hidden="true">
+        <div class="hv-card hv-main">
+          <div class="hv-sun"></div>
+          <div class="hv-pot"></div>
+          <div class="hv-terrace t2"></div>
+          <div class="hv-terrace"></div>
+        </div>
+        <div class="hv-card hv-chip"><span class="dot"></span><span>Drought-smart by design</span></div>
+        <div class="hv-card hv-badge">
+          <div class="num">340+</div>
+          <div class="lbl">yards transformed across South Orange County</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- services -->
+  <section id="services" class="alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">
+          <span class="sprig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20c6-1 12-7 14-16"/><path d="M9 15c-2.5.5-4.5-.5-5.5-2.5C6 11.5 8.5 12 9.5 13.5"/><path d="M13 10c-2.5 0-4-1.5-4.5-3.5 2.5-.5 4.5.5 5.5 2"/></svg></span>
+          What we do
+        </span>
+        <h2>One studio, every phase of your landscape.</h2>
+        <p>No juggling designers, contractors, and subs. Our in-house team carries your project from concept drawings through the final plant in the ground.</p>
+      </div>
+      <div class="svc-grid">
+        <article class="svc reveal">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 21l6-6"/><path d="M14 4l6 6-9 9H5v-6l9-9z"/><path d="M12.5 5.5l6 6"/></svg>
+          </div>
+          <h3>Landscape Design</h3>
+          <p>Concept plans, 3D renderings, and planting palettes tailored to your architecture, sun exposure, and how your family uses the yard.</p>
+        </article>
+        <article class="svc reveal d1">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="10" rx="1.5"/><path d="M3 14h18"/><path d="M8 10V6a4 4 0 0 1 8 0v4"/></svg>
+          </div>
+          <h3>Hardscape &amp; Outdoor Living</h3>
+          <p>Patios, seat walls, fire features, pergolas, and outdoor kitchens — engineered and built by our own crews, not subbed out.</p>
+        </article>
+        <article class="svc reveal d2">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 21c-4 0-7-3-7-7 0-5 4-9 7-11 3 2 7 6 7 11 0 4-3 7-7 7z"/><path d="M12 21v-8"/><path d="M12 13l3-3M12 16l-3-3"/></svg>
+          </div>
+          <h3>Drought-Smart Planting</h3>
+          <p>California-native and Mediterranean gardens with drip irrigation and smart controllers — beautiful in July, gentle on the water bill.</p>
+        </article>
+        <article class="svc reveal d3">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>
+          </div>
+          <h3>Lighting &amp; Irrigation</h3>
+          <p>Low-voltage landscape lighting and water-wise irrigation retrofits that extend your evenings outside and cut water use up to 40%.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- portfolio -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">
+          <span class="sprig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20c6-1 12-7 14-16"/><path d="M9 15c-2.5.5-4.5-.5-5.5-2.5C6 11.5 8.5 12 9.5 13.5"/><path d="M13 10c-2.5 0-4-1.5-4.5-3.5 2.5-.5 4.5.5 5.5 2"/></svg></span>
+          Selected projects
+        </span>
+        <h2>Recent work across the Saddleback Valley.</h2>
+        <p>A few favorites from the last two seasons. Every project starts with a design your neighbors will ask about.</p>
+      </div>
+      <div class="pf-grid">
+        <a class="pf reveal" href="#contact" aria-label="Ladera Ranch hillside retreat project">
+          <div class="pf-img" aria-hidden="true"><div class="lines"></div><div class="shape"></div><span class="pf-tag">Full Design-Build</span></div>
+          <div class="pf-body">
+            <h3>Hillside Retreat — Ladera Ranch</h3>
+            <p>Terraced slope converted to native garden with ipe deck, fire bowl, and canyon views.</p>
+            <div class="pf-meta"><span><b>9 wks</b> build</span><span><b>4,200</b> sq ft</span><span><b>2025</b></span></div>
+          </div>
+        </a>
+        <a class="pf reveal d1" href="#contact" aria-label="San Juan Capistrano courtyard project">
+          <div class="pf-img" aria-hidden="true"><div class="lines"></div><div class="shape"></div><span class="pf-tag">Hardscape + Planting</span></div>
+          <div class="pf-body">
+            <h3>Mission Courtyard — San Juan Capistrano</h3>
+            <p>Limestone pavers, olive trees, and a fountain courtyard for a 1970s ranch remodel.</p>
+            <div class="pf-meta"><span><b>6 wks</b> build</span><span><b>1,800</b> sq ft</span><span><b>2025</b></span></div>
+          </div>
+        </a>
+        <a class="pf reveal d2" href="#contact" aria-label="Dana Point outdoor kitchen project">
+          <div class="pf-img" aria-hidden="true"><div class="lines"></div><div class="shape"></div><span class="pf-tag">Outdoor Living</span></div>
+          <div class="pf-body">
+            <h3>Coastal Entertainer — Dana Point</h3>
+            <p>Outdoor kitchen, pergola with heaters, and salt-tolerant coastal planting two blocks from the harbor.</p>
+            <div class="pf-meta"><span><b>11 wks</b> build</span><span><b>3,100</b> sq ft</span><span><b>2026</b></span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- process -->
+  <section id="process" class="alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">
+          <span class="sprig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20c6-1 12-7 14-16"/><path d="M9 15c-2.5.5-4.5-.5-5.5-2.5C6 11.5 8.5 12 9.5 13.5"/><path d="M13 10c-2.5 0-4-1.5-4.5-3.5 2.5-.5 4.5.5 5.5 2"/></svg></span>
+          How it works
+        </span>
+        <h2>A clear path from idea to first evening outside.</h2>
+        <p>You'll always know what happens next, who's on site, and what it costs. That's the design-build difference.</p>
+      </div>
+      <div class="proc">
+        <div class="step reveal">
+          <div class="step-top"><span class="step-num">1</span><span class="step-line"></span></div>
+          <h3>Site Visit &amp; Listening</h3>
+          <p>We walk your property together, talk budget honestly, and learn how you want to live outside — dinners, play, quiet, all of it.</p>
+          <span class="dur">Week 1</span>
+        </div>
+        <div class="step reveal d1">
+          <div class="step-top"><span class="step-num">2</span><span class="step-line"></span></div>
+          <h3>Design &amp; Renderings</h3>
+          <p>Concept plan, 3D renderings, and a plant palette. We revise until it feels like yours, then lock a fixed construction price.</p>
+          <span class="dur">Weeks 2–5</span>
+        </div>
+        <div class="step reveal d2">
+          <div class="step-top"><span class="step-num">3</span><span class="step-line"></span></div>
+          <h3>Build</h3>
+          <p>Our own crews handle demo, grading, hardscape, irrigation, and planting — with a weekly photo update so you never wonder.</p>
+          <span class="dur">Weeks 6–14</span>
+        </div>
+        <div class="step reveal d3">
+          <div class="step-top"><span class="step-num">4</span><span class="step-line"></span></div>
+          <h3>Walkthrough &amp; Care</h3>
+          <p>Final walkthrough, irrigation tuning, and a 12-month plant guarantee. Then a 90-day check-in as everything grows in.</p>
+          <span class="dur">Ongoing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- stats -->
+  <section class="stats" id="stats">
+    <div class="leafbg" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><path d="M10 90C40 80 75 45 88 8"/><path d="M30 72c-10 3-20-1-25-10 10-4 20-1 26 6"/><path d="M48 52c-10 1-18-4-21-13 10-2 19 2 23 10"/><path d="M64 32c-9-1-15-7-16-16 9 0 16 5 19 13"/></svg>
+    </div>
+    <div class="wrap stats-grid">
+      <div class="stat reveal"><div class="num"><span data-count="340">0</span><span class="suffix">+</span></div><div class="lbl">Projects completed across South Orange County</div></div>
+      <div class="stat reveal d1"><div class="num"><span data-count="14">0</span><span class="suffix">&nbsp;yrs</span></div><div class="lbl">Designing and building in the Saddleback Valley</div></div>
+      <div class="stat reveal d2"><div class="num"><span data-count="98">0</span><span class="suffix">%</span></div><div class="lbl">Of clients would refer us to a neighbor</div></div>
+      <div class="stat reveal d3"><div class="num"><span data-count="40">0</span><span class="suffix">%</span></div><div class="lbl">Average outdoor water reduction after our retrofits</div></div>
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">
+          <span class="sprig" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20c6-1 12-7 14-16"/><path d="M9 15c-2.5.5-4.5-.5-5.5-2.5C6 11.5 8.5 12 9.5 13.5"/><path d="M13 10c-2.5 0-4-1.5-4.5-3.5 2.5-.5 4.5.5 5.5 2"/></svg></span>
+          Get started
+        </span>
+        <h2>Tell us about your yard.</h2>
+        <p>Share a few details and we'll reach out within one business day to schedule a complimentary site visit.</p>
+        <div class="ci-item">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7A2 2 0 0 1 22 16.9z"/></svg></span>
+          <div class="t"><b>(949) 555-0182</b><span>Mon–Fri, 8am–5pm</span></div>
+        </div>
+        <div class="ci-item">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+          <div class="t"><b>hello@saddlebacklandscape.example</b><span>We reply within one business day</span></div>
+        </div>
+        <div class="ci-item">
+          <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div class="t"><b>27412 Vista del Roble, Suite 140</b><span>Rancho Santa Margarita, CA 92688</span></div>
+        </div>
+      </div>
+      <form class="quote reveal d1" id="quoteForm" novalidate>
+        <div class="f-row">
+          <div class="f-field">
+            <label for="fName">Full name</label>
+            <input id="fName" name="name" type="text" placeholder="Jordan Rivera" autocomplete="name" required>
+          </div>
+          <div class="f-field">
+            <label for="fEmail">Email</label>
+            <input id="fEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="f-row">
+          <div class="f-field">
+            <label for="fCity">City</label>
+            <select id="fCity" name="city">
+              <option>Rancho Santa Margarita</option>
+              <option>Ladera Ranch</option>
+              <option>Mission Viejo</option>
+              <option>San Juan Capistrano</option>
+              <option>San Clemente</option>
+              <option>Dana Point</option>
+              <option>Other South OC</option>
+            </select>
+          </div>
+          <div class="f-field">
+            <label for="fBudget">Project budget</label>
+            <select id="fBudget" name="budget">
+              <option>Under $50k</option>
+              <option>$50k – $100k</option>
+              <option>$100k – $250k</option>
+              <option>$250k+</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="f-field">
+          <label for="fMsg">What are you dreaming about?</label>
+          <textarea id="fMsg" name="message" placeholder="A shaded patio for dinners, less lawn, maybe a fire feature…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Request my consultation</button>
+        <p class="f-fine">Demo form — nothing is sent anywhere. In a real build this would route to your CRM.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- toast -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span class="check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5"/></svg></span>
+  <span>Thanks! We'll be in touch within one business day. <em style="font-style:normal;color:#93A48C;">(demo — nothing was sent)</em></span>
+</div>
+
+<!-- footer -->
+<footer class="site">
+  <div class="leafbg" aria-hidden="true">
+    <svg viewBox="0 0 100 100"><path d="M10 90C40 80 75 45 88 8"/><path d="M30 72c-10 3-20-1-25-10 10-4 20-1 26 6"/><path d="M48 52c-10 1-18-4-21-13 10-2 19 2 23 10"/><path d="M64 32c-9-1-15-7-16-16 9 0 16 5 19 13"/></svg>
+  </div>
+  <div class="wrap foot-grid">
+    <div class="foot-about">
+      <a class="brand" href="#top" style="text-decoration:none;">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#FFF6EC" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21V9"/><path d="M12 13c0-3.5 2.6-6 6-6 0 3.5-2.6 6-6 6z"/><path d="M12 17c0-3.5-2.6-6-6-6 0 3.5 2.6 6 6 6z"/>
+          </svg>
+        </span>
+        <span class="brand-name">Saddleback<span>Landscape Studio</span></span>
+      </a>
+      <p>Design-build landscaping for South Orange County. Fictional company created for demonstration purposes.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Service Area</h4>
+      <ul>
+        <li>Rancho Santa Margarita</li>
+        <li>Ladera Ranch · Mission Viejo</li>
+        <li>San Juan Capistrano</li>
+        <li>San Clemente · Dana Point</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <ul>
+        <li>27412 Vista del Roble, Suite 140<br>Rancho Santa Margarita, CA 92688</li>
+        <li>Mon–Fri · 8:00am – 5:00pm</li>
+        <li>Sat · By appointment</li>
+        <li>(949) 555-0182</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-legal">
+    <div class="wrap">
+      <span>&copy; 2026 Saddleback Landscape Studio (fictional) · CA Lic. #C27-104782 (fictional)</span>
+      <span>Demo built with Claude Code · Travis Johnson · AuraPath AI · <a href="https://aurapathai.com">aurapathai.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* header shadow on scroll */
+  var header = document.getElementById("siteHeader");
+  window.addEventListener("scroll", function(){
+    header.classList.toggle("scrolled", window.scrollY > 8);
+  }, {passive:true});
+
+  /* mobile nav */
+  var toggle = document.getElementById("navToggle");
+  var links = document.getElementById("navLinks");
+  toggle.addEventListener("click", function(){
+    var open = links.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  links.addEventListener("click", function(e){
+    if(e.target.tagName === "A"){
+      links.classList.remove("open");
+      toggle.setAttribute("aria-expanded","false");
+    }
+  });
+
+  /* scroll reveals */
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var revealEls = document.querySelectorAll(".reveal");
+  if(reduce || !("IntersectionObserver" in window)){
+    revealEls.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15, rootMargin:"0px 0px -40px 0px"});
+    revealEls.forEach(function(el){ io.observe(el); });
+  }
+
+  /* animated counters */
+  function animateCount(el){
+    var target = parseInt(el.getAttribute("data-count"), 10);
+    if(reduce){ el.textContent = target; return; }
+    var duration = 1600;
+    var start = null;
+    function tick(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 4); /* ease-out-quart */
+      el.textContent = Math.round(eased * target);
+      if(p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  var counters = document.querySelectorAll("[data-count]");
+  if(!("IntersectionObserver" in window)){
+    counters.forEach(function(el){ el.textContent = el.getAttribute("data-count"); });
+  } else {
+    var cio = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          animateCount(entry.target);
+          cio.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.5});
+    counters.forEach(function(el){ cio.observe(el); });
+  }
+
+  /* form + toast */
+  var form = document.getElementById("quoteForm");
+  var toast = document.getElementById("toast");
+  var toastTimer = null;
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var name = document.getElementById("fName");
+    var email = document.getElementById("fEmail");
+    if(!name.value.trim()){ name.focus(); return; }
+    if(!email.value.trim() || email.value.indexOf("@") === -1){ email.focus(); return; }
+    form.reset();
+    toast.classList.add("show");
+    if(toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove("show"); }, 4200);
+  });
+})();
+</script>
+</body>
+</html>

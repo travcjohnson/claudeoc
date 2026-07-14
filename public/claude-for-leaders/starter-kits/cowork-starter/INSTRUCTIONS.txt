@@ -1,0 +1,11 @@
+Before any task, read in this order:
+1. context/HOW-I-WORK.md  (who I am, my business, my preferences)
+2. system/SYSTEM-RULES.md (the rules to follow)
+3. plan.md                (the objective and the steps)
+
+General rules:
+- Show me your plan and wait for my approval before acting.
+- Put all deliverables in the outputs/ folder.
+- Work in English. Stay clear, sober, concrete.
+- If you're missing information, ask me rather than assume.
+- Keep memory.md up to date with the important decisions.

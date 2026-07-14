@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bluff Trail Coffee Roasters — Small-Batch Coffee, Laguna Beach</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --espresso: #2B1D16;
+    --espresso-deep: #211510;
+    --espresso-soft: #3C2A1F;
+    --paper: #F3EBDD;
+    --paper-lift: #FBF5E9;
+    --paper-shade: #EAE0CC;
+    --cream: #F5EDE0;
+    --cream-dim: #CDB9A4;
+    --cream-faint: #A08A73;
+    --ink: #2B1D16;
+    --ink-soft: #5C4736;
+    --ink-faint: #8A7259;
+    --sienna: #B8552F;
+    --sienna-deep: #98431F;
+    --sienna-bright: #E08A5F;
+    --line: #DCCEB4;
+    --line-dark: rgba(245, 237, 224, 0.16);
+    --r-sm: 6px;
+    --r-md: 8px;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Work Sans', -apple-system, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px); }
+
+  .label {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sienna);
+  }
+
+  /* ---------- Utility bar ---------- */
+  .utility {
+    background: var(--sienna);
+    color: #FBEEE4;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .utility .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .utility a { color: #FBEEE4; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+  .utility a:hover { color: #FFDFC9; }
+  .utility .u-note { opacity: 0.9; }
+
+  /* ---------- Nav (espresso) ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--espresso);
+    color: var(--cream);
+    border-bottom: 1px solid var(--line-dark);
+  }
+  .nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    gap: 24px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+    font-family: var(--serif);
+    font-size: 21px;
+    letter-spacing: 0.01em;
+    color: var(--cream);
+  }
+  .brand svg { width: 30px; height: 30px; flex-shrink: 0; }
+  .nav-links { display: flex; align-items: center; gap: clamp(16px, 3vw, 32px); }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--cream); }
+  .btn {
+    display: inline-block;
+    background: var(--sienna);
+    color: #FBEEE4;
+    text-decoration: none;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 12px 24px;
+    border-radius: var(--r-sm);
+    border: 1px solid var(--sienna);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  }
+  .btn:hover { background: var(--sienna-deep); border-color: var(--sienna-deep); }
+  .btn:active { transform: scale(0.98); }
+  .btn-outline-cream {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245, 237, 224, 0.4);
+  }
+  .btn-outline-cream:hover { background: rgba(245, 237, 224, 0.08); border-color: rgba(245, 237, 224, 0.75); }
+  .btn-dark {
+    background: var(--espresso);
+    border-color: var(--espresso);
+    color: var(--cream);
+  }
+  .btn-dark:hover { background: var(--espresso-soft); border-color: var(--espresso-soft); }
+  .nav .btn { padding: 9px 18px; }
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- Hero (deep espresso block) ---------- */
+  .hero {
+    position: relative;
+    background: var(--espresso);
+    color: var(--cream);
+    overflow: hidden;
+  }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(32px, 5vw, 72px);
+    align-items: center;
+    padding-top: clamp(56px, 9vw, 110px);
+    padding-bottom: clamp(90px, 11vw, 150px);
+  }
+  .hero .label { color: var(--sienna-bright); }
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: 0.005em;
+    margin: 20px 0 24px;
+    color: var(--cream);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sienna-bright);
+  }
+  .hero p.lede {
+    font-size: clamp(16px, 1.6vw, 18.5px);
+    color: var(--cream-dim);
+    max-width: 46ch;
+    margin-bottom: 36px;
+  }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .hero-fineprint {
+    margin-top: 26px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--cream-faint);
+  }
+  .hero-art { position: relative; }
+  .hero-art svg { width: 100%; height: auto; }
+  .hero-waves {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    pointer-events: none;
+  }
+  .hero-waves svg { width: 100%; height: clamp(36px, 6vw, 70px); display: block; }
+  @media (max-width: 820px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+    .hero-art { max-width: 340px; margin: 0 auto; }
+  }
+
+  /* ---------- Sections ---------- */
+  section { position: relative; }
+  .section-head { max-width: 640px; margin-bottom: clamp(36px, 5vw, 56px); }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-size: clamp(30px, 3.8vw, 44px);
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    line-height: 1.12;
+    margin: 14px 0 12px;
+  }
+  .section-head p { color: var(--ink-soft); font-size: 16.5px; }
+
+  /* ---------- Value props (warm paper) ---------- */
+  .values { background: var(--paper); }
+  .values .wrap { padding-top: clamp(64px, 8vw, 100px); padding-bottom: clamp(64px, 8vw, 100px); }
+  .value-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(28px, 4vw, 56px);
+  }
+  .value {
+    border-top: 3px solid var(--sienna);
+    padding-top: 22px;
+  }
+  .value .v-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--sienna);
+  }
+  .value h3 {
+    font-family: var(--serif);
+    font-size: 23px;
+    font-weight: 400;
+    margin: 10px 0 8px;
+  }
+  .value p { font-size: 15px; color: var(--ink-soft); }
+  @media (max-width: 820px) {
+    .value-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ---------- Products (shaded paper) ---------- */
+  .products { background: var(--paper-shade); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .products .wrap { padding-top: clamp(72px, 9vw, 110px); padding-bottom: clamp(72px, 9vw, 110px); }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(18px, 2.5vw, 28px);
+  }
+  .product {
+    background: var(--paper-lift);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 26px 26px 28px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s cubic-bezier(0.22,1,0.36,1), box-shadow 0.25s;
+  }
+  .product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px -18px rgba(43, 29, 22, 0.4);
+  }
+  .product-swatch {
+    height: 118px;
+    border-radius: var(--r-sm);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .swatch-dawn { background: linear-gradient(140deg, #E8C8A8, #D49B68); }
+  .swatch-tide { background: linear-gradient(140deg, #C98D5B, #A05F33); }
+  .swatch-bluff { background: linear-gradient(140deg, #6B4226, #3C2415); }
+  .product-swatch svg { width: 54px; height: 54px; opacity: 0.9; }
+  .product .p-roast {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .product h3 { font-family: var(--serif); font-size: 25px; font-weight: 400; margin: 8px 0 6px; }
+  .product .p-notes { font-size: 14.5px; color: var(--ink-soft); flex-grow: 1; }
+  .product .p-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+  .product .p-price {
+    font-family: var(--serif);
+    font-size: 22px;
+  }
+  .product .p-price span {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--ink-faint);
+    font-weight: 500;
+  }
+  .p-add {
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sienna);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .p-add:hover { border-bottom-color: var(--sienna); }
+  @media (max-width: 820px) {
+    .product-grid { grid-template-columns: 1fr; max-width: 440px; }
+  }
+
+  /* ---------- Process strip (warm paper, sienna rules) ---------- */
+  .process { background: var(--paper); }
+  .process .wrap { padding-top: clamp(64px, 8vw, 96px); padding-bottom: clamp(64px, 8vw, 96px); }
+  .process h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.6vw, 42px);
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    line-height: 1.12;
+    margin: 14px 0 0;
+    max-width: 560px;
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(24px, 3vw, 40px);
+    margin-top: clamp(40px, 5vw, 60px);
+  }
+  .step { position: relative; padding-top: 20px; border-top: 1px solid var(--line); }
+  .step::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: 0;
+    width: 34px; height: 3px;
+    background: var(--sienna);
+  }
+  .step .s-num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--sienna);
+  }
+  .step h3 { font-family: var(--serif); font-size: 21px; font-weight: 400; margin: 8px 0 6px; }
+  .step p { font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+  @media (max-width: 820px) {
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 520px) {
+    .process-steps { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Testimonial (espresso interlude) ---------- */
+  .testimonial { background: var(--espresso); color: var(--cream); }
+  .testimonial .wrap {
+    padding-top: clamp(72px, 9vw, 110px);
+    padding-bottom: clamp(72px, 9vw, 110px);
+    max-width: 880px;
+  }
+  .quote-mark { width: 48px; height: 48px; margin-bottom: 22px; }
+  .testimonial blockquote {
+    font-family: var(--serif);
+    font-size: clamp(23px, 3vw, 33px);
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--cream);
+  }
+  .testimonial figcaption {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .avatar {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: var(--sienna);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 16px;
+    color: #FBEEE4;
+  }
+  .testimonial .who { font-size: 14.5px; font-weight: 600; color: var(--cream); }
+  .testimonial .who span {
+    display: block;
+    font-weight: 400;
+    color: var(--cream-faint);
+    font-size: 13px;
+  }
+
+  /* ---------- Signup (warm paper) ---------- */
+  .signup { background: var(--paper); }
+  .signup .wrap {
+    padding-top: clamp(64px, 8vw, 96px);
+    padding-bottom: clamp(72px, 9vw, 110px);
+  }
+  .signup-card {
+    background: var(--paper-lift);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: clamp(32px, 5vw, 56px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(28px, 4vw, 56px);
+    align-items: center;
+  }
+  .signup h2 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 3.4vw, 38px);
+    font-weight: 400;
+    line-height: 1.12;
+    margin: 12px 0 10px;
+  }
+  .signup p { color: var(--ink-soft); font-size: 15.5px; max-width: 42ch; }
+  .signup-form { display: flex; flex-direction: column; gap: 12px; }
+  .signup-form .row { display: flex; gap: 10px; }
+  .signup-form input {
+    flex: 1;
+    min-width: 0;
+    font-family: var(--sans);
+    font-size: 15px;
+    padding: 13px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    background: #FFFCF4;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .signup-form input::placeholder { color: var(--ink-faint); }
+  .signup-form input:focus {
+    border-color: var(--sienna);
+    box-shadow: 0 0 0 3px rgba(184, 85, 47, 0.18);
+  }
+  .signup-form .form-note {
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: var(--ink-faint);
+  }
+  @media (max-width: 760px) {
+    .signup-card { grid-template-columns: 1fr; }
+    .signup-form .row { flex-direction: column; }
+  }
+
+  /* ---------- Footer (deep espresso) ---------- */
+  footer {
+    background: var(--espresso-deep);
+    color: var(--cream-dim);
+  }
+  footer .wrap {
+    padding-top: clamp(48px, 6vw, 72px);
+    padding-bottom: 36px;
+  }
+  .foot-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line-dark);
+  }
+  .foot-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--serif);
+    font-size: 19px;
+    color: var(--cream);
+  }
+  .foot-brand svg { width: 28px; height: 28px; }
+  .foot-tag { margin-top: 12px; font-size: 13.5px; max-width: 30ch; }
+  .foot-cols { display: flex; gap: clamp(36px, 6vw, 80px); flex-wrap: wrap; }
+  .foot-col h4 {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cream-faint);
+    margin-bottom: 14px;
+  }
+  .foot-col a {
+    display: block;
+    text-decoration: none;
+    font-size: 13.5px;
+    color: var(--cream-dim);
+    margin-bottom: 9px;
+    transition: color 0.2s;
+  }
+  .foot-col a:hover { color: var(--sienna-bright); }
+  .foot-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 26px;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--cream-faint);
+  }
+  .foot-bottom a { color: var(--sienna-bright); text-decoration: none; }
+  .foot-bottom a:hover { text-decoration: underline; }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    background: var(--espresso-deep);
+    color: var(--cream);
+    border: 1px solid rgba(224, 138, 95, 0.45);
+    padding: 14px 22px;
+    border-radius: var(--r-md);
+    font-size: 14.5px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 18px 40px -12px rgba(33, 21, 16, 0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s cubic-bezier(0.22,1,0.36,1), transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    z-index: 200;
+    max-width: calc(100vw - 40px);
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .toast svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* ---------- Scroll reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal-d1 { transition-delay: 0.08s; }
+  .reveal-d2 { transition-delay: 0.16s; }
+  .reveal-d3 { transition-delay: 0.24s; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .product:hover { transform: none; }
+    .steam path { animation: none !important; }
+  }
+
+  /* ---------- Steam animation ---------- */
+  .steam path {
+    stroke-dasharray: 40;
+    stroke-dashoffset: 40;
+    animation: steam 3.2s ease-in-out infinite;
+  }
+  .steam path:nth-child(2) { animation-delay: 0.7s; }
+  .steam path:nth-child(3) { animation-delay: 1.4s; }
+  @keyframes steam {
+    0% { stroke-dashoffset: 40; opacity: 0; }
+    35% { opacity: 0.75; }
+    70% { stroke-dashoffset: -40; opacity: 0; }
+    100% { stroke-dashoffset: -40; opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Utility bar -->
+<div class="utility">
+  <div class="wrap">
+    <span class="u-note">Claude for Leaders. — demo artifact</span>
+    <a href="../index.html">&larr; Back to the deck</a>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Bluff Trail Coffee Roasters home">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <circle cx="16" cy="16" r="14.5" stroke="#F5EDE0" stroke-width="1.6"/>
+        <ellipse cx="16" cy="16" rx="7" ry="10.5" stroke="#E08A5F" stroke-width="1.6"/>
+        <path d="M16 5.5c-3 4-3 17 0 21" stroke="#E08A5F" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      Bluff Trail
+    </a>
+    <div class="nav-links">
+      <a href="#beans">Beans</a>
+      <a href="#process">Our Process</a>
+      <a href="#club">Roast Club</a>
+    </div>
+    <a class="btn" href="#beans">Shop Beans</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="label reveal">Small-batch &middot; Laguna Beach, CA</span>
+      <h1 class="reveal reveal-d1">Coffee roasted the morning it leaves <em>the bluff.</em></h1>
+      <p class="lede reveal reveal-d2">We roast twelve kilos at a time in a garage two blocks from the sand, and every bag ships within 48 hours of the roast. No warehouses. No stale middle. Just the coast in a cup.</p>
+      <div class="hero-ctas reveal reveal-d3">
+        <a class="btn" href="#beans">Shop the current roast</a>
+        <a class="btn btn-outline-cream" href="#process">See how we roast</a>
+      </div>
+      <p class="hero-fineprint reveal reveal-d3">ROASTED WEEKLY &middot; SHIPS IN 48H &middot; FREE LOCAL PICKUP</p>
+    </div>
+    <div class="hero-art reveal reveal-d2" aria-hidden="true">
+      <!-- CSS/SVG coffee cup illustration -->
+      <svg viewBox="0 0 340 340" fill="none">
+        <!-- sun -->
+        <circle cx="258" cy="72" r="34" fill="#B8552F" opacity="0.3"/>
+        <circle cx="258" cy="72" r="22" fill="#B8552F" opacity="0.5"/>
+        <!-- steam -->
+        <g class="steam" stroke="#E08A5F" stroke-width="3" stroke-linecap="round" fill="none">
+          <path d="M142 96c-6 10 6 16 0 28"/>
+          <path d="M170 86c-6 12 6 18 0 32"/>
+          <path d="M198 96c-6 10 6 16 0 28"/>
+        </g>
+        <!-- cup -->
+        <path d="M96 148h148v52c0 41-33 74-74 74s-74-33-74-74v-52z" fill="#F3EBDD" stroke="#F5EDE0" stroke-width="3"/>
+        <!-- coffee surface -->
+        <ellipse cx="170" cy="148" rx="74" ry="14" fill="#3C2415" stroke="#F5EDE0" stroke-width="3"/>
+        <ellipse cx="170" cy="148" rx="56" ry="9" fill="#6B4226"/>
+        <!-- handle -->
+        <path d="M244 162h14c17 0 30 13 30 30s-13 30-30 30h-18" stroke="#F5EDE0" stroke-width="3" fill="none"/>
+        <!-- cup wave detail -->
+        <path d="M100 208c14 8 32 8 46 0s32-8 46 0 32 8 46 0" stroke="#B8552F" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <!-- saucer -->
+        <path d="M76 282c0 8 42 15 94 15s94-7 94-15" stroke="#F5EDE0" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <!-- beans -->
+        <g stroke="#F5EDE0" stroke-width="2.4">
+          <ellipse cx="66" cy="300" rx="13" ry="9" transform="rotate(-24 66 300)" fill="#B8552F"/>
+          <path d="M56 305c7-4 14-6 20-10" stroke-linecap="round"/>
+          <ellipse cx="280" cy="304" rx="13" ry="9" transform="rotate(18 280 304)" fill="#8A4322"/>
+          <path d="M270 300c7 3 14 5 21 7" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <!-- wave hem -->
+  <div class="hero-waves" aria-hidden="true">
+    <svg viewBox="0 0 1440 70" preserveAspectRatio="none" fill="none">
+      <path d="M0 45c120-22 240-22 360 0s240 22 360 0 240-22 360 0 240 22 360 0v25H0V45z" fill="#F3EBDD"/>
+      <path d="M0 45c120-22 240-22 360 0s240 22 360 0 240-22 360 0 240 22 360 0" stroke="#B8552F" stroke-width="2" opacity="0.6"/>
+    </svg>
+  </div>
+</header>
+
+<!-- Value props -->
+<section class="values" id="values">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">Why Bluff Trail</span>
+      <h2>Freshness isn't a slogan. It's a shipping policy.</h2>
+    </div>
+    <div class="value-grid">
+      <div class="value reveal">
+        <span class="v-num">No. 1</span>
+        <h3>Roasted this week, not this quarter</h3>
+        <p>Every bag is stamped with its roast date and ships within 48 hours. If a batch sits past seven days, it goes to the local food bank, not to you.</p>
+      </div>
+      <div class="value reveal reveal-d1">
+        <span class="v-num">No. 2</span>
+        <h3>Twelve kilos at a time</h3>
+        <p>Small drums mean the roaster tastes every batch. When the marine layer changes the humidity, the roast curve changes with it. That attention is the whole product.</p>
+      </div>
+      <div class="value reveal reveal-d2">
+        <span class="v-num">No. 3</span>
+        <h3>Farmers we call by name</h3>
+        <p>Three farms, three long-term contracts, prices set above Fair Trade floor. Ask us where your beans grew and we'll tell you the elevation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="products" id="beans">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="label">The Current Lineup</span>
+      <h2>Three roasts. One coastline.</h2>
+      <p>Each 12&nbsp;oz bag is whole bean, roasted to order, and named for the trail that inspired it.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product reveal">
+        <div class="product-swatch swatch-dawn" aria-hidden="true">
+          <svg viewBox="0 0 54 54" fill="none" stroke="#6B3416" stroke-width="2.5">
+            <circle cx="27" cy="34" r="14"/>
+            <path d="M27 6v8M11 12l5 6M43 12l-5 6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="p-roast">Light Roast &middot; Ethiopia</span>
+        <h3>Dawn Patrol</h3>
+        <p class="p-notes">Bright and floral, with notes of apricot, jasmine, and honey. The one we drink standing on the bluff before the fog lifts.</p>
+        <div class="p-foot">
+          <span class="p-price">$19 <span>/ 12 oz</span></span>
+          <a class="p-add" href="#club">Add to bag &rarr;</a>
+        </div>
+      </div>
+      <div class="product reveal reveal-d1">
+        <div class="product-swatch swatch-tide" aria-hidden="true">
+          <svg viewBox="0 0 54 54" fill="none" stroke="#3C2415" stroke-width="2.5" stroke-linecap="round">
+            <path d="M6 20c7-6 14-6 21 0s14 6 21 0"/>
+            <path d="M6 32c7-6 14-6 21 0s14 6 21 0"/>
+            <path d="M6 44c7-6 14-6 21 0s14 6 21 0"/>
+          </svg>
+        </div>
+        <span class="p-roast">Medium Roast &middot; Guatemala</span>
+        <h3>Tide Line</h3>
+        <p class="p-notes">Balanced and generous: milk chocolate, toasted almond, a clean caramel finish. Our best seller and the house pour-over.</p>
+        <div class="p-foot">
+          <span class="p-price">$18 <span>/ 12 oz</span></span>
+          <a class="p-add" href="#club">Add to bag &rarr;</a>
+        </div>
+      </div>
+      <div class="product reveal reveal-d2">
+        <div class="product-swatch swatch-bluff" aria-hidden="true">
+          <svg viewBox="0 0 54 54" fill="none" stroke="#E8C8A8" stroke-width="2.5" stroke-linecap="round">
+            <path d="M6 46L20 22l8 12 8-20 12 32"/>
+            <path d="M6 46h42"/>
+          </svg>
+        </div>
+        <span class="p-roast">Dark Roast &middot; Sumatra</span>
+        <h3>Bluff House</h3>
+        <p class="p-notes">Deep and unhurried: dark cocoa, molasses, cedar smoke. Built for espresso and for people who take their coffee seriously at 5 a.m.</p>
+        <div class="p-foot">
+          <span class="p-price">$18 <span>/ 12 oz</span></span>
+          <a class="p-add" href="#club">Add to bag &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process strip -->
+<section class="process" id="process">
+  <div class="wrap">
+    <span class="label reveal">Our Process</span>
+    <h2 class="reveal reveal-d1">From green bean to your doorstep in four honest steps.</h2>
+    <div class="process-steps">
+      <div class="step reveal">
+        <span class="s-num">Step one</span>
+        <h3>Source</h3>
+        <p>Green beans from three partner farms in Ethiopia, Guatemala, and Sumatra — same families, every harvest.</p>
+      </div>
+      <div class="step reveal reveal-d1">
+        <span class="s-num">Step two</span>
+        <h3>Roast</h3>
+        <p>Twelve-kilo batches on a 1987 Probat, profiled by hand and cupped against yesterday's roast before anything ships.</p>
+      </div>
+      <div class="step reveal reveal-d2">
+        <span class="s-num">Step three</span>
+        <h3>Rest</h3>
+        <p>Every roast rests 24 hours to de-gas, then gets sealed with a one-way valve so it keeps developing, not fading.</p>
+      </div>
+      <div class="step reveal reveal-d3">
+        <span class="s-num">Step four</span>
+        <h3>Ship</h3>
+        <p>Out the door within 48 hours of roast, with the roast date stamped where you can see it. Local orders ride a bike.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial">
+  <div class="wrap">
+    <figure class="reveal">
+      <svg class="quote-mark" viewBox="0 0 44 44" fill="none" aria-hidden="true">
+        <path d="M8 30c0-10 6-18 15-21l2 5c-6 2-9 6-10 10 4 0 8 3 8 8 0 4-3 8-8 8s-7-4-7-10zm22 0c0-10 6-18 15-21l2 5c-6 2-9 6-10 10 4 0 8 3 8 8 0 4-3 8-8 8s-7-4-7-10z" fill="#E08A5F"/>
+      </svg>
+      <blockquote>I've been through every subscription service in Orange County. Bluff Trail is the only one where I can taste the difference between week one and week three &mdash; because there is no week three. It never lasts that long.</blockquote>
+      <figcaption>
+        <span class="avatar" aria-hidden="true">MC</span>
+        <div class="who">
+          Marisol Cadena
+          <span>Roast Club member since 2024 &middot; fictional customer for this demo</span>
+        </div>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Signup -->
+<section class="signup" id="club">
+  <div class="wrap">
+    <div class="signup-card reveal">
+      <div>
+        <span class="label">The Roast Club</span>
+        <h2>First pour is on us.</h2>
+        <p>Join the list for roast-week announcements, subscriber-only micro-lots, and 15% off your first bag. One email a week, never more.</p>
+      </div>
+      <form class="signup-form" id="signup-form" novalidate>
+        <div class="row">
+          <input type="email" id="signup-email" name="email" placeholder="you@example.com" aria-label="Email address" required>
+          <button class="btn btn-dark" type="submit">Join the club</button>
+        </div>
+        <span class="form-note">DEMO FORM &middot; NOTHING IS SENT OR STORED</span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="14.5" stroke="#F5EDE0" stroke-width="1.6"/>
+            <ellipse cx="16" cy="16" rx="7" ry="10.5" stroke="#E08A5F" stroke-width="1.6"/>
+            <path d="M16 5.5c-3 4-3 17 0 21" stroke="#E08A5F" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          Bluff Trail Coffee Roasters
+        </div>
+        <p class="foot-tag">Small-batch coffee roasted two blocks from the sand in Laguna Beach, California. A fictional business, roasted for a demo.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Shop</h4>
+          <a href="#beans">Dawn Patrol</a>
+          <a href="#beans">Tide Line</a>
+          <a href="#beans">Bluff House</a>
+        </div>
+        <div class="foot-col">
+          <h4>Company</h4>
+          <a href="#process">Our Process</a>
+          <a href="#values">Why Bluff Trail</a>
+          <a href="#club">Roast Club</a>
+        </div>
+        <div class="foot-col">
+          <h4>Visit</h4>
+          <a href="#top">214 Bluff Trail Way</a>
+          <a href="#top">Laguna Beach, CA</a>
+          <a href="#top">Daily 6a &ndash; 2p</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Bluff Trail Coffee Roasters (fictional)</span>
+      <span>Demo built with Claude Code &middot; Travis Johnson &middot; AuraPath AI &middot; <a href="https://aurapathai.com">aurapathai.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <svg viewBox="0 0 18 18" fill="none" aria-hidden="true">
+    <circle cx="9" cy="9" r="8" stroke="#E08A5F" stroke-width="1.6"/>
+    <path d="M5.5 9.2l2.3 2.3 4.7-5" stroke="#E08A5F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span id="toast-msg">You're on the list. First roast note lands this week.</span>
+</div>
+
+<script>
+  // Scroll reveal (rect-based; no IntersectionObserver dependency)
+  (function () {
+    var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    var ticking = false;
+    function check() {
+      ticking = false;
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      els = els.filter(function (el) {
+        if (el.getBoundingClientRect().top < vh - 40) {
+          el.classList.add('in');
+          return false;
+        }
+        return true;
+      });
+    }
+    function onScroll() {
+      if (!ticking && els.length) {
+        ticking = true;
+        (window.requestAnimationFrame || setTimeout)(check);
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    check();
+    window.addEventListener('load', check);
+  })();
+
+  // Signup form -> success toast (non-functional demo)
+  (function () {
+    var form = document.getElementById('signup-form');
+    var email = document.getElementById('signup-email');
+    var toast = document.getElementById('toast');
+    var msg = document.getElementById('toast-msg');
+    var timer = null;
+
+    function showToast(text) {
+      msg.textContent = text;
+      toast.classList.add('show');
+      clearTimeout(timer);
+      timer = setTimeout(function () { toast.classList.remove('show'); }, 4200);
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var value = email.value.trim();
+      if (!value || value.indexOf('@') < 1 || value.indexOf('.') < 0) {
+        showToast('Add a real-looking email and we’ll pretend to save it.');
+        email.focus();
+        return;
+      }
+      showToast('You’re on the list. First roast note lands this week.');
+      form.reset();
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- ═══════════════════════════════════════════════════════════════════════
+     DECK ▸ "Claude for Leaders" — Travis Johnson · AuraPath AI · California
+     27 slides.
+     Hosted at https://claudeoc.com/claude-for-leaders/ (claudeoc repo, public/).
+     [TRAVIS] Slide 6 video still needs your own screen recording at
+     assets/video/claude-code-demo.mp4.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<title>Claude · Multiply your capabilities · Claude for Leaders California 2026</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Getting concrete with Claude: what you can build, too. Claude Code, Cowork, agents. Claude for Leaders · SPACES Quai de l'Île, California · 2026 · Travis Johnson">
+
+<link rel="preload" as="font" type="font/woff2" href="./assets/fonts/InterVariable.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="./assets/fonts/JetBrainsMono-Regular.woff2" crossorigin>
+
+<link rel="stylesheet" href="./css/tokens.css">
+<link rel="stylesheet" href="./css/base.css">
+<link rel="stylesheet" href="./css/animations.css">
+<link rel="stylesheet" href="./css/conf-public.css">
+<link rel="stylesheet" href="./css/claude-for-leaders.css">
+</head>
+<body>
+
+<div class="black-overlay" aria-hidden="true"></div>
+
+<div class="hint" id="hint">
+  <span class="hint__desktop">
+    Navigate with <kbd>←</kbd> <kbd>→</kbd> or scroll · click to advance · <kbd>F</kbd> fullscreen
+  </span>
+  <span class="hint__mobile">
+    Swipe <span aria-hidden="true">← →</span> to navigate · tap the counter to jump
+  </span>
+</div>
+
+<!-- "Go to slide" modal -->
+<div class="jump-sheet" id="jump-sheet" hidden>
+  <div class="jump-sheet__scrim" data-jump="close" aria-hidden="true"></div>
+  <div class="jump-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="jump-sheet-title">
+    <header class="jump-sheet__head">
+      <span class="jump-sheet__title" id="jump-sheet-title">Go to slide</span>
+      <button class="jump-sheet__close" data-jump="close" aria-label="Close">×</button>
+    </header>
+    <form class="jump-sheet__form" data-jump="submit">
+      <input type="number" class="jump-sheet__input" min="1" placeholder="No." inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Slide number">
+      <button type="submit" class="jump-sheet__go">Go</button>
+    </form>
+    <div class="jump-sheet__grid" id="jump-sheet-grid" role="list"></div>
+  </div>
+</div>
+
+<nav class="nav-bar" aria-label="Navigation">
+  <button class="nav-bar__btn" data-nav="prev" aria-label="Previous slide" title="Previous slide (←)">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="nav-bar__counter" data-nav="jump" aria-label="Go to a slide" title="Go to a slide (G then no.)">1&nbsp;/&nbsp;27</button>
+  <button class="nav-bar__btn" data-nav="next" aria-label="Next slide" title="Next slide (→ · Space · click)">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <span class="nav-bar__sep" aria-hidden="true"></span>
+  <button class="nav-bar__btn nav-bar__btn--fs" data-nav="fullscreen" aria-label="Fullscreen" title="Fullscreen (F)">
+    <svg class="icon-fs-enter" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
+    </svg>
+    <svg class="icon-fs-exit" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/>
+    </svg>
+  </button>
+</nav>
+
+<div class="stage">
+  <div class="slides-root">
+
+    <!-- ═══════════════ 1 · Cover ═══════════════ -->
+    <section class="slide is-dark gp-cover" data-slide="1" data-noteid="multiply-your-capabilities">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="crawlers" aria-hidden="true">
+        <svg class="crawler crawler--lg crawler--walk" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+          <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+          <rect x="2" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="6" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/>
+          <rect x="9" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="13" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/>
+        </svg>
+        <svg class="crawler crawler--md crawler--hop" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+          <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+          <rect x="2" y="11" width="2" height="4" class="crawler__leg"/><rect x="6" y="11" width="2" height="4" class="crawler__leg"/>
+          <rect x="9" y="11" width="2" height="4" class="crawler__leg"/><rect x="13" y="11" width="2" height="4" class="crawler__leg"/>
+        </svg>
+        <svg class="crawler crawler--sm crawler--glide" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+          <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+          <rect x="2" y="11" width="2" height="4" class="crawler__leg"/><rect x="6" y="11" width="2" height="4" class="crawler__leg"/>
+          <rect x="9" y="11" width="2" height="4" class="crawler__leg"/><rect x="13" y="11" width="2" height="4" class="crawler__leg"/>
+        </svg>
+      </div>
+
+      <canvas class="gp-matrix" aria-hidden="true"></canvas>
+
+      <div class="gp-cover__inner">
+        <p class="gp-cover__eyebrow reveal" style="--i:0">Claude for Leaders · California · 2026</p>
+        <h1 class="gp-cover__title clip-reveal">Multiply your<br><span class="gp-accent">capabilities.</span></h1>
+        <p class="gp-cover__sub reveal" style="--i:3">Claude, your super agent, <span class="slot gp-accent" aria-label="your superpower"><span class="slot__reel"><span>your superpower.</span><span>your super assistant.</span><span>your decisive edge.</span><span>your right hand.</span><span>your superpower.</span></span></span></p>
+        <div class="gp-vibe reveal" style="--i:4" aria-hidden="true"><span class="gp-vibe__sign">$</span><span class="gp-vibe__cmd">claude</span><span>&rsaquo;</span><span class="gp-vibe__text"></span><span class="gp-vibe__cursor">&#9611;</span></div>
+      </div>
+      <div class="gp-cover__sign reveal" style="--i:5"><strong>Travis Johnson</strong> · Anthropic Claude Ambassador · Co-founder, AuraPath AI · Orange County, CA</div>
+      <div class="gp-cover__place reveal" style="--i:5">OC.</div>
+    </section>
+
+    <!-- ═══════════════ Follow on your phone (QR) ═══════════════ -->
+    <section class="slide" data-slide="2" data-noteid="follow-from-your-pocket">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="crawlers crawlers--ambient" aria-hidden="true">
+        <svg class="crawler crawler--sm crawler--walk" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+          <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+          <rect x="2" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="6" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/>
+          <rect x="9" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="13" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/>
+        </svg>
+        <svg class="crawler crawler--md crawler--hop" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+          <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+          <rect x="2" y="11" width="2" height="4" class="crawler__leg"/><rect x="6" y="11" width="2" height="4" class="crawler__leg"/>
+          <rect x="9" y="11" width="2" height="4" class="crawler__leg"/><rect x="13" y="11" width="2" height="4" class="crawler__leg"/>
+        </svg>
+      </div>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">On your phone</p>
+        <h2 class="title-l clip-reveal">Follow along from<br><span class="gp-accent">your pocket.</span></h2>
+        <div class="qrfollow">
+          <div class="qrfollow__text reveal" style="--i:3">
+            <p class="gp-lead">Scan the code: the presentation opens on your phone.</p>
+            <ul class="qrfollow__list">
+              <li>Navigate at your own pace</li>
+              <li>Click every link</li>
+              <li>Leave with the resources and the starter kits</li>
+            </ul>
+          </div>
+          <div class="qrfollow__qr reveal" style="--i:4">
+            <img src="./assets/img/qr-deck.png" alt="QR code to the presentation">
+            <span class="qrfollow__url">claudeoc.com/claude-for-leaders</span>
+          </div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ 2 · Travis Johnson (speaker) ═══════════════ -->
+    <section class="slide gp-speaker" data-slide="3" data-noteid="travis-johnson">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <div class="gp-speaker__photo reveal" style="--i:1">
+          <img src="./assets/img/travis-johnson.jpeg" alt="Travis Johnson" loading="eager">
+        </div>
+        <div class="gp-speaker__text">
+          <p class="eyebrow reveal" style="--i:0">Who's speaking</p>
+          <h2 class="title-l clip-reveal">Travis Johnson</h2>
+          <p class="gp-speaker__role reveal" style="--i:2">Anthropic Claude Ambassador &middot; Co-founder, <strong>AuraPath AI</strong> &middot; Orange County, CA</p>
+          <p class="gp-speaker__bio reveal" style="--i:3"><strong>1 of 50 Claude Ambassadors worldwide, selected from 70,000+ applicants.</strong> I spent a decade as a product leader in enterprise tech (HR, global payroll, benefits), so I know how businesses actually run and where AI creates real leverage. Everything you're about to see, I built myself. Through <strong>AuraPath AI</strong>, I help companies understand, adopt and use AI — hands-on, without the hype.</p>
+          <div class="gp-speaker__logos reveal" style="--i:4">
+            <a class="gp-logo gp-logo--col" href="https://aurapathai.com/" target="_blank" rel="noopener" aria-label="AuraPath AI">
+              <img src="./assets/img/aurapath-logo.png" alt="AuraPath AI" class="gp-logo__org">
+              <span class="gp-logo__tag">AI-native consulting · Orange County</span>
+              <span class="gp-logo__url">aurapathai.com</span>
+            </a>
+            <a class="gp-logo gp-logo--in" href="https://linkedin.com/in/travcjohnson" target="_blank" rel="noopener" aria-label="Travis Johnson on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+              <span class="gp-logo__url">travcjohnson</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Everything is a code problem (chips + crane) ═══════════════ -->
+    <section class="slide" data-slide="4" data-noteid="everything-is-a-code-problem">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">The insight</p>
+        <h2 class="title-l clip-reveal">Everything is a code problem.<br><span class="gp-accent">Almost.</span></h2>
+        <p class="gp-lead reveal" style="--i:2">Look at your day-to-day differently:</p>
+        <div class="codeall reveal" style="--i:3">
+          <div class="codeall__groups">
+            <div class="cgroup">
+              <span class="cgroup__label">Data &amp; reporting</span>
+              <div class="cgroup__chips">
+                <span class="codeall__chip">Your reports</span>
+                <span class="codeall__chip">Your data analyses</span>
+                <span class="codeall__chip">Your dashboards</span>
+                <span class="codeall__chip">Your KPIs</span>
+                <span class="codeall__chip">Your Excel exports</span>
+                <span class="codeall__chip">Your client reporting</span>
+              </div>
+            </div>
+            <div class="cgroup">
+              <span class="cgroup__label">Marketing</span>
+              <div class="cgroup__chips">
+                <span class="codeall__chip">Your marketing</span>
+                <span class="codeall__chip">Your sales pages</span>
+                <span class="codeall__chip">Your campaigns</span>
+                <span class="codeall__chip">Your newsletters</span>
+                <span class="codeall__chip">Your social media posts</span>
+                <span class="codeall__chip">Your SEO</span>
+                <span class="codeall__chip">Your market watch</span>
+              </div>
+            </div>
+            <div class="cgroup">
+              <span class="cgroup__label">Sales</span>
+              <div class="cgroup__chips">
+                <span class="codeall__chip">Your quotes and proposals</span>
+                <span class="codeall__chip">Your sales follow-ups</span>
+                <span class="codeall__chip">Your pipeline</span>
+                <span class="codeall__chip">Your CRM</span>
+              </div>
+            </div>
+            <div class="cgroup">
+              <span class="cgroup__label">Finance &amp; admin</span>
+              <div class="cgroup__chips">
+                <span class="codeall__chip">Your invoice reminders</span>
+                <span class="codeall__chip">Your expense reports</span>
+                <span class="codeall__chip">Your invoicing</span>
+                <span class="codeall__chip">Your budgets</span>
+                <span class="codeall__chip">Your contract templates</span>
+              </div>
+            </div>
+            <div class="cgroup">
+              <span class="cgroup__label">HR</span>
+              <div class="cgroup__chips">
+                <span class="codeall__chip">Screening applications</span>
+                <span class="codeall__chip">Your job descriptions</span>
+                <span class="codeall__chip">Leave tracking</span>
+                <span class="codeall__chip">Your onboarding</span>
+              </div>
+            </div>
+            <div class="cgroup">
+              <span class="cgroup__label">Operations &amp; clients</span>
+              <div class="cgroup__chips">
+                <span class="codeall__chip">Your automations</span>
+                <span class="codeall__chip">Email processing</span>
+                <span class="codeall__chip">Your forms</span>
+                <span class="codeall__chip">Meeting summaries</span>
+                <span class="codeall__chip">Your customer support</span>
+                <span class="codeall__chip">Your business tools</span>
+              </div>
+            </div>
+          </div>
+          <svg class="crane-svg" viewBox="0 0 440 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line class="cl-line" x1="24" y1="321" x2="416" y2="321" stroke-width="2"/>
+            <polygon class="cl-ink" points="86,320 134,320 122,300 98,300"/>
+            <rect class="cl-ink" x="102" y="70" width="16" height="232"/>
+            <line class="cl-line" x1="110" y1="70" x2="110" y2="36"/>
+            <line class="cl-line" x1="110" y1="36" x2="392" y2="63"/>
+            <line class="cl-line" x1="110" y1="36" x2="62" y2="63"/>
+            <rect class="cl-ink" x="60" y="62" width="340" height="7"/>
+            <rect class="cl-ink" x="48" y="62" width="22" height="30"/>
+            <g class="crane__carriage">
+              <rect class="cl-ink" x="300" y="69" width="24" height="9"/>
+              <line class="cl-line" x1="312" y1="78" x2="312" y2="150"/>
+              <rect class="cl-load" x="300" y="150" width="24" height="22" rx="2"/>
+            </g>
+            <rect class="cl-block tf__build" x="316" y="300" width="32" height="20" rx="2" style="animation-delay:.2s"/>
+            <rect class="cl-block tf__build" x="352" y="300" width="32" height="20" rx="2" style="animation-delay:.7s"/>
+            <rect class="cl-block tf__build" x="334" y="278" width="32" height="20" rx="2" style="animation-delay:1.2s"/>
+          </svg>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ 2 · The invitation (provocation → resolution) ═══════════════ -->
+    <section class="slide" data-slide="5" data-noteid="code-is-no-longer-just-for-devs">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">The opportunity</p>
+        <h2 class="title-l clip-reveal">Code is no longer just<br>for <span class="gp-accent">developers.</span></h2>
+        <p class="gp-lead reveal" style="--i:3">Yesterday, building an automation required solid coding skills. Today, a conversation with Claude is enough. The technical barrier is falling. <strong>Your expertise, though, remains.</strong></p>
+        <p class="split__punch reveal" style="--i:5">Manage your AI to accomplish without limits.</p>
+        <p class="gp-lead mgmt5 reveal" style="--i:6">AI touches <strong>every level of the hierarchy</strong>, from production to top management. Leadership needs to know what is concretely possible, to put smarter and more efficient solutions in place.</p>
+        <div class="barrier reveal" style="--i:7" aria-hidden="true">
+          <svg class="barrier__scene" viewBox="0 -66 400 246" xmlns="http://www.w3.org/2000/svg">
+            <line class="barrier__ground" x1="0" y1="168" x2="400" y2="168"/>
+            <rect class="barrier__base" x="196" y="162" width="40" height="10" rx="2"/>
+            <rect class="barrier__post" x="210" y="60" width="12" height="104"/>
+            <circle class="barrier__pivot" cx="216" cy="66" r="8"/>
+            <g class="barrier__bar">
+              <rect class="bar-seg bar-seg--a" x="216" y="60" width="32" height="12"/>
+              <rect class="bar-seg bar-seg--b" x="248" y="60" width="32" height="12"/>
+              <rect class="bar-seg bar-seg--a" x="280" y="60" width="32" height="12"/>
+              <rect class="bar-seg bar-seg--b" x="312" y="60" width="30" height="12"/>
+            </g>
+            <g class="barrier__crawler barrier__crawler--1">
+              <rect x="0" y="132" width="30" height="20" class="crawler__body"/>
+              <rect x="5" y="137" width="4" height="4" class="crawler__eye"/><rect x="21" y="137" width="4" height="4" class="crawler__eye"/>
+              <rect x="2" y="152" width="4" height="8" class="crawler__leg"/><rect x="12" y="152" width="4" height="8" class="crawler__leg"/><rect x="24" y="152" width="4" height="8" class="crawler__leg"/>
+            </g>
+            <g class="barrier__crawler barrier__crawler--2">
+              <rect x="0" y="132" width="30" height="20" class="crawler__body"/>
+              <rect x="5" y="137" width="4" height="4" class="crawler__eye"/><rect x="21" y="137" width="4" height="4" class="crawler__eye"/>
+              <rect x="2" y="152" width="4" height="8" class="crawler__leg"/><rect x="12" y="152" width="4" height="8" class="crawler__leg"/><rect x="24" y="152" width="4" height="8" class="crawler__leg"/>
+            </g>
+            <g class="barrier__crawler barrier__crawler--3">
+              <rect x="0" y="132" width="30" height="20" class="crawler__body"/>
+              <rect x="5" y="137" width="4" height="4" class="crawler__eye"/><rect x="21" y="137" width="4" height="4" class="crawler__eye"/>
+              <rect x="2" y="152" width="4" height="8" class="crawler__leg"/><rect x="12" y="152" width="4" height="8" class="crawler__leg"/><rect x="24" y="152" width="4" height="8" class="crawler__leg"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Video — Claude Code in action ═══════════════ -->
+    <section class="slide gp-videoslide" data-slide="6" data-noteid="claude-code-in-action-video">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <div>
+          <p class="eyebrow reveal" style="--i:0">Claude Code · in action</p>
+          <h2 class="title-l clip-reveal">Claude Code,<br>in <span class="gp-accent">action.</span></h2>
+          <p class="gp-lead subwipe" style="--i:2">A few minutes are enough to get the idea: you describe, it builds.</p>
+          <p class="gp-anecdote reveal" style="--i:3">AI-assisted code has <strong>already been in production</strong> for a while, at developers and leading companies.</p>
+        </div>
+        <!-- [TRAVIS] drop your own screen recording at assets/video/claude-code-demo.mp4 -->
+        <div class="gp-video-wrap reveal" style="--i:3" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()">
+          <video class="gp-video" src="./assets/video/claude-code-demo.mp4" controls playsinline preload="metadata" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()"></video>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ The principle — you describe, it builds ═══════════════ -->
+    <section class="slide" data-slide="7" data-noteid="you-describe-explain-guide-it-builds">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">The principle</p>
+        <h2 class="title-l clip-reveal">You describe, explain, guide — it <span class="gp-accent">builds.</span></h2>
+        <p class="gp-lead reveal" style="--i:2">How do you make your AI builds succeed? The recipe takes three ingredients.</p>
+        <div class="mixgrid">
+          <div class="recipe reveal" style="--i:4">
+            <div class="recipe__row"><span class="recipe__dot recipe__dot--crea"></span><span class="recipe__ing">Creativity</span><span class="recipe__role">your idea, your angle</span></div>
+            <div class="recipe__op">+</div>
+            <div class="recipe__row"><span class="recipe__dot recipe__dot--exp"></span><span class="recipe__ing">Expertise</span><span class="recipe__role">what only you know</span></div>
+            <div class="recipe__op">+</div>
+            <div class="recipe__row"><span class="recipe__dot recipe__dot--data"></span><span class="recipe__ing">Data &amp; context</span><span class="recipe__role">the reality of your business</span></div>
+            <div class="recipe__rule"></div>
+            <div class="recipe__res"><span class="recipe__eq">=</span> a tool that actually works</div>
+            <p class="recipe__note">Plus a dose of practice: with every build, you guide better.</p>
+          </div>
+          <div class="pviz reveal" style="--i:5">
+            <svg class="cocktail" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <clipPath id="glassIn"><path d="M63 92 L72 268 Q72 276 80 276 L120 276 Q128 276 128 268 L137 92 Z"/></clipPath>
+              </defs>
+              <!-- liquids, stacked (bottom = expertise, middle = creativity, top = data) -->
+              <g clip-path="url(#glassIn)">
+                <rect class="ck-liq ck-liq--exp"  x="55" y="196" width="90" height="90"/>
+                <rect class="ck-liq ck-liq--crea" x="55" y="140" width="90" height="56"/>
+                <rect class="ck-liq ck-liq--data" x="55" y="104" width="90" height="36"/>
+                <circle class="ck-bub ck-bub--1" cx="88"  cy="260" r="3"/>
+                <circle class="ck-bub ck-bub--2" cx="108" cy="260" r="4"/>
+                <circle class="ck-bub ck-bub--3" cx="98"  cy="260" r="2.5"/>
+                <circle class="ck-bub ck-bub--4" cx="118" cy="260" r="3"/>
+                <circle class="ck-bub ck-bub--5" cx="80"  cy="260" r="2"/>
+              </g>
+              <!-- glass -->
+              <path class="ck-glass" d="M63 92 L72 268 Q72 276 80 276 L120 276 Q128 276 128 268 L137 92 Z"/>
+              <ellipse class="ck-rim" cx="100" cy="92" rx="37" ry="7"/>
+              <!-- stirrer -->
+              <line class="ck-stir" x1="120" y1="70" x2="96" y2="200"/>
+              <!-- orange slice on the rim -->
+              <g class="ck-garnish">
+                <circle class="ck-orange" cx="132" cy="96" r="16"/>
+                <path class="ck-seg" d="M132 96 L132 80"/><path class="ck-seg" d="M132 96 L146 90"/>
+                <path class="ck-seg" d="M132 96 L146 102"/><path class="ck-seg" d="M132 96 L118 90"/>
+                <path class="ck-seg" d="M132 96 L118 102"/><path class="ck-seg" d="M132 96 L132 112"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ 3 · Getting the terms straight ═══════════════ -->
+    <section class="slide" data-slide="8" data-noteid="getting-the-terms-straight">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">The vocabulary, at Anthropic</p>
+        <h2 class="title-m clip-reveal">Getting the terms <span class="gp-accent">straight.</span></h2>
+        <p class="gp-lead subwipe" style="--i:2">A few words will keep coming up. Here they are, one sentence each. Nothing to memorize: you'll recognize them as we go.</p>
+        <div class="lexicon reveal" style="--i:3">
+          <div class="lexicon__col">
+            <p class="lexicon__cat">The foundations</p>
+            <dl class="lexicon__list">
+              <div class="lexicon__row"><dt>LLM</dt><dd>The AI model trained on text. The "brain."</dd></div>
+              <div class="lexicon__row"><dt>Token</dt><dd>The unit of text that gets counted. ≈ ¾ of a word.</dd></div>
+              <div class="lexicon__row"><dt>Prompt</dt><dd>Your request, in everyday language.</dd></div>
+              <div class="lexicon__row"><dt>Agent</dt><dd>An AI that chains a series of actions toward a goal, not one that just answers.</dd></div>
+            </dl>
+          </div>
+          <div class="lexicon__col">
+            <p class="lexicon__cat">What you work with</p>
+            <dl class="lexicon__list">
+              <div class="lexicon__row"><dt>Project</dt><dd>A space that gathers files, context and conversations.</dd></div>
+              <div class="lexicon__row"><dt>Artifact</dt><dd>A deliverable produced by Claude, often an HTML page (doc, app).</dd></div>
+              <div class="lexicon__row"><dt>Skill</dt><dd>A ready-to-use capability (a <code>.md</code> file) the agent follows when needed.</dd></div>
+              <div class="lexicon__row"><dt>Routine</dt><dd>A scheduled task that re-runs on its own.</dd></div>
+              <div class="lexicon__row"><dt>CMS</dt><dd>The system that manages a website's content (e.g. WordPress).</dd></div>
+            </dl>
+          </div>
+          <div class="lexicon__col">
+            <p class="lexicon__cat">The connections</p>
+            <dl class="lexicon__list">
+              <div class="lexicon__row"><dt>API</dt><dd>The standard language two pieces of software use to talk — a direct call.</dd></div>
+              <div class="lexicon__row"><dt>MCP</dt><dd>Plugs a tool or your data into the agent. Simpler than an API, but hungrier on tokens (an extra layer, no direct call).</dd></div>
+              <div class="lexicon__row"><dt>SSH</dt><dd>A secure connection to a remote machine.</dd></div>
+              <div class="lexicon__row"><dt>VPS</dt><dd>A rented online server where your tool runs, 24/7.</dd></div>
+              <div class="lexicon__row"><dt>Git</dt><dd>The versioned history of your code — nothing gets lost.</dd></div>
+            </dl>
+          </div>
+          <div class="lexicon__col">
+            <p class="lexicon__cat">Where you talk to Claude</p>
+            <dl class="lexicon__list">
+              <div class="lexicon__row"><dt>Desktop app</dt><dd>Claude installed on your computer (Cowork).</dd></div>
+              <div class="lexicon__row"><dt>Claude.ai</dt><dd>The online app, in the browser (cloud).</dd></div>
+              <div class="lexicon__row"><dt>Terminal / IDE</dt><dd>The computer's console, e.g. inside VS Code (Claude Code).</dd></div>
+            </dl>
+          </div>
+        </div>
+        <p class="viz-cap reveal" style="--i:5"><strong>Terminal</strong>: the computer's text console (e.g. PowerShell). · <strong>IDE</strong>: the code editor where you develop, e.g. VS Code.</p>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ 4 · Three ways ═══════════════ -->
+    <section class="slide" data-slide="9" data-noteid="three-ways-to-change-your-day">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Claude · Cowork · Claude Code</p>
+        <h2 class="title-l clip-reveal">Three ways to change your<br>day-to-day, with <span class="gp-accent">Anthropic.</span></h2>
+        <p class="gp-anecdote subwipe" style="--i:2">My own usage, in full transparency: <strong>~20% Cowork, ~80% Claude Code</strong>.</p>
+        <div class="stack">
+          <div class="stack__products">
+            <div class="stack__prod reveal" style="--i:3">
+              <div class="stack__prod__head"><span class="stack__prod__name">Claude</span><span class="tag">the app</span></div>
+              <span class="stack__prod__verb">Answers</span>
+              <span class="stack__prod__d">Chat, write, analyze. It doesn't touch anything.</span>
+              <span class="stack__prod__uniq">Its specialty:&nbsp;<strong>Artifacts, files, analysis, quick questions</strong></span>
+            </div>
+            <div class="stack__prod reveal" style="--i:4">
+              <div class="stack__prod__head"><span class="stack__prod__name">Cowork</span><span class="tag">the app</span></div>
+              <span class="stack__prod__verb">Delivers</span>
+              <span class="stack__prod__d">Acts on your files all the way to the deliverable, with a bit of code.</span>
+              <span class="stack__prod__uniq">Its specialty:&nbsp;<strong>Your files, a bit of code</strong></span>
+            </div>
+            <div class="stack__prod stack__prod--code reveal" style="--i:5">
+              <div class="stack__prod__head"><span class="stack__prod__name">Claude <em>Code</em></span><span class="tag">terminal</span></div>
+              <span class="stack__prod__verb">Builds</span>
+              <span class="stack__prod__d">Writes, tests and runs code inside your project.</span>
+              <span class="stack__prod__uniq">Its specialty:&nbsp;<strong>Git · Sub-agents</strong></span>
+            </div>
+          </div>
+          <div class="stack__band stack__band--shared reveal" style="--i:6"><b>Shared by all</b> Skills · MCP · Projects · Context · Memory</div>
+          <div class="stack__band stack__band--engine reveal" style="--i:7"><b>The engine</b> Fable 5 · Opus 4.8 · Sonnet 4.6 · Haiku 4.5</div>
+          <div class="stack__band stack__band--api reveal" style="--i:8"><b>To go further</b> Claude API · Managed Agents: isolated agents, hosted by Anthropic and called via API for a specific mission</div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Claude in detail (artifact) ═══════════════ -->
+    <section class="slide" data-slide="10" data-noteid="claude-to-chat-analyze-produce">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Claude · the chat agent</p>
+        <h2 class="title-l clip-reveal">Claude to chat, analyze,<br>start <span class="gp-accent">producing.</span></h2>
+        <div class="proddetail">
+          <div class="spec subwipe" style="--i:3">
+            <div class="spec__row">
+              <span class="spec__label">Features</span>
+              <p class="spec__d"><strong>Projects</strong> (source of context) · <strong>Artifacts</strong> (living HTML documents) · <strong>MCP connectors</strong> (third-party tools &amp; data)</p>
+            </div>
+            <div class="spec__row">
+              <span class="spec__label">Capabilities</span>
+              <p class="spec__d">Analyses · content creation · presentations · documents (Word, PPT, Excel, PDF) · web browsing · reading documents and images</p>
+            </div>
+            <div class="spec__row spec__row--lim">
+              <span class="spec__label">Limits</span>
+              <p class="spec__d">Stays inside Claude · no backend or database · token consumption ++ · weak for collaborative use</p>
+            </div>
+          </div>
+          <div class="pviz reveal" style="--i:4">
+            <div class="chatviz">
+              <div class="chatviz__bar"><span class="chatviz__dot"></span> Claude</div>
+              <div class="chatviz__body">
+                <div class="msg msg--user">Analyze these 200 customer reviews.</div>
+                <div class="msg msg--ai">Three themes stand out: delays, price, service. Here's the breakdown…</div>
+                <div class="msg msg--user">Turn it into a one-page summary.</div>
+                <div class="msg msg--ai msg--typing"><span></span><span></span><span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Cowork in detail (animated dashboard) ═══════════════ -->
+    <section class="slide" data-slide="11" data-noteid="cowork-the-agentic-assistant">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Cowork · in the app</p>
+        <h2 class="title-l clip-reveal">Cowork, the agentic assistant<br>for your <span class="gp-accent">day-to-day.</span></h2>
+        <div class="proddetail">
+          <div class="spec subwipe" style="--i:3">
+            <div class="spec__row">
+              <span class="spec__label">Features</span>
+              <p class="spec__d"><strong>Projects</strong> (context + memory) · <strong>Artifacts</strong> · <strong>recurring tasks</strong> (agentic automation) · <strong>MCP connectors</strong> · web browsing · <strong>browser control</strong> (Chrome extension) · reads, edits and creates your files</p>
+            </div>
+            <div class="spec__row">
+              <span class="spec__label">Capabilities</span>
+              <p class="spec__d">Analyses · content creation · presentations · documents · web browsing · document reading</p>
+            </div>
+            <div class="spec__row spec__row--lim">
+              <span class="spec__label">Limits</span>
+              <p class="spec__d">Runs on your machine (not very collaborative) · scheduled tasks: only with the PC on and Chrome open · needs your approval · not made for coding software</p>
+            </div>
+          </div>
+          <div class="pviz reveal" style="--i:4">
+            <div class="dashviz dashviz--portrait">
+              <div class="dashviz__bar"><span class="dashviz__dot"></span> Dashboard · management</div>
+              <div class="dashviz__pad">
+                <div class="dashviz__kpis">
+                  <div class="dashviz__kpi dashviz__kpi--accent"><span class="dashviz__kpi__lbl">Sales</span><span class="dashviz__kpi__num" data-count="124500" data-prefix="$" >$124,500</span></div>
+                  <div class="dashviz__kpi"><span class="dashviz__kpi__lbl">Conv.</span><span class="dashviz__kpi__num" data-count="18" data-prefix="+" data-suffix=" %">+18 %</span></div>
+                  <div class="dashviz__kpi"><span class="dashviz__kpi__lbl">Clients</span><span class="dashviz__kpi__num" data-count="342">342</span></div>
+                </div>
+                <div class="dashviz__card">
+                  <span class="dashviz__t">Sales by month</span>
+                  <div class="dashviz__bars">
+                    <span style="height:38%;animation-delay:.1s"></span>
+                    <span style="height:60%;animation-delay:.3s"></span>
+                    <span style="height:48%;animation-delay:.5s"></span>
+                    <span style="height:78%;animation-delay:.7s"></span>
+                    <span style="height:64%;animation-delay:.9s"></span>
+                    <span style="height:90%;animation-delay:1.1s"></span>
+                  </div>
+                </div>
+                <div class="dashviz__card dashviz__card--row">
+                  <div class="dashviz__pie">
+                    <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="track" cx="50" cy="50" r="42"/><circle class="arc" cx="50" cy="50" r="42"/></svg>
+                  </div>
+                  <div class="dashviz__legend">
+                    <span class="dashviz__t">Channels</span>
+                    <span class="dashviz__leg"><i class="dashviz__sw dashviz__sw--1"></i> Direct · 64 %</span>
+                    <span class="dashviz__leg"><i class="dashviz__sw dashviz__sw--2"></i> Organic search · 36 %</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Claude Code in detail (API hub) ═══════════════ -->
+    <section class="slide" data-slide="12" data-noteid="claude-code-build-connect-everything">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Claude Code · terminal</p>
+        <h2 class="title-l clip-reveal">Claude Code: build everything,<br>connect <span class="gp-accent">everything.</span></h2>
+        <div class="proddetail">
+          <div class="spec subwipe" style="--i:3">
+            <div class="spec__row">
+              <span class="spec__label">Features</span>
+              <p class="spec__d"><strong>Locally</strong> (terminal + IDE), in the <strong>cloud</strong> (routines on Anthropic infrastructure, even with your PC off) or on <strong>GitHub</strong> · <strong>Git</strong> (branches, PRs, conflicts) · runs commands (builds, tests, deployment) · <strong>MCP</strong> &amp; <strong>API</strong> · sub-agents</p>
+            </div>
+            <div class="spec__row">
+              <span class="spec__label">Capabilities</span>
+              <p class="spec__d">Builds apps, sites, internal tools, automations · <strong>fixes, debugs, refactors, audits</strong> · writes tests, watches CI · works across multiple files at once</p>
+            </div>
+            <div class="spec__row spec__row--lim">
+              <span class="spec__label">Limits</span>
+              <p class="spec__d">Needs a setup + a pilot · token cost on large projects (sub-agents ×7) · always verify: it can be wrong</p>
+            </div>
+          </div>
+          <div class="pviz reveal" style="--i:4">
+            <div class="apihub">
+              <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <line class="link" x1="240" y1="180" x2="240" y2="42"/>
+                <line class="link" x1="240" y1="180" x2="360" y2="111"/>
+                <line class="link" x1="240" y1="180" x2="360" y2="249"/>
+                <line class="link" x1="240" y1="180" x2="240" y2="318"/>
+                <line class="link" x1="240" y1="180" x2="120" y2="249"/>
+                <line class="link" x1="240" y1="180" x2="120" y2="111"/>
+                <rect class="node-box" x="188" y="24" width="104" height="36" rx="8"/><text class="node-t" x="240" y="47" text-anchor="middle" font-size="14">CRM</text>
+                <rect class="node-box" x="308" y="93" width="104" height="36" rx="8"/><text class="node-t" x="360" y="116" text-anchor="middle" font-size="14">Email</text>
+                <rect class="node-box" x="308" y="231" width="104" height="36" rx="8"/><text class="node-t" x="360" y="254" text-anchor="middle" font-size="14">GitHub</text>
+                <rect class="node-box" x="188" y="300" width="104" height="36" rx="8"/><text class="node-t" x="240" y="323" text-anchor="middle" font-size="14">Website</text>
+                <rect class="node-box" x="68" y="231" width="104" height="36" rx="8"/><text class="node-t" x="120" y="254" text-anchor="middle" font-size="14">Data</text>
+                <rect class="node-box" x="68" y="93" width="104" height="36" rx="8"/><text class="node-t" x="120" y="116" text-anchor="middle" font-size="14">Payments</text>
+                <rect class="core-box" x="172" y="154" width="136" height="52" rx="11"/>
+                <text x="240" y="186" text-anchor="middle" font-size="15"><tspan class="core-t">Claude </tspan><tspan class="core-t--accent">Code</tspan></text>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <p class="viz-cap reveal" style="--i:6">Terminal: the computer's console (e.g. <strong>PowerShell</strong>). · IDE: the code editor — <a href="https://code.visualstudio.com/" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">download VS Code</a>. · And above all: Claude Code creates real tools that run <strong>outside Claude</strong>.</p>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ 5 · The SaaS earthquake — build vs buy ═══════════════ -->
+    <section class="slide" data-slide="13" data-noteid="your-tools-become-custom-built">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">The earthquake</p>
+        <h2 class="title-l clip-reveal">Your tools become custom-built,<br>and multiply the impact of your <span class="gp-accent">expertise.</span></h2>
+        <div class="versus">
+          <div class="versus__col reveal" style="--i:3">
+            <span class="versus__label">Rent · SaaS</span>
+            <ul class="versus__rows">
+              <li>Salesforce <span class="versus__price">license / seat</span></li>
+              <li>HubSpot <span class="versus__price">tiered pricing</span></li>
+              <li>Semrush <span class="versus__price">subscription / month</span></li>
+            </ul>
+            <p class="duo__tagline">Features you only ever use at <span data-count="20" data-suffix="&nbsp;%">20&nbsp;%</span>.</p>
+          </div>
+          <span class="versus__vs reveal" style="--i:4">vs</span>
+          <div class="versus__col versus__col--build reveal" style="--i:5">
+            <span class="versus__label">Build · with Claude</span>
+            <ul class="versus__rows">
+              <li>The tool that fits your needs exactly</li>
+              <li>Your data, your rules</li>
+              <li>A single subscription</li>
+            </ul>
+            <p class="versus__punch">You no longer rent.<br>You <em>own.</em></p>
+          </div>
+        </div>
+        <div class="truckway reveal" style="--i:7" aria-hidden="true">
+          <span class="truckway__road"></span>
+          <svg class="truck" viewBox="0 0 232 100" xmlns="http://www.w3.org/2000/svg">
+            <rect class="truck__cargo" x="8" y="22" width="134" height="52" rx="5"/>
+            <rect class="truck__band" x="8" y="22" width="134" height="15" rx="5"/>
+            <text class="truck__lbl" x="75" y="60" text-anchor="middle">YOUR TOOLS</text>
+            <path class="truck__cab" d="M142 40 h34 l16 20 v14 h-50 z"/>
+            <rect class="truck__win" x="150" y="44" width="26" height="17" rx="2"/>
+            <g class="truck__driver">
+              <rect x="153" y="46" width="20" height="12" class="crawler__body"/>
+              <rect x="156" y="49" width="3" height="3" class="crawler__eye"/><rect x="167" y="49" width="3" height="3" class="crawler__eye"/>
+            </g>
+            <g class="truck__wheel truck__wheel--1"><circle cx="48" cy="80" r="13" class="truck__tyre"/><circle cx="48" cy="80" r="5" class="truck__hub"/></g>
+            <g class="truck__wheel truck__wheel--2"><circle cx="168" cy="80" r="13" class="truck__tyre"/><circle cx="168" cy="80" r="5" class="truck__hub"/></g>
+          </svg>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ 6 · You've already built an agent ═══════════════ -->
+    <section class="slide" data-slide="14" data-noteid="you-already-built-an-agent">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <svg class="waver" viewBox="0 0 130 118" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="42" y="86" width="8" height="22" class="crawler__leg"/>
+        <rect x="58" y="86" width="8" height="22" class="crawler__leg"/>
+        <rect x="74" y="86" width="8" height="22" class="crawler__leg"/>
+        <rect x="34" y="34" width="56" height="54" rx="4" class="crawler__body"/>
+        <rect x="46" y="50" width="9" height="9" class="crawler__eye"/>
+        <rect x="69" y="50" width="9" height="9" class="crawler__eye"/>
+        <g class="waver__arm"><rect x="86" y="8" width="10" height="31" rx="5" class="crawler__body"/></g>
+      </svg>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Agents</p>
+        <h2 class="title-l clip-reveal">You've already built <span class="gp-accent">an agent.</span></h2>
+        <p class="gp-lead reveal" style="--i:2">You ask a question; Claude searches the web, reads, reasons, then answers. That is already an agent: a model that doesn't just wait — it acts toward a goal. Every one of you has put one to work. Two levels to know:</p>
+        <div class="agents">
+          <div class="agents__row">
+            <div class="agents__stage reveal" style="--i:4">
+              <span class="agents__n">01</span>
+              <span class="agents__t">The invisible agent</span>
+              <span class="agents__d">When you chat with Claude, it reads, searches, reasons, uses tools. <strong>You've already made one</strong>, without knowing it.</span>
+            </div>
+            <div class="agents__stage reveal" style="--i:5">
+              <span class="agents__n">02</span>
+              <span class="agents__t">Your agent</span>
+              <span class="agents__d">The one <strong>you</strong> configure and orchestrate (in Claude Code or on the platform) for a specific task, autonomously.</span>
+            </div>
+          </div>
+          <div class="agents__prod reveal" style="--i:6">+ <strong>&nbsp;Managed Agents</strong> &nbsp;: the production tier. Isolated agents, hosted by Anthropic and called via API. They run on their own for hours, and the result is waiting for you even if your connection drops — no infrastructure to manage.</div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Anatomy of an agent — the loop ═══════════════ -->
+    <section class="slide" data-slide="15" data-noteid="agents-how-they-work">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Anatomy of an agent</p>
+        <h2 class="title-l clip-reveal">Agents: how they <span class="gp-accent">work.</span></h2>
+        <p class="gp-lead reveal" style="--i:2">An agent doesn't just answer: it pursues a goal, and loops until it gets there.</p>
+        <div class="agentomy reveal" style="--i:3">
+          <div class="agentomy__loop">
+            <div class="agentomy__cap">Goal</div>
+            <span class="agentomy__arrow">→</span>
+            <div class="agentomy__stage agentomy__stage--1"><span class="agentomy__k">Thinks</span><span class="agentomy__d">it makes a plan</span></div>
+            <span class="agentomy__arrow">→</span>
+            <div class="agentomy__stage agentomy__stage--2"><span class="agentomy__k">Acts</span><span class="agentomy__d">it uses a tool</span></div>
+            <span class="agentomy__arrow">→</span>
+            <div class="agentomy__stage agentomy__stage--3"><span class="agentomy__k">Observes</span><span class="agentomy__d">it checks the result</span></div>
+            <span class="agentomy__arrow">→</span>
+            <div class="agentomy__cap agentomy__cap--out">Deliverable<span class="fw" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div>
+          </div>
+          <div class="agentomy__return">↻&nbsp;&nbsp; repeats until it's done.</div>
+          <div class="agentomy__tools"><strong>Its tools:</strong> read and write files · search · run code · hook up an API or an MCP.</div>
+          <div class="agentomy__found">
+            <div class="agentomy__chip"><strong>The model</strong>: the brain that reasons.</div>
+            <div class="agentomy__chip"><strong>The context &amp; the rules</strong>: what it knows, what it's allowed to do.</div>
+          </div>
+        </div>
+        <div class="teamplay reveal" style="--i:6">
+          <p class="teamplay__cap">And in a group, they coordinate like a team: each with its own task, one shared objective.</p>
+          <div class="pitch" aria-hidden="true">
+            <span class="pitch__mid"></span>
+            <svg class="pitch__player pitch__player--1" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+              <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+              <rect x="2" y="11" width="2" height="4" class="crawler__leg"/><rect x="6" y="11" width="2" height="4" class="crawler__leg"/>
+              <rect x="9" y="11" width="2" height="4" class="crawler__leg"/><rect x="13" y="11" width="2" height="4" class="crawler__leg"/>
+            </svg>
+            <svg class="pitch__player pitch__player--2" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+              <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+              <rect x="2" y="11" width="2" height="4" class="crawler__leg"/><rect x="6" y="11" width="2" height="4" class="crawler__leg"/>
+              <rect x="9" y="11" width="2" height="4" class="crawler__leg"/><rect x="13" y="11" width="2" height="4" class="crawler__leg"/>
+            </svg>
+            <svg class="pitch__player pitch__player--3" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+              <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+              <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+              <rect x="2" y="11" width="2" height="4" class="crawler__leg"/><rect x="6" y="11" width="2" height="4" class="crawler__leg"/>
+              <rect x="9" y="11" width="2" height="4" class="crawler__leg"/><rect x="13" y="11" width="2" height="4" class="crawler__leg"/>
+            </svg>
+            <span class="pitch__ball"></span>
+          </div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Under the hood — the building blocks, plainly ═══════════════ -->
+    <section class="slide" data-slide="16" data-noteid="under-the-hood">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="crawlers crawlers--ambient" aria-hidden="true">
+        <svg class="crawler crawler--sm crawler--walk" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+          <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+          <rect x="2" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="6" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/>
+          <rect x="9" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="13" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/>
+        </svg>
+      </div>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">The agent, from the inside</p>
+        <h2 class="title-l clip-reveal">The agent: under the <span class="gp-accent">hood.</span></h2>
+        <p class="gp-lead reveal" style="--i:2">An agent is a model entrusted with a mission and tools. Here's what's inside.</p>
+        <div class="agentcard reveal" style="--i:3">
+          <div class="agentcard__bar"><span class="agentcard__dot"></span> agent · general purpose · active</div>
+          <div class="agentcard__row"><span class="agentcard__k">Model</span><span class="agentcard__v agentcard__v--mono">claude-sonnet-4-6</span></div>
+          <div class="agentcard__row"><span class="agentcard__k">Mission</span><span class="agentcard__v">Research, write code, run commands and use the connected tools to complete the task end to end.</span></div>
+          <div class="agentcard__row"><span class="agentcard__k">Tools</span><span class="agentcard__v"><span class="agentcard__tool">bash</span><span class="agentcard__tool">read</span><span class="agentcard__tool">write</span><span class="agentcard__tool">edit</span><span class="agentcard__tool">glob</span><span class="agentcard__tool">grep</span><span class="agentcard__tool">web_fetch</span><span class="agentcard__tool">web_search</span></span></div>
+          <div class="agentcard__row"><span class="agentcard__k">Skills</span><span class="agentcard__v">Business know-how, loaded at the right moment.</span></div>
+          <div class="agentcard__row"><span class="agentcard__k">MCP</span><span class="agentcard__v">Your tools and your data, plugged into the agent.</span></div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ 7 · DEMO A (Cowork artifacts) ═══════════════ -->
+    <section class="slide" data-slide="17" data-noteid="enough-talk-lets-see-examples">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Cowork · artifact examples</p>
+        <div class="introrow">
+          <div>
+            <h2 class="title-l clip-reveal">On to the <span class="gp-accent">examples.</span></h2>
+            <p class="gp-lead reveal" style="--i:2">Real deliverables, produced with <strong>Cowork</strong>. Click to open them.</p>
+          </div>
+          <svg class="inspector reveal" style="--i:3" viewBox="0 0 130 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="34" y="24" width="62" height="46" rx="3" class="crawler__body"/>
+            <rect x="46" y="38" width="9" height="9" class="crawler__eye"/><rect x="75" y="38" width="9" height="9" class="crawler__eye"/>
+            <rect x="40" y="70" width="7" height="16" class="crawler__leg"/><rect x="56" y="70" width="7" height="16" class="crawler__leg"/>
+            <rect x="72" y="70" width="7" height="16" class="crawler__leg"/><rect x="86" y="70" width="7" height="16" class="crawler__leg"/>
+            <g class="inspector__glasses">
+              <circle cx="50" cy="42" r="15"/><circle cx="80" cy="42" r="15"/>
+              <line x1="61" y1="41" x2="69" y2="41"/>
+              <line x1="35" y1="40" x2="20" y2="34"/><line x1="95" y1="40" x2="110" y2="34"/>
+            </g>
+          </svg>
+        </div>
+        <div class="artgrid reveal" style="--i:4">
+          <a class="artcard" href="./artifacts/real-estate-oc.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">
+            <div class="artcard__preview artcard__preview--chart">
+              <span style="height:40%"></span><span style="height:66%"></span><span style="height:52%"></span><span style="height:82%"></span><span style="height:70%"></span><span style="height:94%"></span>
+            </div>
+            <div class="artcard__foot"><span class="artcard__name">Real-estate prices · Orange County</span><span class="artcard__go">view the artifact →</span></div>
+          </a>
+          <a class="artcard" href="./artifacts/brand-guidelines.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">
+            <div class="artcard__preview artcard__preview--charte">
+              <span class="sw" style="background:#0F0F0F"></span><span class="sw" style="background:#D97757"></span><span class="sw" style="background:#FC750C"></span><span class="sw" style="background:#E8E4DB"></span>
+              <b class="artcard__aa">Aa</b>
+            </div>
+            <div class="artcard__foot"><span class="artcard__name">Brand guidelines</span><span class="artcard__go">view the artifact →</span></div>
+          </a>
+          <a class="artcard" href="./artifacts/landing.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">
+            <div class="artcard__preview artcard__preview--landing">
+              <i class="ln ln--title"></i><i class="ln ln--sub"></i><i class="ln ln--btn"></i>
+            </div>
+            <div class="artcard__foot"><span class="artcard__name">Landing page</span><span class="artcard__go">view the artifact →</span></div>
+          </a>
+          <a class="artcard" href="./artifacts/crm.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">
+            <div class="artcard__preview artcard__preview--crm">
+              <i class="row"><b></b><em style="background:var(--accent-clay)"></em></i>
+              <i class="row"><b></b><em style="background:#7EE787"></em></i>
+              <i class="row"><b></b><em style="background:var(--accent-bright)"></em></i>
+              <i class="row"><b></b><em style="background:var(--neutral)"></em></i>
+            </div>
+            <div class="artcard__foot"><span class="artcard__name">Custom mini CRM</span><span class="artcard__go">view the artifact →</span></div>
+          </a>
+        </div>
+        <div class="clickfx" aria-hidden="true">
+          <span class="clickfx__ring"></span>
+          <svg class="clickfx__cur" viewBox="0 0 24 24"><path d="M5 3 L5 19 L9.6 14.8 L12.6 21 L15 20 L11.9 14 L18 14 Z" fill="#0F0F0F" stroke="#fff" stroke-width="1"/></svg>
+        </div>
+        <p class="artnote reveal" style="--i:6"><strong>Be creative:</strong> no MCP at hand? Simply give Claude a website to visit to refresh your artifact's data.</p>
+        <p class="artnote artnote--sub reveal" style="--i:7">And don't forget the <strong>Claude extension</strong> in your browser: it can help you configure your software and tools.</p>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Our practice — AuraPath applies it to itself ═══════════════ -->
+    <section class="slide" data-slide="18" data-noteid="we-apply-it-at-aurapath">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Our practice · AuraPath</p>
+        <h2 class="title-l clip-reveal">We apply it to ourselves,<br>at <span class="gp-accent">AuraPath.</span></h2>
+        <div class="ops">
+          <div class="ops__left subwipe" style="--i:3">
+            <div class="ops__level">
+              <span class="ops__k">Each of us</span>
+              <p class="ops__d">Claude Code and Cowork run our <strong>research, meeting prep and client reporting</strong>.</p>
+            </div>
+            <div class="ops__level">
+              <span class="ops__k">As a team</span>
+              <p class="ops__d">AuraPath is <strong>2 founders + ~25 internal AI agents</strong> — we build our tools instead of buying them.</p>
+            </div>
+            <div class="ops__tools">
+              <span class="ops__tool">Filesystem CRM</span>
+              <span class="ops__tool">Message triage agent</span>
+              <span class="ops__tool">Meeting-prep pipeline</span>
+              <span class="ops__tool">LinkedIn content agent</span>
+              <span class="ops__tool">Client reporting</span>
+            </div>
+            <a class="ops__org" href="https://aurapathai.com" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()">
+              <img src="assets/img/aurapath-logo.png" alt="AuraPath AI"><span>AuraPath AI · aurapathai.com →</span>
+            </a>
+          </div>
+          <div class="ops__right reveal" style="--i:4">
+            <div class="costcard">
+              <div class="cost__row">
+                <div class="cost__head"><span class="cost__lbl">Client proof · time per payroll</span><span class="cost__num" data-count="30" data-suffix="&nbsp;min">30&nbsp;min</span></div>
+                <div class="cost__bar"><span class="cost__fill cost__fill--ours" style="width:6%"></span></div>
+                <span class="cost__detail">was 4–8 hours — a 94% reduction (Rhea Engineers)</span>
+              </div>
+              <div class="cost__row">
+                <div class="cost__head"><span class="cost__lbl">Value delivered, year one</span><span class="cost__num" data-count="57000" data-prefix="$" data-suffix="+">$57,000+</span></div>
+                <div class="cost__bar"><span class="cost__fill cost__fill--them" style="width:100%"></span></div>
+                <span class="cost__detail">195 hours/year saved · a 2.5-month backlog cleared</span>
+              </div>
+              <div class="cost__punch"><span class="cost__x">Live in 11 weeks.</span> And above all: <strong>their team owns it.</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Claude Code — no limits (examples) ═══════════════ -->
+    <section class="slide" data-slide="19" data-noteid="claude-code-no-limits">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Claude Code · the next step</p>
+        <h2 class="title-l clip-reveal">Claude Code: no <span class="gp-accent">limits.</span></h2>
+        <p class="gp-lead reveal" style="--i:2">The logical extension of Cowork. Talk to it, give it your goal and your direction — let it write the prompts and build.</p>
+        <div class="ccex reveal" style="--i:3">
+          <a class="ccex__item ccex__item--demo" href="./demos/project-management.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()"><span class="ccex__n">01</span><span class="ccex__t">Project management</span><span class="ccex__d">Mandates, tasks and deadlines for a digital agency.</span><span class="ccex__demo"><span aria-hidden="true">▸</span> Open the demo</span></a>
+          <a class="ccex__item ccex__item--demo" href="./demos/social-media.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()"><span class="ccex__n">02</span><span class="ccex__t">Social media</span><span class="ccex__d">Editorial calendar and scheduled posts.</span><span class="ccex__demo"><span aria-hidden="true">▸</span> Open the demo</span></a>
+          <a class="ccex__item ccex__item--demo" href="./demos/insurance-comparator.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()"><span class="ccex__n">03</span><span class="ccex__t">Insurance comparator</span><span class="ccex__d">A custom tool for a broker.</span><span class="ccex__demo"><span aria-hidden="true">▸</span> Open the demo</span></a>
+          <a class="ccex__item ccex__item--demo" href="./artifacts/crm.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()"><span class="ccex__n">04</span><span class="ccex__t">Team CRM</span><span class="ccex__d">A shared sales pipeline.</span><span class="ccex__demo"><span aria-hidden="true">▸</span> Open the demo</span></a>
+          <a class="ccex__item ccex__item--demo" href="./demos/custom-website.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()"><span class="ccex__n">05</span><span class="ccex__t">Custom website</span><span class="ccex__d">Showcase site or app, from A to Z.</span><span class="ccex__demo"><span aria-hidden="true">▸</span> Open the demo</span></a>
+          <a class="ccex__item ccex__item--demo" href="./demos/audit-tool.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()"><span class="ccex__n">06</span><span class="ccex__t">Audit tool</span><span class="ccex__d">Automated analysis and reporting.</span><span class="ccex__demo"><span aria-hidden="true">▸</span> Open the demo</span></a>
+          <a class="ccex__item ccex__item--demo" href="./demos/webmaster.html" target="_blank" rel="noopener" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()"><span class="ccex__n">07</span><span class="ccex__t">Webmaster</span><span class="ccex__d">CMS management and updates.</span><span class="ccex__demo"><span aria-hidden="true">▸</span> Open the demo</span></a>
+        </div>
+        <p class="gp-didyouknow reveal" style="--i:4"><span class="gp-didyouknow__tag">Did you know&nbsp;?</span> Deploying a <strong>Salesforce</strong> CRM in a 100-person company costs about <strong>$300,000 the first year</strong>, then <strong>$90,000 to $120,000 per year</strong> (licenses, support, evolutions). These tools here&nbsp;: <strong class="gp-accent">the price of a subscription.</strong></p>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+
+    <!-- ═══════════════ 10 · ×1000 but piloted ═══════════════ -->
+    <section class="slide" data-slide="20" data-noteid="x1000-but-piloted">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Its real power</p>
+        <h2 class="title-l clip-reveal">×1000. But <span class="gp-accent">piloted.</span></h2>
+        <div class="split">
+          <div class="split__side reveal" style="--i:3">
+            <span class="split__k">The strength</span>
+            <span class="split__h">An exceptional coder</span>
+            <ul class="split__list">
+              <li>Ultra-fast, every language</li>
+              <li>Attempts and realizes your ideas</li>
+              <li>24/7, never tired</li>
+            </ul>
+          </div>
+          <div class="split__side reveal" style="--i:4">
+            <span class="split__k">The pilot</span>
+            <span class="split__h">Always a human</span>
+            <ul class="split__list">
+              <li>You set the direction</li>
+              <li>You make the technical calls</li>
+              <li>You inject the context</li>
+            </ul>
+          </div>
+        </div>
+        <p class="split__punch reveal" style="--i:5">It codes ×1000. But <em>you</em> decide what to build.</p>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ The limits — in all honesty ═══════════════ -->
+    <section class="slide" data-slide="21" data-noteid="where-it-gets-stuck">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="dreamland" aria-hidden="true">
+        <div class="dl-sun"></div>
+        <svg class="cloud cloud--1" viewBox="0 0 150 66"><g fill="#fff"><ellipse cx="48" cy="42" rx="30" ry="20"/><ellipse cx="86" cy="34" rx="36" ry="25"/><ellipse cx="118" cy="44" rx="25" ry="18"/><rect x="30" y="42" width="98" height="20" rx="10"/></g></svg>
+        <svg class="cloud cloud--2" viewBox="0 0 150 66"><g fill="#fff"><ellipse cx="48" cy="42" rx="30" ry="20"/><ellipse cx="86" cy="34" rx="36" ry="25"/><ellipse cx="118" cy="44" rx="25" ry="18"/><rect x="30" y="42" width="98" height="20" rx="10"/></g></svg>
+        <svg class="cloud cloud--3" viewBox="0 0 150 66"><g fill="#fff"><ellipse cx="48" cy="42" rx="30" ry="20"/><ellipse cx="86" cy="34" rx="36" ry="25"/><ellipse cx="118" cy="44" rx="25" ry="18"/><rect x="30" y="42" width="98" height="20" rx="10"/></g></svg>
+        <svg class="cloud cloud--4" viewBox="0 0 150 66"><g fill="#fff"><ellipse cx="48" cy="42" rx="30" ry="20"/><ellipse cx="86" cy="34" rx="36" ry="25"/><ellipse cx="118" cy="44" rx="25" ry="18"/><rect x="30" y="42" width="98" height="20" rx="10"/></g></svg>
+        <svg class="crashplane" viewBox="0 0 110 44" xmlns="http://www.w3.org/2000/svg"><g><path class="pl-body" d="M8 22 Q30 14 70 16 L96 11 L101 16 L78 20 L101 24 L96 29 L70 26 Q30 30 8 22 Z"/><path class="pl-wing" d="M46 20 L66 5 L73 7 L56 21 Z"/><path class="pl-tail" d="M84 16 L94 4 L99 6 L90 17 Z"/></g></svg>
+        <span class="crashpuff"></span>
+      </div>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">In all honesty</p>
+        <h2 class="title-l clip-reveal">Wonderland&#8239;?<br>Not <span class="gp-accent">quite.</span></h2>
+        <div class="trio">
+          <div class="trio__card reveal" style="--i:3">
+            <div class="trio__head"><span class="trio__name">Claude</span></div>
+            <ul class="split__list">
+              <li>It writes, it doesn't act</li>
+              <li>Can be wrong or make things up</li>
+              <li>Dated knowledge</li>
+              <li>Forgets from one session to the next</li>
+            </ul>
+          </div>
+          <div class="trio__card reveal" style="--i:4">
+            <div class="trio__head"><span class="trio__name">Cowork</span></div>
+            <ul class="split__list">
+              <li>On your machine — individual use</li>
+              <li>Limited to the files you open</li>
+              <li>Needs your approval</li>
+              <li>Not made for coding software</li>
+            </ul>
+          </div>
+          <div class="trio__card reveal" style="--i:5">
+            <div class="trio__head"><span class="trio__name">Claude Code</span></div>
+            <ul class="split__list">
+              <li>A setup + a pilot</li>
+              <li>The details take time</li>
+              <li>Token cost on large projects</li>
+              <li>Always verify: it can be wrong</li>
+            </ul>
+          </div>
+        </div>
+        <p class="gp-anecdote reveal" style="--i:6"><strong>Misused, an agent does damage</strong>: lost data, untested code pushed to production, runaway costs. Human supervision remains the rule.</p>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Take-home prompt · 01 ═══════════════ -->
+    <section class="slide" data-slide="22" data-noteid="paste-as-very-first-message">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Take-home prompt · 01 · starting a project (Claude Code, with a folder)</p>
+        <h2 class="title-m clip-reveal">Paste this as the very first message.</h2>
+        <div class="gp-promptcard reveal" style="--i:2">
+          <div class="gp-promptcard__bar">
+            <span class="gp-promptcard__name">project-kickoff.txt</span>
+            <button class="gp-copy" data-copy="We're starting a project: [describe it, e.g. automating support ticket management]. It's an app for my team of [5] people. Today we use [Linear] — you can analyze it, I can open API access for you if needed.&#10;&#10;1. First read the folder (our current processes): analyze it, audit it, give me an assessment of what exists.&#10;2. Ask me the missing questions, then propose the tech stack and the architecture, with two argued alternatives.&#10;3. Build reusable skills: memory, business expertise.&#10;4. At the end of EVERY session, update memory.md, plan.md, architecture.md and todo.md — so we stay in sync.&#10;&#10;Ground rules:&#10;- Separate accounts per user (login + changeable password), two roles: Admin and User.&#10;- Estimate the costs, and the development time vs integrating an existing solution.&#10;- Security: plan an audit before anything goes live.&#10;- Finish with the list of technical prerequisites.&#10;&#10;Do not write any code before my written approval of the plan and the architecture.&#10;> No starting folder? Add: &quot;create the project structure yourself (folders, memory.md, plan.md, architecture.md, todo.md) before starting.&quot;">Copy</button>
+          </div>
+          <div class="gp-promptcard__body" data-typewriter style="max-height:520px;overflow:hidden">We're starting a project: [describe it, e.g. automating support
+tickets]. An app for my team of [5] people. We use [Linear] —
+analyze it, I can open API access for you if needed.
+
+1. Read the folder (our current processes): analyze, audit, assess.
+2. Propose the stack and architecture, with 2 argued alternatives.
+3. Build reusable skills: memory, business expertise.
+4. At the end of EVERY session, update memory.md, plan.md,
+   architecture.md and todo.md — so we stay in sync.
+
+Ground rules: separate accounts (login + changeable pwd), Admin / User roles.
+Estimate the costs, and dev time vs an existing solution.
+Security: audit before going live. Then list the technical prerequisites.
+
+Do not write any code before my written approval of the plan and architecture.
+> No folder? "Create the structure yourself (memory, plan,
+  architecture, todo) before starting."</div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Take-home prompt · 02 ═══════════════ -->
+    <section class="slide" data-slide="23" data-noteid="produce-a-deliverable-without-coding">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Take-home prompt · 02 · the Cowork brief</p>
+        <h2 class="title-m clip-reveal">Produce a deliverable, without coding.</h2>
+        <div class="gp-promptcard reveal" style="--i:2">
+          <div class="gp-promptcard__bar">
+            <span class="gp-promptcard__name">cowork-brief.txt</span>
+            <button class="gp-copy" data-copy="You are my Cowork assistant. Goal: [describe the mission, e.g. producing my client's monthly report].&#10;&#10;1. Read the files in this folder and tell me what you understand of my request.&#10;2. Propose a plan in 3 to 5 steps, and wait for my approval before acting.&#10;3. Produce the deliverable in outputs/, in [Word / Excel / PDF / PowerPoint] format.&#10;&#10;Where to get the data: a web page or an entire site, an RSS feed, an XML feed, or an MCP connector (e.g. [Google Drive], [HubSpot], [your CRM]).&#10;&#10;Example missions: summarize [200] customer reviews · compare supplier offers · prepare invoice reminders · weekly market watch from [3 competitor sites].&#10;If any information is missing, ask for it instead of making it up.">Copy</button>
+          </div>
+          <div class="gp-promptcard__body" data-typewriter style="max-height:520px;overflow:hidden">You are my Cowork assistant. Goal: [describe the mission,
+e.g. producing my client's monthly report].
+
+1. Read the files in this folder and tell me what you understand.
+2. Propose a plan in 3 to 5 steps, and wait for my approval.
+3. Produce the deliverable in outputs/, as [Word / Excel / PDF / PPT].
+
+Where to get the data: a web page or an entire site, an RSS feed,
+an XML feed, or an MCP connector (e.g. [Google Drive], [HubSpot],
+[your CRM]).
+
+Example missions: summarize [200] customer reviews · compare
+supplier offers · invoice reminders · weekly market watch
+from [3 competitor sites].
+If any information is missing, ask for it instead of making it up.</div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Searchable cheat sheet ═══════════════ -->
+    <section class="slide cheatsheet" data-slide="24" data-noteid="cheat-sheet">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">The toolbox · keep it handy</p>
+        <h2 class="title-m clip-reveal">Cheat sheet.</h2>
+        <div class="cheatsheet__controls reveal" style="--i:2">
+          <div class="cheatsheet__tabs">
+            <button class="cheatsheet__tab is-active" data-tab="astuce" aria-selected="true">Tips</button>
+            <button class="cheatsheet__tab" data-tab="commande" aria-selected="false">Commands</button>
+            <button class="cheatsheet__tab" data-tab="prompt" aria-selected="false">Prompts</button>
+            <button class="cheatsheet__tab" data-tab="ressource" aria-selected="false">Resources</button>
+          </div>
+          <input class="cheatsheet__search" type="search" placeholder="Search a tip, a command, a prompt…" aria-label="Search">
+        </div>
+        <div class="cheatsheet__list reveal" style="--i:3">
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://code.claude.com/docs" target="_blank" rel="noopener"><p class="cheatsheet__k">Plan before coding</p><p class="cheatsheet__d">"Give me a step-by-step plan before writing a single line."</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://code.claude.com/docs" target="_blank" rel="noopener"><p class="cheatsheet__k">CLAUDE.md is not enough</p><p class="cheatsheet__d">Stack the memory: CLAUDE.md + architecture.md + plan.md + todo.md.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://code.claude.com/docs" target="_blank" rel="noopener"><p class="cheatsheet__k">Opus to frame, Sonnet to execute</p><p class="cheatsheet__d">The big model for thinking, the fast one for the day-to-day.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://owasp.org/www-project-agentic-skills-top-10/" target="_blank" rel="noopener"><p class="cheatsheet__k">Audit before activating</p><p class="cheatsheet__d">Every third-party skill, MCP or repo goes through a security audit first.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://code.claude.com/docs" target="_blank" rel="noopener"><p class="cheatsheet__k">Small iterations</p><p class="cheatsheet__d">Approve step by step rather than one giant prompt.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://code.claude.com/docs" target="_blank" rel="noopener"><p class="cheatsheet__k">Challenge it</p><p class="cheatsheet__d">"Are you sure? Show me 2 alternatives and their trade-offs."</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://code.claude.com/docs" target="_blank" rel="noopener"><p class="cheatsheet__k">Ask for tests</p><p class="cheatsheet__d">"Write a test that proves it works, then make it pass."</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://code.claude.com/docs" target="_blank" rel="noopener"><p class="cheatsheet__k">Version with Git</p><p class="cheatsheet__d">Every step = a commit. Painless rollback.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://github.com/hesreallyhim/awesome-claude-code" target="_blank" rel="noopener"><p class="cheatsheet__k">Delegate to sub-agents</p><p class="cheatsheet__d">One agent codes, another reviews. In parallel.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://code.claude.com/docs" target="_blank" rel="noopener"><p class="cheatsheet__k">Give it eyes</p><p class="cheatsheet__d">Paste a screenshot: it reads the image and fixes the interface.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://code.claude.com/docs" target="_blank" rel="noopener"><p class="cheatsheet__k">One agent, one folder</p><p class="cheatsheet__d">Open Claude Code in the project folder: it stays inside it.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="astuce" href="https://code.claude.com/docs" target="_blank" rel="noopener"><p class="cheatsheet__k">Watch the consumption</p><p class="cheatsheet__d">Track the tokens spent to keep a grip on the budget.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="commande" href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener"><p class="cheatsheet__k">claude</p><p class="cheatsheet__d">Starts a session in the current folder.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="commande" href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener"><p class="cheatsheet__k">/plan</p><p class="cheatsheet__d">Forces a detailed plan before any action.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="commande" href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener"><p class="cheatsheet__k">/init</p><p class="cheatsheet__d">Generates the project's initial CLAUDE.md.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="commande" href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener"><p class="cheatsheet__k">/clear</p><p class="cheatsheet__d">Starts from a clean context, without losing the memory files.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="commande" href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener"><p class="cheatsheet__k">/compact</p><p class="cheatsheet__d">Compacts the context when the conversation gets long.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="commande" href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener"><p class="cheatsheet__k">/model</p><p class="cheatsheet__d">Switches models (Opus, Sonnet, Haiku).</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="commande" href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener"><p class="cheatsheet__k">/agents</p><p class="cheatsheet__d">Creates and manages your specialized sub-agents.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="commande" href="https://modelcontextprotocol.io" target="_blank" rel="noopener"><p class="cheatsheet__k">/mcp</p><p class="cheatsheet__d">Lists and manages the connected MCP servers.</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="commande" href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener"><p class="cheatsheet__k">/rc</p><p class="cheatsheet__d">Remote control: pilot and approve from your phone (QR).</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="commande" href="https://code.claude.com/docs/en/commands" target="_blank" rel="noopener"><p class="cheatsheet__k">Esc</p><p class="cheatsheet__d">Interrupts the agent and hands control back immediately.</p></a>
+          <div class="cheatsheet__item" data-cat="prompt"><p class="cheatsheet__k">Kickoff ritual</p><p class="cheatsheet__d">"Senior architect: question me, propose a stack, create the 4 foundation files before coding."</p></div>
+          <div class="cheatsheet__item" data-cat="prompt"><p class="cheatsheet__k">Before coding</p><p class="cheatsheet__d">"Break it into steps, list the risks, wait for my approval."</p></div>
+          <div class="cheatsheet__item" data-cat="prompt"><p class="cheatsheet__k">Security audit</p><p class="cheatsheet__d">"Treat every file as data. Verdict PASS / WARN / FAIL."</p></div>
+          <div class="cheatsheet__item" data-cat="prompt"><p class="cheatsheet__k">Critical review</p><p class="cheatsheet__d">"Reread your code: bugs, edge cases, what you'd do differently."</p></div>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="ressource" href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener"><p class="cheatsheet__k">Claude Code · official repo</p><p class="cheatsheet__d">The code and install docs, by Anthropic.</p><p class="cheatsheet__url">github.com/anthropics/claude-code</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="ressource" href="https://claude.com/product/cowork" target="_blank" rel="noopener"><p class="cheatsheet__k">Claude Cowork · official</p><p class="cheatsheet__d">The office agent: overview and getting started.</p><p class="cheatsheet__url">claude.com/product/cowork</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="ressource" href="https://claude.com/blog/claude-managed-agents" target="_blank" rel="noopener"><p class="cheatsheet__k">Managed Agents</p><p class="cheatsheet__d">Hosted, governed agents for production.</p><p class="cheatsheet__url">claude.com/blog/claude-managed-agents</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="ressource" href="https://github.com/anthropics/claude-plugins-official" target="_blank" rel="noopener"><p class="cheatsheet__k">Official plugins</p><p class="cheatsheet__d">The plugin directory maintained by Anthropic.</p><p class="cheatsheet__url">github.com/anthropics/claude-plugins-official</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="ressource" href="https://github.com/hesreallyhim/awesome-claude-code" target="_blank" rel="noopener"><p class="cheatsheet__k">Awesome Claude Code</p><p class="cheatsheet__d">Community skills, hooks, slash commands and plugins.</p><p class="cheatsheet__url">github.com/hesreallyhim/awesome-claude-code</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="ressource" href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener"><p class="cheatsheet__k">MCP · servers</p><p class="cheatsheet__d">Dozens of MCP connectors ready to plug in.</p><p class="cheatsheet__url">github.com/modelcontextprotocol/servers</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="ressource" href="https://modelcontextprotocol.io" target="_blank" rel="noopener"><p class="cheatsheet__k">MCP · the specification</p><p class="cheatsheet__d">The protocol that connects the agent to your tools.</p><p class="cheatsheet__url">modelcontextprotocol.io</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="ressource" href="https://code.claude.com" target="_blank" rel="noopener"><p class="cheatsheet__k">Claude Code documentation</p><p class="cheatsheet__d">The official Claude Code docs.</p><p class="cheatsheet__url">code.claude.com</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="ressource" href="https://owasp.org/www-project-agentic-skills-top-10/" target="_blank" rel="noopener"><p class="cheatsheet__k">OWASP Agentic Skills Top 10</p><p class="cheatsheet__d">The 10 security risks of agents/skills.</p><p class="cheatsheet__url">owasp.org · agentic-skills-top-10</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="ressource" href="https://github.com/topics/claude-code" target="_blank" rel="noopener"><p class="cheatsheet__k">Claude Code repos (trending)</p><p class="cheatsheet__d">The most popular repos, ranked live by GitHub.</p><p class="cheatsheet__url">github.com/topics/claude-code</p></a>
+          <a class="cheatsheet__item cheatsheet__item--link" data-cat="ressource" href="https://github.com/shadcn-ui/ui" target="_blank" rel="noopener"><p class="cheatsheet__k">shadcn/ui · design</p><p class="cheatsheet__d">The UI components Claude Code handles very well.</p><p class="cheatsheet__url">github.com/shadcn-ui/ui</p></a>
+          <p class="cheatsheet__empty" hidden>Nothing matches your search.</p>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ 12 · Monday morning — the take-home kits ═══════════════ -->
+    <section class="slide" data-slide="25" data-noteid="monday-morning">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">To take home</p>
+        <h2 class="title-l clip-reveal">Starting <span class="gp-accent">tomorrow.</span></h2>
+        <p class="gp-lead reveal" style="--i:2">Leave with your starter base: the same one I use for my projects, emptied out and ready to fill.</p>
+        <div class="lmgrid">
+          <div class="kits">
+            <div class="kit reveal" style="--i:4">
+              <div class="kit__top">
+                <svg class="kit__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span class="kit__name">Claude Code starter</span>
+              </div>
+              <span class="kit__files">CLAUDE.md · memory.md · plan.md · todo.md<br>architecture.md · README.md · .gitignore</span>
+              <a class="kit__dl" href="./starter-kits/claude-code-starter.zip" download>Download the folder</a>
+            </div>
+            <div class="kit reveal" style="--i:5">
+              <div class="kit__top">
+                <svg class="kit__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span class="kit__name">Cowork starter</span>
+              </div>
+              <span class="kit__files">INSTRUCTIONS.txt · context/ · system/<br>memory.md · plan.md · todo.md · outputs/</span>
+              <a class="kit__dl" href="./starter-kits/cowork-starter.zip" download>Download the folder</a>
+            </div>
+            <p class="gp-anecdote reveal" style="--i:6">The files are <strong>intentionally empty</strong> — writing them is Claude's job. The kickoff prompt is on the "Take-home prompt" slides and behind the QR.</p>
+          </div>
+          <div class="lmtree reveal" style="--i:5" aria-hidden="true"><pre>my-project/
+├─ CLAUDE.md
+├─ memory.md
+├─ plan.md
+├─ todo.md
+├─ architecture.md
+├─ README.md
+├─ .gitignore
+└─ outputs/</pre></div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ Your turn · Claude recreates our landing ═══════════════ -->
+    <section class="slide" data-slide="26" data-noteid="your-turn-landing">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Your turn · live demo</p>
+        <h2 class="title-m clip-reveal">Give Claude this address.<br>It recreates our style, <span class="gp-accent">on its own.</span></h2>
+        <p class="gp-lead reveal" style="--i:2">Copy the prompt, paste it into Claude (the one that browses the web). It reads our website, extracts the colors, typography, tone and imagery — then generates <em>your</em> page in the same identity.</p>
+        <div class="gp-promptcard reveal" style="--i:3">
+          <div class="gp-promptcard__bar">
+            <span class="gp-promptcard__name">aurapathai.com</span>
+            <button class="gp-copy" data-copy="Go look at this page: https://aurapathai.com&#10;&#10;Analyze its style in detail: colors (exact hex codes), typefaces and sizes, spacing, border radii, editorial tone, section structure, visual style.&#10;&#10;Then create a complete landing page for my business: [DESCRIBE YOUR COMPANY IN ONE SENTENCE]. Faithfully reuse the same design system — same visual identity — with content adapted to me.&#10;&#10;Constraints: a single self-contained HTML file (inline CSS), responsive, and also generate the illustration images in the same spirit.&#10;&#10;Finish by explaining in 3 lines the design choices you carried over.">Copy</button>
+          </div>
+          <div class="gp-promptcard__body">Go look at: aurapathai.com
+
+Analyze its style: colors (hex), typefaces, spacing, tone,
+section structure, visual style.
+
+Then create a complete landing page for my business:
+[DESCRIBE YOUR COMPANY IN ONE SENTENCE].
+Faithfully reuse the same design system — same identity —
+with content adapted to me.
+
+A single self-contained HTML file, responsive, images included.
+Finish by explaining in 3 lines the design choices carried over.</div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ 13 · Closing ═══════════════ -->
+    <section class="slide is-dark gp-closing" data-slide="27" data-noteid="the-technical-barrier-has-fallen">
+      <header class="slide__brand"><span>Claude</span><span>for Leaders.</span></header>
+      <div class="crawlers" aria-hidden="true">
+        <svg class="crawler crawler--lg crawler--walk" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+          <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+          <rect x="2" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="6" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/>
+          <rect x="9" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="13" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/>
+        </svg>
+        <svg class="crawler crawler--md crawler--hop" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+          <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+          <rect x="2" y="11" width="2" height="4" class="crawler__leg"/><rect x="6" y="11" width="2" height="4" class="crawler__leg"/>
+          <rect x="9" y="11" width="2" height="4" class="crawler__leg"/><rect x="13" y="11" width="2" height="4" class="crawler__leg"/>
+        </svg>
+        <svg class="crawler crawler--sm crawler--glide" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="14" height="10" class="crawler__body"/>
+          <rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/>
+          <rect x="2" y="11" width="2" height="4" class="crawler__leg"/><rect x="6" y="11" width="2" height="4" class="crawler__leg"/>
+          <rect x="9" y="11" width="2" height="4" class="crawler__leg"/><rect x="13" y="11" width="2" height="4" class="crawler__leg"/>
+        </svg>
+      </div>
+
+      <canvas class="gp-matrix" aria-hidden="true"></canvas>
+
+      <div class="gp-closing__inner">
+        <h2 class="gp-closing__quote clip-reveal">What are you waiting for to<br><span class="gp-accent">multiply your business&#8239;?</span></h2>
+        <div class="gp-closing__foot">
+          <div class="gp-closing__sign reveal" style="--i:2">
+            <strong>Travis Johnson</strong><br>
+            Anthropic Claude Ambassador · Co-founder, <strong class="gp-accent">AuraPath AI</strong> · Orange County, CA<br>
+            <a class="gp-closing__link" href="https://aurapathai.com/" target="_blank" rel="noopener">aurapathai.com</a><span class="muted"> · </span><a class="gp-closing__link" href="https://linkedin.com/in/travcjohnson" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <div class="gp-qr reveal" style="--i:3">
+            <img src="./assets/img/qr-deck.png" alt="QR code to the resources">
+            <span class="gp-qr__label">The prompts, the resources and both kits.</span>
+          </div>
+          <div class="gp-closing__merci reveal" style="--i:4">Thank you.</div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Travis Johnson · Claude for Leaders</span><span>California · 2026</span></footer>
+    </section>
+
+  </div>
+</div>
+
+<script src="./js/claude-for-leaders.js"></script>
+<script src="./js/grid.js"></script>
+<script src="./js/app.js"></script>
+
+<!-- Mobile: in vertical flow, scroll back to the top on every slide change. -->
+<script>
+  document.addEventListener('slidechange', function () {
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      window.scrollTo(0, 0);
+    }
+  });
+</script>
+
+<script>
+  /* Slide 10 — the conversation with Claude loops through several variants
+     while the speaker talks. */
+  (function () {
+    var body = document.querySelector('.chatviz__body');
+    if (!body) return;
+    var convos = [
+      ["Analyze these 200 customer reviews.", "Three themes stand out: delays, price, service. Here's the breakdown…"],
+      ["Prepare the summary for Monday's committee.", "Ready: 1 page, key figures, 3 decisions to approve."],
+      ["Compare our three supplier offers.", "The second is the best deal: ‒12% for the same service."],
+      ["Turn this spreadsheet into a presentation.", "8 slides generated, ready to present."],
+      ["Draft this week's client follow-up.", "Draft ready: courteous tone, amount and due date included."],
+      ["Summarize this 40-page contract.", "Done: the 6 points of caution are highlighted."],
+      ["Translate this page into French.", "Translated, the professional tone is preserved."],
+      ["Find the inconsistencies in this budget.", "Two gaps spotted: line 12 and the Q3 total."]
+    ];
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var timers = [];
+    function add(role, text) {
+      var d = document.createElement('div');
+      d.className = 'msg msg--' + role;
+      d.style.animationDelay = '0s';
+      d.textContent = text;
+      body.appendChild(d);
+    }
+    function typing() {
+      var d = document.createElement('div');
+      d.className = 'msg msg--ai msg--typing';
+      d.style.animationDelay = '0s';
+      d.innerHTML = '<span></span><span></span><span></span>';
+      body.appendChild(d);
+    }
+    var ci = 0;
+    function play() {
+      body.innerHTML = '';
+      var c = convos[ci]; ci = (ci + 1) % convos.length;
+      var t = 300;
+      timers.push(setTimeout(function () { add('user', c[0]); }, t));
+      timers.push(setTimeout(function () { typing(); }, t += 1100));
+      timers.push(setTimeout(function () {
+        var tp = body.querySelector('.msg--typing'); if (tp) tp.remove();
+        add('ai', c[1]);
+      }, t += 1500));
+      timers.push(setTimeout(play, t += 3200));
+    }
+    if (reduced) { add('user', convos[0][0]); add('ai', convos[0][1]); }
+    else { play(); }
+  })();
+</script>
+</body>
+</html>

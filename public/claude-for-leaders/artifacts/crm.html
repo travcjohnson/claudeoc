@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team CRM · Claude for Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F4F5F7;
+    --panel: #EDEEF1;
+    --ink: #1B1E23;
+    --accent: #4F5BD5;
+    --accent-soft: #EAECFB;
+    --green: #2E9E5B;
+    --red: #D6455D;
+    --gray: #5C6370;
+    --border: #E2E4EA;
+    --white: #FFFFFF;
+    --radius-sm: 8px;
+    --radius-md: 9px;
+    --radius-lg: 10px;
+    --shadow-card: 0 1px 2px rgba(27, 30, 35, 0.06), 0 1px 4px rgba(27, 30, 35, 0.04);
+    --shadow-hover: 0 3px 10px rgba(27, 30, 35, 0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { max-width: 100%; overflow-x: hidden; }
+  body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ── Top bar ─────────────────────────────── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    flex-wrap: wrap;
+  }
+  .wordmark {
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .wordmark .dot { color: var(--accent); }
+  .topbar .divider {
+    width: 1px;
+    height: 18px;
+    background: var(--border);
+  }
+  .app-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+  }
+  .app-name .live-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: inline-block;
+  }
+  .back-link {
+    margin-left: auto;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    transition: color .15s, border-color .15s;
+    white-space: nowrap;
+  }
+  .back-link:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ── KPI row ─────────────────────────────── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    padding: 20px 24px 0;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .kpi {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    box-shadow: var(--shadow-card);
+  }
+  .kpi-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray);
+    margin-bottom: 6px;
+  }
+  .kpi-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .kpi-value.won { color: var(--green); }
+  .kpi-sub { font-size: 11px; color: var(--gray); margin-top: 3px; }
+
+  /* ── Toolbar ─────────────────────────────── */
+  .toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 24px 4px;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  .search-wrap { position: relative; flex: 1 1 220px; max-width: 340px; }
+  .search-wrap svg {
+    position: absolute;
+    left: 11px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+    pointer-events: none;
+  }
+  .search-input {
+    width: 100%;
+    padding: 9px 12px 9px 34px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color .15s;
+  }
+  .search-input:focus { border-color: var(--accent); }
+  .search-input::placeholder { color: #9AA0AC; }
+  .btn {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 9px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: opacity .15s, border-color .15s, color .15s, background .15s;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn-primary:hover { opacity: .88; }
+  .btn-ghost { background: var(--white); color: var(--gray); }
+  .btn-ghost:hover { color: var(--accent); border-color: var(--accent); }
+  .toolbar .spacer { flex: 1; }
+
+  /* ── Board ───────────────────────────────── */
+  .board-outer {
+    flex: 1;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px 24px 28px;
+  }
+  .board {
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD0DA transparent;
+  }
+  .board::-webkit-scrollbar { height: 8px; }
+  .board::-webkit-scrollbar-thumb { background: #CBD0DA; border-radius: 4px; }
+  .column {
+    flex: 0 0 268px;
+    width: 268px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 290px);
+    min-height: 340px;
+    transition: border-color .15s, background .15s;
+  }
+  .column.drag-over {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+  }
+  .column.won-col.drag-over { border-color: var(--green); }
+  .col-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 13px 14px 10px;
+  }
+  .col-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .won-col .col-title { color: var(--green); }
+  .col-count {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 1px 8px;
+  }
+  .col-total {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray);
+  }
+  .won-col .col-total { color: var(--green); }
+  .col-cards {
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    scrollbar-width: thin;
+  }
+  .col-empty {
+    font-size: 12px;
+    color: #9AA0AC;
+    text-align: center;
+    padding: 24px 8px;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-sm);
+    margin-top: 2px;
+  }
+
+  /* ── Cards ───────────────────────────────── */
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 12px 13px 11px;
+    cursor: grab;
+    transition: box-shadow .15s, border-color .15s, opacity .15s;
+    position: relative;
+    box-shadow: var(--shadow-card);
+  }
+  .card:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: #CDD1DC;
+  }
+  .card.dragging { opacity: 0.45; cursor: grabbing; }
+  .card.won { border-left: 3px solid var(--green); }
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 3px;
+  }
+  .card-company {
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .card-value {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .card.won .card-value { color: var(--green); }
+  .card-contact {
+    font-size: 12px;
+    color: var(--gray);
+    margin-bottom: 9px;
+  }
+  .card-action {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 12px;
+    line-height: 1.4;
+    padding: 7px 9px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 9px;
+  }
+  .card-action .arrow { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+  .card-action .txt { flex: 1; }
+  .card-due {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--gray);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .card-due.overdue { color: var(--red); font-weight: 600; }
+  .card-foot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .stage-select {
+    flex: 1;
+    font-family: inherit;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--gray);
+    padding: 5px 7px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--white);
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%235C6370' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 24px;
+  }
+  .stage-select:focus { border-color: var(--accent); }
+  .card-delete {
+    font-family: inherit;
+    background: none;
+    border: none;
+    color: #A6ABB6;
+    font-size: 15px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: color .15s;
+  }
+  .card-delete:hover { color: var(--red); }
+
+  /* ── Modal ───────────────────────────────── */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(27, 30, 35, 0.36);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 420px;
+    padding: 24px;
+    box-shadow: 0 16px 48px rgba(27, 30, 35, 0.18);
+  }
+  .modal h2 {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .modal .modal-sub { font-size: 12.5px; color: var(--gray); margin-bottom: 18px; }
+  .field { margin-bottom: 13px; }
+  .field label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray);
+    margin-bottom: 5px;
+  }
+  .field input, .field select {
+    width: 100%;
+    font-family: inherit;
+    font-size: 13.5px;
+    padding: 9px 11px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--white);
+    color: var(--ink);
+    outline: none;
+    transition: border-color .15s;
+  }
+  .field input:focus, .field select:focus { border-color: var(--accent); }
+  .field-row { display: flex; gap: 10px; }
+  .field-row .field { flex: 1; }
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+
+  /* ── Footer ──────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 16px 24px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+  }
+  footer a { color: var(--gray); text-decoration: none; border-bottom: 1px solid var(--border); }
+  footer a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ── Toast ───────────────────────────────── */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translate(-50%, 12px);
+    background: var(--ink);
+    color: var(--bg);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s, transform .2s;
+    z-index: 200;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  @media (max-width: 640px) {
+    .topbar { padding: 12px 16px; }
+    .kpi-row, .toolbar { padding-left: 16px; padding-right: 16px; }
+    .board-outer { padding: 14px 16px 24px; }
+    .kpi-value { font-size: 18px; }
+    .column { flex: 0 0 250px; width: 250px; max-height: none; }
+    .back-link { margin-left: 0; flex-basis: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <span class="wordmark">Claude for Leaders<span class="dot">.</span></span>
+  <span class="divider"></span>
+  <span class="app-name"><span class="live-dot"></span>Team CRM</span>
+  <a class="back-link" href="../index.html">&larr; Back to the deck</a>
+</header>
+
+<section class="kpi-row" aria-label="Pipeline metrics">
+  <div class="kpi">
+    <div class="kpi-label">Pipeline value</div>
+    <div class="kpi-value" id="kpiPipeline">$0</div>
+    <div class="kpi-sub">open deals, all stages</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Weighted forecast</div>
+    <div class="kpi-value" id="kpiForecast">$0</div>
+    <div class="kpi-sub">stage-weighted expected value</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Deals in play</div>
+    <div class="kpi-value" id="kpiDeals">0</div>
+    <div class="kpi-sub">active opportunities</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Closed won</div>
+    <div class="kpi-value won" id="kpiWon">$0</div>
+    <div class="kpi-sub">booked this quarter</div>
+  </div>
+</section>
+
+<section class="toolbar">
+  <div class="search-wrap">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" class="search-input" id="searchInput" placeholder="Search company or contact&hellip;" aria-label="Search deals">
+  </div>
+  <span class="spacer"></span>
+  <button class="btn btn-primary" id="addLeadBtn">+ Add lead</button>
+  <button class="btn btn-ghost" id="resetBtn">Reset demo data</button>
+</section>
+
+<main class="board-outer">
+  <div class="board" id="board"></div>
+</main>
+
+<footer>
+  Demo built with Claude Code &middot; Travis Johnson &middot; AuraPath AI &middot; <a href="https://aurapathai.com" target="_blank" rel="noopener">aurapathai.com</a>
+</footer>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <form class="modal" id="leadForm">
+    <h2>Add a lead</h2>
+    <p class="modal-sub">New deals land in the stage you choose and roll into the forecast instantly.</p>
+    <div class="field">
+      <label for="fCompany">Company</label>
+      <input id="fCompany" required maxlength="60" placeholder="e.g. Meridian Freight Co.">
+    </div>
+    <div class="field">
+      <label for="fContact">Contact</label>
+      <input id="fContact" required maxlength="60" placeholder="e.g. Dana Whitfield, VP Ops">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label for="fValue">Deal value ($)</label>
+        <input id="fValue" type="number" min="0" step="500" required placeholder="25000">
+      </div>
+      <div class="field">
+        <label for="fStage">Stage</label>
+        <select id="fStage"></select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="fAction">Next action</label>
+      <input id="fAction" required maxlength="80" placeholder="e.g. Send intro deck">
+    </div>
+    <div class="field">
+      <label for="fDue">Due date</label>
+      <input id="fDue" type="date" required>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" id="cancelBtn">Cancel</button>
+      <button type="submit" class="btn btn-primary">Add to pipeline</button>
+    </div>
+  </form>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  var STORE_KEY = 'cfl-team-crm-v1';
+
+  var STAGES = [
+    { id: 'new',         label: 'New lead',    weight: 0.10 },
+    { id: 'discovery',   label: 'Discovery',   weight: 0.25 },
+    { id: 'proposal',    label: 'Proposal',    weight: 0.50 },
+    { id: 'negotiating', label: 'Negotiating', weight: 0.75 },
+    { id: 'won',         label: 'Closed-won',  weight: 1.00 }
+  ];
+
+  // All companies and people are fictional.
+  var DEMO_DEALS = [
+    { id: 'd01', company: 'Harborline Logistics',   contact: 'Maya Trench, COO',           value: 42000,  stage: 'new',         action: 'Send intro deck + case study', due: '2026-07-17' },
+    { id: 'd02', company: 'Copperfield Dental Group', contact: 'Dr. Alan Reyes, Owner',    value: 18500,  stage: 'new',         action: 'Book 20-min discovery call',   due: '2026-07-20' },
+    { id: 'd03', company: 'Bluegrass Analytics',    contact: 'Priya Nandakumar, CTO',      value: 65000,  stage: 'discovery',   action: 'Workflow audit workshop',      due: '2026-07-16' },
+    { id: 'd04', company: 'Sundial Property Mgmt',  contact: 'Kurt Ostrander, VP Ops',     value: 27000,  stage: 'discovery',   action: 'Shadow leasing team, map pain', due: '2026-07-22' },
+    { id: 'd05', company: 'Ferrostar Machining',    contact: 'Lena Okafor, GM',            value: 54000,  stage: 'discovery',   action: 'Follow up on data access',     due: '2026-07-11' },
+    { id: 'd06', company: 'Willow & Vane Interiors', contact: 'Josie Vane, Founder',       value: 12800,  stage: 'proposal',    action: 'Deliver scoped proposal',      due: '2026-07-15' },
+    { id: 'd07', company: 'Pelican Point Marina',   contact: 'Ray Delgado, Owner',         value: 31500,  stage: 'proposal',    action: 'Walk through pricing tiers',   due: '2026-07-21' },
+    { id: 'd08', company: 'Northbeam Staffing',     contact: 'Carmen Silva, President',    value: 88000,  stage: 'negotiating', action: 'Legal review of MSA redlines', due: '2026-07-18' },
+    { id: 'd09', company: 'Quartzline Surfaces',    contact: 'Ben Achterberg, CFO',        value: 46500,  stage: 'negotiating', action: 'Final call: payment schedule', due: '2026-07-13' },
+    { id: 'd10', company: 'Tidewater Vet Partners', contact: 'Dr. Sam Hollis, Managing Partner', value: 39000, stage: 'won',  action: 'Kickoff + onboarding plan',    due: '2026-07-24' }
+  ];
+
+  var deals = load();
+  var searchTerm = '';
+
+  /* ── persistence ─────────────────────────── */
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length) return parsed;
+      }
+    } catch (e) { /* fall through to demo data */ }
+    return JSON.parse(JSON.stringify(DEMO_DEALS));
+  }
+  function save() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(deals)); } catch (e) { /* storage unavailable */ }
+  }
+
+  /* ── formatting ──────────────────────────── */
+  function fmtMoney(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+  function fmtDate(iso) {
+    var parts = iso.split('-');
+    if (parts.length !== 3) return iso;
+    var d = new Date(+parts[0], +parts[1] - 1, +parts[2]);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+  function isOverdue(iso) {
+    var today = new Date();
+    var t = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+    return iso < t;
+  }
+  function esc(s) {
+    var div = document.createElement('div');
+    div.textContent = s;
+    return div.innerHTML;
+  }
+
+  /* ── render ──────────────────────────────── */
+  var board = document.getElementById('board');
+
+  function render() {
+    var frag = document.createDocumentFragment();
+
+    STAGES.forEach(function (stage) {
+      var stageDeals = deals.filter(function (d) { return d.stage === stage.id; });
+      var visible = stageDeals.filter(matchesSearch);
+      var total = stageDeals.reduce(function (s, d) { return s + d.value; }, 0);
+
+      var col = document.createElement('div');
+      col.className = 'column' + (stage.id === 'won' ? ' won-col' : '');
+      col.dataset.stage = stage.id;
+
+      var header = document.createElement('div');
+      header.className = 'col-header';
+      header.innerHTML =
+        '<span class="col-title">' + stage.label + '</span>' +
+        '<span class="col-count">' + stageDeals.length + '</span>' +
+        '<span class="col-total">' + fmtMoney(total) + '</span>';
+      col.appendChild(header);
+
+      var cardsWrap = document.createElement('div');
+      cardsWrap.className = 'col-cards';
+
+      if (!visible.length) {
+        var empty = document.createElement('div');
+        empty.className = 'col-empty';
+        empty.textContent = searchTerm ? 'No matches' : 'Drop a deal here';
+        cardsWrap.appendChild(empty);
+      } else {
+        visible.forEach(function (deal) {
+          cardsWrap.appendChild(buildCard(deal, stage));
+        });
+      }
+
+      col.appendChild(cardsWrap);
+
+      // drop target behavior
+      col.addEventListener('dragover', function (e) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        col.classList.add('drag-over');
+      });
+      col.addEventListener('dragleave', function (e) {
+        if (!col.contains(e.relatedTarget)) col.classList.remove('drag-over');
+      });
+      col.addEventListener('drop', function (e) {
+        e.preventDefault();
+        col.classList.remove('drag-over');
+        var id = e.dataTransfer.getData('text/plain');
+        moveDeal(id, stage.id);
+      });
+
+      frag.appendChild(col);
+    });
+
+    board.innerHTML = '';
+    board.appendChild(frag);
+    renderKPIs();
+  }
+
+  function buildCard(deal, stage) {
+    var card = document.createElement('div');
+    card.className = 'card' + (stage.id === 'won' ? ' won' : '');
+    card.draggable = true;
+    card.dataset.id = deal.id;
+
+    var overdue = stage.id !== 'won' && isOverdue(deal.due);
+    var dueLabel = (overdue ? 'OVERDUE ' : 'by ') + fmtDate(deal.due);
+
+    card.innerHTML =
+      '<div class="card-top">' +
+        '<span class="card-company">' + esc(deal.company) + '</span>' +
+        '<span class="card-value">' + fmtMoney(deal.value) + '</span>' +
+      '</div>' +
+      '<div class="card-contact">' + esc(deal.contact) + '</div>' +
+      '<div class="card-action">' +
+        '<span class="arrow">&rarr;</span>' +
+        '<span class="txt">' + esc(deal.action) + '</span>' +
+        '<span class="card-due' + (overdue ? ' overdue' : '') + '">' + dueLabel + '</span>' +
+      '</div>' +
+      '<div class="card-foot"></div>';
+
+    // stage select — the touch / no-drag fallback
+    var select = document.createElement('select');
+    select.className = 'stage-select';
+    select.setAttribute('aria-label', 'Move ' + deal.company + ' to stage');
+    STAGES.forEach(function (s) {
+      var opt = document.createElement('option');
+      opt.value = s.id;
+      opt.textContent = s.label;
+      if (s.id === deal.stage) opt.selected = true;
+      select.appendChild(opt);
+    });
+    select.addEventListener('change', function () {
+      moveDeal(deal.id, select.value);
+    });
+    // don't start a drag from the select
+    select.addEventListener('mousedown', function (e) { e.stopPropagation(); });
+
+    var del = document.createElement('button');
+    del.type = 'button';
+    del.className = 'card-delete';
+    del.title = 'Remove deal';
+    del.setAttribute('aria-label', 'Remove ' + deal.company);
+    del.innerHTML = '&times;';
+    del.addEventListener('click', function () {
+      deals = deals.filter(function (d) { return d.id !== deal.id; });
+      save();
+      render();
+      toast(deal.company + ' removed');
+    });
+
+    var foot = card.querySelector('.card-foot');
+    foot.appendChild(select);
+    foot.appendChild(del);
+
+    card.addEventListener('dragstart', function (e) {
+      e.dataTransfer.setData('text/plain', deal.id);
+      e.dataTransfer.effectAllowed = 'move';
+      requestAnimationFrame(function () { card.classList.add('dragging'); });
+    });
+    card.addEventListener('dragend', function () {
+      card.classList.remove('dragging');
+      document.querySelectorAll('.column.drag-over').forEach(function (c) {
+        c.classList.remove('drag-over');
+      });
+    });
+
+    return card;
+  }
+
+  function matchesSearch(deal) {
+    if (!searchTerm) return true;
+    var hay = (deal.company + ' ' + deal.contact + ' ' + deal.action).toLowerCase();
+    return hay.indexOf(searchTerm) !== -1;
+  }
+
+  function moveDeal(id, stageId) {
+    var deal = deals.find(function (d) { return d.id === id; });
+    if (!deal || deal.stage === stageId) return;
+    var from = deal.stage;
+    deal.stage = stageId;
+    save();
+    render();
+    if (stageId === 'won') {
+      toast(deal.company + ' — closed won! ' + fmtMoney(deal.value) + ' booked');
+    } else if (from === 'won') {
+      toast(deal.company + ' moved back to ' + stageLabel(stageId));
+    } else {
+      toast(deal.company + ' → ' + stageLabel(stageId));
+    }
+  }
+  function stageLabel(id) {
+    var s = STAGES.find(function (x) { return x.id === id; });
+    return s ? s.label : id;
+  }
+
+  /* ── KPIs ────────────────────────────────── */
+  function renderKPIs() {
+    var open = deals.filter(function (d) { return d.stage !== 'won'; });
+    var won = deals.filter(function (d) { return d.stage === 'won'; });
+    var pipeline = open.reduce(function (s, d) { return s + d.value; }, 0);
+    var forecast = open.reduce(function (s, d) {
+      var st = STAGES.find(function (x) { return x.id === d.stage; });
+      return s + d.value * (st ? st.weight : 0);
+    }, 0);
+    var wonTotal = won.reduce(function (s, d) { return s + d.value; }, 0);
+
+    document.getElementById('kpiPipeline').textContent = fmtMoney(pipeline);
+    document.getElementById('kpiForecast').textContent = fmtMoney(forecast);
+    document.getElementById('kpiDeals').textContent = String(open.length);
+    document.getElementById('kpiWon').textContent = fmtMoney(wonTotal);
+  }
+
+  /* ── search ──────────────────────────────── */
+  document.getElementById('searchInput').addEventListener('input', function (e) {
+    searchTerm = e.target.value.trim().toLowerCase();
+    render();
+  });
+
+  /* ── add-lead modal ──────────────────────── */
+  var backdrop = document.getElementById('modalBackdrop');
+  var form = document.getElementById('leadForm');
+  var stageSelect = document.getElementById('fStage');
+
+  STAGES.forEach(function (s) {
+    var opt = document.createElement('option');
+    opt.value = s.id;
+    opt.textContent = s.label;
+    stageSelect.appendChild(opt);
+  });
+
+  function openModal() {
+    form.reset();
+    stageSelect.value = 'new';
+    var d = new Date();
+    d.setDate(d.getDate() + 7);
+    document.getElementById('fDue').value =
+      d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    backdrop.classList.add('open');
+    document.getElementById('fCompany').focus();
+  }
+  function closeModal() { backdrop.classList.remove('open'); }
+
+  document.getElementById('addLeadBtn').addEventListener('click', openModal);
+  document.getElementById('cancelBtn').addEventListener('click', closeModal);
+  backdrop.addEventListener('click', function (e) { if (e.target === backdrop) closeModal(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && backdrop.classList.contains('open')) closeModal();
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var deal = {
+      id: 'd' + Date.now().toString(36),
+      company: document.getElementById('fCompany').value.trim(),
+      contact: document.getElementById('fContact').value.trim(),
+      value: Math.max(0, Number(document.getElementById('fValue').value) || 0),
+      stage: stageSelect.value,
+      action: document.getElementById('fAction').value.trim(),
+      due: document.getElementById('fDue').value
+    };
+    if (!deal.company || !deal.contact || !deal.action || !deal.due) return;
+    deals.push(deal);
+    save();
+    render();
+    closeModal();
+    toast(deal.company + ' added to ' + stageLabel(deal.stage));
+  });
+
+  /* ── reset ───────────────────────────────── */
+  document.getElementById('resetBtn').addEventListener('click', function () {
+    deals = JSON.parse(JSON.stringify(DEMO_DEALS));
+    save();
+    searchTerm = '';
+    document.getElementById('searchInput').value = '';
+    render();
+    toast('Demo data restored');
+  });
+
+  /* ── toast ───────────────────────────────── */
+  var toastEl = document.getElementById('toast');
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2400);
+  }
+
+  render();
+})();
+</script>
+</body>
+</html>

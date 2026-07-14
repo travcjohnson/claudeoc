@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harborline Advisors — Brand Guidelines · Claude for Leaders Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Page chrome (Harborline paper) */
+    --ivory: #F6F1E7;
+    --cream: #EFE8D8;
+    --ink: #16344A;
+    --clay: #B08A2E;   /* brass accent */
+    --foam: #6FA396;   /* seafoam accent */
+    --gray: #5D6C77;
+    --border: #E1D7C2;
+    /* Fictional brand (Harborline Advisors) */
+    --hb-navy: #16344A;
+    --hb-navy-deep: #0E2333;
+    --hb-sand: #E4D8C3;
+    --hb-seafoam: #A8C8BE;
+    --hb-brass: #C29B40;
+    --hb-white: #F7F5F0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--ivory);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(246, 241, 231, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-inner {
+    max-width: 1080px; margin: 0 auto;
+    padding: 14px 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .topbar-brand { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 15px; letter-spacing: 0; white-space: nowrap; }
+  .topbar-brand .dot { color: var(--clay); }
+  .topbar-divider { width: 1px; height: 18px; background: var(--border); flex-shrink: 0; }
+  .topbar-title { font-size: 13px; color: var(--gray); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .topbar-back {
+    margin-left: auto; font-size: 13px; font-weight: 500;
+    color: var(--clay); text-decoration: none; white-space: nowrap;
+    padding: 6px 12px; border-radius: 10px; transition: background 0.15s ease;
+  }
+  .topbar-back:hover { background: var(--cream); }
+
+  /* ---------- Layout ---------- */
+  .page { max-width: 1080px; margin: 0 auto; padding: 0 24px 40px; }
+
+  .doc-header { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+  .doc-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gray);
+    background: var(--cream); border: 1px solid var(--border);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 28px;
+  }
+  .doc-eyebrow::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--foam); }
+  .doc-header h1 {
+    font-family: 'Fraunces', Georgia, serif; font-weight: 500;
+    font-size: clamp(38px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .doc-header .lede { font-size: 18px; color: var(--gray); max-width: 620px; line-height: 1.65; }
+  .doc-meta {
+    display: flex; flex-wrap: wrap; gap: 28px; margin-top: 36px;
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gray);
+  }
+  .doc-meta span b { color: var(--ink); font-weight: 500; }
+
+  section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  .sec-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 12px; }
+  .sec-num { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--clay); font-weight: 500; }
+  .sec-head h2 {
+    font-family: 'Fraunces', Georgia, serif; font-weight: 500;
+    font-size: clamp(26px, 3.6vw, 34px); letter-spacing: -0.01em;
+  }
+  .sec-intro { color: var(--gray); max-width: 640px; margin-bottom: 36px; font-size: 15.5px; }
+
+  .panel { background: var(--cream); border: 1px solid var(--border); border-radius: 14px; }
+
+  /* ---------- 01 Logo ---------- */
+  .logo-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
+  .logo-stage {
+    border-radius: 14px; display: flex; align-items: center; justify-content: center;
+    min-height: 240px; padding: 40px 24px; position: relative;
+  }
+  .logo-stage.on-light { background: var(--hb-white); border: 1px solid var(--border); }
+  .logo-stage.on-dark { background: var(--hb-navy); }
+  .stage-tag {
+    position: absolute; top: 14px; left: 16px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; opacity: 0.55;
+  }
+  .on-light .stage-tag { color: var(--hb-navy); }
+  .on-dark .stage-tag { color: var(--hb-white); }
+  .logo-svg { width: min(360px, 88%); height: auto; display: block; }
+  .logo-notes { display: flex; flex-direction: column; gap: 20px; }
+  .logo-note { padding: 22px 24px; }
+  .logo-note h3 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .logo-note p { font-size: 13.5px; color: var(--gray); line-height: 1.6; }
+  .logo-note .mono { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink); }
+
+  /* ---------- 02 Color ---------- */
+  .swatch-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .swatch {
+    border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
+    background: var(--ivory); cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    text-align: left; padding: 0; font-family: inherit; display: block; width: 100%;
+  }
+  .swatch:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(22, 52, 74, 0.1); }
+  .swatch:focus-visible { outline: 2px solid var(--clay); outline-offset: 2px; }
+  .swatch-chip { height: 120px; position: relative; }
+  .swatch-chip .copy-hint {
+    position: absolute; bottom: 10px; right: 12px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em;
+    padding: 4px 9px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.85); color: var(--hb-navy);
+    opacity: 0; transition: opacity 0.15s ease;
+  }
+  .swatch:hover .copy-hint { opacity: 1; }
+  .swatch.copied .copy-hint { opacity: 1; background: var(--hb-navy); color: var(--hb-white); }
+  .swatch-info { padding: 14px 16px 16px; }
+  .swatch-name { font-size: 13.5px; font-weight: 600; margin-bottom: 2px; }
+  .swatch-hex { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--clay); margin-bottom: 8px; }
+  .swatch-use { font-size: 12px; color: var(--gray); line-height: 1.5; }
+  .ratio-note {
+    margin-top: 24px; padding: 16px 20px; border-radius: 12px;
+    background: var(--cream); border: 1px solid var(--border);
+    font-size: 13px; color: var(--gray); display: flex; gap: 12px; align-items: center;
+  }
+  .ratio-bar { display: flex; height: 12px; border-radius: 999px; overflow: hidden; flex: 1; min-width: 140px; border: 1px solid var(--border); }
+  .ratio-bar i { display: block; height: 100%; }
+
+  /* ---------- 03 Typography ---------- */
+  .type-table { border-radius: 14px; overflow: hidden; }
+  .type-row {
+    display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: baseline;
+    padding: 26px 28px; border-bottom: 1px solid var(--border); background: var(--ivory);
+  }
+  .type-row:last-child { border-bottom: none; }
+  .type-spec { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--gray); line-height: 1.7; }
+  .type-spec b { color: var(--ink); font-weight: 500; display: block; font-size: 12px; }
+  .spec-display { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: clamp(30px, 4.4vw, 44px); line-height: 1.1; letter-spacing: -0.02em; color: var(--hb-navy); }
+  .spec-heading { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: clamp(22px, 3vw, 28px); line-height: 1.2; color: var(--hb-navy); }
+  .spec-subhead { font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--hb-navy); }
+  .spec-body { font-size: 16px; line-height: 1.65; color: #33424E; max-width: 560px; }
+  .spec-caption { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--hb-brass); }
+
+  /* ---------- 04 Voice ---------- */
+  .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .voice-card { padding: 28px 26px; display: flex; flex-direction: column; gap: 12px; }
+  .voice-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--clay); }
+  .voice-card h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 21px; letter-spacing: -0.01em; }
+  .voice-card p { font-size: 14px; color: var(--gray); line-height: 1.65; }
+  .voice-card .ex { font-size: 13px; font-style: italic; color: var(--ink); border-left: 2px solid var(--clay); padding-left: 12px; margin-top: 4px; }
+
+  /* ---------- 05 Do / Don't ---------- */
+  .dd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .dd-col { border-radius: 14px; border: 1px solid var(--border); overflow: hidden; }
+  .dd-head { padding: 14px 22px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+  .dd-do .dd-head { background: #EAF0EC; color: #2E5941; }
+  .dd-dont .dd-head { background: #F5E9E4; color: #9C4A2F; }
+  .dd-head .mark { width: 18px; height: 18px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; color: #fff; flex-shrink: 0; }
+  .dd-do .mark { background: #3E7355; }
+  .dd-dont .mark { background: #C05B39; }
+  .dd-list { list-style: none; background: var(--ivory); }
+  .dd-list li { padding: 15px 22px; border-top: 1px solid var(--border); font-size: 14px; color: var(--gray); line-height: 1.55; }
+  .dd-list li b { color: var(--ink); font-weight: 600; display: block; margin-bottom: 2px; font-size: 14px; }
+
+  /* ---------- 06 Applications ---------- */
+  .app-strip { display: grid; grid-template-columns: 1.7fr 1fr; gap: 24px; align-items: stretch; }
+  .app-frame { padding: 34px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; }
+  .app-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); }
+
+  .biz-card {
+    width: min(380px, 100%); aspect-ratio: 3.5 / 2;
+    background: var(--hb-navy);
+    background: linear-gradient(135deg, var(--hb-navy) 0%, var(--hb-navy-deep) 100%);
+    border-radius: 12px; padding: 7% 8%;
+    display: flex; flex-direction: column; justify-content: space-between;
+    box-shadow: 0 18px 40px rgba(14, 35, 51, 0.28);
+    position: relative; overflow: hidden;
+  }
+  .biz-card::after {
+    content: ''; position: absolute; left: 8%; right: 8%; top: 46%;
+    height: 1px; background: linear-gradient(90deg, var(--hb-brass), transparent 70%);
+    opacity: 0.7;
+  }
+  .biz-name { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: clamp(15px, 2.2vw, 19px); color: var(--hb-white); letter-spacing: 0.01em; }
+  .biz-title { font-size: clamp(9px, 1.3vw, 11px); color: var(--hb-seafoam); letter-spacing: 0.14em; text-transform: uppercase; margin-top: 4px; }
+  .biz-foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; }
+  .biz-contact { font-family: 'JetBrains Mono', monospace; font-size: clamp(7.5px, 1.1vw, 9.5px); color: rgba(247, 245, 240, 0.75); line-height: 1.8; }
+  .biz-mark { width: clamp(26px, 4vw, 34px); height: auto; flex-shrink: 0; }
+
+  .social-tile {
+    width: min(280px, 100%); aspect-ratio: 1 / 1;
+    background: var(--hb-sand); border-radius: 12px;
+    padding: 9%; display: flex; flex-direction: column; justify-content: space-between;
+    box-shadow: 0 14px 32px rgba(22, 52, 74, 0.16);
+    position: relative; overflow: hidden;
+  }
+  .social-tile .tile-waves { position: absolute; bottom: -6%; left: 0; right: 0; width: 100%; height: auto; opacity: 0.5; }
+  .tile-kicker { font-family: 'JetBrains Mono', monospace; font-size: clamp(8px, 1.2vw, 10px); letter-spacing: 0.14em; text-transform: uppercase; color: var(--hb-brass); position: relative; }
+  .tile-quote { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: clamp(15px, 2.4vw, 20px); line-height: 1.3; color: var(--hb-navy); letter-spacing: -0.01em; position: relative; }
+  .tile-foot { display: flex; align-items: center; gap: 8px; font-size: clamp(9px, 1.3vw, 11px); font-weight: 600; color: var(--hb-navy); position: relative; }
+  .tile-foot svg { width: 16px; height: auto; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--border); margin-top: 8px;
+    padding: 36px 24px 48px; text-align: center;
+    font-size: 13px; color: var(--gray);
+  }
+  footer a { color: var(--clay); text-decoration: none; font-weight: 500; }
+  footer a:hover { text-decoration: underline; }
+  footer .sep { margin: 0 8px; color: var(--border); }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    position: fixed; bottom: 28px; left: 50%; transform: translate(-50%, 16px);
+    background: var(--ink); color: var(--ivory);
+    font-family: 'JetBrains Mono', monospace; font-size: 12.5px;
+    padding: 10px 18px; border-radius: 10px;
+    opacity: 0; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 100; white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .swatch-row { grid-template-columns: repeat(3, 1fr); }
+    .logo-grid, .app-strip { grid-template-columns: 1fr; }
+    .voice-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 48px 0; }
+    .doc-header { padding: 52px 0 44px; }
+    .swatch-row { grid-template-columns: repeat(2, 1fr); }
+    .dd-grid { grid-template-columns: 1fr; }
+    .type-row { grid-template-columns: 1fr; gap: 10px; padding: 22px 20px; }
+    .topbar-title { display: none; }
+    .topbar-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">Claude for Leaders<span class="dot">.</span></div>
+    <div class="topbar-divider"></div>
+    <div class="topbar-title">Demo artifact · Brand guidelines in one pass</div>
+    <a class="topbar-back" href="../index.html">&larr; Back to the deck</a>
+  </div>
+</div>
+
+<main class="page">
+
+  <!-- Document header -->
+  <header class="doc-header">
+    <div class="doc-eyebrow">Brand Guidelines &middot; v1.0</div>
+    <h1>Harborline Advisors</h1>
+    <p class="lede">A visual and verbal identity system for a coastal California wealth-advisory boutique. Calm, precise, and built to signal one thing above all: your capital is in steady hands.</p>
+    <div class="doc-meta">
+      <span>Prepared by <b>Claude Cowork</b></span>
+      <span>Client <b>Harborline Advisors (fictional)</b></span>
+      <span>Date <b>July 2026</b></span>
+    </div>
+  </header>
+
+  <!-- 01 Logo -->
+  <section id="logo">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Logo concept</h2></div>
+    <p class="sec-intro">The wordmark pairs a quiet serif with a horizon mark: three lines settling into stillness inside a circle &mdash; the harbor line at dusk. It reads as maritime without a single anchor or sailboat clich&eacute;.</p>
+    <div class="logo-grid">
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div class="logo-stage on-light">
+          <span class="stage-tag">Primary &middot; on light</span>
+          <svg class="logo-svg" viewBox="0 0 420 110" role="img" aria-label="Harborline Advisors logo on light background">
+            <circle cx="55" cy="55" r="34" fill="none" stroke="#16344A" stroke-width="2.5"/>
+            <line x1="30" y1="49" x2="80" y2="49" stroke="#16344A" stroke-width="2.5"/>
+            <path d="M33 60 Q 43 55, 55 60 T 77 60" fill="none" stroke="#C29B40" stroke-width="2.25"/>
+            <path d="M37 70 Q 46 66, 55 70 T 73 70" fill="none" stroke="#16344A" stroke-width="2" opacity="0.45"/>
+            <text x="110" y="62" font-family="Fraunces, Georgia, serif" font-size="34" font-weight="500" letter-spacing="1" fill="#16344A">Harborline</text>
+            <text x="112" y="86" font-family="Inter, sans-serif" font-size="12" font-weight="600" letter-spacing="7" fill="#C29B40">ADVISORS</text>
+          </svg>
+        </div>
+        <div class="logo-stage on-dark">
+          <span class="stage-tag">Reversed &middot; on Harbor Navy</span>
+          <svg class="logo-svg" viewBox="0 0 420 110" role="img" aria-label="Harborline Advisors logo reversed on navy background">
+            <circle cx="55" cy="55" r="34" fill="none" stroke="#F7F5F0" stroke-width="2.5"/>
+            <line x1="30" y1="49" x2="80" y2="49" stroke="#F7F5F0" stroke-width="2.5"/>
+            <path d="M33 60 Q 43 55, 55 60 T 77 60" fill="none" stroke="#C29B40" stroke-width="2.25"/>
+            <path d="M37 70 Q 46 66, 55 70 T 73 70" fill="none" stroke="#A8C8BE" stroke-width="2" opacity="0.7"/>
+            <text x="110" y="62" font-family="Fraunces, Georgia, serif" font-size="34" font-weight="500" letter-spacing="1" fill="#F7F5F0">Harborline</text>
+            <text x="112" y="86" font-family="Inter, sans-serif" font-size="12" font-weight="600" letter-spacing="7" fill="#C29B40">ADVISORS</text>
+          </svg>
+        </div>
+      </div>
+      <div class="logo-notes">
+        <div class="panel logo-note">
+          <h3>Construction</h3>
+          <p>The mark is built from a horizon line and two receding swells inside a perfect circle. The brass wave is the only warm element &mdash; it carries through every application as the brand&rsquo;s signature stroke.</p>
+        </div>
+        <div class="panel logo-note">
+          <h3>Clearspace &amp; minimum size</h3>
+          <p>Keep clearspace equal to the circle&rsquo;s radius on all sides. Never render the lockup below <span class="mono">120px</span> wide on screen or <span class="mono">28mm</span> in print; below that, use the circular mark alone.</p>
+        </div>
+        <div class="panel logo-note">
+          <h3>Color rules</h3>
+          <p>Two colorways only: Harbor Navy on light, Gull White reversed on navy. The brass wave never changes. No gradients, outlines, or drop shadows on the lockup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Color -->
+  <section id="color">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Color palette</h2></div>
+    <p class="sec-intro">Five colors, drawn from the Central Coast an hour before sunset. Navy leads, sand and white carry the space, seafoam softens, and brass appears only where attention is earned. Click any swatch to copy its hex.</p>
+    <div class="swatch-row">
+      <button class="swatch" data-hex="#16344A" type="button" aria-label="Copy Harbor Navy hex code #16344A">
+        <div class="swatch-chip" style="background:#16344A;"><span class="copy-hint">copy</span></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Harbor Navy</div>
+          <div class="swatch-hex">#16344A</div>
+          <div class="swatch-use">Primary. Headlines, logo, cards, footers. The color of the brand&rsquo;s voice.</div>
+        </div>
+      </button>
+      <button class="swatch" data-hex="#F7F5F0" type="button" aria-label="Copy Gull White hex code #F7F5F0">
+        <div class="swatch-chip" style="background:#F7F5F0; border-bottom:1px solid var(--border);"><span class="copy-hint">copy</span></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gull White</div>
+          <div class="swatch-hex">#F7F5F0</div>
+          <div class="swatch-use">Default background. Warmer than pure white; never use #FFFFFF.</div>
+        </div>
+      </button>
+      <button class="swatch" data-hex="#E4D8C3" type="button" aria-label="Copy Coastal Sand hex code #E4D8C3">
+        <div class="swatch-chip" style="background:#E4D8C3;"><span class="copy-hint">copy</span></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Coastal Sand</div>
+          <div class="swatch-hex">#E4D8C3</div>
+          <div class="swatch-use">Secondary surfaces: panels, pull-quotes, social backgrounds.</div>
+        </div>
+      </button>
+      <button class="swatch" data-hex="#A8C8BE" type="button" aria-label="Copy Seafoam hex code #A8C8BE">
+        <div class="swatch-chip" style="background:#A8C8BE;"><span class="copy-hint">copy</span></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Seafoam</div>
+          <div class="swatch-hex">#A8C8BE</div>
+          <div class="swatch-use">Supporting tint: charts, tags, subtle dividers. Never for body text.</div>
+        </div>
+      </button>
+      <button class="swatch" data-hex="#C29B40" type="button" aria-label="Copy Channel Brass hex code #C29B40">
+        <div class="swatch-chip" style="background:#C29B40;"><span class="copy-hint">copy</span></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Channel Brass</div>
+          <div class="swatch-hex">#C29B40</div>
+          <div class="swatch-use">Accent only. Key numbers, the wave stroke, one CTA per page. Ration it.</div>
+        </div>
+      </button>
+    </div>
+    <div class="ratio-note">
+      <span style="flex-shrink:0;">Usage ratio &mdash; roughly <b style="color:var(--ink); font-weight:600;">60 / 25 / 10 / 5</b> across white &amp; sand, navy, seafoam, brass:</span>
+      <span class="ratio-bar" aria-hidden="true">
+        <i style="width:60%; background:#F7F5F0;"></i><i style="width:25%; background:#16344A;"></i><i style="width:10%; background:#A8C8BE;"></i><i style="width:5%; background:#C29B40;"></i>
+      </span>
+    </div>
+  </section>
+
+  <!-- 03 Typography -->
+  <section id="type">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Typography</h2></div>
+    <p class="sec-intro">Two families, clear jobs. Fraunces brings editorial confidence to headlines; Inter does the quiet work of body copy and interface text. JetBrains Mono is reserved for figures, tickers, and data labels.</p>
+    <div class="panel type-table">
+      <div class="type-row">
+        <div class="type-spec"><b>Display</b>Fraunces Medium<br>44 / 48 &middot; -2% tracking</div>
+        <div class="spec-display">Steady hands, open water.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-spec"><b>Heading</b>Fraunces Medium<br>28 / 34 &middot; -1% tracking</div>
+        <div class="spec-heading">Planning for the next generation</div>
+      </div>
+      <div class="type-row">
+        <div class="type-spec"><b>Subhead</b>Inter Semibold<br>18 / 25</div>
+        <div class="spec-subhead">A disciplined approach to concentrated equity positions</div>
+      </div>
+      <div class="type-row">
+        <div class="type-spec"><b>Body</b>Inter Regular<br>16 / 26</div>
+        <div class="spec-body">We manage wealth for families who built it slowly and intend to keep it that way. Every recommendation comes with the reasoning behind it, in plain language, before a single dollar moves.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-spec"><b>Caption / Data</b>JetBrains Mono<br>12 / 18 &middot; +12% tracking, caps</div>
+        <div class="spec-caption">Fig. 04 &mdash; Portfolio drift, trailing 12 months</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Voice & tone -->
+  <section id="voice">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Voice &amp; tone</h2></div>
+    <p class="sec-intro">Harborline sounds like the most experienced person in the room &mdash; the one who doesn&rsquo;t need to raise their voice. Three principles govern everything we write.</p>
+    <div class="voice-grid">
+      <div class="panel voice-card">
+        <span class="voice-num">P1</span>
+        <h3>Calm over clever</h3>
+        <p>We never chase urgency, hype, or fear. Markets are loud; we are not. If a sentence would sound wrong read aloud in a quiet room, cut it.</p>
+        <p class="ex">&ldquo;Volatility is the fee, not the fine.&rdquo;</p>
+      </div>
+      <div class="panel voice-card">
+        <span class="voice-num">P2</span>
+        <h3>Plain before polished</h3>
+        <p>Jargon is a tax on the reader. Say &ldquo;what you keep after taxes,&rdquo; not &ldquo;tax-alpha optimization.&rdquo; Precision and plain English are the same discipline.</p>
+        <p class="ex">&ldquo;Here is what we&rsquo;d do, and here is why.&rdquo;</p>
+      </div>
+      <div class="panel voice-card">
+        <span class="voice-num">P3</span>
+        <h3>Candor builds trust</h3>
+        <p>We name trade-offs, fees, and what we don&rsquo;t know. A client who hears the hard part from us first never has to hear it from someone else.</p>
+        <p class="ex">&ldquo;This plan costs more in year one. It should.&rdquo;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 Do / Don't -->
+  <section id="dodont">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Do &amp; don&rsquo;t</h2></div>
+    <p class="sec-intro">The fastest way to protect the brand is knowing where it breaks. These are the lines we hold.</p>
+    <div class="dd-grid">
+      <div class="dd-col dd-do">
+        <div class="dd-head"><span class="mark">&#10003;</span> Do</div>
+        <ul class="dd-list">
+          <li><b>Lead with navy, accent with brass</b>One brass moment per layout &mdash; a number, a rule, a single call to action.</li>
+          <li><b>Use the horizon mark alone at small sizes</b>Favicons, avatars, and app icons get the circle mark, never the squeezed lockup.</li>
+          <li><b>Photograph the coast at off-hours</b>Early light, empty piers, still water. People appear candid, never posed at a whiteboard.</li>
+          <li><b>Set numbers in JetBrains Mono</b>Returns, fees, and dates in mono &mdash; it signals accuracy and keeps tables honest.</li>
+        </ul>
+      </div>
+      <div class="dd-col dd-dont">
+        <div class="dd-head"><span class="mark">&#10005;</span> Don&rsquo;t</div>
+        <ul class="dd-list">
+          <li><b>Don&rsquo;t stretch, tilt, or re-color the lockup</b>No gradients, outlines, shadows, or &ldquo;just this once&rdquo; palette swaps.</li>
+          <li><b>Don&rsquo;t use nautical clip art</b>No anchors, ropes, ship wheels, or lighthouses. The horizon mark carries the metaphor alone.</li>
+          <li><b>Don&rsquo;t write in fear or hype</b>No &ldquo;don&rsquo;t miss out,&rdquo; no countdown timers, no exclamation points in client-facing copy.</li>
+          <li><b>Don&rsquo;t set body copy in Fraunces or Seafoam</b>The serif is for headlines; the tint is for surfaces. Body text is Inter on navy or ink.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 Applications -->
+  <section id="applications">
+    <div class="sec-head"><span class="sec-num">06</span><h2>In application</h2></div>
+    <p class="sec-intro">The system at work: a business card and a social tile, both built from nothing but the rules above.</p>
+    <div class="app-strip">
+      <div class="panel app-frame">
+        <div class="biz-card">
+          <div>
+            <div class="biz-name">Elena Marsh, CFP&reg;</div>
+            <div class="biz-title">Principal &amp; Founding Advisor</div>
+          </div>
+          <div class="biz-foot">
+            <div class="biz-contact">
+              elena@harborlineadvisors.com<br>
+              (805) 555-0142 &middot; Avila Beach, CA
+            </div>
+            <svg class="biz-mark" viewBox="0 0 110 110" aria-hidden="true">
+              <circle cx="55" cy="55" r="34" fill="none" stroke="#F7F5F0" stroke-width="3"/>
+              <line x1="30" y1="49" x2="80" y2="49" stroke="#F7F5F0" stroke-width="3"/>
+              <path d="M33 60 Q 43 55, 55 60 T 77 60" fill="none" stroke="#C29B40" stroke-width="2.75"/>
+            </svg>
+          </div>
+        </div>
+        <span class="app-label">Business card &middot; 3.5&Prime; &times; 2&Prime;</span>
+      </div>
+      <div class="panel app-frame">
+        <div class="social-tile">
+          <svg class="tile-waves" viewBox="0 0 300 80" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 30 Q 45 18, 90 30 T 180 30 T 300 28" fill="none" stroke="#C29B40" stroke-width="2"/>
+            <path d="M0 52 Q 50 42, 100 52 T 200 52 T 300 50" fill="none" stroke="#16344A" stroke-width="1.6" opacity="0.35"/>
+            <path d="M0 70 Q 55 62, 110 70 T 220 70 T 300 68" fill="none" stroke="#16344A" stroke-width="1.4" opacity="0.2"/>
+          </svg>
+          <span class="tile-kicker">Harborline Notes &middot; No. 12</span>
+          <span class="tile-quote">&ldquo;The best portfolio is the one you can hold through the worst week.&rdquo;</span>
+          <span class="tile-foot">
+            <svg viewBox="0 0 110 110" aria-hidden="true">
+              <circle cx="55" cy="55" r="34" fill="none" stroke="#16344A" stroke-width="4"/>
+              <line x1="30" y1="49" x2="80" y2="49" stroke="#16344A" stroke-width="4"/>
+              <path d="M33 60 Q 43 55, 55 60 T 77 60" fill="none" stroke="#C29B40" stroke-width="3.5"/>
+            </svg>
+            Harborline Advisors
+          </span>
+        </div>
+        <span class="app-label">Social tile &middot; 1080 &times; 1080</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Demo built with Claude Code<span class="sep">&middot;</span>Travis Johnson<span class="sep">&middot;</span>AuraPath AI<span class="sep">&middot;</span><a href="https://aurapathai.com" target="_blank" rel="noopener">aurapathai.com</a>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  (function () {
+    var toast = document.getElementById('toast');
+    var toastTimer = null;
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 1600);
+    }
+
+    function copyText(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text);
+      }
+      // Fallback for non-secure contexts (file://)
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy') ? resolve() : reject();
+        } catch (e) {
+          reject(e);
+        } finally {
+          document.body.removeChild(ta);
+        }
+      });
+    }
+
+    document.querySelectorAll('.swatch').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var hex = btn.getAttribute('data-hex');
+        copyText(hex).then(function () {
+          btn.classList.add('copied');
+          var hint = btn.querySelector('.copy-hint');
+          if (hint) hint.textContent = 'copied';
+          showToast(hex + ' copied to clipboard');
+          setTimeout(function () {
+            btn.classList.remove('copied');
+            if (hint) hint.textContent = 'copy';
+          }, 1600);
+        }).catch(function () {
+          showToast('Copy failed — ' + hex);
+        });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
