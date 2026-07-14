@@ -623,37 +623,10 @@
       </div>
       <p class="hero-fineprint reveal reveal-d3">ROASTED WEEKLY &middot; SHIPS IN 48H &middot; FREE LOCAL PICKUP</p>
     </div>
-    <div class="hero-art reveal reveal-d2" aria-hidden="true">
-      <!-- CSS/SVG coffee cup illustration -->
-      <svg viewBox="0 0 340 340" fill="none">
-        <!-- sun -->
-        <circle cx="258" cy="72" r="34" fill="#B8552F" opacity="0.3"/>
-        <circle cx="258" cy="72" r="22" fill="#B8552F" opacity="0.5"/>
-        <!-- steam -->
-        <g class="steam" stroke="#E08A5F" stroke-width="3" stroke-linecap="round" fill="none">
-          <path d="M142 96c-6 10 6 16 0 28"/>
-          <path d="M170 86c-6 12 6 18 0 32"/>
-          <path d="M198 96c-6 10 6 16 0 28"/>
-        </g>
-        <!-- cup -->
-        <path d="M96 148h148v52c0 41-33 74-74 74s-74-33-74-74v-52z" fill="#F3EBDD" stroke="#F5EDE0" stroke-width="3"/>
-        <!-- coffee surface -->
-        <ellipse cx="170" cy="148" rx="74" ry="14" fill="#3C2415" stroke="#F5EDE0" stroke-width="3"/>
-        <ellipse cx="170" cy="148" rx="56" ry="9" fill="#6B4226"/>
-        <!-- handle -->
-        <path d="M244 162h14c17 0 30 13 30 30s-13 30-30 30h-18" stroke="#F5EDE0" stroke-width="3" fill="none"/>
-        <!-- cup wave detail -->
-        <path d="M100 208c14 8 32 8 46 0s32-8 46 0 32 8 46 0" stroke="#B8552F" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <!-- saucer -->
-        <path d="M76 282c0 8 42 15 94 15s94-7 94-15" stroke="#F5EDE0" stroke-width="3" stroke-linecap="round" fill="none"/>
-        <!-- beans -->
-        <g stroke="#F5EDE0" stroke-width="2.4">
-          <ellipse cx="66" cy="300" rx="13" ry="9" transform="rotate(-24 66 300)" fill="#B8552F"/>
-          <path d="M56 305c7-4 14-6 20-10" stroke-linecap="round"/>
-          <ellipse cx="280" cy="304" rx="13" ry="9" transform="rotate(18 280 304)" fill="#8A4322"/>
-          <path d="M270 300c7 3 14 5 21 7" stroke-linecap="round"/>
-        </g>
-      </svg>
+    <div class="hero-art reveal reveal-d2">
+      <img src="../assets/demo-img/landing/hero.jpg" width="1600" height="1600"
+           alt="Ceramic pour-over brewing over a glass carafe on a wooden counter in coastal morning light"
+           style="width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:10px;box-shadow:0 26px 60px -22px rgba(0,0,0,.65);">
     </div>
   </div>
   <!-- wave hem -->
@@ -702,11 +675,9 @@
     </div>
     <div class="product-grid">
       <div class="product reveal">
-        <div class="product-swatch swatch-dawn" aria-hidden="true">
-          <svg viewBox="0 0 54 54" fill="none" stroke="#6B3416" stroke-width="2.5">
-            <circle cx="27" cy="34" r="14"/>
-            <path d="M27 6v8M11 12l5 6M43 12l-5 6" stroke-linecap="round"/>
-          </svg>
+        <div class="product-swatch" aria-hidden="true">
+          <img src="../assets/demo-img/landing/bag-dawn.jpg" width="800" height="800" alt="" loading="lazy"
+               style="width:100%;height:100%;object-fit:cover;">
         </div>
         <span class="p-roast">Light Roast &middot; Ethiopia</span>
         <h3>Dawn Patrol</h3>
@@ -717,12 +688,9 @@
         </div>
       </div>
       <div class="product reveal reveal-d1">
-        <div class="product-swatch swatch-tide" aria-hidden="true">
-          <svg viewBox="0 0 54 54" fill="none" stroke="#3C2415" stroke-width="2.5" stroke-linecap="round">
-            <path d="M6 20c7-6 14-6 21 0s14 6 21 0"/>
-            <path d="M6 32c7-6 14-6 21 0s14 6 21 0"/>
-            <path d="M6 44c7-6 14-6 21 0s14 6 21 0"/>
-          </svg>
+        <div class="product-swatch" aria-hidden="true">
+          <img src="../assets/demo-img/landing/bag-tide.jpg" width="800" height="800" alt="" loading="lazy"
+               style="width:100%;height:100%;object-fit:cover;">
         </div>
         <span class="p-roast">Medium Roast &middot; Guatemala</span>
         <h3>Tide Line</h3>
@@ -733,11 +701,9 @@
         </div>
       </div>
       <div class="product reveal reveal-d2">
-        <div class="product-swatch swatch-bluff" aria-hidden="true">
-          <svg viewBox="0 0 54 54" fill="none" stroke="#E8C8A8" stroke-width="2.5" stroke-linecap="round">
-            <path d="M6 46L20 22l8 12 8-20 12 32"/>
-            <path d="M6 46h42"/>
-          </svg>
+        <div class="product-swatch" aria-hidden="true">
+          <img src="../assets/demo-img/landing/bag-bluff.jpg" width="800" height="800" alt="" loading="lazy"
+               style="width:100%;height:100%;object-fit:cover;">
         </div>
         <span class="p-roast">Dark Roast &middot; Sumatra</span>
         <h3>Bluff House</h3>
@@ -750,6 +716,12 @@
     </div>
   </div>
 </section>
+
+<!-- Roastery texture band -->
+<div aria-hidden="true" style="position:relative;height:clamp(150px,20vw,240px);overflow:hidden;background:var(--espresso-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <img src="../assets/demo-img/landing/texture.jpg" width="1600" height="700" alt="" loading="lazy"
+       style="width:100%;height:100%;object-fit:cover;object-position:center 60%;">
+</div>
 
 <!-- Process strip -->
 <section class="process" id="process">

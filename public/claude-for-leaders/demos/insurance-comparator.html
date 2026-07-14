@@ -82,7 +82,25 @@
     margin: 0 auto;
     padding: 32px 28px 24px;
   }
-  .hero { margin-bottom: 28px; max-width: 640px; }
+  .hero {
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: clamp(24px, 4vw, 48px);
+    align-items: center;
+  }
+  .hero-copy { max-width: 640px; }
+  .hero-illustration {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #fff;
+  }
+  .hero-illustration img { width: 100%; height: auto; display: block; }
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-illustration { max-width: 360px; }
+  }
   .hero h1 {
     font-family: var(--serif);
     font-size: 30px;
@@ -96,7 +114,7 @@
 
   .layout {
     display: grid;
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 320px minmax(0, 1fr);
     gap: 28px;
     align-items: start;
   }
@@ -278,7 +296,7 @@
   }
   .card.best .ribbon { display: block; }
   .carrier-glyph {
-    width: 34px; height: 34px;
+    width: 40px; height: 40px;
     border-radius: 9px;
     display: flex;
     align-items: center;
@@ -288,7 +306,11 @@
     font-weight: 700;
     color: #fff;
     margin-bottom: 12px;
+    overflow: hidden;
+    background: var(--cream);
+    border: 1px solid var(--border);
   }
+  .carrier-glyph img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .carrier-name {
     font-family: var(--serif);
     font-size: 16px;
@@ -485,8 +507,14 @@
 
 <main class="wrap">
   <div class="hero">
-    <h1>Policy Comparator</h1>
-    <p>Dial in the client's profile on the left — premiums, features, and the best-value pick update instantly across four carriers.</p>
+    <div class="hero-copy">
+      <h1>Policy Comparator</h1>
+      <p>Dial in the client's profile on the left — premiums, features, and the best-value pick update instantly across four carriers.</p>
+    </div>
+    <figure class="hero-illustration">
+      <img src="../assets/demo-img/insurance-comparator/illustration.jpg" width="1300" height="709"
+           alt="Engraved illustration of a family home sheltered under a large tree" loading="eager">
+    </figure>
   </div>
 
   <div class="layout">
@@ -707,7 +735,7 @@
       }).join("");
       return '<article class="card' + (i === bestIdx ? " best" : "") + '">' +
         '<div class="ribbon">Best value</div>' +
-        '<div class="carrier-glyph" style="background:' + c.color + '">' + c.initials + '</div>' +
+        '<div class="carrier-glyph"><img src="../assets/demo-img/insurance-comparator/crest-' + i + '.jpg" alt="" loading="lazy" width="40" height="40"></div>' +
         '<div class="carrier-name">' + c.name + '</div>' +
         '<div class="carrier-tag">' + c.tag + '</div>' +
         '<div class="premium">$' + p.whole + '<span class="cents">.' + p.cents + '</span></div>' +

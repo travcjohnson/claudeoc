@@ -85,6 +85,15 @@
   }
   .back-link:hover { text-decoration: underline; }
 
+  /* ── Editorial texture banner ────────── */
+  .pm-banner {
+    height: clamp(88px, 12vw, 150px);
+    overflow: hidden;
+    background: var(--black);
+    border-bottom: 3px solid var(--lime);
+  }
+  .pm-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; display: block; }
+
   /* ── Page shell ──────────────────────── */
   .shell {
     max-width: 1280px;
@@ -407,7 +416,9 @@
     font-weight: 800;
     letter-spacing: 0.04em;
     flex-shrink: 0;
+    overflow: hidden;
   }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .member-name { font-size: 12.5px; font-weight: 700; line-height: 1.2; }
   .member-role {
     font-size: 9.5px;
@@ -470,6 +481,10 @@
   </div>
   <a class="back-link" href="../">&larr; Back to the deck</a>
 </header>
+
+<div class="pm-banner" aria-hidden="true">
+  <img src="../assets/demo-img/project-management/header.jpg" width="1400" height="200" alt="" loading="eager">
+</div>
 
 <main class="shell">
   <div class="dashboard-head">
@@ -762,6 +777,19 @@
   function initials(name) {
     return name.split(/[\s.]+/).filter(Boolean).map(function (w) { return w[0]; }).join("").slice(0, 2).toUpperCase();
   }
+  var PORTRAITS = {
+    Dana: "pm-0", Leo: "pm-1", Priya: "pm-2",
+    Sofia: "pm-3", Amara: "pm-4", Marcus: "pm-5"
+  };
+  function avatarMarkup(name) {
+    var first = name.split(/[\s.]+/)[0];
+    var slug = PORTRAITS[first];
+    if (slug) {
+      return '<span class="avatar"><img src="../assets/demo-img/project-management/' + slug +
+        '.jpg" alt="" loading="lazy" width="28" height="28"></span>';
+    }
+    return '<span class="avatar">' + initials(name) + '</span>';
+  }
   function burnClass(pct) {
     return pct >= 90 ? "over" : pct >= 70 ? "warn" : "";
   }
@@ -866,7 +894,7 @@
     // team workload
     el("d-team").innerHTML = m.team.map(function (p) {
       return '<div class="member">' +
-        '<div class="member-top"><span class="avatar">' + initials(p.n) + "</span>" +
+        '<div class="member-top">' + avatarMarkup(p.n) +
         '<div><div class="member-name">' + p.n + '</div><div class="member-role">' + p.role + "</div></div></div>" +
         '<div class="cap-track"><div class="cap-fill ' + burnClass(p.pct) + '" style="width:' + Math.min(p.pct, 100) + '%"></div></div>' +
         '<div class="cap-label">' + p.pct + "% capacity</div>" +

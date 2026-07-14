@@ -192,6 +192,12 @@
   .app-frame { padding: 34px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; }
   .app-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); }
 
+  .app-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+  .app-photo { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .app-photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+  .app-photo figcaption { padding: 14px 18px; }
+  @media (max-width: 760px) { .app-photos { grid-template-columns: 1fr; } }
+
   .biz-card {
     width: min(380px, 100%); aspect-ratio: 3.5 / 2;
     background: var(--hb-navy);
@@ -514,6 +520,20 @@
         </div>
         <span class="app-label">Social tile &middot; 1080 &times; 1080</span>
       </div>
+    </div>
+    <div class="app-photos">
+      <figure class="panel app-photo">
+        <img src="../assets/demo-img/brand-guidelines/mockup-card.jpg" width="1200" height="900" alt="Navy business card with a brass horizon mark resting on natural linen" loading="lazy">
+        <figcaption class="app-label">Business card &middot; navy on linen</figcaption>
+      </figure>
+      <figure class="panel app-photo">
+        <img src="../assets/demo-img/brand-guidelines/mockup-letterhead.jpg" width="1200" height="900" alt="Letterhead and stationery flat-lay in navy, sand, and brass" loading="lazy">
+        <figcaption class="app-label">Stationery suite &middot; letterhead flat-lay</figcaption>
+      </figure>
+      <figure class="panel app-photo">
+        <img src="../assets/demo-img/brand-guidelines/mockup-tote.jpg" width="900" height="1000" alt="Natural canvas tote screen-printed with the Harborline horizon mark" loading="lazy">
+        <figcaption class="app-label">Merchandise &middot; canvas tote</figcaption>
+      </figure>
     </div>
   </section>
 

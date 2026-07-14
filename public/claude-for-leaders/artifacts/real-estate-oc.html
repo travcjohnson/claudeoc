@@ -67,6 +67,30 @@
   }
   .back-link:hover { color: var(--orange); }
 
+  /* ---------- Aerial header band ---------- */
+  .aerial-band {
+    position: relative;
+    height: clamp(170px, 24vw, 300px);
+    overflow: hidden;
+    background: #0B4A49;
+    border-bottom: 1px solid var(--border);
+  }
+  .aerial-band img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; display: block; }
+  .aerial-band::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(11,74,73,0.55) 0%, rgba(11,74,73,0.05) 45%, rgba(255,255,255,0.35) 100%);
+  }
+
+  /* ---------- City thumbnails (table) ---------- */
+  .city-cell { display: inline-flex; align-items: center; gap: 11px; }
+  .city-thumb {
+    width: 34px; height: 34px; border-radius: 6px; flex-shrink: 0;
+    object-fit: cover; display: block;
+    border: 1px solid var(--border);
+    background: linear-gradient(135deg, var(--mint), #CDE6E4);
+  }
+
   /* ---------- Layout ---------- */
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 32px 64px; }
   @media (max-width: 640px) {
@@ -400,6 +424,10 @@
   <a class="back-link" href="../">&larr; Back to the deck</a>
 </header>
 
+<div class="aerial-band" aria-hidden="true">
+  <img src="../assets/demo-img/real-estate-oc/header.jpg" width="1600" height="600" alt="" loading="eager">
+</div>
+
 <main class="wrap">
 
   <div class="page-head">
@@ -521,6 +549,18 @@
     { m: "Apr '26", v: 1204000 }, { m: "May '26", v: 1217000 },
     { m: "Jun '26", v: 1221000 }, { m: "Jul '26", v: 1235000 }
   ];
+
+  var cityImg = {
+    "Laguna Beach": "../assets/demo-img/real-estate-oc/city-laguna.jpg",
+    "Newport Beach": "../assets/demo-img/real-estate-oc/city-newport.jpg",
+    "Irvine": "../assets/demo-img/real-estate-oc/city-irvine.jpg",
+    "Huntington Beach": "../assets/demo-img/real-estate-oc/city-huntington.jpg"
+  };
+  function cityThumb(name) {
+    return cityImg[name]
+      ? '<img class="city-thumb" src="' + cityImg[name] + '" alt="" loading="lazy" width="34" height="34">'
+      : '<span class="city-thumb" aria-hidden="true"></span>';
+  }
 
   function fmtPrice(n) {
     return "$" + (n / 1000000).toFixed(2) + "M";
@@ -692,7 +732,7 @@
       rows.forEach(function (c) {
         var tr = document.createElement("tr");
         tr.innerHTML =
-          '<td><span class="city-name">' + c.city + '</span></td>' +
+          '<td><span class="city-cell">' + cityThumb(c.city) + '<span class="city-name">' + c.city + '</span></span></td>' +
           '<td class="num">' + fmtFull(c.median) + '</td>' +
           '<td class="num"><span class="yoy-pill' + (c.yoy >= 5 ? " hot" : "") + '">+' + c.yoy.toFixed(1) + '%</span></td>' +
           '<td class="num">' + c.inventory.toLocaleString("en-US") + '</td>' +

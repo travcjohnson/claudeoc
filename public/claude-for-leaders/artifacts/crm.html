@@ -94,6 +94,24 @@
   }
   .back-link:hover { color: var(--accent); border-color: var(--accent); }
 
+  /* ── Workspace banner ────────────────────── */
+  .workspace-banner {
+    position: relative;
+    height: clamp(72px, 9vw, 104px);
+    overflow: hidden;
+    background: var(--accent);
+    border-bottom: 1px solid var(--border);
+  }
+  .workspace-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; display: block; }
+
+  /* ── Company marks ───────────────────────── */
+  .card-logo {
+    width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0;
+    object-fit: cover; background: var(--accent-soft);
+    border: 1px solid var(--border);
+  }
+  .card-company-wrap { display: flex; align-items: center; gap: 9px; min-width: 0; }
+
   /* ── KPI row ─────────────────────────────── */
   .kpi-row {
     display: grid;
@@ -475,6 +493,10 @@
   <a class="back-link" href="../">&larr; Back to the deck</a>
 </header>
 
+<div class="workspace-banner" aria-hidden="true">
+  <img src="../assets/demo-img/crm/header.jpg" width="1600" height="200" alt="" loading="eager">
+</div>
+
 <section class="kpi-row" aria-label="Pipeline metrics">
   <div class="kpi">
     <div class="kpi-label">Pipeline value</div>
@@ -601,6 +623,16 @@
     try { localStorage.setItem(STORE_KEY, JSON.stringify(deals)); } catch (e) { /* storage unavailable */ }
   }
 
+  /* ── company marks (flat geometric identity tiles) ── */
+  function markIndex(id) {
+    var h = 0;
+    for (var i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) & 0xffff;
+    return h % 16;
+  }
+  function markSrc(deal) {
+    return '../assets/demo-img/crm/mark-' + markIndex(deal.id) + '.jpg';
+  }
+
   /* ── formatting ──────────────────────────── */
   function fmtMoney(n) {
     return '$' + Math.round(n).toLocaleString('en-US');
@@ -696,7 +728,10 @@
 
     card.innerHTML =
       '<div class="card-top">' +
-        '<span class="card-company">' + esc(deal.company) + '</span>' +
+        '<span class="card-company-wrap">' +
+          '<img class="card-logo" src="' + markSrc(deal) + '" alt="" loading="lazy" width="26" height="26">' +
+          '<span class="card-company">' + esc(deal.company) + '</span>' +
+        '</span>' +
         '<span class="card-value">' + fmtMoney(deal.value) + '</span>' +
       '</div>' +
       '<div class="card-contact">' + esc(deal.contact) + '</div>' +

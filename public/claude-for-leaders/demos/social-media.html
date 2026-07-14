@@ -197,6 +197,9 @@
   .chip:hover { border-color: var(--accent); background: var(--accent-tint); transform: translateY(-1px); }
   .chip.selected { border-color: var(--accent); background: var(--accent-tint); box-shadow: 0 0 0 1px var(--accent); }
   .chip .ch-dot { width: 8px; height: 8px; }
+  .chip-thumb { width: 22px; height: 22px; border-radius: 6px; object-fit: cover; flex: none; }
+  .q-thumb { width: 52px; height: 52px; border-radius: 10px; object-fit: cover; flex: none; }
+  .drawer-hero { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--r-sm); margin-bottom: 18px; display: block; }
   .chip span.label {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -564,6 +567,7 @@
     <button class="drawer-close" id="drawerClose" aria-label="Close panel">&times;</button>
   </div>
   <div class="drawer-body">
+    <img class="drawer-hero" id="dThumb" alt="" width="16" height="9" src="../assets/demo-img/social-media/s1.jpg">
     <div class="d-channel-row"><span class="d-channel" id="dChannel"></span></div>
     <h2 id="dTitle"></h2>
     <div class="d-meta" id="dMeta"></div>
@@ -700,6 +704,13 @@
   var STATUS_LABEL = { draft: 'Draft', approved: 'Approved', scheduled: 'Scheduled', published: 'Published' };
   var STATUS_ACTION = { draft: 'Submit for approval', approved: 'Schedule post', scheduled: 'Reschedule', published: 'View live post' };
 
+  var THUMBS = [
+    '../assets/demo-img/social-media/s1.jpg', '../assets/demo-img/social-media/s2.jpg',
+    '../assets/demo-img/social-media/s3.jpg', '../assets/demo-img/social-media/s4.jpg',
+    '../assets/demo-img/social-media/s5.jpg', '../assets/demo-img/social-media/s6.jpg'
+  ];
+  function thumbFor(p) { return THUMBS[(p.id - 1) % THUMBS.length]; }
+
   var byId = {};
   POSTS.forEach(function (p) { byId[p.id] = p; });
 
@@ -740,6 +751,7 @@
       html += '<div class="cal-date"><span class="wd">' + dow + '</span>' + d + (d === TODAY_DAY ? ' &middot; today' : '') + '</div>';
       posts.forEach(function (p) {
         html += '<button class="chip" data-post="' + p.id + '" title="' + esc(p.title) + '">'
+          + '<img class="chip-thumb" src="' + thumbFor(p) + '" alt="" loading="lazy" width="22" height="22">'
           + '<span class="ch-dot ' + CHANNELS[p.channel].cls + '"></span>'
           + '<span class="label">' + esc(p.title) + '</span>'
           + (p.status === 'published' ? '<span class="pub-check">&#10003;</span>' : '')
@@ -844,6 +856,7 @@
     var p = byId[id];
     if (!p) return;
     currentPost = p;
+    document.getElementById('dThumb').src = thumbFor(p);
     document.getElementById('dDot').className = 'ch-dot ' + CHANNELS[p.channel].cls;
     document.getElementById('dDate').textContent = fmtDate(p.day) + ' · ' + p.time;
     var pill = document.getElementById('dPill');
