@@ -73,30 +73,34 @@
 
 .slide[data-noteid="anl-ladder"] .gp-body {
   max-width: none;
-  justify-content: flex-start;
-  padding-top: 56px;
-  padding-bottom: 10px;
+  padding-top: 40px;
+  padding-bottom: 30px;
 }
 
 .anl-ladder {
   display: flex;
   flex-direction: column-reverse;   /* rung 0 at the bottom */
-  gap: 6px;
+  gap: 8px;
   margin-top: var(--sp-2);
 }
 
+/* Generic right-side credibility card — reused on anl-cover (Cherny tweet). */
+.anl-cover-row { display: flex; gap: 40px; align-items: flex-start; }
+.anl-cover-col { flex: 1; min-width: 0; }
 .anl-ladder-row { display: flex; gap: 28px; align-items: flex-start; }
 .anl-ladder-col { flex: 1; min-width: 0; }
-.anl-cred { flex-shrink: 0; width: 260px; display: flex; flex-direction: column; gap: 10px; margin-top: 34px; }
+.anl-cred { flex-shrink: 0; width: 300px; display: flex; flex-direction: column; gap: 10px; }
 .anl-cred__img { display: block; width: 100%; border-radius: 12px; border: 1px solid var(--anl-hairline); box-shadow: 0 6px 24px rgba(0,0,0,0.08); }
 .anl-cred__label { font-family: var(--font-mono); font-size: 15px; color: var(--ink-muted); line-height: 1.4; }
+.slide.is-dark .anl-cred__img { border-color: rgba(255,255,255,.18); }
+.slide.is-dark .anl-cred__label { color: var(--ink-muted-dark); }
 
 .anl-rung {
   display: grid;
-  grid-template-columns: 260px 1fr 260px 360px;
+  grid-template-columns: 330px 1fr 330px 430px;
   align-items: center;
   gap: var(--sp-3);
-  padding: 12px var(--sp-4);
+  padding: 16px var(--sp-4);
   border-radius: 12px;
   background: var(--anl-surface);
   border: 1px solid var(--anl-hairline);
@@ -185,7 +189,7 @@
 
 .anl-ladder__head {
   display: grid;
-  grid-template-columns: 260px 1fr 260px 360px;
+  grid-template-columns: 330px 1fr 330px 430px;
   gap: var(--sp-3);
   padding: 0 var(--sp-4) 8px calc(var(--sp-4) + 1px);
   margin-bottom: var(--sp-1);

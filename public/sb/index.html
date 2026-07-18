@@ -200,6 +200,27 @@
   .openmic__qr { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; }
   .openmic__qr img { display: block; width: 130px; height: 130px; border: 1px solid var(--neutral-2); border-radius: 8px; background: #fff; padding: 6px; }
   .openmic__qr span { font-family: var(--font-mono); font-size: 16px; color: var(--ink-muted); text-align: center; }
+
+  /* ——— About Travis: PM -> Founder -> Ambassador progression ——— */
+  .tarc { display: flex; gap: 64px; align-items: center; }
+  .tarc__photocol { flex-shrink: 0; width: 260px; text-align: center; }
+  .abouttravis__photo { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-clay); margin: 0 auto; display: block; }
+  .abouttravis__name { font-size: 34px; font-weight: var(--fw-extrabold); letter-spacing: var(--ls-tight); color: var(--ink); margin-top: var(--sp-4); }
+  .tarc__beats { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+  .tbeat { display: flex; align-items: baseline; gap: 28px; padding: 14px 0; }
+  .tbeat__stat { font-size: 32px; font-weight: var(--fw-extrabold); color: var(--accent-clay); letter-spacing: var(--ls-tight); flex-shrink: 0; width: 380px; }
+  .tbeat__label { font-size: 26px; color: var(--ink); line-height: 1.35; }
+  .tbeat__label b { color: var(--ink); font-weight: var(--fw-bold); }
+  .tbeat__arrow { font-size: 22px; color: var(--ink-muted); padding-left: 4px; }
+  .abouttravis__stats { font-size: 22px; color: var(--ink-muted); line-height: 1.5; max-width: 1500px; margin-top: var(--sp-6); padding-top: var(--sp-4); border-top: 1px solid var(--neutral-2); }
+  .abouttravis__stats b { color: var(--ink); font-weight: var(--fw-bold); }
+
+  /* ——— stay-connected: single large WhatsApp QR (readable from seats) ——— */
+  .bigqr-body { align-items: flex-start; }
+  .bigqr { margin-top: var(--sp-6); }
+  .bigqr img { display: block; width: 460px; height: 460px; border-radius: 16px; background: #fff; padding: 20px; border: 1px solid var(--neutral-2); }
+  .bigqr__line { font-size: 32px; color: var(--ink); margin-top: var(--sp-5); }
+  .bigqr__closer { font-size: 24px; color: var(--ink-muted); margin-top: 10px; }
 </style>
 </head>
 <body>
@@ -229,7 +250,7 @@
   <button class="nav-bar__btn" data-nav="prev" aria-label="Previous slide" title="Previous slide (←)">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
   </button>
-  <button class="nav-bar__counter" data-nav="jump" aria-label="Go to a slide" title="Go to a slide (G then no.)">1&nbsp;/&nbsp;31</button>
+  <button class="nav-bar__counter" data-nav="jump" aria-label="Go to a slide" title="Go to a slide (G then no.)">1&nbsp;/&nbsp;32</button>
   <button class="nav-bar__btn" data-nav="next" aria-label="Next slide" title="Next slide (→ · Space · click)">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
   </button>
@@ -280,7 +301,37 @@
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="5" data-section="community" data-noteid="community-what-is">
+    <section class="slide" data-slide="5" data-section="community" data-noteid="about-travis">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="gp-body">
+        <div class="tarc">
+          <div class="tarc__photocol reveal" style="--i:0">
+            <img class="abouttravis__photo" src="./assets/img/travis-johnson.jpeg" alt="Travis Johnson">
+            <h2 class="abouttravis__name">Travis Johnson</h2>
+          </div>
+          <div class="tarc__beats">
+            <div class="tbeat reveal" style="--i:1">
+              <div class="tbeat__stat">10 years</div>
+              <div class="tbeat__label">Product Manager, industry</div>
+            </div>
+            <div class="tbeat__arrow" aria-hidden="true">&darr;</div>
+            <div class="tbeat reveal" style="--i:2">
+              <div class="tbeat__stat">Founder</div>
+              <div class="tbeat__label">AuraPath AI &mdash; AI services &amp; implementation for companies</div>
+            </div>
+            <div class="tbeat__arrow" aria-hidden="true">&darr;</div>
+            <div class="tbeat reveal" style="--i:3">
+              <div class="tbeat__stat">First 50 worldwide</div>
+              <div class="tbeat__label">Official Claude Ambassador, appointed by Anthropic &mdash; selected from <b>100,000 applications</b></div>
+            </div>
+          </div>
+        </div>
+        <p class="abouttravis__stats reveal" style="--i:4"><b>600+ event attendees</b> &middot; <b>1,500+ registrations</b> &middot; Orange County &middot; LA &middot; Santa Barbara &middot; San Diego &middot; Chicago</p>
+      </div>
+      <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+    </section>
+
+    <section class="slide" data-slide="6" data-section="community" data-noteid="community-what-is">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">What you're part of now</p>
@@ -301,7 +352,7 @@
       <footer class="slide__footer"><span>Source: audience-stats/data/stats.json · Luma exports, 06.09.2026</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="6" data-section="community" data-noteid="community-people">
+    <section class="slide" data-slide="7" data-section="community" data-noteid="community-people">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Who's actually in the room</p>
@@ -320,7 +371,7 @@
       <footer class="slide__footer"><span>Source: stats.json composition.tiers · n=729 with known seniority</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="7" data-section="community" data-noteid="community-global">
+    <section class="slide" data-slide="8" data-section="community" data-noteid="community-global">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Ambassadors worldwide</p>
@@ -341,7 +392,7 @@
       <footer class="slide__footer"><span>Source: claude.com/community · luma.com/claudecommunity host listings</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="8" data-section="community" data-noteid="community-global-wall">
+    <section class="slide" data-slide="9" data-section="community" data-noteid="community-global-wall">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">The same room, everywhere</p>
@@ -372,7 +423,7 @@
       <footer class="slide__footer"><span>Claude communities worldwide · photos from public event recaps</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="9" data-section="community" data-noteid="community-impact-lab">
+    <section class="slide" data-slide="10" data-section="community" data-noteid="community-impact-lab">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Impact Lab</p>
@@ -392,7 +443,7 @@
       <footer class="slide__footer"><span>Source: @claude on LinkedIn · Claude Impact Lab, Rio de Janeiro</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="10" data-section="community" data-noteid="community-impact-cities">
+    <section class="slide" data-slide="11" data-section="community" data-noteid="community-impact-cities">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Where it went next</p>
@@ -411,7 +462,7 @@
       <footer class="slide__footer"><span>Official event art · luma.com/claudecommunity</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="11" data-section="community" data-noteid="community-conversation">
+    <section class="slide" data-slide="12" data-section="community" data-noteid="community-conversation">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">After today</p>
@@ -439,7 +490,7 @@
       <footer class="slide__footer"><span>Source: stats.json trajectory.repeat_registrants — 81 repeat (9.3%)</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="12" data-section="community" data-noteid="community-hashtag">
+    <section class="slide" data-slide="13" data-section="community" data-noteid="community-hashtag">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Post what you built</p>
@@ -449,27 +500,21 @@
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="13" data-section="community" data-noteid="community-stay-connected">
+    <section class="slide" data-slide="14" data-section="community" data-noteid="community-stay-connected">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
-      <div class="gp-body">
+      <div class="gp-body bigqr-body">
         <p class="eyebrow reveal" style="--i:0">Don't let this be a one-off</p>
         <h2 class="title-m clip-reveal">Stay connected <span class="gp-accent">after today.</span></h2>
-        <div class="qrpair reveal" style="--i:2">
-          <div class="qrpair__card">
-            <img src="./assets/img/community/whatsapp-sb-qr.png" alt="QR code to join Claude Community Santa Barbara on WhatsApp">
-            <div><div class="qrpair__t">Join Claude Community Santa Barbara on WhatsApp</div><div class="qrpair__d">The group chat is where it keeps going &mdash; questions, builds, the next event.</div></div>
-          </div>
+        <div class="bigqr reveal" style="--i:2">
+          <img src="./assets/img/community/whatsapp-sb-qr.png" alt="QR code to join Claude Community Santa Barbara on WhatsApp">
         </div>
-        <div class="ifacts reveal" style="--i:3">
-          <div class="ifact">
-            <div class="ifact__t">There's no Anthropic platform for this. The community is the platform.</div>
-          </div>
-        </div>
+        <p class="bigqr__line reveal" style="--i:3">The group chat is where it keeps going.</p>
+        <p class="bigqr__closer reveal" style="--i:4">There's no Anthropic platform for this. The community is the platform.</p>
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="14" data-section="community" data-noteid="community-raffle">
+    <section class="slide" data-slide="15" data-section="community" data-noteid="community-raffle">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Before you go</p>
@@ -492,10 +537,12 @@
       <footer class="slide__footer"><span>Entry = a LinkedIn post tagged #claudeinsantabarbara</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide is-dark anl-cover" data-slide="15" data-section="ai-native" data-noteid="anl-cover">
+    <section class="slide is-dark anl-cover" data-slide="16" data-section="ai-native" data-noteid="anl-cover">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
+        <div class="anl-cover-row">
+        <div class="anl-cover-col">
         <p class="anl-cover__eyebrow reveal" style="--i:0">The main idea</p>
         <h1 class="anl-cover__title reveal" style="--i:1">The AI-Native<br><span class="gp-accent">Ladder.</span></h1>
         <p class="anl-cover__sub reveal" style="--i:3">
@@ -520,12 +567,18 @@
             </p>
           </div>
         </div>
+        </div>
+        <aside class="anl-cred reveal" style="--i:5">
+          <img class="anl-cred__img" src="./assets/img/cherny-tweet.png" alt="Boris Cherny tweet: I talk to engineers at other companies every day and hear the same thing — one person is 10x'ing their output with Claude but the rest of the org hasn't caught up. Watching teams adopt AI, I keep seeing the same 4 steps.">
+          <div class="anl-cred__label">Boris Cherny (@bcherny), creator of Claude Code &middot; 1.2M views</div>
+        </aside>
+        </div>
       </div>
 
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="16" data-section="ai-native" data-noteid="anl-metr">
+    <section class="slide" data-slide="17" data-section="ai-native" data-noteid="anl-metr">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
@@ -554,12 +607,10 @@
       <footer class="slide__footer"><span>Travis Johnson &middot; AuraPath AI</span><span>Kiva Cowork &middot; State Street &middot; 18.07.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="17" data-section="ai-native" data-noteid="anl-ladder">
+    <section class="slide" data-slide="18" data-section="ai-native" data-noteid="anl-ladder">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
-        <div class="anl-ladder-row">
-        <div class="anl-ladder-col">
         <p class="eyebrow reveal" style="--i:0">Five rungs · each one roughly 10× the last</p>
 
         <div class="anl-ladder__head reveal" style="--i:1">
@@ -619,18 +670,12 @@
           </div>
 
         </div>
-        </div>
-        <aside class="anl-cred reveal" style="--i:7">
-          <img class="anl-cred__img" src="./assets/img/cherny-tweet.png" alt="Boris Cherny tweet: I talk to engineers at other companies every day and hear the same thing — one person is 10x'ing their output with Claude but the rest of the org hasn't caught up. Watching teams adopt AI, I keep seeing the same 4 steps.">
-          <div class="anl-cred__label">Boris Cherny (@bcherny), creator of Claude Code &middot; 1.2M views</div>
-        </aside>
-        </div>
       </div>
 
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
 
-    <section class="slide anl-statement" data-slide="18" data-section="ai-native" data-noteid="anl-trap">
+    <section class="slide anl-statement" data-slide="19" data-section="ai-native" data-noteid="anl-trap">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
@@ -647,7 +692,7 @@
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="19" data-section="ai-native" data-noteid="anl-gate">
+    <section class="slide" data-slide="20" data-section="ai-native" data-noteid="anl-gate">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
@@ -693,7 +738,7 @@
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="20" data-section="ai-native" data-noteid="anl-depts">
+    <section class="slide" data-slide="21" data-section="ai-native" data-noteid="anl-depts">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
@@ -755,7 +800,7 @@
       <footer class="slide__footer"><span>Travis Johnson &middot; AuraPath AI</span><span>Kiva Cowork &middot; State Street &middot; 18.07.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="21" data-section="ai-native" data-noteid="anl-questions">
+    <section class="slide" data-slide="22" data-section="ai-native" data-noteid="anl-questions">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
@@ -802,7 +847,7 @@
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="22" data-section="ai-native" data-noteid="anl-heatmap">
+    <section class="slide" data-slide="23" data-section="ai-native" data-noteid="anl-heatmap">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
@@ -870,7 +915,7 @@
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
 
-    <section class="slide is-dark anl-beat" data-slide="23" data-section="ai-native" data-noteid="anl-aurapath">
+    <section class="slide is-dark anl-beat" data-slide="24" data-section="ai-native" data-noteid="anl-aurapath">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
@@ -893,7 +938,7 @@
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="24" data-section="ai-native" data-noteid="backbone-piloted">
+    <section class="slide" data-slide="25" data-section="ai-native" data-noteid="backbone-piloted">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Its real power</p>
@@ -923,7 +968,7 @@
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="25" data-section="demos" data-noteid="demo-block-rules">
+    <section class="slide" data-slide="26" data-section="demos" data-noteid="demo-block-rules">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Community Demos · 1:00–1:45 PM</p>
@@ -939,7 +984,7 @@
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="26" data-section="demos" data-noteid="demoer-roster">
+    <section class="slide" data-slide="27" data-section="demos" data-noteid="demoer-roster">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Meet the builders</p>
@@ -975,7 +1020,7 @@
       <footer class="slide__footer"><span>Every one of them built with Claude Code</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="27" data-section="break" data-noteid="break">
+    <section class="slide" data-slide="28" data-section="break" data-noteid="break">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Break · networking pulse</p>
@@ -988,7 +1033,7 @@
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="28" data-section="fireside" data-noteid="fireside-panelists">
+    <section class="slide" data-slide="29" data-section="fireside" data-noteid="fireside-panelists">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Fireside · 2:05–2:35 PM · Travis Johnson moderates</p>
@@ -1017,7 +1062,7 @@
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide" data-slide="29" data-section="close" data-noteid="close-ctas">
+    <section class="slide" data-slide="30" data-section="close" data-noteid="close-ctas">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Before you go</p>
@@ -1037,7 +1082,7 @@
     </section>
 
     <!-- ═══════════════ Giveaway reminder (assembly-owned) ═══════════════ -->
-    <section class="slide" data-slide="30" data-section="close" data-noteid="giveaway-reminder">
+    <section class="slide" data-slide="31" data-section="close" data-noteid="giveaway-reminder">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">One last thing</p>
@@ -1047,7 +1092,7 @@
       <footer class="slide__footer"><span>Entry = a post tagged #claudeinsantabarbara</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
-    <section class="slide is-dark gp-closing" data-slide="31" data-section="close" data-noteid="closing">
+    <section class="slide is-dark gp-closing" data-slide="32" data-section="close" data-noteid="closing">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="crawlers" aria-hidden="true">
         <svg class="crawler crawler--lg crawler--walk" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="10" class="crawler__body"/><rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/><rect x="2" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="6" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/><rect x="9" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="13" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/></svg>
