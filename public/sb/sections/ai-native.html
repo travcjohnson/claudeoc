@@ -86,9 +86,24 @@
           There are five ways a company can use AI. Almost everyone in this room
           is on the second one — and thinks they're done.
         </p>
-        <p class="anl-cover__src reveal" style="--i:4">
-          Framework: Boris Cherny, “Steps of AI Adoption,” July 2026
-        </p>
+        <div class="anl-cover__source reveal" style="--i:4">
+          <!-- ARTIFACT SLOT — drop Travis's Cherny screenshot in as
+               assets/img/cherny-artifact.png and it fills this frame.
+               Frame stays hidden until the file exists (onerror). -->
+          <figure class="anl-cover__shot">
+            <img src="../assets/img/cherny-artifact.png"
+                 alt="Boris Cherny, Steps of AI Adoption"
+                 onerror="this.closest('.anl-cover__shot').classList.add('is-empty')">
+            <figcaption>Boris Cherny · “Steps of AI Adoption” · July 2026</figcaption>
+          </figure>
+
+          <div class="anl-cover__meta">
+            <p class="anl-cover__src">Framework: Boris Cherny, “Steps of AI Adoption,” July 2026</p>
+            <p class="anl-cover__repo">Slides, links and tools from today:<br>
+              <span class="anl-cover__repourl">github.com/travcjohnson/claude-sb-founders-resources</span>
+            </p>
+          </div>
+        </div>
       </div>
 
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
@@ -103,44 +118,59 @@
         <p class="eyebrow reveal" style="--i:0">Five rungs · each one roughly 10× the last</p>
 
         <div class="anl-ladder__head reveal" style="--i:1">
-          <span>Rung</span><span>The name</span><span>What it looks like</span><span>What blocks you</span>
+          <span>Rung</span><span>What it looks like</span><span>What blocks you</span><span>To climb one rung</span>
         </div>
 
         <div class="anl-ladder">
 
           <div class="anl-rung anl-rung--0 reveal" style="--i:2">
-            <div class="anl-rung__num">0 <span class="anl-rung__agents">0 agents</span></div>
-            <div class="anl-rung__name">Gated</div>
-            <div class="anl-rung__what">“We’re still evaluating it.” Your team uses AI on their phones anyway.</div>
-            <div class="anl-rung__block">Security and legal approvals</div>
+            <div class="anl-rung__id">
+              <div class="anl-rung__num">0 <span class="anl-rung__agents">0 agents</span></div>
+              <div class="anl-rung__name">Gated</div>
+            </div>
+            <div class="anl-rung__what">&ldquo;We&rsquo;re still evaluating it.&rdquo; Your team uses AI on their phones anyway.</div>
+            <div class="anl-rung__block">Legacy security and approval process. No technical voice in the decision.</div>
+            <div class="anl-rung__climb">Get an exec to own it and escalate the blockers. Give security a safe, approved way to say yes.</div>
           </div>
 
           <div class="anl-rung anl-rung--1 reveal" style="--i:3">
-            <div class="anl-rung__num">1 <span class="anl-rung__agents">~1 agent</span></div>
-            <div class="anl-rung__name">Assisted</div>
+            <div class="anl-rung__id">
+              <div class="anl-rung__num">1 <span class="anl-rung__agents">~1 agent</span></div>
+              <div class="anl-rung__name">Assisted</div>
+            </div>
             <div class="anl-rung__what">One person, one chat, one task. You watch every word it writes.</div>
-            <div class="anl-rung__block">Your own attention</div>
+            <div class="anl-rung__block">Your own attention. You feel you must read everything.</div>
+            <div class="anl-rung__climb">Build a check the machine runs itself &mdash; and trust it. Then run more than one agent at a time.</div>
           </div>
 
           <div class="anl-rung anl-rung--2 reveal" style="--i:4">
-            <div class="anl-rung__num">2 <span class="anl-rung__agents">~10 agents</span></div>
-            <div class="anl-rung__name">Parallel</div>
-            <div class="anl-rung__what">One person runs 5–10 agents at once. The machine checks the work before you see it.</div>
-            <div class="anl-rung__block">Review. Six streams to read</div>
+            <div class="anl-rung__id">
+              <div class="anl-rung__num">2 <span class="anl-rung__agents">~10 agents</span></div>
+              <div class="anl-rung__name">Parallel</div>
+            </div>
+            <div class="anl-rung__what">One person runs 5&ndash;10 agents at once. The machine checks the work before you see it.</div>
+            <div class="anl-rung__block">Review. You&rsquo;re now reading six streams of output.</div>
+            <div class="anl-rung__climb">Give it your context &mdash; docs, tickets, wikis. Turn repeat work into standing routines.</div>
           </div>
 
           <div class="anl-rung anl-rung--3 reveal" style="--i:5">
-            <div class="anl-rung__num">3 <span class="anl-rung__agents">~100 agents</span></div>
-            <div class="anl-rung__name">Supervised autonomy</div>
+            <div class="anl-rung__id">
+              <div class="anl-rung__num">3 <span class="anl-rung__agents">~100 agents</span></div>
+              <div class="anl-rung__name">Supervised autonomy</div>
+            </div>
             <div class="anl-rung__what">Nobody starts the work. It starts itself. Your people handle what breaks.</div>
-            <div class="anl-rung__block">Trust in the loop</div>
+            <div class="anl-rung__block">Trust in the loop, and your team&rsquo;s decision speed.</div>
+            <div class="anl-rung__climb">Automate a whole domain end to end, not single tasks.</div>
           </div>
 
           <div class="anl-rung anl-rung--4 reveal" style="--i:6">
-            <div class="anl-rung__num">4 <span class="anl-rung__agents">~1,000+ agents</span></div>
-            <div class="anl-rung__name">AI-native</div>
+            <div class="anl-rung__id">
+              <div class="anl-rung__num">4 <span class="anl-rung__agents">~1,000+ agents</span></div>
+              <div class="anl-rung__name">AI-native</div>
+            </div>
             <div class="anl-rung__what">You state an outcome. A fleet runs it. You monitor by exception.</div>
-            <div class="anl-rung__block">Knowing what’s worth doing</div>
+            <div class="anl-rung__block">Finding the work worth doing, and the guardrails for each kind.</div>
+            <div class="anl-rung__climb anl-rung__climb--top">You&rsquo;re at the top. Now widen it.</div>
           </div>
 
         </div>
@@ -222,7 +252,7 @@
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
-        <p class="eyebrow reveal" style="--i:0">Same shape everywhere · here’s rung 2 in three departments</p>
+        <h2 class="anl-depts__title reveal" style="--i:0">Rung <span class="gp-accent">2</span> looks like this in every department.</h2>
 
         <div class="anl-depts">
 
@@ -430,11 +460,14 @@
           This is what we do at AuraPath.<br>
           <em>Grade the org. Climb it together.</em>
         </h2>
-        <p class="anl-beat__cta reveal" style="--i:2">
-          Curious where your departments land?<br>
-          <span class="anl-beat__url">aurapathai.com/assessment</span>
-        </p>
-        <p class="anl-beat__aside reveal" style="--i:3">Or grab me at the break →</p>
+        <div class="anl-beat__cta reveal" style="--i:2">
+          <img class="anl-beat__qr" src="../assets/img/qr-assessment.png" alt="QR code linking to aurapathai.com/assessment">
+          <div class="anl-beat__qrtext">
+            <p class="anl-beat__qrlead">See how AI-native you are.</p>
+            <span class="anl-beat__url">aurapathai.com/assessment</span>
+          </div>
+        </div>
+
       </div>
 
       <img class="anl-beat__mark reveal" style="--i:3" src="../assets/img/aurapath-logo.png" alt="AuraPath AI">

@@ -78,6 +78,13 @@
   .panel__role { font-family: var(--font-mono); font-size: 20px; color: var(--accent-clay); letter-spacing: 0.04em; }
   .panel__bio { font-size: 30px; color: var(--ink-muted); line-height: 1.5; margin-top: 4px; }
 
+  /* ═══ Scoped: Close CTAs (two real, decode-verified QRs) ═══ */
+  .qrpair { display: flex; gap: var(--sp-6); margin-top: var(--sp-6); max-width: 1700px; }
+  .qrpair__card { flex: 1; display: flex; align-items: center; gap: var(--sp-4); background: var(--neutral); border: 1px solid var(--border-color-light); border-radius: 20px; padding: var(--sp-5); }
+  .qrpair__card img { width: 140px; height: 140px; border-radius: 10px; background: #fff; padding: 8px; flex-shrink: 0; }
+  .qrpair__t { font-size: 28px; font-weight: var(--fw-bold); color: var(--ink); letter-spacing: -0.01em; line-height: 1.2; }
+  .qrpair__d { font-size: 20px; color: var(--ink-muted); line-height: 1.4; margin-top: 8px; }
+
   /* ═══ Scoped: Break slide ═══ */
   .breakwrap { display: flex; flex-direction: column; align-items: flex-start; gap: var(--sp-4); margin-top: var(--sp-5); }
 
@@ -159,17 +166,17 @@
     <!-- I2 · Welcome + arc of the day -->
     <section class="slide" data-slide="4" data-section="intros" data-noteid="welcome">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
-      <div class="gp-body" style="justify-content:flex-start; padding-top:100px">
-        <p class="eyebrow reveal" style="--i:0">Welcome · 12:00–4:00 PM</p>
-        <h2 class="title-l clip-reveal">Program runs to <span class="gp-accent">3:10.</span> Stay till 4.</h2>
-        <div class="cpts reveal" style="--i:2">
+      <div class="gp-body" style="justify-content:flex-start; padding-top:70px">
+        <p class="eyebrow reveal" style="--i:0">Welcome · doors 12:00 · start 12:30</p>
+        <h2 class="title-m clip-reveal">Program runs to <span class="gp-accent">3:00.</span> Afterparty after.</h2>
+        <div class="cpts reveal" style="--i:2; gap:14px; margin-top:24px">
           <div class="cpt"><span class="cpt__n">12:40</span><span class="cpt__t">Claude Community — who's in this room, and what it's for.</span></div>
           <div class="cpt"><span class="cpt__n">12:50</span><span class="cpt__t">Claude Code for Founders — what actually ships when you build this way.</span></div>
           <div class="cpt"><span class="cpt__n">1:00</span><span class="cpt__t">Three founders demo what they built. Live, no slides about it.</span></div>
           <div class="cpt"><span class="cpt__n">2:05</span><span class="cpt__t">Fireside with two people who fund what you build — Travis moderates.</span></div>
-          <div class="cpt"><span class="cpt__n">2:35</span><span class="cpt__t">Close, then open networking straight through <b>4:00</b>.</span></div>
+          <div class="cpt"><span class="cpt__n">2:35</span><span class="cpt__t">Close, raffle, thank yous.</span></div>
+          <div class="cpt"><span class="cpt__n">3:00</span><span class="cpt__t">Afterparty — details to come.</span></div>
         </div>
-        <p class="gp-lead reveal" style="--i:6; margin-top:16px; font-size:22px">Made possible by <strong class="gp-accent">Mercury</strong> — banking built for founders.</p>
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
@@ -375,6 +382,15 @@
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+    <!-- [ASSEMBLY FLAG] sections/backbone.html BB3 now replaces this video slide with a demo
+         "gallery" — but its 4 links all point to confclaude.procab.ch (a Geneva consultant's
+         site from the original conference this deck was ported from), footer-credited to
+         "Sacha Blaise · Procab Studio." Not our content, not guaranteed to stay up, and
+         clicking out mid-presentation is a real risk. T3 has Travis's authorization for this
+         swap per the orchestrator, so NOT overriding it here — but holding the known-good,
+         on-brand, own-content video slide above as-is until Travis explicitly confirms the
+         gallery swap after seeing this flag. -->
+
 
     <section class="slide" data-slide="17" data-section="ai-native" data-noteid="anl-depts">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
@@ -538,16 +554,23 @@
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Before you go</p>
-        <h2 class="title-l clip-reveal">Two things to <span class="gp-accent">take with you.</span></h2>
-        <div class="ccards reveal" style="--i:2; margin-top:var(--sp-6)">
-          <div class="ccard" style="background:var(--neutral);border-color:var(--border-color-light)"><div class="ccard__t" style="color:var(--ink)">Grab the starter kit</div><div class="ccard__d" style="color:var(--ink-muted)">The same CLAUDE.md / plan.md / todo.md scaffold used to build today's demos. Link on the next slide.</div></div>
-          <div class="ccard" style="background:var(--neutral);border-color:var(--border-color-light)"><div class="ccard__t" style="color:var(--ink)">Submit a demo</div><div class="ccard__d" style="color:var(--ink-muted)">Next event's demo slots come from this room. Ship something, get on stage.</div></div>
+        <h2 class="title-l clip-reveal">Two things, <span class="gp-accent">both real.</span></h2>
+        <div class="qrpair reveal" style="--i:2">
+          <div class="qrpair__card">
+            <img src="./assets/img/qr-resources.png" alt="QR code to the Claude Code for Founders SB resources repo on GitHub">
+            <div><div class="qrpair__t">The resources</div><div class="qrpair__d">Every deck, every demo, the starter kit — the real repo.<br><strong class="gp-accent">github.com/travcjohnson/<br>claude-sb-founders-resources</strong></div></div>
+          </div>
+          <div class="qrpair__card">
+            <img src="./assets/img/qr-assessment.png" alt="QR code to the AuraPath AI readiness assessment">
+            <div><div class="qrpair__t">Take the AI readiness assessment</div><div class="qrpair__d">I take it myself.<br><strong class="gp-accent">aurapathai.com/assessment</strong></div></div>
+          </div>
         </div>
-        <p class="gp-lead reveal" style="--i:5; margin-top:32px">Thank you to <strong class="gp-accent">Mercury</strong> for backing this room.</p>
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
+    <!-- [SPEAKER CUE] Travis does the raffle draw NOW, on this slide — search
+         #claudeinsantabarbara, pull the winner, then move to Thank you. -->
     <section class="slide is-dark gp-closing" data-slide="27" data-section="close" data-noteid="closing">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="crawlers" aria-hidden="true">
@@ -557,7 +580,7 @@
       </div>
       <canvas class="gp-matrix" aria-hidden="true"></canvas>
       <div class="gp-closing__inner">
-        <h2 class="gp-closing__quote clip-reveal">What are you going to<br><span class="gp-accent">ship this weekend&#8239;?</span></h2>
+        <h2 class="gp-closing__quote clip-reveal">What do you<br><span class="gp-accent">want to ship&#8239;?</span></h2>
         <div class="gp-closing__foot">
           <div class="gp-closing__sign reveal" style="--i:2">
             <strong>Travis Johnson</strong> &amp; <strong>Casey Barr</strong><br>
@@ -566,7 +589,7 @@
           </div>
           <div class="gp-qr reveal" style="--i:3">
             <img src="./assets/img/qr-sb.png" alt="QR code to claudeoc.com/sb">
-            <span class="gp-qr__label">The starter kit, the deck, the demo submission form.<br><strong class="gp-accent">claudeoc.com/sb</strong> · <strong class="gp-accent">luma.com/claude-wx2j</strong></span>
+            <span class="gp-qr__label">This deck, live.<br><strong class="gp-accent">claudeoc.com/sb</strong></span>
           </div>
           <div class="gp-closing__merci reveal" style="--i:4">Thank you.</div>
         </div>

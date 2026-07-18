@@ -86,7 +86,7 @@
 
 .anl-rung {
   display: grid;
-  grid-template-columns: 210px 300px 1fr 380px;
+  grid-template-columns: 330px 1fr 330px 430px;
   align-items: center;
   gap: var(--sp-3);
   padding: 16px var(--sp-4);
@@ -140,8 +140,22 @@
   white-space: nowrap;
 }
 
+.anl-rung__id { display: flex; flex-direction: column; gap: 4px; }
+
+.anl-rung__climb {
+  font-size: 25px;
+  line-height: 1.28;
+  color: var(--accent-clay);
+  font-weight: var(--fw-medium);
+  border-left: 2px solid var(--accent-clay);
+  padding-left: var(--sp-3);
+}
+.anl-rung__climb--top { color: var(--ink-muted); border-left-color: var(--anl-hairline); font-weight: var(--fw-regular); }
+.anl-rung--0 .anl-rung__climb { color: #F0A88C; border-left-color: #F0A88C; }
+.anl-rung--4 .anl-rung__climb { color: rgba(255,255,255,.85); border-left-color: rgba(255,255,255,.4); }
+
 .anl-rung__name {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: var(--fw-extrabold);
   letter-spacing: var(--ls-tight);
   line-height: 1.12;
@@ -149,13 +163,13 @@
 }
 
 .anl-rung__what {
-  font-size: 28px;
+  font-size: 26px;
   line-height: 1.28;
   color: var(--ink);
 }
 
 .anl-rung__block {
-  font-size: 28px;
+  font-size: 25px;
   line-height: 1.28;
   color: var(--ink-muted);
   border-left: 1px solid var(--anl-hairline);
@@ -164,7 +178,7 @@
 
 .anl-ladder__head {
   display: grid;
-  grid-template-columns: 210px 300px 1fr 380px;
+  grid-template-columns: 330px 1fr 330px 430px;
   gap: var(--sp-3);
   padding: 0 var(--sp-4) 8px calc(var(--sp-4) + 1px);
   margin-bottom: var(--sp-1);
@@ -469,16 +483,34 @@
 }
 
 .anl-beat__cta {
-  font-size: var(--fs-body-xl);
-  color: var(--ink-muted-dark);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-5);
   margin-top: var(--sp-6);
-  line-height: 1.4;
+}
+
+.anl-beat__qr {
+  width: 260px;
+  height: 260px;
+  border-radius: 14px;
+  background: #FFFFFF;
+  padding: 14px;
+  flex: none;
+}
+
+.anl-beat__qrtext { display: flex; flex-direction: column; gap: var(--sp-3); }
+
+.anl-beat__qrlead {
+  font-size: 46px;
+  font-weight: var(--fw-bold);
+  line-height: 1.15;
+  letter-spacing: var(--ls-tight);
+  color: var(--ink-inverse);
 }
 
 /* Verified live 18.07.2026 — aurapathai.com/assessment returns 200. */
 .anl-beat__url {
   display: inline-block;
-  margin-top: var(--sp-2);
   font-family: var(--font-mono);
   font-size: 38px;
   letter-spacing: 0.01em;
@@ -503,3 +535,66 @@
 
 /* The mark ships as dark ink — invert it so it reads on the dark slide. */
 .slide.is-dark .anl-beat__mark { filter: invert(1) brightness(1.6); }
+
+
+/* S17 — eyebrow removed; the headline now carries the tie-back to the ladder. */
+.anl-depts__title {
+  font-size: 56px;
+  font-weight: var(--fw-extrabold);
+  line-height: 1.1;
+  letter-spacing: var(--ls-tight);
+  color: var(--ink);
+  max-width: 1500px;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   S12 — source artifact slot + resources repo
+   The frame self-hides until cherny-artifact.png is dropped in,
+   so the deck never shows a broken image on stage.
+   ═══════════════════════════════════════════════════════════════ */
+
+.anl-cover__source {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sp-6);
+  margin-top: var(--sp-5);
+}
+
+.anl-cover__shot {
+  margin: 0;
+  flex: none;
+  width: 420px;
+}
+
+.anl-cover__shot.is-empty { display: none; }
+
+.anl-cover__shot img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: #FFFFFF;
+  display: block;
+}
+
+.anl-cover__shot figcaption {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--ink-muted-dark);
+  margin-top: var(--sp-2);
+  letter-spacing: 0.02em;
+}
+
+.anl-cover__meta { display: flex; flex-direction: column; gap: var(--sp-4); }
+
+.anl-cover__repo {
+  font-size: 28px;
+  line-height: 1.35;
+  color: var(--ink-muted-dark);
+}
+
+.anl-cover__repourl {
+  font-family: var(--font-mono);
+  font-size: 26px;
+  color: var(--accent-clay);
+  letter-spacing: 0.01em;
+}

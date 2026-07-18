@@ -67,6 +67,44 @@
   .cshot img { width: 100%; height: 270px; object-fit: cover; display: block; }
   .cshot__cap { font-size: 34px; font-weight: var(--fw-bold); color: var(--ink); padding: 18px 20px 6px; line-height: 1.25; }
   .cshot__sub { font-size: 28px; color: var(--ink); padding: 0 20px 20px; line-height: 1.35; }
+
+  /* ——— Impact Lab: browser-chrome capture + facts ——— */
+  .isplit { display: grid; grid-template-columns: 1.15fr 1fr; gap: var(--sp-6); align-items: start; margin-top: var(--sp-5); }
+  .isplit .shotframe__img { height: 560px; object-position: top center; }
+  .isplit .shotframe__url { font-size: 20px; }
+  .ifacts { display: flex; flex-direction: column; gap: var(--sp-4); }
+  .ifact { border-bottom: 1px solid var(--neutral-2); padding-bottom: var(--sp-4); }
+  .ifact:last-child { border-bottom: none; }
+  .ifact__n { font-size: 68px; font-weight: var(--fw-extrabold); color: var(--ink); line-height: 1; letter-spacing: -0.03em; }
+  .ifact__t { font-size: 28px; color: var(--ink); line-height: 1.35; margin-top: 10px; }
+
+  /* ——— city card grid (official event art) ——— */
+  .icities { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); margin-top: var(--sp-5); }
+  .icity { border: 1px solid var(--neutral-2); border-radius: 10px; overflow: hidden; background: var(--neutral); }
+  .icity img { display: block; width: 100%; height: 190px; object-fit: cover; }
+  .icity__n { font-size: 28px; font-weight: var(--fw-bold); color: var(--ink); padding: 14px 16px 16px; }
+
+  /* ——— stay-connected CTA ——— */
+  .ctarow { display: grid; grid-template-columns: 420px 1fr; gap: var(--sp-7); align-items: center; margin-top: var(--sp-5); }
+  .ctaqr img { display: block; width: 380px; height: 380px; border: 1px solid var(--neutral-2); border-radius: 10px; background: #fff; padding: 14px; }
+  .ctaqr__l { font-size: 28px; font-weight: var(--fw-bold); color: var(--ink); margin-top: 18px; line-height: 1.3; }
+  .slot { display: inline-block; font-family: var(--font-mono); font-size: 24px; color: var(--accent-bright);
+          border: 1px dashed var(--accent-bright); border-radius: 6px; padding: 4px 12px; }
+
+  /* ——— slide 1: photos + stats ——— */
+  .whowrap { margin-top: var(--sp-4); }
+  .whopics { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); max-width: 1560px; }
+  .whopic { border-radius: 10px; overflow: hidden; border: 1px solid var(--neutral-2); background: var(--neutral); }
+  .whopic img { display: block; width: 100%; height: 280px; object-fit: cover; }
+  .whowrap .cstats { margin-top: var(--sp-4); gap: var(--sp-8); }
+  .whowrap .cstat__n { font-size: 84px; }
+
+  /* ——— 4-up card grid ——— */
+  .ccards--4 { grid-template-columns: repeat(4, 1fr); }
+
+  /* ——— conversation slide photo strip ——— */
+  .convpic { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); margin-top: var(--sp-4); max-width: 1560px; }
+  .convpic img { display: block; width: 100%; height: 210px; object-fit: cover; border-radius: 10px; border: 1px solid var(--neutral-2); }
 </style>
 </head>
 <body>
@@ -96,7 +134,7 @@
   <button class="nav-bar__btn" data-nav="prev" aria-label="Previous slide" title="Previous slide (←)">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
   </button>
-  <button class="nav-bar__counter" data-nav="jump" aria-label="Go to a slide" title="Go to a slide (G then no.)">1&nbsp;/&nbsp;7</button>
+  <button class="nav-bar__counter" data-nav="jump" aria-label="Go to a slide" title="Go to a slide (G then no.)">1&nbsp;/&nbsp;10</button>
   <button class="nav-bar__btn" data-nav="next" aria-label="Next slide" title="Next slide (→ · Space · click)">
     <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
   </button>
@@ -114,23 +152,17 @@
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">What you're part of now</p>
-        <h2 class="title-l clip-reveal">People building real things<br>with AI.<br><span class="gp-accent">Meeting in person to show<br>each other what worked.</span></h2>
-        <div class="cstats reveal" style="--i:3">
-          <div class="cstat">
-            <div class="cstat__n">4</div>
-            <div class="cstat__l">events hosted</div>
+        <h2 class="title-m clip-reveal">People building real things with AI.<br><span class="gp-accent">Meeting in person to show each other what worked.</span></h2>
+        <div class="whowrap reveal" style="--i:2">
+          <div class="whopics">
+            <figure class="whopic"><img src="../assets/img/community/oc-travis-presenting-packed-room.jpg" alt="Travis presenting to a packed room of attendees at laptops"></figure>
+            <figure class="whopic"><img src="../assets/img/community/oc-travis-coaching-attendee.jpg" alt="Travis coaching an attendee over their laptop"></figure>
+            <figure class="whopic"><img src="../assets/img/community/oc-attendees-collaborating-laptops.jpg" alt="Attendees collaborating at laptops, one pointing at another's screen"></figure>
           </div>
-          <div class="cstat">
-            <div class="cstat__n">960</div>
-            <div class="cstat__l">registrations</div>
-          </div>
-          <div class="cstat">
-            <div class="cstat__n">875</div>
-            <div class="cstat__l">unique people</div>
-          </div>
-          <div class="cstat">
-            <div class="cstat__n">680</div>
-            <div class="cstat__l">companies</div>
+          <div class="cstats">
+            <div class="cstat"><div class="cstat__n">960</div><div class="cstat__l">registrations</div></div>
+            <div class="cstat"><div class="cstat__n">875</div><div class="cstat__l">unique people</div></div>
+            <div class="cstat"><div class="cstat__n">680</div><div class="cstat__l">companies</div></div>
           </div>
         </div>
       </div>
@@ -151,7 +183,7 @@
           <div class="cbar"><span class="cbar__l">VP and director</span><span class="cbar__track"><span class="cbar__fill" style="--i:4; width:8.2%"></span></span><span class="cbar__v">8.2%</span></div>
         </div>
         <div class="cpts reveal" style="--i:4">
-          <div class="cpt"><span class="cpt__n">01</span><span class="cpt__t">Amazon, Google, Microsoft, Meta, AWS, Salesforce, Accenture — <b>680 companies</b> across four events.</span></div>
+          <div class="cpt"><span class="cpt__n">01</span><span class="cpt__t">Amazon, Google, Microsoft, Meta, AWS, Salesforce, Accenture — <b>680 companies</b> represented.</span></div>
         </div>
       </div>
       <footer class="slide__footer"><span>Source: stats.json composition.tiers · n=729 with known seniority</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
@@ -161,24 +193,28 @@
     <section class="slide" data-slide="3" data-noteid="community-global">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
-        <p class="eyebrow reveal" style="--i:0">Bigger than this room</p>
-        <h2 class="title-m clip-reveal">33 countries. 67 cities.<br><span class="gp-accent">Each one shaped by its people.</span></h2>
-        <div class="ccards reveal" style="--i:2">
+        <p class="eyebrow reveal" style="--i:0">Ambassadors worldwide</p>
+        <h2 class="title-m clip-reveal">33 countries. 67 cities. <span class="gp-accent">Real people running them.</span></h2>
+        <div class="ccards ccards--4 reveal" style="--i:2">
           <div class="ccard">
             <div class="ccard__t">Anchorage</div>
-            <div class="ccard__d">Kyle and Blythe Easterly run "Anchorage | Claude Conversation" on Anthropic's official calendar. This is not a coastal-tech-hub thing.</div>
+            <div class="ccard__d">Kyle and Blythe Easterly run "Anchorage | Claude Conversation" on the official calendar.</div>
           </div>
           <div class="ccard">
             <div class="ccard__t">Milan</div>
-            <div class="ccard__d">Italy's first official Claude Community Event, hosted by Alexio Cassani and Matteo Siciliani. Registration closed out.</div>
+            <div class="ccard__d">Alexio Cassani and Matteo Siciliani hosted Italy's first official Claude Community Event.</div>
           </div>
-          <div class="ccard ccard--solid">
-            <div class="ccard__t">Santa Barbara</div>
-            <div class="ccard__d">Today. Same program, our shape: founders showing founders what they shipped.</div>
+          <div class="ccard">
+            <div class="ccard__t">Melbourne</div>
+            <div class="ccard__d">Rye Smith hosts the Melbourne Claude Impact Lab, building on Australian city data.</div>
+          </div>
+          <div class="ccard">
+            <div class="ccard__t">Sydney</div>
+            <div class="ccard__d">Dominik Fretz runs Claude for Everyone, bringing in people who don't code yet.</div>
           </div>
         </div>
       </div>
-      <footer class="slide__footer"><span>Source: claude.com/community · luma.com/claudecommunity</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+      <footer class="slide__footer"><span>Source: claude.com/community · luma.com/claudecommunity host listings</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
     <!-- ═══════════════ C3 · Global photo wall ═══════════════ -->
@@ -213,8 +249,49 @@
       <footer class="slide__footer"><span>Claude communities worldwide · photos from public event recaps</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
+    <!-- ═══════════════ C5 · Impact Lab ═══════════════ -->
+    <section class="slide" data-slide="5" data-noteid="community-impact-lab">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Impact Lab</p>
+        <h2 class="title-m clip-reveal">The community <span class="gp-accent">builds for the city.</span></h2>
+        <div class="isplit reveal" style="--i:2">
+          <div class="shotframe">
+            <div class="shotframe__bar"><span class="shotframe__dot"></span><span class="shotframe__dot"></span><span class="shotframe__dot"></span><span class="shotframe__url">luma.com/6ok9h92y</span></div>
+            <img class="shotframe__img" src="../assets/img/community/impact-lab-san-diego-luma-page.png" alt="Luma event page for San Diego Claude Impact Lab, hosted by Max Krueger, March 7">
+          </div>
+          <div class="ifacts">
+            <div class="ifact"><div class="ifact__n">27</div><div class="ifact__t">teams built civic tools in one Saturday, on real City of San Diego open data.</div></div>
+            <div class="ifact"><div class="ifact__n">1st</div><div class="ifact__t">Anthropic's first Claude Impact Lab. March 7, hosted by Max Krueger.</div></div>
+            <div class="ifact"><div class="ifact__n">1.4M</div><div class="ifact__t">residents whose city data was locked in PDFs and clunky portals.</div></div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Source: luma.com/6ok9h92y · Claude Community Events</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ C6 · Impact Lab cities ═══════════════ -->
+    <section class="slide" data-slide="6" data-noteid="community-impact-cities">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Where it went next</p>
+        <h2 class="title-m clip-reveal">San Diego was <span class="gp-accent">the first. Not the last.</span></h2>
+        <div class="icities reveal" style="--i:2">
+          <figure class="icity"><img src="../assets/img/community/impact-lab-san-diego-event-card.jpg" alt="Claude Impact Lab San Diego event card"><figcaption class="icity__n">San Diego</figcaption></figure>
+          <figure class="icity"><img src="../assets/img/community/impact-lab-mexico-city-event-card.jpg" alt="Claude Impact Lab Mexico City event card"><figcaption class="icity__n">Mexico City</figcaption></figure>
+          <figure class="icity"><img src="../assets/img/community/impact-lab-miami-event-card.jpg" alt="Claude Impact Lab Miami event card"><figcaption class="icity__n">Miami</figcaption></figure>
+          <figure class="icity"><img src="../assets/img/community/impact-lab-melbourne-event-card.jpg" alt="Claude Impact Lab Melbourne event card"><figcaption class="icity__n">Melbourne</figcaption></figure>
+          <figure class="icity"><img src="../assets/img/community/impact-lab-mumbai-event-card.jpg" alt="Claude Impact Lab Mumbai event card"><figcaption class="icity__n">Mumbai</figcaption></figure>
+          <figure class="icity"><img src="../assets/img/community/impact-lab-rio-de-janeiro-event-card.jpg" alt="Claude Impact Lab Rio de Janeiro event card"><figcaption class="icity__n">Rio de Janeiro</figcaption></figure>
+          <figure class="icity"><img src="../assets/img/community/impact-lab-santiago-event-card.jpg" alt="Claude Impact Lab Santiago event card"><figcaption class="icity__n">Santiago</figcaption></figure>
+          <figure class="icity"><img src="../assets/img/community/impact-claude-community-calendar-cover.jpg" alt="Claude Community Events calendar cover"><figcaption class="icity__n">Santa Barbara?</figcaption></figure>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Official event art · luma.com/claudecommunity</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+    </section>
+
     <!-- ═══════════════ C4 · Conversation ═══════════════ -->
-    <section class="slide" data-slide="5" data-noteid="community-conversation">
+    <section class="slide" data-slide="7" data-noteid="community-conversation">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">After today</p>
@@ -233,12 +310,17 @@
             <div class="ccard__d">Next event's demo slots come from this room. If you ship something, you're the one on stage.</div>
           </div>
         </div>
+        <div class="convpic reveal" style="--i:3">
+          <img src="../assets/img/community/oc-travis-live-demo-claude-code.jpg" alt="Travis running a live Claude Code demo with a deploy list on screen">
+          <img src="../assets/img/community/oc-workshop-room-wide.jpg" alt="Wide view of a full workshop room, attendees at laptops">
+          <img src="../assets/img/community/oc-attendee-building-closeup.jpg" alt="An attendee building on a laptop, focused">
+        </div>
       </div>
       <footer class="slide__footer"><span>Source: stats.json trajectory.repeat_registrants — 81 repeat (9.3%)</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
     <!-- ═══════════════ C5 · Hashtags ═══════════════ -->
-    <section class="slide" data-slide="6" data-noteid="community-hashtag">
+    <section class="slide" data-slide="8" data-noteid="community-hashtag">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Post what you built</p>
@@ -249,23 +331,50 @@
     </section>
 
     <!-- ═══════════════ C6 · Raffle ═══════════════ -->
-    <section class="slide" data-slide="7" data-noteid="community-raffle">
+    <!-- ═══════════════ C9 · Stay connected ═══════════════ -->
+    <section class="slide" data-slide="9" data-noteid="community-stay-connected">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Don't let this be a one-off</p>
+        <h2 class="title-m clip-reveal">Stay connected <span class="gp-accent">after today.</span></h2>
+        <div class="ctarow reveal" style="--i:2">
+          <div class="ctaqr">
+            <img src="../assets/img/community/whatsapp-qr.png" alt="QR code to join the Santa Barbara Claude community WhatsApp group">
+            <div class="ctaqr__l">Scan to join the WhatsApp group</div>
+          </div>
+          <div class="ifacts">
+            <div class="ifact">
+              <div class="ifact__t"><b>The group chat is where it keeps going.</b> Questions, builds, and the next event get posted here first.</div>
+            </div>
+            <div class="ifact">
+              <div class="ifact__t"><b>Email signup:</b> <span class="slot">[ stay-connected form link — pending from T45-Stage ]</span></div>
+            </div>
+            <div class="ifact">
+              <div class="ifact__t">There's no Anthropic platform for this. The community is the platform.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+    </section>
+
+    <section class="slide" data-slide="10" data-noteid="community-raffle">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Before you go</p>
-        <h2 class="title-l clip-reveal">We're raffling a <span class="gp-accent">Claude Code hoodie.</span></h2>
+        <h2 class="title-l clip-reveal">We're raffling a <span class="gp-accent">Keep Thinking hat.</span></h2>
         <div class="ccards reveal" style="--i:2">
           <div class="ccard ccard--solid">
             <div class="ccard__t">Post with #claudeinsantabarbara</div>
-            <div class="ccard__d">That tag is the entry. We search it to draw the winner, so if it's not in your post you're not in the raffle.</div>
+            <div class="ccard__d">That tag is the entry. No tag, no entry.</div>
           </div>
           <div class="ccard">
             <div class="ccard__t">On LinkedIn</div>
-            <div class="ccard__d">Post about today. Add #claudecommunity too if you want the global community to find you.</div>
+            <div class="ccard__d">Post about what you saw or built today. Add #claudecommunity if you want the global community to find you.</div>
           </div>
           <div class="ccard">
-            <div class="ccard__t">Drawn later today</div>
-            <div class="ccard__d">We'll pull the winner before the room clears. Stick around.</div>
+            <div class="ccard__t">Claude picks the winner</div>
+            <div class="ccard__d">At the end of the session Claude reads every tagged post and draws. Exclusive merch, not for sale.</div>
           </div>
         </div>
       </div>

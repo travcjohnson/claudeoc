@@ -359,6 +359,18 @@ body.timer-hidden .deck-timer {
   color: rgba(245, 241, 232, 0.65);
 }
 
+.deck-timer__progress.is-late {
+  color: #D97757;
+  font-weight: 700;
+}
+
+.deck-timer__clocklabel {
+  color: rgba(245, 241, 232, 0.35);
+  text-transform: uppercase;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+}
+
 .deck-timer__bar-track {
   width: 44px;
   height: 3px;

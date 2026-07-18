@@ -82,22 +82,21 @@
 
   /* ——— In-deck timer (T to toggle) ———
      Reads data-section on the active slide, matches it against SCHEDULE
-     (the locked run-of-show budgets, in seconds), and shows wall-clock
-     time-of-day + elapsed-in-section vs. that section's budget. */
+     (the locked run-of-show, hard-start 12:30), and shows planned
+     START–FINISH clock time for that section next to the live CURRENT
+     time, so on-time/behind reads at a glance instead of a bare stopwatch. */
 
   const SCHEDULE = [
-    { key: 'intros',    label: 'Intros',     budget: 600  },
-    { key: 'community', label: 'Community',  budget: 600  },
-    { key: 'ai-native', label: 'AI-Native',  budget: 780  },
-    { key: 'demos',     label: 'Demos',      budget: 2700 },
-    { key: 'break',     label: 'Break',      budget: 1200 },
-    { key: 'fireside',  label: 'Fireside',   budget: 1800 },
-    { key: 'close',     label: 'Close',      budget: 2100 }
+    { key: 'intros',    label: 'Intros',     start: [12, 30], end: [12, 40] },
+    { key: 'community', label: 'Community',  start: [12, 40], end: [12, 50] },
+    { key: 'ai-native', label: 'AI-Native',  start: [12, 50], end: [13, 0]  },
+    { key: 'demos',     label: 'Demos',      start: [13, 0],  end: [13, 45] },
+    { key: 'break',     label: 'Break',      start: [13, 45], end: [14, 5]  },
+    { key: 'fireside',  label: 'Fireside',   start: [14, 5],  end: [14, 35] },
+    { key: 'close',     label: 'Close',      start: [14, 35], end: [15, 0]  }
   ];
 
   let timerVisible = true;
-  let timerSectionKey = null;
-  let timerSectionStart = null;
   let timerInterval = null;
 
   function pad2(n) { return n < 10 ? '0' + n : String(n); }
@@ -110,9 +109,18 @@
     return h + ':' + pad2(m) + ' ' + ampm;
   }
 
-  function formatMMSS(totalSec) {
-    const sec = Math.max(0, Math.floor(totalSec));
-    return Math.floor(sec / 60) + ':' + pad2(sec % 60);
+  function formatHM(hm) {
+    let h = hm[0];
+    const m = hm[1];
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12; if (h === 0) h = 12;
+    return m === 0 ? h + ampm : h + ':' + pad2(m) + ampm;
+  }
+
+  function hmToTodayDate(hm) {
+    const d = new Date();
+    d.setHours(hm[0], hm[1], 0, 0);
+    return d;
   }
 
   function currentSchedule() {
@@ -138,25 +146,27 @@
     const sched = currentSchedule();
 
     if (!sched) {
-      timerSectionKey = null;
       if (sectionEl) sectionEl.textContent = '—';
       if (progEl) progEl.textContent = '';
-      if (barEl) barEl.style.width = '0%';
+      if (barEl) { barEl.style.width = '0%'; barEl.classList.remove('is-over'); }
       return;
     }
 
-    if (sched.key !== timerSectionKey) {
-      timerSectionKey = sched.key;
-      timerSectionStart = now.getTime();
-    }
+    const startD = hmToTodayDate(sched.start);
+    const endD = hmToTodayDate(sched.end);
+    const totalSec = (endD.getTime() - startD.getTime()) / 1000;
+    const elapsedSec = (now.getTime() - startD.getTime()) / 1000;
+    const isLate = now.getTime() > endD.getTime();
 
-    const elapsedSec = (now.getTime() - timerSectionStart) / 1000;
     if (sectionEl) sectionEl.textContent = sched.label;
-    if (progEl) progEl.textContent = formatMMSS(elapsedSec) + ' / ' + formatMMSS(sched.budget);
+    if (progEl) {
+      progEl.textContent = formatHM(sched.start) + '–' + formatHM(sched.end);
+      progEl.classList.toggle('is-late', isLate);
+    }
     if (barEl) {
-      const pct = Math.min(100, (elapsedSec / sched.budget) * 100);
+      const pct = Math.max(0, Math.min(100, (elapsedSec / totalSec) * 100));
       barEl.style.width = pct + '%';
-      barEl.classList.toggle('is-over', elapsedSec > sched.budget);
+      barEl.classList.toggle('is-over', isLate);
     }
   }
 
@@ -171,10 +181,11 @@
     el.id = 'deck-timer';
     el.className = 'deck-timer';
     el.innerHTML =
-      '<span class="deck-timer__clock"></span>' +
-      '<span class="deck-timer__sep"></span>' +
       '<span class="deck-timer__section"></span>' +
       '<span class="deck-timer__progress"></span>' +
+      '<span class="deck-timer__sep"></span>' +
+      '<span class="deck-timer__clocklabel">now</span>' +
+      '<span class="deck-timer__clock"></span>' +
       '<span class="deck-timer__bar-track"><span class="deck-timer__bar"></span></span>';
     document.body.appendChild(el);
     renderTimer();

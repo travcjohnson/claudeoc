@@ -17,6 +17,7 @@
   .panel { display: flex; gap: var(--sp-6); margin-top: var(--sp-6); max-width: 1700px; }
   .panel__card { flex: 1; display: flex; flex-direction: column; gap: var(--sp-3); }
   .panel__mark { width: 92px; height: 92px; border-radius: 50%; background: var(--neutral); display: flex; align-items: center; justify-content: center; font-weight: var(--fw-bold); font-size: 30px; color: var(--accent-clay); border: 1.5px solid var(--accent-clay); }
+  .panel__photo { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-clay); display: block; }
   .panel__who { font-size: 38px; font-weight: var(--fw-bold); letter-spacing: -0.01em; margin-top: var(--sp-2); }
   .panel__role { font-family: var(--font-mono); font-size: 20px; color: var(--accent-clay); letter-spacing: 0.04em; }
   .panel__bio { font-size: 30px; color: var(--ink-muted); line-height: 1.5; margin-top: 4px; }
@@ -74,16 +75,16 @@
         <h2 class="title-l clip-reveal">People who back <span class="gp-accent">and build what you build.</span></h2>
         <div class="panel reveal" style="--i:2">
           <div class="panel__card">
-            <span class="panel__mark">DN</span>
+            <img class="panel__photo" src="../assets/img/panelists/dave-nunez.webp" alt="Dave Nunez">
             <div class="panel__who">Dave Nunez</div>
             <div class="panel__role">CEO &amp; Co-Founder, Falconer</div>
             <p class="panel__bio">Ex-Stripe Head of Docs, ex-Uber. Advised Anthropic on docs &amp; DevEx. Now building AI-native from day one.</p>
           </div>
           <div class="panel__card">
-            <span class="panel__mark">KM</span>
+            <img class="panel__photo" src="../assets/img/panelists/karla-mora.webp" alt="Karla Mora">
             <div class="panel__who">Karla Mora</div>
             <div class="panel__role">Founder &amp; Managing Partner, Alante Capital</div>
-            <p class="panel__bio">Santa Barbara-based. Single-industry fund across Nike, Levi's, adidas supply chains — AI where there are factories, not just software.</p>
+            <p class="panel__bio">Santa Barbara-based. Early-stage fund investing in climate tech, deep tech, AI, and enterprise software — bringing circularity to fashion, home, and outdoor supply chains.</p>
           </div>
         </div>
       </div>
