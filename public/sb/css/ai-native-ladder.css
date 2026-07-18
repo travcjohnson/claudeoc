@@ -632,7 +632,7 @@
   padding: var(--sp-3);
 }
 
-.metr__chart { width: 100%; height: auto; display: block; }
+.metr__shot { width: 100%; height: auto; display: block; border-radius: 6px; }
 
 .metr__grid line { stroke: var(--neutral-2); stroke-width: 1; }
 .metr__axis { stroke: var(--ink-muted); stroke-width: 1.5; }
@@ -695,3 +695,107 @@
   color: var(--ink-muted);
   margin-top: var(--sp-4);
 }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   S6 — the ladder on real teams
+   Rebuilt from briefs/dept-ladders-source.md. Deliberately denser
+   than the 28px section floor: Travis asked for dense-but-readable
+   at 10ft. Rung text sits at 23px, which projects cleanly at 1920.
+   ═══════════════════════════════════════════════════════════════ */
+
+.slide[data-noteid="anl-depts"] .gp-body { max-width: none; padding-top: 44px; }
+
+.dl__title {
+  font-size: 54px;
+  font-weight: var(--fw-extrabold);
+  line-height: 1.08;
+  letter-spacing: var(--ls-tight);
+  color: var(--ink);
+}
+
+.dl__sub {
+  font-size: 28px;
+  line-height: 1.35;
+  color: var(--ink-muted);
+  margin-top: var(--sp-2);
+}
+.dl__sub strong { color: var(--accent-clay); font-weight: var(--fw-bold); }
+
+.dl__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+}
+
+.dl__col {
+  display: flex;
+  flex-direction: column;
+  background: var(--anl-surface);
+  border: 1px solid var(--anl-hairline);
+  border-radius: 12px;
+  padding: var(--sp-3) var(--sp-3) var(--sp-2);
+}
+.dl__col--ref { border-color: var(--accent-clay); }
+
+.dl__head { border-bottom: 1px solid var(--anl-hairline); padding-bottom: 10px; }
+
+.dl__name {
+  font-size: 34px;
+  font-weight: var(--fw-extrabold);
+  letter-spacing: var(--ls-tight);
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.dl__tag {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-top: 5px;
+}
+.dl__col--ref .dl__tag { color: var(--accent-clay); }
+
+.dl__rungs { display: flex; flex-direction: column; gap: 11px; padding: 14px 0; }
+
+.dl__rung { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; }
+
+.dl__n {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: var(--fw-bold);
+  color: var(--accent-clay);
+  line-height: 1.25;
+}
+
+.dl__t {
+  font-size: 23px;
+  line-height: 1.26;
+  color: var(--ink);
+}
+
+.dl__foot {
+  margin-top: auto;
+  border-top: 1px solid var(--anl-hairline);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.dl__line { display: flex; flex-direction: column; gap: 2px; }
+
+.dl__lab {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.dl__line--start .dl__lab { color: var(--accent-clay); }
+
+.dl__val { font-size: 21px; line-height: 1.25; color: var(--ink); }
+.dl__line--start .dl__val { font-weight: var(--fw-bold); }

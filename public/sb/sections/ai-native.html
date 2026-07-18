@@ -193,36 +193,11 @@
 
         <div class="metr__row">
           <div class="metr__chartwrap reveal" style="--i:2">
-            <svg class="metr__chart" viewBox="0 0 760 380" role="img" aria-label="Exponential trend: task length AI completes at 50% success, doubling roughly every 7 months on a log scale">
-              <!-- log-scale gridlines -->
-              <g class="metr__grid">
-                <line x1="90" y1="40"  x2="740" y2="40"/>
-                <line x1="90" y1="107" x2="740" y2="107"/>
-                <line x1="90" y1="174" x2="740" y2="174"/>
-                <line x1="90" y1="241" x2="740" y2="241"/>
-                <line x1="90" y1="308" x2="740" y2="308"/>
-              </g>
-              <g class="metr__ylab">
-                <text x="78" y="46">16 hr</text>
-                <text x="78" y="113">4 hr</text>
-                <text x="78" y="180">1 hr</text>
-                <text x="78" y="247">15 min</text>
-                <text x="78" y="314">4 min</text>
-              </g>
-              <line class="metr__axis" x1="90" y1="308" x2="740" y2="308"/>
-              <!-- straight line on a log axis = exponential growth -->
-              <line class="metr__trend" x1="110" y1="318" x2="720" y2="52"/>
-              <!-- the one anchor METR publishes in prose -->
-              <circle class="metr__dot" cx="437" cy="185" r="7"/>
-              <text class="metr__dotlab" x="452" y="178">Claude 3.7 Sonnet</text>
-              <text class="metr__dotsub" x="452" y="200">≈ 1 hour · Mar 2025</text>
-              <g class="metr__xlab">
-                <text x="110" y="336">2019</text>
-                <text x="415" y="336">2023</text>
-                <text x="720" y="336" text-anchor="end">2026</text>
-              </g>
-              <text class="metr__axtitle" x="90" y="366">Task length a model completes with 50% reliability · log scale</text>
-            </svg>
+            <!-- Real screenshot of METR's published benchmark, captured from
+                 metr.org/time-horizons on 18.07.2026 (Time Horizon 1.1,
+                 log scale, 50% success). Not a recreation. -->
+            <img class="metr__shot" src="../assets/img/metr-time-horizon.png"
+                 alt="METR benchmark: time horizon of software tasks different LLMs can complete 50% of the time, plotted on a log scale from GPT-2 in 2019 to Claude Opus 4.6 in 2026">
           </div>
 
           <div class="metr__side">
@@ -232,7 +207,7 @@
           </div>
         </div>
 
-        <p class="metr__src reveal" style="--i:6">Source: METR, &ldquo;Measuring AI Ability to Complete Long Tasks&rdquo; &middot; metr.org/time-horizons</p>
+        <p class="metr__src reveal" style="--i:6">Chart: METR &middot; metr.org/time-horizons &middot; Time Horizon 1.1 &middot; log scale &middot; 50% success &middot; captured 18.07.2026</p>
       </div>
 
       <footer class="slide__footer"><span>Travis Johnson &middot; AuraPath AI</span><span>Kiva Cowork &middot; State Street &middot; 18.07.2026</span></footer>
@@ -306,88 +281,69 @@
     </section>
 
 
-    <!-- ═══════════════ 5 · Same shape, every department ═══════════════ -->
+    <!-- ═══════════════ 6 · The ladder on real teams ═══════════════
+         Rebuilt from briefs/dept-ladders-source.md (Travis-provided,
+         canonical). Source jargon compressed to audience language. -->
     <section class="slide" data-slide="6" data-noteid="anl-depts">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
-        <h2 class="anl-depts__title reveal" style="--i:0">Rung <span class="gp-accent">2</span> looks like this in every department.</h2>
+        <h2 class="dl__title reveal" style="--i:0">The same four rungs, on three real teams.</h2>
+        <p class="dl__sub reveal" style="--i:1">Engineering gets the check for free. Everyone else has to build it &mdash; <strong>that is the job.</strong></p>
 
-        <div class="anl-depts">
-
-          <div class="anl-dept anl-dept--ref reveal" style="--i:1">
-            <div>
-              <div class="anl-dept__name">Engineering</div>
-              <span class="anl-dept__tag">The reference — check is free</span>
+        <div class="dl__grid">
+          <div class="dl__col dl__col--ref reveal" style="--i:2">
+            <div class="dl__head">
+              <div class="dl__name">Engineering</div>
+              <div class="dl__tag">The reference — the check is free</div>
             </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">The queue that never shrinks</span>
-              <span class="anl-dept__val">Bugs, flaky tests, dependency upgrades</span>
+            <div class="dl__rungs">
+              <div class="dl__rung"><span class="dl__n">1</span><span class="dl__t">One dev, one agent. You read every line it writes.</span></div>
+              <div class="dl__rung"><span class="dl__n">2</span><span class="dl__t">Ten agents at once. Tests gate every output before you see it.</span></div>
+              <div class="dl__rung"><span class="dl__n">3</span><span class="dl__t">Maintenance runs itself — bugs and upgrades fixed overnight.</span></div>
+              <div class="dl__rung"><span class="dl__n">4</span><span class="dl__t">You kick off a migration and check back on it.</span></div>
             </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">Its “tests pass”</span>
-              <span class="anl-dept__val anl-dept__val--gate">Tests, build, lint, security scan</span>
-            </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">Rung 2 looks like</span>
-              <span class="anl-dept__val">10 agents each. A backlog of weeks becomes an afternoon.</span>
-            </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">Stays human</span>
-              <span class="anl-dept__val">Architecture. Anything irreversible.</span>
+            <div class="dl__foot">
+              <div class="dl__line dl__line--start"><span class="dl__lab">Start here</span><span class="dl__val">Bugs, flaky tests, dependency upgrades</span></div>
+              <div class="dl__line"><span class="dl__lab">Stays human</span><span class="dl__val">Architecture. Anything irreversible.</span></div>
             </div>
           </div>
-
-          <div class="anl-dept reveal" style="--i:2">
-            <div>
-              <div class="anl-dept__name">Support</div>
-              <span class="anl-dept__tag">You have to build the check</span>
+          <div class="dl__col reveal" style="--i:3">
+            <div class="dl__head">
+              <div class="dl__name">Support</div>
+              <div class="dl__tag">You have to build the check</div>
             </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">The queue that never shrinks</span>
-              <span class="anl-dept__val">Ticket backlog. A help center nobody has updated.</span>
+            <div class="dl__rungs">
+              <div class="dl__rung"><span class="dl__n">1</span><span class="dl__t">AI drafts the reply. A human sends it.</span></div>
+              <div class="dl__rung"><span class="dl__n">2</span><span class="dl__t">One person rewrites the help center while triage clears in parallel.</span></div>
+              <div class="dl__rung"><span class="dl__n">3</span><span class="dl__t">Tier-1 resolves end to end. The help center updates from real answers.</span></div>
+              <div class="dl__rung"><span class="dl__n">4</span><span class="dl__t">Support files its own bug reports straight into engineering.</span></div>
             </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">Its “tests pass”</span>
-              <span class="anl-dept__val anl-dept__val--gate">Does it follow policy and cite a real doc?</span>
-            </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">Rung 2 looks like</span>
-              <span class="anl-dept__val">One person rewrites the help center and clears triage.</span>
-            </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">Stays human</span>
-              <span class="anl-dept__val">Angry customers. Big refunds.</span>
+            <div class="dl__foot">
+              <div class="dl__line dl__line--start"><span class="dl__lab">Start here</span><span class="dl__val">The ticket backlog and the help center nobody has updated</span></div>
+              <div class="dl__line"><span class="dl__lab">Stays human</span><span class="dl__val">Angry customers. Refunds over a threshold.</span></div>
             </div>
           </div>
-
-          <div class="anl-dept reveal" style="--i:3">
-            <div>
-              <div class="anl-dept__name">Sales</div>
-              <span class="anl-dept__tag">You have to build the check</span>
+          <div class="dl__col reveal" style="--i:4">
+            <div class="dl__head">
+              <div class="dl__name">Sales</div>
+              <div class="dl__tag">You have to build the check</div>
             </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">The queue that never shrinks</span>
-              <span class="anl-dept__val">The long-tail list nobody has touched</span>
+            <div class="dl__rungs">
+              <div class="dl__rung"><span class="dl__n">1</span><span class="dl__t">Call prep, email drafts, meeting notes.</span></div>
+              <div class="dl__rung"><span class="dl__n">2</span><span class="dl__t">One rep works a whole segment. Every claim checked against real account data.</span></div>
+              <div class="dl__rung"><span class="dl__n">3</span><span class="dl__t">Pre-meeting briefs appear on their own. At-risk deals flag themselves.</span></div>
+              <div class="dl__rung"><span class="dl__n">4</span><span class="dl__t">The long tail nurtures itself. You show up to close.</span></div>
             </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">Its “tests pass”</span>
-              <span class="anl-dept__val anl-dept__val--gate">Is every claim true to the account data?</span>
-            </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">Rung 2 looks like</span>
-              <span class="anl-dept__val">One rep personalizes a whole segment in a day.</span>
-            </div>
-            <div class="anl-dept__row">
-              <span class="anl-dept__label">Stays human</span>
-              <span class="anl-dept__val">Negotiation. Pricing. Relationships.</span>
+            <div class="dl__foot">
+              <div class="dl__line dl__line--start"><span class="dl__lab">Start here</span><span class="dl__val">The long-tail list nobody has ever touched</span></div>
+              <div class="dl__line"><span class="dl__lab">Stays human</span><span class="dl__val">Negotiation. Pricing. The relationship.</span></div>
             </div>
           </div>
-
         </div>
       </div>
 
-      <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
+      <footer class="slide__footer"><span>Travis Johnson &middot; AuraPath AI</span><span>Kiva Cowork &middot; State Street &middot; 18.07.2026</span></footer>
     </section>
 
 
