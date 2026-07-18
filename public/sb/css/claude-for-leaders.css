@@ -336,7 +336,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────
-   LOGOS SPEAKER — Procab (SVG) + LinkedIn (icône), cliquables
+   LOGOS SPEAKER — company mark (SVG) + LinkedIn (icon), clickable
    ───────────────────────────────────────────────────────────── */
 .gp-speaker__logos { display: flex; align-items: flex-start; gap: 40px; margin-top: var(--sp-4); flex-wrap: wrap; }
 .gp-logo { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; transition: opacity 0.2s ease; }
@@ -820,7 +820,7 @@ a.ccex__item:hover { transform: translateY(-4px); box-shadow: 0 8px 22px rgba(15
 @keyframes crashPuff { 0%, 82% { opacity: 0; transform: scale(0.3); } 85% { opacity: .85; transform: scale(1); } 93% { opacity: 0; transform: scale(3.6); } 100% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .crashplane { animation: none; opacity: .5; } .crashpuff { display: none; } }
 
-/* OPS (slide « On se l'applique, chez Procab ») */
+/* OPS (slide: applying it to ourselves) */
 .ops { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; width: 100%; margin-top: var(--sp-3); align-items: start; }
 .ops__left { display: flex; flex-direction: column; gap: 22px; }
 .ops__k { display: inline-block; font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent-clay); margin-bottom: 7px; }

@@ -3,7 +3,7 @@
    Depends on tokens.css + base.css + animations.css + conf-public.css
 
    DESIGN LANGUAGE: claude-for-leaders (Anthropic ivory, minimalist).
-   Card recipe lifted verbatim from conf-claude-geneve.css:
+   Card recipe: the deck-wide surface treatment —
      surface #FBFAF6 · 1px solid var(--neutral) · radius 12px
    Accent variants are the ONLY saturated fills, one or two per slide:
      var(--ink) for the dead end, var(--accent-clay) for the goal.
@@ -597,4 +597,101 @@
   font-size: 26px;
   color: var(--accent-clay);
   letter-spacing: 0.01em;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   METR benchmark slide
+   Every figure quoted here was verified against metr.org on
+   18.07.2026. The trend line is drawn as a straight line on a log
+   axis — which is how METR itself presents the data — and the only
+   plotted point is the one METR states in prose. Nothing invented.
+   ═══════════════════════════════════════════════════════════════ */
+
+.slide[data-noteid="anl-metr"] .gp-body { max-width: none; }
+
+.metr__title {
+  font-size: 58px;
+  font-weight: var(--fw-extrabold);
+  line-height: 1.1;
+  letter-spacing: var(--ls-tight);
+  color: var(--ink);
+}
+
+.metr__row {
+  display: grid;
+  grid-template-columns: 1fr 560px;
+  gap: var(--sp-6);
+  align-items: center;
+  margin-top: var(--sp-5);
+}
+
+.metr__chartwrap {
+  background: var(--anl-surface);
+  border: 1px solid var(--anl-hairline);
+  border-radius: 12px;
+  padding: var(--sp-3);
+}
+
+.metr__chart { width: 100%; height: auto; display: block; }
+
+.metr__grid line { stroke: var(--neutral-2); stroke-width: 1; }
+.metr__axis { stroke: var(--ink-muted); stroke-width: 1.5; }
+
+.metr__trend {
+  stroke: var(--accent-clay);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.metr__dot { fill: var(--ink); }
+
+.metr__ylab text,
+.metr__xlab text {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  fill: var(--ink-muted);
+}
+.metr__ylab text { text-anchor: end; }
+
+.metr__dotlab {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: var(--fw-bold);
+  fill: var(--ink);
+}
+.metr__dotsub {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  fill: var(--ink-muted);
+}
+
+.metr__axtitle {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  fill: var(--ink-muted);
+  letter-spacing: 0.02em;
+}
+
+.metr__side { display: flex; flex-direction: column; gap: var(--sp-4); }
+
+.metr__point {
+  font-size: 30px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.metr__point strong { color: var(--accent-clay); font-weight: var(--fw-bold); }
+
+.metr__caveat {
+  font-size: 24px;
+  line-height: 1.35;
+  color: var(--ink-muted);
+  border-left: 2px solid var(--anl-hairline);
+  padding-left: var(--sp-3);
+}
+
+.metr__src {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  color: var(--ink-muted);
+  margin-top: var(--sp-4);
 }

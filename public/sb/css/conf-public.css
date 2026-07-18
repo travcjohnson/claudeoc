@@ -1098,7 +1098,7 @@
 
 
 /* ═══════════════════════════════════════════════════════════════
-   VIBE-LOOP (cover) · SLIDE SACHA BLAISE · SLIDE QR « suivez »
+   VIBE-LOOP (cover) · SPEAKER SLIDE · QR SLIDE
    ═══════════════════════════════════════════════════════════════ */
 
 /* —— Vibe-loop : pilule terminal qui tape des prompts en boucle —— */
@@ -1117,7 +1117,7 @@
 .gp-vibe__cursor { color: var(--code-green); animation: gp-blink 1.05s steps(2) infinite; }
 @keyframes gp-blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
 
-/* —— Slide Sacha Blaise —— */
+/* —— Speaker slide —— */
 .gp-speaker .gp-body {
   display: grid; grid-template-columns: 360px 1fr; gap: var(--sp-7);
   align-items: center; max-width: none;

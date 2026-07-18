@@ -36,6 +36,11 @@
     .roster__row { grid-template-columns: 1fr; row-gap: 10px; }
     .roster__time { text-align: left; }
   }
+  .openmic { display: flex; align-items: center; gap: var(--sp-5); margin-top: var(--sp-5); padding-top: var(--sp-4); border-top: 1px solid var(--neutral-2); }
+  .openmic__t { font-size: 30px; line-height: 1.35; color: var(--ink); max-width: 1080px; }
+  .openmic__slot { font-family: var(--font-mono); font-size: 22px; color: var(--accent-bright);
+                   border: 2px dashed var(--accent-bright); border-radius: 8px; padding: 22px 26px;
+                   text-align: center; line-height: 1.3; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -112,16 +117,19 @@
             <span class="roster__slot">SLOT 2</span>
             <div class="roster__whocol"><span class="roster__mark">KM</span><div class="roster__namewrap"><span class="roster__who">Kevin Minn</span></div></div>
             <span class="roster__what">Vindicara — AI compliance auditing with a cryptographically signed record.</span>
-            <span class="roster__time">1:15–1:25</span>
+            <span class="roster__time">1:12–1:22</span>
           </div>
           <div class="roster__row">
             <span class="roster__slot">SLOT 3</span>
             <div class="roster__whocol"><span class="roster__mark">DZ</span><div class="roster__namewrap"><span class="roster__who">Denis Zaytsev</span></div></div>
             <span class="roster__what">Live build — a working tool shipped with Claude Code.</span>
-            <span class="roster__time">1:30–1:40</span>
+            <span class="roster__time">1:24–1:34</span>
           </div>
         </div>
-        <p class="openmic reveal" style="--i:3">Here on-site and want to share? We may have room at the end — come see me or scan to sign up.</p>
+        <div class="openmic reveal" style="--i:3">
+          <p class="openmic__t">Here on-site and want to share? We may have room at the end. Come see me or scan to sign up.</p>
+          <div class="openmic__slot">[ day-of sign-up QR — pending from T45-Stage ]</div>
+        </div>
       </div>
       <footer class="slide__footer"><span>Every one of them built with Claude Code</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
@@ -130,11 +138,11 @@
 </div>
 
 <!--
-  SPEAKER NOTE (not projected): Slot 2 shows "Denis Zaytsev" plainly — Denis is
-  standing in for Robb Miller, who has not confirmed as of the 5:40 AM verified
-  facts. Travis should introduce Denis on his own terms live, no need to
-  reference the swap from stage. If Robb confirms before doors, swap the name
-  in .roster__row[2] back to Robb Miller.
+  SPEAKER NOTE (not projected): the roster shows all three demoers plainly, with
+  no confirmation-status chips, per Travis's redline. Denis Zaytsev is in slot 3
+  standing in for Robb Miller. Travis introduces Denis on his own terms live and
+  does not reference the swap from stage. If Robb confirms before doors, swap the
+  name in the SLOT 3 row.
 -->
 
 <script src="../js/grid.js"></script>
