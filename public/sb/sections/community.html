@@ -69,7 +69,7 @@
   .cshot__sub { font-size: 28px; color: var(--ink); padding: 0 20px 20px; line-height: 1.35; }
 
   /* ——— Impact Lab: browser-chrome capture + facts ——— */
-  .isplit { display: grid; grid-template-columns: 1.15fr 1fr; gap: var(--sp-6); align-items: start; margin-top: var(--sp-5); }
+  .isplit { display: grid; grid-template-columns: 350px 1fr; gap: var(--sp-6); align-items: start; margin-top: var(--sp-5); }
   .isplit .shotframe__img { height: 560px; object-position: top center; }
   .isplit .shotframe__url { font-size: 20px; }
   .ifacts { display: flex; flex-direction: column; gap: var(--sp-4); }
@@ -105,6 +105,18 @@
   /* ——— conversation slide photo strip ——— */
   .convpic { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); margin-top: var(--sp-4); max-width: 1560px; }
   .convpic img { display: block; width: 100%; height: 210px; object-fit: cover; border-radius: 10px; border: 1px solid var(--neutral-2); }
+
+  /* ——— ambassadors: featured photo + city cards ——— */
+  .ambrow { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); align-items: start; margin-top: var(--sp-4); }
+  .ambfeat { border-radius: 10px; overflow: hidden; border: 1px solid var(--neutral-2); background: var(--neutral); }
+  .ambfeat img { display: block; width: 100%; height: 420px; object-fit: cover; }
+  .ambfeat__cap { font-size: 26px; color: var(--ink); padding: 16px 18px; line-height: 1.35; }
+  .ambcards { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-3); }
+  .ambcards .ccard { padding: var(--sp-4); }
+  .ambcards .ccard__t { font-size: 32px; }
+  .ambcards .ccard__d { font-size: 24px; margin-top: 10px; }
+  /* LinkedIn post capture: show the whole card, not a crop */
+  .shotframe__img--post { object-fit: contain; background: #fff; }
 </style>
 </head>
 <body>
@@ -195,22 +207,16 @@
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Ambassadors worldwide</p>
         <h2 class="title-m clip-reveal">33 countries. 67 cities. <span class="gp-accent">Real people running them.</span></h2>
-        <div class="ccards ccards--4 reveal" style="--i:2">
-          <div class="ccard">
-            <div class="ccard__t">Anchorage</div>
-            <div class="ccard__d">Kyle and Blythe Easterly run "Anchorage | Claude Conversation" on the official calendar.</div>
-          </div>
-          <div class="ccard">
-            <div class="ccard__t">Milan</div>
-            <div class="ccard__d">Alexio Cassani and Matteo Siciliani hosted Italy's first official Claude Community Event.</div>
-          </div>
-          <div class="ccard">
-            <div class="ccard__t">Melbourne</div>
-            <div class="ccard__d">Rye Smith hosts the Melbourne Claude Impact Lab, building on Australian city data.</div>
-          </div>
-          <div class="ccard">
-            <div class="ccard__t">Sydney</div>
-            <div class="ccard__d">Dominik Fretz runs Claude for Everyone, bringing in people who don't code yet.</div>
+        <div class="ambrow reveal" style="--i:2">
+          <figure class="ambfeat">
+            <img src="../assets/img/community/ambassador-felipe-colombia-auditorium.jpeg" alt="A packed university auditorium at a Claude community event in Medellin, Colombia, organisers in the foreground">
+            <figcaption class="ambfeat__cap"><b>Medell&iacute;n, Colombia</b> &middot; Felipe Aguirre Martinez fills an auditorium.</figcaption>
+          </figure>
+          <div class="ambcards">
+            <div class="ccard"><div class="ccard__t">Anchorage</div><div class="ccard__d">Kyle and Blythe Easterly run "Anchorage | Claude Conversation."</div></div>
+            <div class="ccard"><div class="ccard__t">Milan</div><div class="ccard__d">Alexio Cassani and Matteo Siciliani hosted Italy's first official event.</div></div>
+            <div class="ccard"><div class="ccard__t">Melbourne</div><div class="ccard__d">Rye Smith runs the Impact Lab on Australian city data.</div></div>
+            <div class="ccard"><div class="ccard__t">Sydney</div><div class="ccard__d">Dominik Fretz runs Claude for Everyone.</div></div>
           </div>
         </div>
       </div>
@@ -257,17 +263,17 @@
         <h2 class="title-m clip-reveal">The community <span class="gp-accent">builds for the city.</span></h2>
         <div class="isplit reveal" style="--i:2">
           <div class="shotframe">
-            <div class="shotframe__bar"><span class="shotframe__dot"></span><span class="shotframe__dot"></span><span class="shotframe__dot"></span><span class="shotframe__url">luma.com/6ok9h92y</span></div>
-            <img class="shotframe__img" src="../assets/img/community/impact-lab-san-diego-luma-page.png" alt="Luma event page for San Diego Claude Impact Lab, hosted by Max Krueger, March 7">
+            <div class="shotframe__bar"><span class="shotframe__dot"></span><span class="shotframe__dot"></span><span class="shotframe__dot"></span><span class="shotframe__url">linkedin.com/claude</span></div>
+            <img class="shotframe__img shotframe__img--post" src="../assets/img/community/impact-lab-rio-linkedin-post.png" alt="Claude's LinkedIn post about the Rio de Janeiro Impact Lab, reading: around 100 people spent a day building solutions to real problems posed by the city">
           </div>
           <div class="ifacts">
-            <div class="ifact"><div class="ifact__n">27</div><div class="ifact__t">teams built civic tools in one Saturday, on real City of San Diego open data.</div></div>
-            <div class="ifact"><div class="ifact__n">1st</div><div class="ifact__t">Anthropic's first Claude Impact Lab. March 7, hosted by Max Krueger.</div></div>
-            <div class="ifact"><div class="ifact__n">1.4M</div><div class="ifact__t">residents whose city data was locked in PDFs and clunky portals.</div></div>
+            <div class="ifact"><div class="ifact__n">100</div><div class="ifact__t">people spent one day building solutions to real problems posed by the city.</div></div>
+            <div class="ifact"><div class="ifact__n">Rio</div><div class="ifact__t">de Janeiro. Municipal data, opened up to the community for a day.</div></div>
+            <div class="ifact"><div class="ifact__t"><b>"How do you get Rio's data to serve its people?"</b></div></div>
           </div>
         </div>
       </div>
-      <footer class="slide__footer"><span>Source: luma.com/6ok9h92y · Claude Community Events</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+      <footer class="slide__footer"><span>Source: @claude on LinkedIn · Claude Impact Lab, Rio de Janeiro</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
 
     <!-- ═══════════════ C6 · Impact Lab cities ═══════════════ -->
