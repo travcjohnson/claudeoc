@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- ═══════════════════════════════════════════════════════════════════════
+     SECTION ▸ The AI-Native Ladder  (8 slides · 10 min stage time · teaser)
+     Claude Code for Founders × Mercury · Kiva Cowork, State Street · 18.07.2026
+     Source framework: Boris Cherny, "Steps of AI Adoption," 16 July 2026.
+
+     STANDALONE PREVIEW FILE. The <section class="slide"> blocks below lift
+     directly into master-deck/index.html at final assembly (F4) — just
+     renumber data-slide and add css/ai-native-ladder.css to the <head>.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<title>The AI-Native Ladder · Claude Code for Founders · Santa Barbara 2026</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/InterVariable.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/JetBrainsMono-Regular.woff2" crossorigin>
+
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/conf-public.css">
+<link rel="stylesheet" href="../css/ai-native-ladder.css">
+</head>
+<body>
+
+<div class="black-overlay" aria-hidden="true"></div>
+
+<div class="hint" id="hint">
+  <span class="hint__desktop">
+    Navigate with <kbd>←</kbd> <kbd>→</kbd> or scroll · click to advance · <kbd>F</kbd> fullscreen
+  </span>
+  <span class="hint__mobile">
+    Swipe <span aria-hidden="true">← →</span> to navigate · tap the counter to jump
+  </span>
+</div>
+
+<!-- "Go to slide" modal -->
+<div class="jump-sheet" id="jump-sheet" hidden>
+  <div class="jump-sheet__scrim" data-jump="close" aria-hidden="true"></div>
+  <div class="jump-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="jump-sheet-title">
+    <header class="jump-sheet__head">
+      <span class="jump-sheet__title" id="jump-sheet-title">Go to slide</span>
+      <button class="jump-sheet__close" data-jump="close" aria-label="Close">×</button>
+    </header>
+    <form class="jump-sheet__form" data-jump="submit">
+      <input type="number" class="jump-sheet__input" min="1" placeholder="No." inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Slide number">
+      <button type="submit" class="jump-sheet__go">Go</button>
+    </form>
+    <div class="jump-sheet__grid" id="jump-sheet-grid" role="list"></div>
+  </div>
+</div>
+
+<nav class="nav-bar" aria-label="Navigation">
+  <button class="nav-bar__btn" data-nav="prev" aria-label="Previous slide" title="Previous slide (←)">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="nav-bar__counter" data-nav="jump" aria-label="Go to a slide" title="Go to a slide (G then no.)">1&nbsp;/&nbsp;8</button>
+  <button class="nav-bar__btn" data-nav="next" aria-label="Next slide" title="Next slide (→ · Space · click)">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <span class="nav-bar__sep" aria-hidden="true"></span>
+  <button class="nav-bar__btn nav-bar__btn--fs" data-nav="fullscreen" aria-label="Fullscreen" title="Fullscreen (F)">
+    <svg class="icon-fs-enter" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
+    </svg>
+    <svg class="icon-fs-exit" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/>
+    </svg>
+  </button>
+</nav>
+
+<div class="stage">
+  <div class="slides-root">
+
+    <!-- ═══════════════ 1 · Section cover ═══════════════ -->
+    <section class="slide is-dark anl-cover" data-slide="1" data-noteid="anl-cover">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+
+      <div class="gp-body">
+        <p class="anl-cover__eyebrow reveal" style="--i:0">The main idea</p>
+        <h1 class="anl-cover__title reveal" style="--i:1">The AI-Native<br><span class="gp-accent">Ladder.</span></h1>
+        <p class="anl-cover__sub reveal" style="--i:3">
+          There are five ways a company can use AI. Almost everyone in this room
+          is on the second one — and thinks they're done.
+        </p>
+        <p class="anl-cover__src reveal" style="--i:4">
+          Framework: Boris Cherny, “Steps of AI Adoption,” July 2026
+        </p>
+      </div>
+
+      <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
+    </section>
+
+
+    <!-- ═══════════════ 2 · The ladder ═══════════════ -->
+    <section class="slide" data-slide="2" data-noteid="anl-ladder">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Five rungs · each one roughly 10× the last</p>
+
+        <div class="anl-ladder__head reveal" style="--i:1">
+          <span>Rung</span><span>The name</span><span>What it looks like</span><span>What blocks you</span>
+        </div>
+
+        <div class="anl-ladder">
+
+          <div class="anl-rung anl-rung--0 reveal" style="--i:2">
+            <div class="anl-rung__num">0 <span class="anl-rung__agents">0 agents</span></div>
+            <div class="anl-rung__name">Gated</div>
+            <div class="anl-rung__what">“We’re still evaluating it.” Your team uses AI on their phones anyway.</div>
+            <div class="anl-rung__block">Security and legal approvals</div>
+          </div>
+
+          <div class="anl-rung anl-rung--1 reveal" style="--i:3">
+            <div class="anl-rung__num">1 <span class="anl-rung__agents">~1 agent</span></div>
+            <div class="anl-rung__name">Assisted</div>
+            <div class="anl-rung__what">One person, one chat, one task. You watch every word it writes.</div>
+            <div class="anl-rung__block">Your own attention</div>
+          </div>
+
+          <div class="anl-rung anl-rung--2 reveal" style="--i:4">
+            <div class="anl-rung__num">2 <span class="anl-rung__agents">~10 agents</span></div>
+            <div class="anl-rung__name">Parallel</div>
+            <div class="anl-rung__what">One person runs 5–10 agents at once. The machine checks the work before you see it.</div>
+            <div class="anl-rung__block">Review. Six streams to read</div>
+          </div>
+
+          <div class="anl-rung anl-rung--3 reveal" style="--i:5">
+            <div class="anl-rung__num">3 <span class="anl-rung__agents">~100 agents</span></div>
+            <div class="anl-rung__name">Supervised autonomy</div>
+            <div class="anl-rung__what">Nobody starts the work. It starts itself. Your people handle what breaks.</div>
+            <div class="anl-rung__block">Trust in the loop</div>
+          </div>
+
+          <div class="anl-rung anl-rung--4 reveal" style="--i:6">
+            <div class="anl-rung__num">4 <span class="anl-rung__agents">~1,000+ agents</span></div>
+            <div class="anl-rung__name">AI-native</div>
+            <div class="anl-rung__what">You state an outcome. A fleet runs it. You monitor by exception.</div>
+            <div class="anl-rung__block">Knowing what’s worth doing</div>
+          </div>
+
+        </div>
+      </div>
+
+      <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
+    </section>
+
+
+    <!-- ═══════════════ 3 · The trap ═══════════════ -->
+    <section class="slide anl-statement" data-slide="3" data-noteid="anl-trap">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">The trap</p>
+        <h2 class="anl-statement__big reveal" style="--i:1">
+          Everyone with a license<br>is on rung <span class="gp-accent">one</span><br>and calls it done.
+        </h2>
+        <p class="anl-statement__sub reveal" style="--i:3">
+          Rung one is 1×. You bought a tool and got a faster typist.
+          The whole return is on the rungs above it.
+        </p>
+      </div>
+
+      <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
+    </section>
+
+
+    <!-- ═══════════════ 4 · The gate ═══════════════ -->
+    <section class="slide" data-slide="4" data-noteid="anl-gate">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">What actually gets you off rung one</p>
+
+        <div class="anl-gate">
+          <div class="anl-gate__flow">
+            <div class="anl-flowstep reveal" style="--i:1">
+              <span class="anl-flowstep__icon">01</span> You describe the work
+            </div>
+            <div class="anl-flowarrow reveal" style="--i:2">↓</div>
+            <div class="anl-flowstep reveal" style="--i:2">
+              <span class="anl-flowstep__icon">02</span> Agents do it — in parallel
+            </div>
+            <div class="anl-flowarrow reveal" style="--i:3">↓</div>
+            <div class="anl-flowstep anl-flowstep--gate reveal" style="--i:3">
+              <span class="anl-flowstep__icon">03</span> The machine checks its own work
+            </div>
+            <div class="anl-flowarrow reveal" style="--i:4">↓</div>
+            <div class="anl-flowstep reveal" style="--i:4">
+              <span class="anl-flowstep__icon">04</span> You review finished output
+            </div>
+          </div>
+
+          <div>
+            <p class="anl-gate__quote reveal" style="--i:5">
+              Step three is the whole ladder.
+            </p>
+            <p class="anl-gate__note reveal" style="--i:6">
+              If the machine can check its own work in a way you trust, you can
+              stop reading everything — and one person can run ten agents instead of one.
+              <br><br>
+              Engineering gets this almost free: tests, build, lint.
+              <strong>Nobody else does.</strong> There’s no compiler for a contract
+              and no test suite for a brand.
+              <br><br>
+              Building that check <strong>is</strong> the work.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
+    </section>
+
+
+    <!-- ═══════════════ 5 · Same shape, every department ═══════════════ -->
+    <section class="slide" data-slide="5" data-noteid="anl-depts">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Same shape everywhere · here’s rung 2 in three departments</p>
+
+        <div class="anl-depts">
+
+          <div class="anl-dept anl-dept--ref reveal" style="--i:1">
+            <div>
+              <div class="anl-dept__name">Engineering</div>
+              <span class="anl-dept__tag">The reference — check is free</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">The queue that never shrinks</span>
+              <span class="anl-dept__val">Bugs, flaky tests, dependency upgrades</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">Its “tests pass”</span>
+              <span class="anl-dept__val anl-dept__val--gate">Tests, build, lint, security scan</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">Rung 2 looks like</span>
+              <span class="anl-dept__val">10 agents each. A backlog of weeks becomes an afternoon.</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">Stays human</span>
+              <span class="anl-dept__val">Architecture. Anything irreversible.</span>
+            </div>
+          </div>
+
+          <div class="anl-dept reveal" style="--i:2">
+            <div>
+              <div class="anl-dept__name">Support</div>
+              <span class="anl-dept__tag">You have to build the check</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">The queue that never shrinks</span>
+              <span class="anl-dept__val">Ticket backlog. A help center nobody has updated.</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">Its “tests pass”</span>
+              <span class="anl-dept__val anl-dept__val--gate">Does it follow policy and cite a real doc?</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">Rung 2 looks like</span>
+              <span class="anl-dept__val">One person rewrites the help center and clears triage.</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">Stays human</span>
+              <span class="anl-dept__val">Angry customers. Big refunds.</span>
+            </div>
+          </div>
+
+          <div class="anl-dept reveal" style="--i:3">
+            <div>
+              <div class="anl-dept__name">Sales</div>
+              <span class="anl-dept__tag">You have to build the check</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">The queue that never shrinks</span>
+              <span class="anl-dept__val">The long-tail list nobody has touched</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">Its “tests pass”</span>
+              <span class="anl-dept__val anl-dept__val--gate">Is every claim true to the account data?</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">Rung 2 looks like</span>
+              <span class="anl-dept__val">One rep personalizes a whole segment in a day.</span>
+            </div>
+            <div class="anl-dept__row">
+              <span class="anl-dept__label">Stays human</span>
+              <span class="anl-dept__val">Negotiation. Pricing. Relationships.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
+    </section>
+
+
+    <!-- ═══════════════ 6 · Your department ═══════════════ -->
+    <section class="slide" data-slide="6" data-noteid="anl-questions">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Now do it for your department</p>
+        <h2 class="title-m reveal" style="--i:1">Four questions. Answer them and you’ve climbed a rung.</h2>
+
+        <div class="anl-qs">
+
+          <div class="anl-q reveal" style="--i:2">
+            <div class="anl-q__num">1</div>
+            <div>
+              <div class="anl-q__text">What is your team’s “tests pass”?</div>
+              <div class="anl-q__hint">The check that lets you stop reading everything.</div>
+            </div>
+          </div>
+
+          <div class="anl-q reveal" style="--i:3">
+            <div class="anl-q__num">2</div>
+            <div>
+              <div class="anl-q__text">What’s the queue that never shrinks?</div>
+              <div class="anl-q__hint">That’s where you prove it first. Everyone has one.</div>
+            </div>
+          </div>
+
+          <div class="anl-q reveal" style="--i:4">
+            <div class="anl-q__num">3</div>
+            <div>
+              <div class="anl-q__text">What should start itself?</div>
+              <div class="anl-q__hint">Which events should kick off work unasked. That’s rung 3.</div>
+            </div>
+          </div>
+
+          <div class="anl-q reveal" style="--i:5">
+            <div class="anl-q__num">4</div>
+            <div>
+              <div class="anl-q__text">What stays human, permanently?</div>
+              <div class="anl-q__hint">The line that lets you say yes to all of the above.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
+    </section>
+
+
+    <!-- ═══════════════ 7 · The heatmap ═══════════════ -->
+    <section class="slide" data-slide="7" data-noteid="anl-heatmap">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Your company is not on one rung</p>
+        <h2 class="title-m reveal" style="--i:1">Every department has its own. <span class="gp-accent">All of them climbing = an AI-native company.</span></h2>
+
+        <div class="anl-heat">
+
+          <div class="anl-heatrow reveal" style="--i:2">
+            <div class="anl-heatrow__name">Engineering</div>
+            <div class="anl-heatrow__cells">
+              <div class="anl-cell is-cleared"></div><div class="anl-cell is-cleared"></div><div class="anl-cell is-reached"></div><div class="anl-cell"></div><div class="anl-cell"></div>
+            </div>
+            <div class="anl-heatrow__score">2</div>
+          </div>
+
+          <div class="anl-heatrow reveal" style="--i:3">
+            <div class="anl-heatrow__name">Support</div>
+            <div class="anl-heatrow__cells">
+              <div class="anl-cell is-cleared"></div><div class="anl-cell is-reached"></div><div class="anl-cell"></div><div class="anl-cell"></div><div class="anl-cell"></div>
+            </div>
+            <div class="anl-heatrow__score">1</div>
+          </div>
+
+          <div class="anl-heatrow reveal" style="--i:4">
+            <div class="anl-heatrow__name">Sales</div>
+            <div class="anl-heatrow__cells">
+              <div class="anl-cell is-cleared"></div><div class="anl-cell is-reached"></div><div class="anl-cell"></div><div class="anl-cell"></div><div class="anl-cell"></div>
+            </div>
+            <div class="anl-heatrow__score">1</div>
+          </div>
+
+          <div class="anl-heatrow reveal" style="--i:5">
+            <div class="anl-heatrow__name">Finance</div>
+            <div class="anl-heatrow__cells">
+              <div class="anl-cell is-reached"></div><div class="anl-cell"></div><div class="anl-cell"></div><div class="anl-cell"></div><div class="anl-cell"></div>
+            </div>
+            <div class="anl-heatrow__score">0</div>
+          </div>
+
+          <div class="anl-heatrow reveal" style="--i:6">
+            <div class="anl-heatrow__name">Legal &amp; Ops</div>
+            <div class="anl-heatrow__cells">
+              <div class="anl-cell is-reached"></div><div class="anl-cell"></div><div class="anl-cell"></div><div class="anl-cell"></div><div class="anl-cell"></div>
+            </div>
+            <div class="anl-heatrow__score">0</div>
+          </div>
+
+          <div class="anl-heat__axis reveal" style="--i:7">
+            <div></div>
+            <div class="anl-heat__ticks">
+              <span>0 gated</span><span>1 assisted</span><span>2 parallel</span><span>3 autonomous</span><span>4 AI-native</span>
+            </div>
+            <div></div>
+          </div>
+
+        </div>
+
+        <p class="gp-kicker reveal" style="--i:8">
+          One warning: don’t skip rungs. Scaling agents before the check has earned trust
+          is how pilots die.
+        </p>
+      </div>
+
+      <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
+    </section>
+
+
+    <!-- ═══════════════ 8 · AuraPath beat ═══════════════ -->
+    <section class="slide is-dark anl-beat" data-slide="8" data-noteid="anl-aurapath">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+
+      <div class="gp-body">
+        <h2 class="anl-beat__line reveal" style="--i:0">
+          This is what we do at AuraPath.<br>
+          <em>Grade the org. Climb it together.</em>
+        </h2>
+        <p class="anl-beat__cta reveal" style="--i:2">
+          Curious where your departments land?<br>
+          <span class="anl-beat__url">aurapathai.com/assessment</span>
+        </p>
+        <p class="anl-beat__aside reveal" style="--i:3">Or grab me at the break →</p>
+      </div>
+
+      <img class="anl-beat__mark reveal" style="--i:3" src="../assets/img/aurapath-logo.png" alt="AuraPath AI">
+
+      <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
+    </section>
+
+  </div>
+</div>
+
+<script src="../js/claude-for-leaders.js"></script>
+<script src="../js/grid.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

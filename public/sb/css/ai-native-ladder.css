@@ -1,0 +1,505 @@
+/* ═══════════════════════════════════════════════════════════════
+   SECTION ▸ The AI-Native Ladder
+   Depends on tokens.css + base.css + animations.css + conf-public.css
+
+   DESIGN LANGUAGE: claude-for-leaders (Anthropic ivory, minimalist).
+   Card recipe lifted verbatim from conf-claude-geneve.css:
+     surface #FBFAF6 · 1px solid var(--neutral) · radius 12px
+   Accent variants are the ONLY saturated fills, one or two per slide:
+     var(--ink) for the dead end, var(--accent-clay) for the goal.
+   No tinted gradients, no color-as-fill. Orange is an accent, not a wash.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --anl-surface: #FBFAF6;
+  --anl-hairline: var(--neutral);
+}
+
+/* Shared mono label — matches .versus__label / .split__k in the reference. */
+.anl-label {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* Projector legibility: the shared .eyebrow is 16px, too small for a room. */
+.slide[data-noteid^="anl-"] .eyebrow { font-size: 20px; }
+
+
+/* ——— Section cover ——— */
+
+.anl-cover { justify-content: center; }
+
+.anl-cover__eyebrow {
+  color: var(--accent-clay);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-bottom: var(--sp-4);
+}
+
+.anl-cover__title {
+  font-size: var(--fs-title-xl);
+  font-weight: var(--fw-extrabold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+
+.anl-cover__sub {
+  font-size: var(--fs-body-xl);
+  line-height: 1.4;
+  color: var(--ink-muted-dark);
+  max-width: 1150px;
+  margin-top: var(--sp-5);
+}
+
+.anl-cover__src {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--ink-muted-dark);
+  margin-top: var(--sp-6);
+  letter-spacing: 0.02em;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   THE LADDER
+   Neutral rows on ivory. Rung 0 is the black dead end, rung 4 the
+   clay goal — the reference's Goal→Deliverable grammar, stood upright.
+   ═══════════════════════════════════════════════════════════════ */
+
+.slide[data-noteid="anl-ladder"] .gp-body {
+  max-width: none;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+.anl-ladder {
+  display: flex;
+  flex-direction: column-reverse;   /* rung 0 at the bottom */
+  gap: 8px;
+  margin-top: var(--sp-2);
+}
+
+.anl-rung {
+  display: grid;
+  grid-template-columns: 210px 300px 1fr 380px;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 16px var(--sp-4);
+  border-radius: 12px;
+  background: var(--anl-surface);
+  border: 1px solid var(--anl-hairline);
+}
+
+/* The two accent rows — the only saturated fills on the slide. */
+.anl-rung--0 {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.anl-rung--0 .anl-rung__name,
+.anl-rung--0 .anl-rung__what,
+.anl-rung--0 .anl-rung__num { color: var(--ink-inverse); }
+.anl-rung--0 .anl-rung__role { color: rgba(255,255,255,.62); }
+.anl-rung--0 .anl-rung__block { color: rgba(255,255,255,.72); border-left-color: rgba(255,255,255,.22); }
+.anl-rung--0 .anl-rung__agents { color: rgba(255,255,255,.72); border-color: rgba(255,255,255,.28); }
+
+.anl-rung--4 {
+  background: var(--accent-clay);
+  border-color: var(--accent-clay);
+}
+.anl-rung--4 .anl-rung__name,
+.anl-rung--4 .anl-rung__what,
+.anl-rung--4 .anl-rung__num { color: var(--ink-inverse); }
+.anl-rung--4 .anl-rung__role { color: rgba(255,255,255,.80); }
+.anl-rung--4 .anl-rung__block { color: rgba(255,255,255,.86); border-left-color: rgba(255,255,255,.34); }
+.anl-rung--4 .anl-rung__agents { color: var(--ink-inverse); border-color: rgba(255,255,255,.45); }
+
+.anl-rung__num {
+  font-family: var(--font-mono);
+  font-size: 44px;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  color: var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.anl-rung__agents {
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  color: var(--accent-clay);
+  border: 1px solid var(--anl-hairline);
+  border-radius: 999px;
+  padding: 4px 11px;
+  white-space: nowrap;
+}
+
+.anl-rung__name {
+  font-size: 32px;
+  font-weight: var(--fw-extrabold);
+  letter-spacing: var(--ls-tight);
+  line-height: 1.12;
+  color: var(--ink);
+}
+
+.anl-rung__what {
+  font-size: 28px;
+  line-height: 1.28;
+  color: var(--ink);
+}
+
+.anl-rung__block {
+  font-size: 28px;
+  line-height: 1.28;
+  color: var(--ink-muted);
+  border-left: 1px solid var(--anl-hairline);
+  padding-left: var(--sp-3);
+}
+
+.anl-ladder__head {
+  display: grid;
+  grid-template-columns: 210px 300px 1fr 380px;
+  gap: var(--sp-3);
+  padding: 0 var(--sp-4) 8px calc(var(--sp-4) + 1px);
+  margin-bottom: var(--sp-1);
+  border-bottom: 1px solid var(--anl-hairline);
+}
+
+.anl-ladder__head span {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   BIG STATEMENT (the trap) — ivory, black type, one clay word
+   ═══════════════════════════════════════════════════════════════ */
+
+.anl-statement { justify-content: center; }
+
+.anl-statement__big {
+  font-size: 108px;
+  font-weight: var(--fw-extrabold);
+  line-height: 1.04;
+  letter-spacing: var(--ls-tight);
+  max-width: 1500px;
+  color: var(--ink);
+}
+
+.anl-statement__sub {
+  font-size: var(--fs-body-xl);
+  line-height: 1.45;
+  color: var(--ink-muted);
+  max-width: 1200px;
+  margin-top: var(--sp-5);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   THE GATE — flow boxes, reference slide-15 grammar
+   ═══════════════════════════════════════════════════════════════ */
+
+.anl-gate {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-7);
+  align-items: center;
+  margin-top: var(--sp-4);
+}
+
+.anl-gate__flow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.anl-flowstep {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 18px var(--sp-4);
+  border-radius: 12px;
+  background: var(--anl-surface);
+  border: 1px solid var(--anl-hairline);
+  font-size: 30px;
+  font-weight: var(--fw-medium);
+  color: var(--ink);
+}
+
+.anl-flowstep__icon {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  color: var(--accent-clay);
+  width: 30px;
+  flex: none;
+}
+
+/* The one emphasised step — clay outline, as "Acts" is in the reference. */
+.anl-flowstep--gate {
+  border: 1.5px solid var(--accent-clay);
+  background: var(--anl-surface);
+  font-weight: var(--fw-bold);
+}
+
+.anl-flowarrow {
+  font-family: var(--font-mono);
+  color: var(--accent-clay);
+  font-size: 22px;
+  padding-left: 40px;
+  line-height: 1;
+}
+
+.anl-gate__note {
+  font-size: 30px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.anl-gate__note strong { color: var(--accent-clay); font-weight: var(--fw-bold); }
+
+.anl-gate__quote {
+  font-size: 40px;
+  font-weight: var(--fw-extrabold);
+  line-height: 1.25;
+  letter-spacing: var(--ls-tight);
+  margin-bottom: var(--sp-4);
+  color: var(--ink);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   DEPARTMENT COLUMNS — hairline-ruled columns, no tinted fills
+   (reference slide 8: orange mono label, rule, plain text on ivory)
+   ═══════════════════════════════════════════════════════════════ */
+
+.anl-depts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+  margin-top: var(--sp-5);
+}
+
+.anl-dept {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--anl-hairline);
+}
+
+.anl-dept__name {
+  font-size: 38px;
+  font-weight: var(--fw-extrabold);
+  letter-spacing: var(--ls-tight);
+  color: var(--ink);
+}
+
+.anl-dept__tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  margin-top: 5px;
+}
+
+/* Engineering is the reference implementation — clay tag, nothing more. */
+.anl-dept--ref .anl-dept__tag { color: var(--accent-clay); }
+.anl-dept--ref { border-top-color: var(--accent-clay); }
+
+.anl-dept__row { display: flex; flex-direction: column; gap: 5px; }
+
+.anl-dept__label {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.anl-dept__val {
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.anl-dept__val--gate {
+  font-weight: var(--fw-bold);
+  color: var(--accent-clay);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   YOUR DEPARTMENT — the four questions
+   ═══════════════════════════════════════════════════════════════ */
+
+.anl-qs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-4) var(--sp-6);
+  margin-top: var(--sp-5);
+}
+
+.anl-q {
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  gap: var(--sp-3);
+  align-items: start;
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--anl-hairline);
+}
+
+.anl-q__num {
+  font-family: var(--font-mono);
+  font-size: 46px;
+  font-weight: var(--fw-bold);
+  line-height: 0.95;
+  color: var(--accent-clay);
+}
+
+.anl-q__text {
+  font-size: 32px;
+  font-weight: var(--fw-bold);
+  line-height: 1.3;
+  letter-spacing: var(--ls-tight);
+  color: var(--ink);
+}
+
+.anl-q__hint {
+  font-size: 28px;
+  line-height: 1.35;
+  color: var(--ink-muted);
+  margin-top: 8px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   HEATMAP — hairline cells; clay marks only the rung reached
+   ═══════════════════════════════════════════════════════════════ */
+
+.anl-heat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: var(--sp-5);
+  max-width: 1250px;
+}
+
+.anl-heatrow {
+  display: grid;
+  grid-template-columns: 260px 1fr 60px;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.anl-heatrow__name {
+  font-size: 30px;
+  font-weight: var(--fw-bold);
+  text-align: right;
+  color: var(--ink);
+}
+
+.anl-heatrow__cells { display: flex; gap: 8px; }
+
+.anl-cell {
+  flex: 1;
+  height: 42px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid var(--anl-hairline);
+}
+
+/* Rungs already cleared read as quiet surface; the rung reached is clay. */
+.anl-cell.is-cleared { background: var(--anl-surface); }
+.anl-cell.is-reached { background: var(--accent-clay); border-color: var(--accent-clay); }
+
+.anl-heatrow__score {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: var(--fw-bold);
+  color: var(--ink);
+}
+
+.anl-heat__axis {
+  display: grid;
+  grid-template-columns: 260px 1fr 60px;
+  gap: var(--sp-4);
+  margin-top: var(--sp-1);
+}
+
+.anl-heat__ticks { display: flex; gap: 8px; }
+
+.anl-heat__ticks span {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   AURAPATH BEAT — closing dark slide, bookends the cover
+   ═══════════════════════════════════════════════════════════════ */
+
+.anl-beat { justify-content: center; }
+
+.anl-beat__line {
+  font-size: 76px;
+  font-weight: var(--fw-extrabold);
+  line-height: 1.12;
+  letter-spacing: var(--ls-tight);
+  max-width: 1350px;
+}
+
+.anl-beat__line em {
+  font-style: normal;
+  color: var(--accent-clay);
+}
+
+.anl-beat__cta {
+  font-size: var(--fs-body-xl);
+  color: var(--ink-muted-dark);
+  margin-top: var(--sp-6);
+  line-height: 1.4;
+}
+
+/* Verified live 18.07.2026 — aurapathai.com/assessment returns 200. */
+.anl-beat__url {
+  display: inline-block;
+  margin-top: var(--sp-2);
+  font-family: var(--font-mono);
+  font-size: 38px;
+  letter-spacing: 0.01em;
+  color: var(--accent-clay);
+  border-bottom: 2px solid rgba(217,119,87,.45);
+  padding-bottom: 4px;
+}
+
+.anl-beat__aside {
+  font-size: 28px;
+  color: var(--ink-muted);
+  margin-top: var(--sp-4);
+}
+
+.anl-beat__mark {
+  position: absolute;
+  right: var(--pad-x);
+  bottom: 110px;
+  height: 62px;
+  opacity: 0.85;
+}
+
+/* The mark ships as dark ink — invert it so it reads on the dark slide. */
+.slide.is-dark .anl-beat__mark { filter: invert(1) brightness(1.6); }

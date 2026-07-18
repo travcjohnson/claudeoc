@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Founder Demos — section preview — Claude Code for Founders SB</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/InterVariable.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/JetBrainsMono-Regular.woff2" crossorigin>
+
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/conf-public.css">
+<style>
+  /* ——— Scoped additions for this section only ——— */
+  .demorules { display: flex; flex-direction: column; gap: var(--sp-4); max-width: 1400px; margin-top: var(--sp-5); }
+  .demorules__row { display: flex; align-items: baseline; gap: var(--sp-4); border-bottom: 1px solid var(--neutral-2); padding-bottom: var(--sp-4); }
+  .demorules__row:last-child { border-bottom: none; }
+  .demorules__n { font-family: var(--font-mono); font-size: 24px; color: var(--accent-clay); font-weight: var(--fw-bold); min-width: 48px; }
+  .demorules__t { font-size: var(--fs-body-l); font-weight: var(--fw-medium); line-height: 1.35; }
+
+  .roster { display: flex; flex-direction: column; gap: 0; margin-top: var(--sp-5); max-width: 1750px; }
+  .roster__row { display: grid; grid-template-columns: 110px 430px 1fr 180px; align-items: center; gap: var(--sp-4); padding: 28px 0; border-bottom: 1px solid var(--neutral-2); }
+  .roster__row:first-child { border-top: 1px solid var(--neutral-2); }
+  .roster__slot { font-family: var(--font-mono); font-size: 20px; color: var(--ink-muted); letter-spacing: 0.06em; }
+  .roster__mark { width: 64px; height: 64px; border-radius: 50%; background: var(--neutral); display: flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-weight: var(--fw-bold); font-size: 22px; color: var(--accent-clay); border: 1.5px solid var(--accent-clay); flex-shrink: 0; }
+  .roster__whocol { display: flex; align-items: center; gap: 18px; }
+  .roster__namewrap { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .roster__who { font-size: 30px; font-weight: var(--fw-bold); letter-spacing: -0.01em; }
+  .roster__what { font-size: 30px; color: var(--ink-muted); line-height: 1.4; }
+  .roster__time { font-family: var(--font-mono); font-size: 20px; color: var(--ink-muted); text-align: right; }
+
+  @media (max-width: 900px) {
+    .roster__row { grid-template-columns: 1fr; row-gap: 10px; }
+    .roster__time { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<div class="black-overlay" aria-hidden="true"></div>
+<div class="hint" id="hint">
+  <span class="hint__desktop">Navigate with <kbd>←</kbd> <kbd>→</kbd> or scroll · click to advance · <kbd>F</kbd> fullscreen</span>
+  <span class="hint__mobile">Swipe <span aria-hidden="true">← →</span> to navigate</span>
+</div>
+
+<div class="jump-sheet" id="jump-sheet" hidden>
+  <div class="jump-sheet__scrim" data-jump="close" aria-hidden="true"></div>
+  <div class="jump-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="jump-sheet-title">
+    <header class="jump-sheet__head">
+      <span class="jump-sheet__title" id="jump-sheet-title">Go to slide</span>
+      <button class="jump-sheet__close" data-jump="close" aria-label="Close">×</button>
+    </header>
+    <form class="jump-sheet__form" data-jump="submit">
+      <input type="number" class="jump-sheet__input" min="1" placeholder="No." inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Slide number">
+      <button type="submit" class="jump-sheet__go">Go</button>
+    </form>
+    <div class="jump-sheet__grid" id="jump-sheet-grid" role="list"></div>
+  </div>
+</div>
+
+<nav class="nav-bar" aria-label="Navigation">
+  <button class="nav-bar__btn" data-nav="prev" aria-label="Previous slide" title="Previous slide (←)">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="nav-bar__counter" data-nav="jump" aria-label="Go to a slide" title="Go to a slide (G then no.)">1&nbsp;/&nbsp;2</button>
+  <button class="nav-bar__btn" data-nav="next" aria-label="Next slide" title="Next slide (→ · Space · click)">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <span class="nav-bar__sep" aria-hidden="true"></span>
+  <button class="nav-bar__btn nav-bar__btn--fs" data-nav="fullscreen" aria-label="Fullscreen" title="Fullscreen (F)">
+    <svg class="icon-fs-enter" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+  </button>
+</nav>
+
+<div class="stage">
+  <div class="slides-root">
+
+    <!-- ═══════════════ D2 · Demo framing ═══════════════ -->
+    <section class="slide" data-slide="1" data-noteid="demo-block-rules">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Community Demos · 1:00–1:45 PM</p>
+        <h2 class="title-l clip-reveal">Three founders.<br><span class="gp-accent">Ten minutes each.</span></h2>
+        <div class="demorules reveal" style="--i:2">
+          <div class="demorules__row"><span class="demorules__n">01</span><span class="demorules__t">7–10 minutes, hard cap — Travis flashes the 2-min card, then MCs the transition.</span></div>
+          <div class="demorules__row"><span class="demorules__n">02</span><span class="demorules__t">Show it running, not slides about it — the room wants to watch Claude Code actually ship.</span></div>
+          <div class="demorules__row"><span class="demorules__n">03</span><span class="demorules__t">One real problem, one real result — skip the origin story, get to the build.</span></div>
+          <div class="demorules__row"><span class="demorules__n">04</span><span class="demorules__t">If it breaks, narrate the backup recording — no live debugging on stage.</span></div>
+          <div class="demorules__row"><span class="demorules__n">05</span><span class="demorules__t">For the room: what would <em>you</em> ship with Claude Code this weekend?</span></div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+    </section>
+
+    <!-- ═══════════════ D3 · Demoer intro roster ═══════════════ -->
+    <section class="slide" data-slide="2" data-noteid="demoer-roster">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Meet the builders</p>
+        <h2 class="title-l clip-reveal">Three founders <span class="gp-accent">show their work.</span></h2>
+        <div class="roster reveal" style="--i:2">
+          <div class="roster__row">
+            <span class="roster__slot">SLOT 1</span>
+            <div class="roster__whocol"><span class="roster__mark">NS</span><div class="roster__namewrap"><span class="roster__who">Nisse Stordiau</span></div></div>
+            <span class="roster__what">Solo builder — a restaurant that runs on apps he shipped with Claude Code.</span>
+            <span class="roster__time">1:00–1:10</span>
+          </div>
+          <div class="roster__row">
+            <span class="roster__slot">SLOT 2</span>
+            <div class="roster__whocol"><span class="roster__mark">DZ</span><div class="roster__namewrap"><span class="roster__who">Denis Zaytsev</span></div></div>
+            <span class="roster__what">Builder demo — details confirmed day-of; ready with laptop in hand.</span>
+            <span class="roster__time">1:15–1:25</span>
+          </div>
+          <div class="roster__row">
+            <span class="roster__slot">SLOT 3</span>
+            <div class="roster__whocol"><span class="roster__mark">KM</span><div class="roster__namewrap"><span class="roster__who">Kevin Minn</span></div></div>
+            <span class="roster__what">Medical AI — a live diagnosis with a cryptographically signed record.</span>
+            <span class="roster__time">1:30–1:40</span>
+          </div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Every one of them built with Claude Code</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+    </section>
+
+  </div>
+</div>
+
+<!--
+  SPEAKER NOTE (not projected): Slot 2 shows "Denis Zaytsev" plainly — Denis is
+  standing in for Robb Miller, who has not confirmed as of the 5:40 AM verified
+  facts. Travis should introduce Denis on his own terms live, no need to
+  reference the swap from stage. If Robb confirms before doors, swap the name
+  in .roster__row[2] back to Robb Miller.
+-->
+
+<script src="../js/grid.js"></script>
+<script src="../js/claude-for-leaders.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>

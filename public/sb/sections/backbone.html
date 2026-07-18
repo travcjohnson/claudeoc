@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI-Native backbone (ported from Claude for Leaders) — section preview — Claude Code for Founders SB</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/InterVariable.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/JetBrainsMono-Regular.woff2" crossorigin>
+
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/animations.css">
+<link rel="stylesheet" href="../css/conf-public.css">
+<link rel="stylesheet" href="../css/claude-for-leaders.css">
+</head>
+<body>
+
+<div class="black-overlay" aria-hidden="true"></div>
+<div class="hint" id="hint">
+  <span class="hint__desktop">Navigate with <kbd>←</kbd> <kbd>→</kbd> or scroll · click to advance · <kbd>F</kbd> fullscreen</span>
+  <span class="hint__mobile">Swipe <span aria-hidden="true">← →</span> to navigate</span>
+</div>
+
+<div class="jump-sheet" id="jump-sheet" hidden>
+  <div class="jump-sheet__scrim" data-jump="close" aria-hidden="true"></div>
+  <div class="jump-sheet__panel" role="dialog" aria-modal="true" aria-labelledby="jump-sheet-title">
+    <header class="jump-sheet__head">
+      <span class="jump-sheet__title" id="jump-sheet-title">Go to slide</span>
+      <button class="jump-sheet__close" data-jump="close" aria-label="Close">×</button>
+    </header>
+    <form class="jump-sheet__form" data-jump="submit">
+      <input type="number" class="jump-sheet__input" min="1" placeholder="No." inputmode="numeric" pattern="[0-9]*" autocomplete="off" aria-label="Slide number">
+      <button type="submit" class="jump-sheet__go">Go</button>
+    </form>
+    <div class="jump-sheet__grid" id="jump-sheet-grid" role="list"></div>
+  </div>
+</div>
+
+<nav class="nav-bar" aria-label="Navigation">
+  <button class="nav-bar__btn" data-nav="prev" aria-label="Previous slide" title="Previous slide (←)">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <button class="nav-bar__counter" data-nav="jump" aria-label="Go to a slide" title="Go to a slide (G then no.)">1&nbsp;/&nbsp;5</button>
+  <button class="nav-bar__btn" data-nav="next" aria-label="Next slide" title="Next slide (→ · Space · click)">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <span class="nav-bar__sep" aria-hidden="true"></span>
+  <button class="nav-bar__btn nav-bar__btn--fs" data-nav="fullscreen" aria-label="Fullscreen" title="Fullscreen (F)">
+    <svg class="icon-fs-enter" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+    <svg class="icon-fs-exit" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>
+  </button>
+</nav>
+
+<div class="stage">
+  <div class="slides-root">
+
+    <!-- ═══ BB1 · Cover (ported from claude-for-leaders-en slide 1, reframed) ═══ -->
+    <section class="slide is-dark gp-cover" data-slide="1" data-noteid="backbone-cover">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="crawlers" aria-hidden="true">
+        <svg class="crawler crawler--lg crawler--walk" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="10" class="crawler__body"/><rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/><rect x="2" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="6" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/><rect x="9" y="11" width="2" height="4" class="crawler__leg crawler__leg--a"/><rect x="13" y="11" width="2" height="4" class="crawler__leg crawler__leg--b"/></svg>
+        <svg class="crawler crawler--md crawler--hop" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="10" class="crawler__body"/><rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/><rect x="2" y="11" width="2" height="4" class="crawler__leg"/><rect x="6" y="11" width="2" height="4" class="crawler__leg"/><rect x="9" y="11" width="2" height="4" class="crawler__leg"/><rect x="13" y="11" width="2" height="4" class="crawler__leg"/></svg>
+        <svg class="crawler crawler--sm crawler--glide" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="14" height="10" class="crawler__body"/><rect x="3" y="3" width="2" height="2" class="crawler__eye"/><rect x="11" y="3" width="2" height="2" class="crawler__eye"/><rect x="2" y="11" width="2" height="4" class="crawler__leg"/><rect x="6" y="11" width="2" height="4" class="crawler__leg"/><rect x="9" y="11" width="2" height="4" class="crawler__leg"/><rect x="13" y="11" width="2" height="4" class="crawler__leg"/></svg>
+      </div>
+      <canvas class="gp-matrix" aria-hidden="true"></canvas>
+      <div class="gp-cover__inner">
+        <p class="gp-cover__eyebrow reveal" style="--i:0">AI-Native · Santa Barbara · 07.18.2026</p>
+        <h1 class="gp-cover__title clip-reveal">Multiply what<br><span class="gp-accent">one founder ships.</span></h1>
+        <p class="gp-cover__sub reveal" style="--i:3">Claude Code, your <span class="slot gp-accent" aria-label="engineering team"><span class="slot__reel"><span>engineering team.</span><span>ops hire.</span><span>fastest employee.</span><span>unfair advantage.</span><span>engineering team.</span></span></span></p>
+        <div class="gp-vibe reveal" style="--i:4" aria-hidden="true"><span class="gp-vibe__sign">$</span><span class="gp-vibe__cmd">claude</span><span>&rsaquo;</span><span class="gp-vibe__text"></span><span class="gp-vibe__cursor">&#9611;</span></div>
+      </div>
+      <div class="gp-cover__sign reveal" style="--i:5"><strong>Travis Johnson</strong> · Co-Founder, AuraPath AI · Claude Ambassador</div>
+      <div class="gp-cover__place reveal" style="--i:5">Kiva Cowork.</div>
+    </section>
+
+    <!-- ═══ BB2 · Everything is a code problem (chips reframed to founder functions) ═══ -->
+    <section class="slide" data-slide="2" data-noteid="backbone-code-problem">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">The insight</p>
+        <h2 class="title-l clip-reveal">Everything you're doing by hand<br>is a <span class="gp-accent">code problem.</span></h2>
+        <p class="gp-lead reveal" style="--i:2">Look at your founder to-do list differently:</p>
+        <div class="codeall reveal" style="--i:3">
+          <div class="codeall__groups">
+            <div class="cgroup">
+              <span class="cgroup__label">Product</span>
+              <div class="cgroup__chips">
+                <span class="codeall__chip">Your MVP</span>
+                <span class="codeall__chip">Your internal tools</span>
+                <span class="codeall__chip">Your onboarding flow</span>
+                <span class="codeall__chip">Your customer dashboard</span>
+              </div>
+            </div>
+            <div class="cgroup">
+              <span class="cgroup__label">Marketing &amp; sales</span>
+              <div class="cgroup__chips">
+                <span class="codeall__chip">Your landing pages</span>
+                <span class="codeall__chip">Your outbound</span>
+                <span class="codeall__chip">Your CRM</span>
+                <span class="codeall__chip">Your pitch deck</span>
+                <span class="codeall__chip">Your investor updates</span>
+              </div>
+            </div>
+            <div class="cgroup">
+              <span class="cgroup__label">Finance &amp; ops</span>
+              <div class="cgroup__chips">
+                <span class="codeall__chip">Your cap table</span>
+                <span class="codeall__chip">Your runway model</span>
+                <span class="codeall__chip">Your invoicing</span>
+                <span class="codeall__chip">Your board deck</span>
+              </div>
+            </div>
+            <div class="cgroup">
+              <span class="cgroup__label">Support &amp; ops</span>
+              <div class="cgroup__chips">
+                <span class="codeall__chip">Your customer support</span>
+                <span class="codeall__chip">Your automations</span>
+                <span class="codeall__chip">Your reporting</span>
+              </div>
+            </div>
+          </div>
+          <svg class="crane-svg" viewBox="0 0 440 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <line class="cl-line" x1="24" y1="321" x2="416" y2="321" stroke-width="2"/>
+            <polygon class="cl-ink" points="86,320 134,320 122,300 98,300"/>
+            <rect class="cl-ink" x="102" y="70" width="16" height="232"/>
+            <line class="cl-line" x1="110" y1="70" x2="110" y2="36"/>
+            <line class="cl-line" x1="110" y1="36" x2="392" y2="63"/>
+            <line class="cl-line" x1="110" y1="36" x2="62" y2="63"/>
+            <rect class="cl-ink" x="60" y="62" width="340" height="7"/>
+            <rect class="cl-ink" x="48" y="62" width="22" height="30"/>
+            <g class="crane__carriage">
+              <rect class="cl-ink" x="300" y="69" width="24" height="9"/>
+              <line class="cl-line" x1="312" y1="78" x2="312" y2="150"/>
+              <rect class="cl-load" x="300" y="150" width="24" height="22" rx="2"/>
+            </g>
+            <rect class="cl-block tf__build" x="316" y="300" width="32" height="20" rx="2" style="animation-delay:.2s"/>
+            <rect class="cl-block tf__build" x="352" y="300" width="32" height="20" rx="2" style="animation-delay:.7s"/>
+            <rect class="cl-block tf__build" x="334" y="278" width="32" height="20" rx="2" style="animation-delay:1.2s"/>
+          </svg>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+    </section>
+
+    <!-- ═══ BB3 · Claude Code in action (video — T1's localized asset) ═══ -->
+    <section class="slide gp-videoslide" data-slide="3" data-noteid="backbone-video">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="gp-body">
+        <div>
+          <p class="eyebrow reveal" style="--i:0">Claude Code · in action</p>
+          <h2 class="title-l clip-reveal">Claude Code,<br>in <span class="gp-accent">action.</span></h2>
+          <p class="gp-lead subwipe" style="--i:2">A few minutes are enough to get the idea: you describe, it builds.</p>
+          <p class="gp-anecdote reveal" style="--i:3">This is the same tool every demo you'll see today <strong>was actually built with.</strong></p>
+        </div>
+        <div class="gp-video-wrap reveal" style="--i:3" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()">
+          <video class="gp-video" src="../assets/video/clawd_santa_barbara.mp4" controls playsinline preload="metadata" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()"></video>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+    </section>
+
+    <!-- ═══ BB4 · You describe, explain, guide — it builds ═══ -->
+    <section class="slide" data-slide="4" data-noteid="backbone-recipe">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">The principle</p>
+        <h2 class="title-l clip-reveal">You describe, explain, guide — it <span class="gp-accent">builds.</span></h2>
+        <p class="gp-lead reveal" style="--i:2">How do you make an AI build succeed? The recipe takes three ingredients.</p>
+        <div class="mixgrid">
+          <div class="recipe reveal" style="--i:4">
+            <div class="recipe__row"><span class="recipe__dot recipe__dot--crea"></span><span class="recipe__ing">Creativity</span><span class="recipe__role">your idea, your angle</span></div>
+            <div class="recipe__op">+</div>
+            <div class="recipe__row"><span class="recipe__dot recipe__dot--exp"></span><span class="recipe__ing">Expertise</span><span class="recipe__role">what only you know about your customer</span></div>
+            <div class="recipe__op">+</div>
+            <div class="recipe__row"><span class="recipe__dot recipe__dot--data"></span><span class="recipe__ing">Data &amp; context</span><span class="recipe__role">the reality of your business</span></div>
+            <div class="recipe__rule"></div>
+            <div class="recipe__res"><span class="recipe__eq">=</span> a tool that actually ships</div>
+            <p class="recipe__note">Plus a dose of practice: with every build, you guide better.</p>
+          </div>
+          <div class="pviz reveal" style="--i:5">
+            <svg class="cocktail" viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs><clipPath id="glassIn"><path d="M63 92 L72 268 Q72 276 80 276 L120 276 Q128 276 128 268 L137 92 Z"/></clipPath></defs>
+              <g clip-path="url(#glassIn)">
+                <rect class="ck-liq ck-liq--exp"  x="55" y="196" width="90" height="90"/>
+                <rect class="ck-liq ck-liq--crea" x="55" y="140" width="90" height="56"/>
+                <rect class="ck-liq ck-liq--data" x="55" y="104" width="90" height="36"/>
+                <circle class="ck-bub ck-bub--1" cx="88"  cy="260" r="3"/>
+                <circle class="ck-bub ck-bub--2" cx="108" cy="260" r="4"/>
+                <circle class="ck-bub ck-bub--3" cx="98"  cy="260" r="2.5"/>
+                <circle class="ck-bub ck-bub--4" cx="118" cy="260" r="3"/>
+                <circle class="ck-bub ck-bub--5" cx="80"  cy="260" r="2"/>
+              </g>
+              <path class="ck-glass" d="M63 92 L72 268 Q72 276 80 276 L120 276 Q128 276 128 268 L137 92 Z"/>
+              <ellipse class="ck-rim" cx="100" cy="92" rx="37" ry="7"/>
+              <line class="ck-stir" x1="120" y1="70" x2="96" y2="200"/>
+              <g class="ck-garnish">
+                <circle class="ck-orange" cx="132" cy="96" r="16"/>
+                <path class="ck-seg" d="M132 96 L132 80"/><path class="ck-seg" d="M132 96 L146 90"/>
+                <path class="ck-seg" d="M132 96 L146 102"/><path class="ck-seg" d="M132 96 L118 90"/>
+                <path class="ck-seg" d="M132 96 L118 102"/><path class="ck-seg" d="M132 96 L132 112"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+    </section>
+
+    <!-- ═══ BB5 · ×1000 but piloted (closing punch, hands off to the demos) ═══ -->
+    <section class="slide" data-slide="5" data-noteid="backbone-piloted">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Its real power</p>
+        <h2 class="title-l clip-reveal">×1000. But <span class="gp-accent">piloted.</span></h2>
+        <div class="split">
+          <div class="split__side reveal" style="--i:3">
+            <span class="split__k">The strength</span>
+            <span class="split__h">An exceptional coder</span>
+            <ul class="split__list">
+              <li>Ultra-fast, every language</li>
+              <li>Attempts and realizes your ideas</li>
+              <li>24/7, never tired</li>
+            </ul>
+          </div>
+          <div class="split__side reveal" style="--i:4">
+            <span class="split__k">The pilot</span>
+            <span class="split__h">Always the founder</span>
+            <ul class="split__list">
+              <li>You set the direction</li>
+              <li>You make the product calls</li>
+              <li>You inject the customer context</li>
+            </ul>
+          </div>
+        </div>
+        <p class="split__punch reveal" style="--i:5">It codes ×1000. But <em>you</em> decide what to build. Now watch three founders who did.</p>
+      </div>
+      <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+    </section>
+
+  </div>
+</div>
+
+<script src="../js/grid.js"></script>
+<script src="../js/claude-for-leaders.js"></script>
+<script src="../js/app.js"></script>
+</body>
+</html>
