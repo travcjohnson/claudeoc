@@ -177,7 +177,12 @@
   .demorules__n { font-family: var(--font-mono); font-size: 24px; color: var(--accent-clay); font-weight: var(--fw-bold); min-width: 48px; }
   .demorules__t { font-size: var(--fs-body-l); font-weight: var(--fw-medium); line-height: 1.35; }
 
-  .roster { display: flex; flex-direction: column; gap: 0; margin-top: var(--sp-5); max-width: 1750px; }
+  .roster-layout { display: flex; gap: 32px; align-items: flex-start; margin-top: var(--sp-5); }
+  .roster-col { flex: 1; min-width: 0; }
+  .demoqr { flex-shrink: 0; width: 320px; display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 20px; }
+  .demoqr img { width: 100%; height: 320px; border-radius: 14px; background: #fff; padding: 16px; border: 1px solid var(--neutral-2); }
+  .demoqr span { font-family: var(--font-mono); font-size: 18px; color: var(--ink-muted); text-align: center; }
+  .roster { display: flex; flex-direction: column; gap: 0; max-width: none; }
   .roster__row { display: grid; grid-template-columns: 110px 430px 1fr 180px; align-items: center; gap: var(--sp-4); padding: 28px 0; border-bottom: 1px solid var(--neutral-2); }
   .roster__row:first-child { border-top: 1px solid var(--neutral-2); }
   .roster__slot { font-family: var(--font-mono); font-size: 20px; color: var(--ink-muted); letter-spacing: 0.06em; }
@@ -989,6 +994,8 @@
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Meet the builders</p>
         <h2 class="title-l clip-reveal">Three founders <span class="gp-accent">show their work.</span></h2>
+        <div class="roster-layout">
+        <div class="roster-col">
         <div class="roster reveal" style="--i:2">
           <div class="roster__row">
             <span class="roster__slot">SLOT 1</span>
@@ -1009,12 +1016,12 @@
             <span class="roster__time">1:24–1:34</span>
           </div>
         </div>
-        <div class="openmic reveal" style="--i:3">
-          <p class="openmic__t">Here on-site and want to share? We may have room at the end. Come see me or scan to sign up.</p>
-          <div class="openmic__qr">
-            <img src="./assets/img/qr/demo-signup-qr.png" alt="QR code to sign up for day-of demo slot">
-            <span>Scan to sign up</span>
-          </div>
+        <p class="openmic__t reveal" style="--i:3">Here on-site and want to share? We may have room at the end. Come see me or scan to sign up.</p>
+        </div>
+        <aside class="demoqr reveal" style="--i:3">
+          <img src="./assets/img/qr/demo-signup-qr.png" alt="QR code to sign up for day-of demo slot">
+          <span>Scan to sign up</span>
+        </aside>
         </div>
       </div>
       <footer class="slide__footer"><span>Every one of them built with Claude Code</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
