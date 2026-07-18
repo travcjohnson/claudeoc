@@ -31,6 +31,7 @@
 
   /* ═══ Scoped: Close CTAs (two real, decode-verified QRs) ═══ */
   .qrpair { display: flex; gap: var(--sp-6); margin-top: var(--sp-6); max-width: 1700px; }
+  .qrpair__card:only-child { flex: 0 1 820px; }
   .qrpair__card { flex: 1; display: flex; align-items: center; gap: var(--sp-4); background: var(--neutral); border: 1px solid var(--border-color-light); border-radius: 20px; padding: var(--sp-5); }
   .qrpair__card img { width: 140px; height: 140px; border-radius: 10px; background: #fff; padding: 8px; flex-shrink: 0; }
   .qrpair__t { font-size: 28px; font-weight: var(--fw-bold); color: var(--ink); letter-spacing: -0.01em; line-height: 1.2; }
@@ -457,10 +458,6 @@
           <div class="qrpair__card">
             <img src="./assets/img/community/whatsapp-sb-qr.png" alt="QR code to join Claude Community Santa Barbara on WhatsApp">
             <div><div class="qrpair__t">Join Claude Community Santa Barbara on WhatsApp</div><div class="qrpair__d">The group chat is where it keeps going &mdash; questions, builds, the next event.</div></div>
-          </div>
-          <div class="qrpair__card">
-            <img src="./assets/img/qr-stay-connected.png" alt="QR code to sign up for Santa Barbara Claude community email updates">
-            <div><div class="qrpair__t">Stay on the email list</div><div class="qrpair__d">One list, no spam. Next event, next build, next Impact Lab &mdash; posted here first.</div></div>
           </div>
         </div>
         <div class="ifacts reveal" style="--i:3">
