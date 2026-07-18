@@ -196,6 +196,9 @@
   .openmic__slot { font-family: var(--font-mono); font-size: 22px; color: var(--accent-bright);
                    border: 2px dashed var(--accent-bright); border-radius: 8px; padding: 22px 26px;
                    text-align: center; line-height: 1.3; flex-shrink: 0; }
+  .openmic__qr { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; }
+  .openmic__qr img { display: block; width: 130px; height: 130px; border: 1px solid var(--neutral-2); border-radius: 8px; background: #fff; padding: 6px; }
+  .openmic__qr span { font-family: var(--font-mono); font-size: 16px; color: var(--ink-muted); text-align: center; }
 </style>
 </head>
 <body>
@@ -239,12 +242,14 @@
 <div class="stage">
   <div class="slides-root">
 
-    <section class="slide coldopen" data-slide="1" data-section="intros" data-noteid="hold-frame">
+        <section class="slide coldopen" data-slide="1" data-section="intros" data-noteid="hold-frame">
       <img class="coldopen__img" src="./assets/img/video-final-frame.jpg" alt="Claude · Santa Barbara">
     </section>
+
     <section class="slide coldopen" data-slide="2" data-section="intros" data-noteid="hold-video">
       <video class="coldopen__video" src="./assets/video/clawd_santa_barbara.mp4" controls autoplay muted loop playsinline preload="auto" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()"></video>
     </section>
+
     <section class="slide is-dark gp-cover" data-slide="3" data-section="intros" data-noteid="cover">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <canvas class="gp-matrix" aria-hidden="true"></canvas>
@@ -256,6 +261,7 @@
       <div class="gp-cover__sign reveal" style="--i:5"><strong>Travis Johnson</strong> &amp; <strong>Casey Barr</strong> · Co-hosts</div>
       <div class="gp-cover__place reveal" style="--i:5">Kiva Cowork, 1117 State St.</div>
     </section>
+
     <section class="slide" data-slide="4" data-section="intros" data-noteid="welcome">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body" style="justify-content:flex-start; padding-top:70px">
@@ -272,6 +278,7 @@
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
     <section class="slide" data-slide="5" data-section="community" data-noteid="community-what-is">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
@@ -292,6 +299,7 @@
       </div>
       <footer class="slide__footer"><span>Source: audience-stats/data/stats.json · Luma exports, 06.09.2026</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
     <section class="slide" data-slide="6" data-section="community" data-noteid="community-people">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
@@ -310,6 +318,7 @@
       </div>
       <footer class="slide__footer"><span>Source: stats.json composition.tiers · n=729 with known seniority</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
     <section class="slide" data-slide="7" data-section="community" data-noteid="community-global">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
@@ -330,6 +339,7 @@
       </div>
       <footer class="slide__footer"><span>Source: claude.com/community · luma.com/claudecommunity host listings</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
     <section class="slide" data-slide="8" data-section="community" data-noteid="community-global-wall">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
@@ -360,6 +370,7 @@
       </div>
       <footer class="slide__footer"><span>Claude communities worldwide · photos from public event recaps</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
     <section class="slide" data-slide="9" data-section="community" data-noteid="community-impact-lab">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
@@ -379,6 +390,7 @@
       </div>
       <footer class="slide__footer"><span>Source: @claude on LinkedIn · Claude Impact Lab, Rio de Janeiro</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
     <section class="slide" data-slide="10" data-section="community" data-noteid="community-impact-cities">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
@@ -397,6 +409,7 @@
       </div>
       <footer class="slide__footer"><span>Official event art · luma.com/claudecommunity</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
     <section class="slide" data-slide="11" data-section="community" data-noteid="community-conversation">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
@@ -424,6 +437,7 @@
       </div>
       <footer class="slide__footer"><span>Source: stats.json trajectory.repeat_registrants — 81 repeat (9.3%)</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
     <section class="slide" data-slide="12" data-section="community" data-noteid="community-hashtag">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
@@ -433,31 +447,31 @@
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
     <section class="slide" data-slide="13" data-section="community" data-noteid="community-stay-connected">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Don't let this be a one-off</p>
         <h2 class="title-m clip-reveal">Stay connected <span class="gp-accent">after today.</span></h2>
-        <div class="ctarow reveal" style="--i:2">
-          <div class="ctaqr">
-            <img src="./assets/img/community/whatsapp-qr.png" alt="QR code to join the Santa Barbara Claude community WhatsApp group">
-            <div class="ctaqr__l">Scan to join the WhatsApp group</div>
+        <div class="qrpair reveal" style="--i:2">
+          <div class="qrpair__card">
+            <img src="./assets/img/community/whatsapp-sb-qr.png" alt="QR code to join Claude Community Santa Barbara on WhatsApp">
+            <div><div class="qrpair__t">Join Claude Community Santa Barbara on WhatsApp</div><div class="qrpair__d">The group chat is where it keeps going &mdash; questions, builds, the next event.</div></div>
           </div>
-          <div class="ifacts">
-            <div class="ifact">
-              <div class="ifact__t"><b>The group chat is where it keeps going.</b> Questions, builds, and the next event get posted here first.</div>
-            </div>
-            <div class="ifact">
-              <div class="ifact__t"><b>Email signup:</b> <span class="slot">[ stay-connected form link — pending from T45-Stage ]</span></div>
-            </div>
-            <div class="ifact">
-              <div class="ifact__t">There's no Anthropic platform for this. The community is the platform.</div>
-            </div>
+          <div class="qrpair__card">
+            <img src="./assets/img/qr-stay-connected.png" alt="QR code to sign up for Santa Barbara Claude community email updates">
+            <div><div class="qrpair__t">Stay on the email list</div><div class="qrpair__d">One list, no spam. Next event, next build, next Impact Lab &mdash; posted here first.</div></div>
+          </div>
+        </div>
+        <div class="ifacts reveal" style="--i:3">
+          <div class="ifact">
+            <div class="ifact__t">There's no Anthropic platform for this. The community is the platform.</div>
           </div>
         </div>
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
     <section class="slide" data-slide="14" data-section="community" data-noteid="community-raffle">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
@@ -480,6 +494,7 @@
       </div>
       <footer class="slide__footer"><span>Entry = a LinkedIn post tagged #claudeinsantabarbara</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
     <section class="slide is-dark anl-cover" data-slide="15" data-section="ai-native" data-noteid="anl-cover">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
@@ -512,10 +527,42 @@
 
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
-    <section class="slide" data-slide="16" data-section="ai-native" data-noteid="anl-ladder">
+
+    <section class="slide" data-slide="16" data-section="ai-native" data-noteid="anl-metr">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">Why the ladder keeps moving</p>
+        <h2 class="metr__title reveal" style="--i:1">The length of a job AI can finish<br>doubles about every <span class="gp-accent">7 months.</span></h2>
+
+        <div class="metr__row">
+          <div class="metr__chartwrap reveal" style="--i:2">
+            <!-- Real screenshot of METR's published benchmark, captured from
+                 metr.org/time-horizons on 18.07.2026 (Time Horizon 1.1,
+                 log scale, 50% success). Not a recreation. -->
+            <img class="metr__shot" src="./assets/img/metr-time-horizon.png"
+                 alt="METR benchmark: time horizon of software tasks different LLMs can complete 50% of the time, plotted on a log scale from GPT-2 in 2019 to Claude Opus 4.6 in 2026">
+          </div>
+
+          <div class="metr__side">
+            <p class="metr__point reveal" style="--i:3"><strong>Every 7 months</strong>, the job you thought was too big for AI becomes the job it finishes.</p>
+            <p class="metr__point reveal" style="--i:4">That is why rung 2 today looks like rung 3 next year. <strong>The ladder moves under you.</strong></p>
+            <p class="metr__caveat reveal" style="--i:5">METR&rsquo;s own range: 1&ndash;4 doublings per year. Above 16 hours their task suite stops being reliable.</p>
+          </div>
+        </div>
+
+        <p class="metr__src reveal" style="--i:6">Chart: METR &middot; metr.org/time-horizons &middot; Time Horizon 1.1 &middot; log scale &middot; 50% success &middot; captured 18.07.2026</p>
+      </div>
+
+      <footer class="slide__footer"><span>Travis Johnson &middot; AuraPath AI</span><span>Kiva Cowork &middot; State Street &middot; 18.07.2026</span></footer>
+    </section>
+
+    <section class="slide" data-slide="17" data-section="ai-native" data-noteid="anl-ladder">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+
+      <div class="gp-body">
+        <div class="anl-ladder-row">
+        <div class="anl-ladder-col">
         <p class="eyebrow reveal" style="--i:0">Five rungs · each one roughly 10× the last</p>
 
         <div class="anl-ladder__head reveal" style="--i:1">
@@ -575,38 +622,17 @@
           </div>
 
         </div>
+        </div>
+        <aside class="anl-cred reveal" style="--i:7">
+          <img class="anl-cred__img" src="./assets/img/cherny-tweet.png" alt="Boris Cherny tweet: I talk to engineers at other companies every day and hear the same thing — one person is 10x'ing their output with Claude but the rest of the org hasn't caught up. Watching teams adopt AI, I keep seeing the same 4 steps.">
+          <div class="anl-cred__label">Boris Cherny (@bcherny), creator of Claude Code &middot; 1.2M views</div>
+        </aside>
+        </div>
       </div>
 
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
-    <section class="slide" data-slide="17" data-section="ai-native" data-noteid="anl-metr">
-      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
-      <div class="gp-body">
-        <p class="eyebrow reveal" style="--i:0">Why the ladder keeps moving</p>
-        <h2 class="metr__title reveal" style="--i:1">The length of a job AI can finish<br>doubles about every <span class="gp-accent">7 months.</span></h2>
-
-        <div class="metr__row">
-          <div class="metr__chartwrap reveal" style="--i:2">
-            <!-- Real screenshot of METR's published benchmark, captured from
-                 metr.org/time-horizons on 18.07.2026 (Time Horizon 1.1,
-                 log scale, 50% success). Not a recreation. -->
-            <img class="metr__shot" src="./assets/img/metr-time-horizon.png"
-                 alt="METR benchmark: time horizon of software tasks different LLMs can complete 50% of the time, plotted on a log scale from GPT-2 in 2019 to Claude Opus 4.6 in 2026">
-          </div>
-
-          <div class="metr__side">
-            <p class="metr__point reveal" style="--i:3"><strong>Every 7 months</strong>, the job you thought was too big for AI becomes the job it finishes.</p>
-            <p class="metr__point reveal" style="--i:4">That is why rung 2 today looks like rung 3 next year. <strong>The ladder moves under you.</strong></p>
-            <p class="metr__caveat reveal" style="--i:5">METR&rsquo;s own range: 1&ndash;4 doublings per year. Above 16 hours their task suite stops being reliable.</p>
-          </div>
-        </div>
-
-        <p class="metr__src reveal" style="--i:6">Chart: METR &middot; metr.org/time-horizons &middot; Time Horizon 1.1 &middot; log scale &middot; 50% success &middot; captured 18.07.2026</p>
-      </div>
-
-      <footer class="slide__footer"><span>Travis Johnson &middot; AuraPath AI</span><span>Kiva Cowork &middot; State Street &middot; 18.07.2026</span></footer>
-    </section>
     <section class="slide anl-statement" data-slide="18" data-section="ai-native" data-noteid="anl-trap">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
@@ -623,6 +649,7 @@
 
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
+
     <section class="slide" data-slide="19" data-section="ai-native" data-noteid="anl-gate">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
@@ -668,22 +695,8 @@
 
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
-    <section class="slide gp-videoslide" data-slide="20" data-section="ai-native" data-noteid="backbone-video">
-      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
-      <div class="gp-body">
-        <div>
-          <p class="eyebrow reveal" style="--i:0">Claude Code · in action</p>
-          <h2 class="title-l clip-reveal">Claude Code,<br>in <span class="gp-accent">action.</span></h2>
-          <p class="gp-lead subwipe" style="--i:2">A few minutes are enough to get the idea: you describe, it builds.</p>
-          <p class="gp-anecdote reveal" style="--i:3">This is the same tool every demo you'll see today <strong>was actually built with.</strong></p>
-        </div>
-        <div class="gp-video-wrap reveal" style="--i:3" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()">
-          <video class="gp-video" src="./assets/video/clawd_santa_barbara.mp4" controls playsinline preload="metadata" onclick="event.stopPropagation()" onmousedown="event.stopPropagation()" onpointerdown="event.stopPropagation()"></video>
-        </div>
-      </div>
-      <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
-    </section>
-    <section class="slide" data-slide="21" data-section="ai-native" data-noteid="anl-depts">
+
+    <section class="slide" data-slide="20" data-section="ai-native" data-noteid="anl-depts">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
@@ -744,7 +757,8 @@
 
       <footer class="slide__footer"><span>Travis Johnson &middot; AuraPath AI</span><span>Kiva Cowork &middot; State Street &middot; 18.07.2026</span></footer>
     </section>
-    <section class="slide" data-slide="22" data-section="ai-native" data-noteid="anl-questions">
+
+    <section class="slide" data-slide="21" data-section="ai-native" data-noteid="anl-questions">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
@@ -790,7 +804,8 @@
 
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
-    <section class="slide" data-slide="23" data-section="ai-native" data-noteid="anl-heatmap">
+
+    <section class="slide" data-slide="22" data-section="ai-native" data-noteid="anl-heatmap">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
@@ -857,7 +872,8 @@
 
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
-    <section class="slide is-dark anl-beat" data-slide="24" data-section="ai-native" data-noteid="anl-aurapath">
+
+    <section class="slide is-dark anl-beat" data-slide="23" data-section="ai-native" data-noteid="anl-aurapath">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
 
       <div class="gp-body">
@@ -879,7 +895,8 @@
 
       <footer class="slide__footer"><span>Travis Johnson · AuraPath AI</span><span>Kiva Cowork · State Street · 18.07.2026</span></footer>
     </section>
-    <section class="slide" data-slide="25" data-section="ai-native" data-noteid="backbone-piloted">
+
+    <section class="slide" data-slide="24" data-section="ai-native" data-noteid="backbone-piloted">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Its real power</p>
@@ -908,7 +925,8 @@
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
-    <section class="slide" data-slide="26" data-section="demos" data-noteid="demo-block-rules">
+
+    <section class="slide" data-slide="25" data-section="demos" data-noteid="demo-block-rules">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Community Demos · 1:00–1:45 PM</p>
@@ -923,7 +941,8 @@
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
-    <section class="slide" data-slide="27" data-section="demos" data-noteid="demoer-roster">
+
+    <section class="slide" data-slide="26" data-section="demos" data-noteid="demoer-roster">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Meet the builders</p>
@@ -950,24 +969,29 @@
         </div>
         <div class="openmic reveal" style="--i:3">
           <p class="openmic__t">Here on-site and want to share? We may have room at the end. Come see me or scan to sign up.</p>
-          <div class="openmic__slot">[ day-of sign-up QR — pending from T45-Stage ]</div>
+          <div class="openmic__qr">
+            <img src="./assets/img/qr/demo-signup-qr.png" alt="QR code to sign up for day-of demo slot">
+            <span>Scan to sign up</span>
+          </div>
         </div>
       </div>
       <footer class="slide__footer"><span>Every one of them built with Claude Code</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
-    <section class="slide" data-slide="28" data-section="break" data-noteid="break">
+
+    <section class="slide" data-slide="27" data-section="break" data-noteid="break">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Break · networking pulse</p>
         <div class="breakwrap reveal" style="--i:1">
-          <span class="breaknum">20</span>
+          <span class="breaknum">15</span>
           <h2 class="title-m clip-reveal">minutes. <span class="gp-accent">Back at 2:05.</span></h2>
           <p class="gp-lead">Refill, trade contacts with the person next to you, tag <b>#claudeinsantabarbara</b>. Fireside starts sharp at 2:05.</p>
         </div>
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
-    <section class="slide" data-slide="29" data-section="fireside" data-noteid="fireside-panelists">
+
+    <section class="slide" data-slide="28" data-section="fireside" data-noteid="fireside-panelists">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Fireside · 2:05–2:35 PM · Travis Johnson moderates</p>
@@ -986,16 +1010,17 @@
             <p class="panel__bio">Santa Barbara-based. Early-stage fund investing in climate tech, deep tech, AI, and enterprise software — bringing circularity to fashion, home, and outdoor supply chains.</p>
           </div>
           <div class="panel__card">
-            <span class="panel__mark">MS</span>
+            <img class="panel__photo" src="./assets/img/panelists/matthew-stotts.png" alt="Matthew Stotts">
             <div class="panel__who">Matthew Stotts</div>
-            <div class="panel__role">Co-Founder &amp; GP, Cerulean Ventures</div>
-            <p class="panel__bio">Pre-seed AI for nature and climate. UCSB adjunct professor. Santa Barbara local.</p>
+            <div class="panel__role">Co-Founder, Cerulean Ventures</div>
+            <p class="panel__bio">Pre-seed VC backing founders applying AI to drive systemic change for people and planet. Adjunct professor, technology management, UCSB College of Engineering since 2015.</p>
           </div>
         </div>
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
-    <section class="slide" data-slide="30" data-section="close" data-noteid="close-ctas">
+
+    <section class="slide" data-slide="29" data-section="close" data-noteid="close-ctas">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="gp-body">
         <p class="eyebrow reveal" style="--i:0">Before you go</p>
@@ -1013,6 +1038,18 @@
       </div>
       <footer class="slide__footer"><span>Claude Code for Founders × Mercury</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
     </section>
+
+    <!-- ═══════════════ Giveaway reminder (assembly-owned) ═══════════════ -->
+    <section class="slide" data-slide="30" data-section="close" data-noteid="giveaway-reminder">
+      <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
+      <div class="gp-body">
+        <p class="eyebrow reveal" style="--i:0">One last thing</p>
+        <h2 class="title-xl clip-reveal">Posted with <span class="gp-accent">#claudeinsantabarbara?</span></h2>
+        <p class="gp-lead reveal" style="--i:2">You're in. Claude draws the winner &mdash; a <b>Keep Thinking hat</b>, exclusive merch, not for sale.</p>
+      </div>
+      <footer class="slide__footer"><span>Entry = a post tagged #claudeinsantabarbara</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
+    </section>
+
     <section class="slide is-dark gp-closing" data-slide="31" data-section="close" data-noteid="closing">
       <header class="slide__brand"><span>Claude Code</span><span>for Founders.</span></header>
       <div class="crawlers" aria-hidden="true">

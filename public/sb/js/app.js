@@ -90,8 +90,8 @@
     { key: 'intros',    label: 'Intros',     start: [12, 30], end: [12, 40] },
     { key: 'community', label: 'Community',  start: [12, 40], end: [12, 50] },
     { key: 'ai-native', label: 'AI-Native',  start: [12, 50], end: [13, 0]  },
-    { key: 'demos',     label: 'Demos',      start: [13, 0],  end: [13, 45] },
-    { key: 'break',     label: 'Break',      start: [13, 45], end: [14, 5]  },
+    { key: 'demos',     label: 'Demos',      start: [13, 0],  end: [13, 50] },
+    { key: 'break',     label: 'Break',      start: [13, 50], end: [14, 5]  },
     { key: 'fireside',  label: 'Fireside',   start: [14, 5],  end: [14, 35] },
     { key: 'close',     label: 'Close',      start: [14, 35], end: [15, 0]  }
   ];
@@ -230,7 +230,7 @@
   /* ——— Navigation clavier ——— */
 
   function onKeyDown(e) {
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'VIDEO') return;
     const k = e.key;
 
     // Touches globales.

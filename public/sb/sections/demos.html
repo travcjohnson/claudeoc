@@ -41,6 +41,9 @@
   .openmic__slot { font-family: var(--font-mono); font-size: 22px; color: var(--accent-bright);
                    border: 2px dashed var(--accent-bright); border-radius: 8px; padding: 22px 26px;
                    text-align: center; line-height: 1.3; flex-shrink: 0; }
+  .openmic__qr { display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0; }
+  .openmic__qr img { display: block; width: 130px; height: 130px; border: 1px solid var(--neutral-2); border-radius: 8px; background: #fff; padding: 6px; }
+  .openmic__qr span { font-family: var(--font-mono); font-size: 16px; color: var(--ink-muted); text-align: center; }
 </style>
 </head>
 <body>
@@ -128,7 +131,10 @@
         </div>
         <div class="openmic reveal" style="--i:3">
           <p class="openmic__t">Here on-site and want to share? We may have room at the end. Come see me or scan to sign up.</p>
-          <div class="openmic__slot">[ day-of sign-up QR — pending from T45-Stage ]</div>
+          <div class="openmic__qr">
+            <img src="../assets/img/qr/demo-signup-qr.png" alt="QR code to sign up for day-of demo slot">
+            <span>Scan to sign up</span>
+          </div>
         </div>
       </div>
       <footer class="slide__footer"><span>Every one of them built with Claude Code</span><span>Kiva Cowork · Santa Barbara · 07.18.2026</span></footer>
