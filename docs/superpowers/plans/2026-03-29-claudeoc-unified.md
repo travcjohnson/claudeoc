@@ -786,7 +786,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               <li><a href="/training" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">Training</a></li>
               <li><a href="/sponsors" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">Sponsors</a></li>
-              <li><a href="https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK" target="_blank" rel="noopener noreferrer" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">WhatsApp Group</a></li>
+              <li><a href="https://claudesocal.com/join?metro=orange-county" target="_blank" rel="noopener noreferrer" className="font-serif text-sm text-slate-light transition-colors hover:text-clay dark:text-muted dark:hover:text-clay">WhatsApp Group</a></li>
             </ul>
           </div>
 
@@ -866,7 +866,7 @@ Create each component file following the spec's "Page 1: `/` (Home)" section. Ke
 
 **GetInvolved.tsx** — 3 cards: Lead a Conversation, Build With Us, Share Feedback.
 
-**StayConnected.tsx** — WhatsApp card (link: `https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK`) + Newsletter email signup.
+**StayConnected.tsx** — WhatsApp card (link: `https://claudesocal.com/join?metro=orange-county`) + Newsletter email signup.
 
 **JoinCTA.tsx** — Dark section (bg-slate-dark). "Ready to Join?" headline. Benefits. Dual CTAs.
 
@@ -1142,7 +1142,7 @@ git commit -m "feat: update sponsors page with dark mode and Tally placeholder"
 
 **CommunityHero.tsx** — "Get Involved" headline. Brief description of the community.
 
-**WhatsAppJoin.tsx** — Prominent card with WhatsApp icon and join link: `https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK`. "Join the conversation" CTA.
+**WhatsAppJoin.tsx** — Prominent card with WhatsApp icon and join link: `https://claudesocal.com/join?metro=orange-county`. "Join the conversation" CTA.
 
 **ParticipantForm.tsx** — TallyEmbed with formId `rjl0MN`. Header: "Apply to Join".
 

@@ -2,7 +2,7 @@ export const CONTACT = {
   email: "travis@aurapathai.com",
   phone: "(734) 476-3021",
   linkedin: "https://linkedin.com/in/travcjohnson",
-  whatsapp: "https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK",
+  whatsapp: "https://claudesocal.com/join?metro=orange-county",
   luma: "https://lu.ma/claudeoc",
   lumaFirstEvent: "https://luma.com/kjwrri63",
 } as const;
