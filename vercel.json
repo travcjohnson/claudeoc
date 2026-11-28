@@ -1,0 +1,17 @@
+{
+  "redirects": [
+    { "source": "/", "destination": "https://claudesocal.com/cities-orange-county", "permanent": true },
+    { "source": "/events", "destination": "https://claudesocal.com/events", "permanent": true },
+    { "source": "/events/:path+", "destination": "https://claudesocal.com/events", "permanent": true },
+    { "source": "/community", "destination": "https://claudesocal.com/join", "permanent": true },
+    { "source": "/community/:path+", "destination": "https://claudesocal.com/join", "permanent": true },
+    { "source": "/sponsors", "destination": "https://claudesocal.com/host", "permanent": true },
+    { "source": "/impact-labs", "destination": "https://claudesocal.com/impact", "permanent": true },
+    { "source": "/impact-labs/:path+", "destination": "https://claudesocal.com/impact", "permanent": true },
+    { "source": "/impact-lab", "destination": "https://claudesocal.com/impact", "permanent": true },
+    { "source": "/impactlab", "destination": "https://claudesocal.com/impact", "permanent": true },
+    { "source": "/impactlabs", "destination": "https://claudesocal.com/impact", "permanent": true },
+    { "source": "/gallery", "destination": "https://claudesocal.com/cities-orange-county", "permanent": true },
+    { "source": "/gallery/:path+", "destination": "https://claudesocal.com/cities-orange-county", "permanent": true }
+  ]
+}
