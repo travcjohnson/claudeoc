@@ -18,7 +18,7 @@ Merge the best of two existing repos (`claudeoc` and `claudeoc-site`) into a sin
 - **Name:** ClaudeOC (one word)
 - **Tagline:** Orange County's Claude Community
 - **Contact:** travis@aurapathai.com · (734) 476-3021
-- **WhatsApp:** https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK
+- **WhatsApp:** https://claudesocal.com/join?metro=orange-county
 - **Luma (upcoming):** lu.ma/claudeoc
 - **Luma (first event):** luma.com/kjwrri63
 
@@ -26,7 +26,7 @@ Merge the best of two existing repos (`claudeoc` and `claudeoc-site`) into a sin
 
 | Integration | URL / ID | Usage |
 |-------------|----------|-------|
-| WhatsApp group | `https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK` | Primary community CTA |
+| WhatsApp group | `https://claudesocal.com/join?metro=orange-county` | Primary community CTA |
 | Tally — Community Participant | `tally.so/r/rjl0MN` | /community page embed |
 | Tally — Nonprofit Interest | `tally.so/r/Y5ZolB` | /impact-labs page embed |
 | Tally — Sponsor Interest | PLACEHOLDER — use dashed border + "Coming soon" badge until Travis creates form | /sponsors page embed |
@@ -186,7 +186,7 @@ Three cards (from claudeoc-site `GetInvolved.tsx`):
 ### Stay Connected
 
 Two cards:
-- **WhatsApp** — Join link: `https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK`
+- **WhatsApp** — Join link: `https://claudesocal.com/join?metro=orange-county`
 - **Newsletter** — Email input + subscribe button (Tally form or simple email capture)
 
 ### Join CTA (Bottom)
@@ -390,7 +390,7 @@ Community hub: join channels, apply to participate, see city expansion.
 
 ### WhatsApp
 
-Prominent card with join link: `https://chat.whatsapp.com/DBipvDRd2oNIcdF6m5CnzK`
+Prominent card with join link: `https://claudesocal.com/join?metro=orange-county`
 
 ### Apply — Community Participant
 
